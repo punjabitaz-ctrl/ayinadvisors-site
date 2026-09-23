@@ -336,9 +336,33 @@ html.js .line-reveal.in > span { transform: none; }
 }
 
 /* ---------- BizCheck nav accent ----------
-   Brand gold at rest so it reads as a product, not as the active page —
-   --gold-bright is already the hover/active colour for every nav link. */
-.nav-link.gold { color: var(--gold); font-weight: 600; }
-.nav-link.gold:hover, .nav-link.gold.active { color: var(--gold-bright); }
-.mobile-drawer a.gold { color: var(--gold); font-weight: 600; }
-.mobile-drawer a.gold:hover { color: var(--gold-bright); }
+   A filled gold pill so it reads as a product rather than another page.
+   The underline sweep every other nav link gets is suppressed — it collides
+   with the filled background. */
+.nav-link.gold {
+  color: #fff;
+  background: var(--gold);
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 100px;
+  transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.nav-link.gold:hover,
+.nav-link.gold.active {
+  color: #fff;
+  background: var(--gold-bright);
+  box-shadow: 0 4px 16px rgba(198, 161, 92, 0.3);
+}
+.nav-link.gold::after { display: none; }
+
+.mobile-drawer a.gold {
+  color: #fff;
+  background: var(--gold);
+  font-weight: 600;
+  align-self: flex-start;
+  padding: 4px 22px;
+  border-radius: 100px;
+  border-bottom: 0;
+  margin: 6px 0;
+}
+.mobile-drawer a.gold:hover { background: var(--gold-bright); color: #fff; padding-left: 22px; }
