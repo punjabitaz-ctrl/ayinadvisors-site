@@ -366,3 +366,18 @@ html.js .line-reveal.in > span { transform: none; }
   margin: 6px 0;
 }
 .mobile-drawer a.gold:hover { background: var(--gold-bright); color: #fff; padding-left: 22px; }
+
+/* ---------- White consultation CTA ----------
+   Keeps the gold BizCheck pill as the only gold element in the nav. Inherits
+   the slide-up navy fill on hover from .btn, so the motion stays consistent;
+   only the resting colours change. Form submit buttons stay gold so the
+   primary action on a form still reads as primary. */
+.btn.btn-white {
+  background: #fff;
+  border-color: #fff;
+  color: var(--navy-950);
+}
+.btn.btn-white:hover {
+  color: var(--gold-bright);
+  border-color: var(--navy-900);
+}
