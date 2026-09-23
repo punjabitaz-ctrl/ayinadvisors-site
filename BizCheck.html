@@ -24,6 +24,17 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
 <link rel="stylesheet" href="assets/styles.css" />
+<script>
+  /* api.js is async, so it can fire this callback before the page script at the
+     bottom has defined the renderer. Latch here and let whichever runs second
+     do the render. */
+  window.__bcTurnstileReady = false;
+  window.onloadTurnstileCallback = function () {
+    window.__bcTurnstileReady = true;
+    if (window.__bcRenderTurnstile) window.__bcRenderTurnstile();
+  };
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>
 <style>
 /* ── BizCheck page-specific ── */
 .bc-hero {
@@ -168,6 +179,7 @@
 .chip { font-size: .75rem; padding: 7px 13px; border: 1px solid var(--line-on-navy); border-radius: 100px; color: rgba(247,243,234,.68); background: transparent; transition: all .3s var(--ease); }
 .chip:hover { border-color: var(--line-gold); color: var(--cream); }
 .chip.sel { background: var(--gold); border-color: var(--gold); color: var(--navy-950); font-weight: 600; }
+.bc-turnstile { margin: 4px 0 14px; min-height: 65px; }
 .form-card .btn { width: 100%; justify-content: center; margin-top: 8px; }
 .form-card .btn[disabled] { opacity: .6; pointer-events: none; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -439,6 +451,7 @@
               <button type="button" class="chip" data-v="Regulatory Risk">Regulatory Risk</button>
             </div>
           </div>
+          <div id="bc-turnstile" class="bc-turnstile"></div>
           <p class="form-error" id="bc-error" role="alert"></p>
           <button type="submit" class="btn" data-magnetic="0.25"><span class="btn-label">Submit for Evaluation</span><span class="btn-arrow">→</span></button>
         </form>
@@ -514,17 +527,33 @@
     if (c) { c.classList.toggle('sel'); syncFocus(); }
   });
 
-  /* Submissions post to Formspree; on failure we surface the address
-     so a visitor is never left with nowhere to send the brief. */
-  var BIZCHECK_ENDPOINT = "https://formspree.io/f/xrpbkony";
+  /* Posts to our own Pages Function, which verifies the Turnstile token
+     server-side before relaying to Formspree. The Formspree URL lives in a
+     Pages environment variable, so it is no longer exposed in page source. */
+  var BIZCHECK_ENDPOINT = "/api/bizcheck";
   var CONTACT_EMAIL = "hello@ayinadvisors.com";
+  var TURNSTILE_SITEKEY = "0x4AAAAAAFBdMMxC7N5y_3Ya";
 
   var form = document.getElementById('bizcheck-form');
   var errEl = document.getElementById('bc-error');
   var doneEl = document.getElementById('bc-done');
+  var widgetId = null;
 
   function showErr(m) { if (errEl) { errEl.textContent = m; errEl.classList.add('show'); } }
   function done() { form.style.display = 'none'; doneEl.classList.add('show'); }
+
+  /* Rendered explicitly so we keep the widget id. The page stays on screen
+     after a failed submit, and Turnstile tokens are single use — without a
+     reset the visitor could never retry. */
+  window.__bcRenderTurnstile = function () {
+    if (widgetId !== null) return;
+    widgetId = window.turnstile.render('#bc-turnstile', {
+      sitekey: TURNSTILE_SITEKEY,
+      action: 'bizcheck',
+      theme: 'dark'
+    });
+  };
+  if (window.__bcTurnstileReady) window.__bcRenderTurnstile();
 
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -543,6 +572,11 @@
     if (em.value && !/^[^@]+@[^@]+\.[^@]+$/.test(em.value)) { em.style.borderColor = '#c0654a'; ok = false; }
     if (!ok) { showErr('Please complete the highlighted fields.'); return; }
 
+    if (!window.turnstile || !window.turnstile.getResponse(widgetId)) {
+      showErr('Please complete the verification check above.');
+      return;
+    }
+
     syncFocus();
 
     var btn = form.querySelector('.btn');
@@ -550,12 +584,22 @@
     if (lbl) lbl.textContent = 'Submitting…';
     if (btn) btn.setAttribute('disabled', '');
 
-    fetch(BIZCHECK_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
-      .then(function (r) { if (r.ok) done(); else throw 0; })
+    function recover(msg) {
+      if (btn) btn.removeAttribute('disabled');
+      if (lbl) lbl.textContent = 'Submit for Evaluation';
+      if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);
+      showErr(msg);
+    }
+
+    fetch(BIZCHECK_ENDPOINT, { method: 'POST', body: new FormData(form) })
+      .then(function (r) {
+        if (r.ok) { done(); return; }
+        recover(r.status === 403
+          ? 'Verification failed. Please complete the check and try again.'
+          : 'Something went wrong. Please email ' + CONTACT_EMAIL + ' directly.');
+      })
       .catch(function () {
-        if (btn) btn.removeAttribute('disabled');
-        if (lbl) lbl.textContent = 'Submit for Evaluation';
-        showErr('Something went wrong. Please email ' + CONTACT_EMAIL + ' directly.');
+        recover('Something went wrong. Please email ' + CONTACT_EMAIL + ' directly.');
       });
   });
 
