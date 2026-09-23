@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BizCheck — Business Idea Evaluation by AYiN Advisors</title>
+<meta name="description" content="A ten-agent expert panel evaluates your business idea the way a real advisory firm would — and returns a single verdict: GO, CONDITIONAL GO, or NO GO." />
+<link rel="canonical" href="https://ayinadvisors.com/BizCheck.html" />
+<meta name="theme-color" content="#061325" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="AYiN Advisors" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="BizCheck — Let's find out if your idea is right." />
+<meta property="og:description" content="A ten-agent expert panel evaluates your business idea the way a real advisory firm would — and returns a single verdict: GO, CONDITIONAL GO, or NO GO." />
+<meta property="og:url" content="https://ayinadvisors.com/BizCheck.html" />
+<meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BizCheck — Let's find out if your idea is right." />
+<meta name="twitter:description" content="A ten-agent expert panel evaluates your business idea the way a real advisory firm would." />
+<meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" /></noscript>
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ══════════════════════════════════════════════
+   AYIN DESIGN SYSTEM — FULL INLINE
+══════════════════════════════════════════════ */
+:root {
+  --navy-950: #061325;
+  --navy-900: #0a1e3a;
+  --navy-800: #0f2a4f;
+  --navy-700: #163660;
+  --navy-600: #1e4878;
+  --gold: #c6a15c;
+  --gold-bright: #ddb97e;
+  --gold-deep: #a88540;
+  --gold-glow: rgba(198,161,92,0.18);
+  --line-gold: rgba(198,161,92,0.28);
+  --paper: #f7f3ea;
+  --paper-2: #ede8db;
+  --cream: #faf7f0;
+  --white: #ffffff;
+  --ink: #0f1a26;
+  --ink-soft: #243446;
+  --slate: #5a6a7a;
+  --slate-light: #8a9bab;
+  --line: rgba(15,26,38,0.1);
+  --line-on-navy: rgba(198,161,92,0.18);
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --maxw: 1200px;
+  --gutter: clamp(20px,5vw,60px);
+  --nav-h: 80px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+  --ease-out: cubic-bezier(0,0,0.2,1);
+}
+
+/* ── RESET ── */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img,svg { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
+button { cursor:pointer; border:none; background:none; font:inherit; }
+ul { list-style:none; }
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4 { font-family:var(--serif); line-height:1.1; font-weight:400; }
+.display {
+  font-size: clamp(2.8rem,6vw,5.2rem);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+.h2 {
+  font-size: clamp(2.4rem,5vw,4rem);
+  line-height: 1.05;
+}
+.h3 {
+  font-size: clamp(1.3rem,2.2vw,1.75rem);
+  line-height: 1.2;
+}
+.lead {
+  font-size: clamp(1rem,1.4vw,1.15rem);
+  line-height: 1.65;
+}
+.muted { color: var(--slate); }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.26em;
+  text-transform: uppercase; color: var(--gold-deep);
+}
+.eyebrow.on-navy { color: var(--gold); }
+.sec-index {
+  font-family: var(--serif); font-size: 1.5rem;
+  color: var(--paper-2); font-weight: 400; line-height:1;
+}
+.eyebrow.on-navy .sec-index { color: rgba(198,161,92,0.35); }
+
+/* ── LAYOUT ── */
+.wrap {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.section {
+  padding-block: clamp(70px,9vw,120px);
+}
+.section.navy { background: var(--navy-950); }
+.section.paper { background: var(--paper); }
+.section.cream { background: var(--cream); }
+.sec-head {
+  display: flex; gap: clamp(30px,5vw,80px);
+  align-items: flex-start; flex-wrap: wrap;
+  margin-bottom: clamp(40px,6vw,72px);
+}
+.sec-head .left { flex: 1 1 320px; }
+.sec-head .left .h2 { margin-top: 14px; }
+.sec-head > p { flex: 0 1 340px; padding-top: 60px; }
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h); z-index: 100;
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(6,19,37,0.85);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow: 0 1px 0 rgba(198,161,92,0.15);
+}
+.nav .wrap {
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px;
+  flex-shrink: 0;
+}
+.logo-mark { width: 36px; height: 36px; flex-shrink: 0; }
+.logo-text {
+  display: flex; flex-direction: column; line-height: 1;
+  font-family: var(--serif);
+}
+.logo-ayin {
+  font-size: 1.2rem; font-weight: 600; letter-spacing: 0.12em;
+  color: var(--cream); text-transform: uppercase;
+}
+.logo-ayin .lc { font-style: italic; font-weight: 400; font-size: 1.05em; }
+.logo-adv { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+.nav-links {
+  display: flex; align-items: center; gap: 32px;
+}
+.nav-link {
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(247,243,234,0.72);
+  transition: color 0.3s var(--ease);
+}
+.nav-link:hover, .nav-link.active { color: var(--cream); }
+.nav-link.gold { color: var(--gold-bright); }
+.nav-cta { margin-left: 8px; }
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  width: 32px; padding: 4px 0; cursor: pointer;
+}
+.nav-toggle span {
+  display: block; height: 1.5px; background: var(--cream);
+  transition: transform 0.35s var(--ease), opacity 0.35s var(--ease), width 0.35s var(--ease);
+}
+.nav-toggle span:nth-child(2) { width: 70%; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer {
+  display: none; position: fixed;
+  top: var(--nav-h); left: 0; right: 0;
+  background: var(--navy-950); z-index: 99;
+  padding: 24px var(--gutter) 32px;
+  border-bottom: 1px solid var(--line-on-navy);
+  transform: translateY(-20px); opacity: 0;
+  transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
+  pointer-events: none;
+}
+.mobile-drawer.open {
+  transform: none; opacity: 1; pointer-events: auto;
+}
+.mobile-drawer a {
+  display: block; padding: 14px 0;
+  color: rgba(247,243,234,0.72); font-size: 0.92rem;
+  border-bottom: 1px solid var(--line-on-navy);
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+.mobile-drawer a:hover { color: var(--cream); }
+.mobile-drawer a.gold { color: var(--gold-bright); }
+.md-cta {
+  display: inline-flex !important; margin-top: 20px;
+  border: 1px solid var(--gold) !important; border-bottom: 1px solid var(--gold) !important;
+  color: var(--gold) !important; padding: 10px 22px !important;
+  font-size: 0.78rem !important; letter-spacing: 0.12em !important;
+  text-transform: uppercase; font-weight: 600;
+  transition: background 0.3s var(--ease) !important;
+}
+.md-cta:hover { background: rgba(198,161,92,0.1) !important; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 14px 26px; border: 1px solid var(--gold);
+  color: var(--navy-950); background: var(--gold);
+  border-radius: 1px; cursor: pointer;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease),
+              box-shadow 0.3s var(--ease), transform 0.2s var(--ease);
+  position: relative; overflow: hidden; outline: none;
+}
+.btn:hover {
+  background: var(--gold-bright);
+  box-shadow: 0 6px 28px rgba(198,161,92,0.35);
+  transform: translateY(-1px);
+}
+.btn:active { transform: translateY(1px); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 13px 26px; border: 1px solid rgba(247,243,234,0.35);
+  color: var(--cream); background: transparent;
+  border-radius: 1px; cursor: pointer;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+  outline: none;
+}
+.btn-ghost:hover { border-color: var(--gold); background: rgba(198,161,92,0.08); }
+
+/* ── FOOTER ── */
+.footer { background: var(--navy-950); padding-block: clamp(50px,7vw,90px) 32px; }
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr;
+  gap: clamp(30px,5vw,60px); padding-bottom: clamp(40px,5vw,60px);
+  border-bottom: 1px solid var(--line-on-navy);
+  margin-bottom: 28px;
+}
+.footer-col h4 {
+  font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); font-family: var(--sans); font-weight: 600;
+  margin-bottom: 18px;
+}
+.footer-col a {
+  display: block; color: rgba(247,243,234,0.55); font-size: 0.9rem;
+  margin-bottom: 10px; transition: color 0.3s; letter-spacing: 0.02em;
+}
+.footer-col a:hover { color: var(--cream); }
+.footer-tag {
+  color: rgba(247,243,234,0.45); font-size: 0.88rem;
+  line-height: 1.6; max-width: 26ch; margin-top: 16px;
+}
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.72rem; color: rgba(247,243,234,0.28); letter-spacing: 0.08em;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.js .reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+.js .reveal.in { opacity: 1; transform: none; }
+.js .reveal[data-d="1"] { transition-delay: 0.1s; }
+.js .reveal[data-d="2"] { transition-delay: 0.2s; }
+.js .reveal[data-d="3"] { transition-delay: 0.3s; }
+.js .reveal[data-d="4"] { transition-delay: 0.4s; }
+
+/* ══════════════════════════════════════════════
+   BIZCHECK PAGE STYLES
+══════════════════════════════════════════════ */
+
+/* ── HERO ── */
+.bc-hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: stretch;
+  background: radial-gradient(130% 120% at 30% 10%, var(--navy-800) 0%, var(--navy-900) 48%, var(--navy-950) 100%);
+  overflow: hidden;
+}
+.bc-hero #iris { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.7; }
+.bc-grid {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  width: 100%; max-width: var(--maxw);
+  margin-inline: auto; padding-inline: var(--gutter);
+  padding-top: calc(var(--nav-h) + clamp(50px,8vw,110px));
+  padding-bottom: clamp(60px,8vw,100px);
+  gap: clamp(40px,6vw,80px); align-items: center;
+}
+.bc-hero h1 { color: var(--cream); margin: 20px 0 0; }
+.bc-tagline {
+  font-family: var(--serif); font-size: clamp(2.4rem,5vw,4.4rem);
+  font-style: italic; font-weight: 400; color: var(--gold-bright);
+  line-height: 1.0; margin: 12px 0 28px;
+}
+.bc-hero .lead { color: rgba(247,243,234,0.75); max-width: 48ch; }
+.bc-actions { display: flex; gap: 16px; margin-top: 38px; flex-wrap: wrap; }
+.bc-eyebrow-tag {
+  display: inline-flex; align-items: center;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--gold-bright); margin-bottom: 10px;
+}
+.bc-eyebrow-tag .tag-pill {
+  background: rgba(198,161,92,0.15); border: 1px solid var(--line-gold);
+  padding: 5px 12px; border-radius: 100px; font-size: 0.62rem; letter-spacing: 0.22em;
+}
+
+/* ── REPORT CARD (hero) ── */
+.report-card {
+  background: rgba(247,243,234,0.97); border: 1px solid rgba(198,161,92,0.3);
+  border-radius: 3px; padding: clamp(24px,3vw,36px); position: relative;
+  box-shadow: 0 24px 80px rgba(6,19,37,0.55), 0 4px 20px rgba(6,19,37,0.4);
+  max-width: 420px; margin-inline: auto; width: 100%;
+}
+.report-card::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+}
+.rc-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 18px;
+}
+.rc-brand { font-family: var(--sans); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-soft); }
+.rc-brand span { color: var(--gold-deep); }
+.rc-scan-type { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); }
+.rc-section-label { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--slate); font-weight: 600; margin-bottom: 12px; }
+.score-row { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid rgba(15,26,38,0.07); }
+.score-row:last-of-type { border-bottom: 0; }
+.score-name { font-size: 0.9rem; color: var(--ink-soft); }
+.score-val { font-family: var(--serif); font-size: 1.45rem; color: var(--ink); font-weight: 500; line-height: 1; }
+.score-val.hi { color: var(--gold-deep); }
+.score-val.lo { color: #6b7c8d; }
+.rc-divider { height: 1px; background: var(--line); margin: 14px 0; }
+.rc-overall { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+.rc-overall .label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
+.rc-overall .n { font-family: var(--serif); font-size: 2rem; color: var(--gold-deep); font-weight: 500; }
+.verdict-badge {
+  text-align: center; padding: 12px 20px;
+  border: 1.5px solid var(--gold); border-radius: 2px;
+  background: linear-gradient(135deg, rgba(198,161,92,0.12), rgba(221,189,126,0.06));
+}
+.verdict-badge .vd-label { font-family: var(--sans); color: var(--gold-deep); font-size: 0.6rem; display: block; margin-bottom: 4px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+.verdict-badge .vd-val { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); letter-spacing: 0.06em; font-style: italic; }
+
+/* ── HOW IT WORKS ── */
+.bc-steps {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+  margin-top: clamp(40px,5vw,70px);
+}
+.bc-step {
+  padding: clamp(30px,4vw,50px) clamp(24px,3vw,40px);
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  transition: background 0.5s var(--ease);
+}
+.bc-step:hover { background: white; }
+.bc-step .step-n {
+  font-family: var(--serif); font-size: clamp(3.5rem,6vw,5.5rem);
+  color: var(--paper-2); line-height: 0.9; margin-bottom: 22px;
+  transition: color 0.5s var(--ease);
+}
+.bc-step:hover .step-n { color: rgba(198,161,92,0.25); }
+.bc-step h3 { font-size: 1.55rem; margin-bottom: 12px; }
+.bc-step p { color: var(--slate); font-size: 0.98rem; max-width: 30ch; }
+
+/* ── THE PANEL ── */
+.panel-grid {
+  display: grid; grid-template-columns: repeat(5,1fr);
+  border-top: 1px solid var(--line-on-navy); border-left: 1px solid var(--line-on-navy);
+  margin-top: clamp(44px,6vw,72px);
+}
+.panel-member {
+  padding: clamp(22px,2.5vw,32px) clamp(18px,2vw,26px);
+  border-right: 1px solid var(--line-on-navy); border-bottom: 1px solid var(--line-on-navy);
+  transition: background 0.5s var(--ease); position: relative;
+}
+.panel-member::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 0; height: 2px; background: var(--gold);
+  transition: width 0.5s var(--ease);
+}
+.panel-member:hover { background: rgba(255,255,255,0.04); }
+.panel-member:hover::before { width: 100%; }
+.pm-num { font-family: var(--serif); color: var(--gold-deep); font-size: 0.8rem; letter-spacing: 0.2em; margin-bottom: 10px; }
+.pm-title { font-family: var(--serif); font-size: clamp(1rem,1.4vw,1.25rem); color: var(--cream); font-weight: 500; line-height: 1.2; margin-bottom: 8px; }
+.pm-focus { font-size: 0.78rem; color: rgba(247,243,234,0.5); line-height: 1.4; }
+
+/* ── SAMPLE REPORT ── */
+.sample-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,90px); align-items: start; }
+.sample-report-full {
+  background: var(--cream); border: 1px solid var(--line);
+  border-radius: 3px; padding: 32px; position: relative;
+}
+.sample-report-full::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+}
+.full-rc-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.full-score-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(15,26,38,0.06); }
+.full-score-row:last-child { border-bottom: 0; }
+.fs-name { font-size: 0.88rem; color: var(--ink-soft); min-width: 120px; }
+.fs-bar-wrap { flex: 1; margin: 0 16px; height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.fs-bar { height: 100%; background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); border-radius: 2px; }
+.fs-val { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); min-width: 28px; text-align: right; }
+.full-divider { height: 1px; background: var(--line); margin: 14px 0; }
+.full-overall { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.full-overall .fo-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
+.full-overall .fo-val { font-family: var(--serif); font-size: 2.2rem; color: var(--gold-deep); }
+.verdict-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.verdict-opt { padding: 12px 8px; text-align: center; background: var(--cream); transition: background 0.3s; }
+.verdict-opt .vo-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600; color: var(--slate); display: block; margin-bottom: 5px; }
+.verdict-opt .vo-val { font-family: var(--serif); font-size: 1rem; font-style: italic; font-weight: 500; color: var(--ink-soft); }
+.verdict-opt.active { background: var(--paper-2); }
+.verdict-opt.active .vo-label { color: var(--gold-deep); }
+.verdict-opt.active .vo-val { color: var(--ink); font-weight: 600; }
+
+/* ── INTAKE FORM ── */
+.intake-hero { position: relative; overflow: hidden; }
+#iris2 { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.5; pointer-events: none; }
+.intake-grid {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px,6vw,90px); align-items: start;
+}
+.intake-intro h2 { color: var(--cream); margin: 20px 0 22px; }
+.intake-intro .lead { color: rgba(247,243,234,0.72); }
+.intake-meta { margin-top: 44px; display: flex; flex-direction: column; border-top: 1px solid var(--line-on-navy); }
+.imeta { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--line-on-navy); align-items: baseline; }
+.imeta .k { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); width: 100px; flex: none; }
+.imeta .v { color: var(--cream); font-size: 0.96rem; }
+.imeta .v small { display: block; color: rgba(247,243,234,0.45); font-size: 0.82rem; margin-top: 3px; }
+
+/* form card */
+.form-card {
+  background: rgba(247,243,234,0.04); border: 1px solid var(--line-on-navy);
+  backdrop-filter: blur(10px); padding: clamp(28px,3.4vw,44px); border-radius: 3px; position: relative;
+}
+.form-card::before { content: ""; position: absolute; top: 0; left: 0; height: 2px; width: 64px; background: var(--gold); }
+.form-card h2 { color: var(--cream); font-size: 1.7rem; margin-bottom: 6px; }
+.form-card .sub { color: rgba(247,243,234,0.55); font-size: 0.9rem; margin-bottom: 24px; }
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,243,234,0.58); margin-bottom: 7px; }
+.field input, .field select, .field textarea {
+  width: 100%; background: rgba(6,19,37,0.5); border: 1px solid var(--line-on-navy);
+  color: var(--cream); font-family: var(--sans); font-size: 0.96rem; padding: 12px 14px; border-radius: 2px;
+  transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease); outline: none;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(247,243,234,0.28); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); }
+.field select {
+  appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c6a15c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.field select option { background: var(--navy-900); color: var(--cream); }
+.field textarea { resize: vertical; min-height: 108px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-size: 0.76rem; padding: 7px 13px; border: 1px solid var(--line-on-navy);
+  border-radius: 100px; color: rgba(247,243,234,0.68); cursor: pointer;
+  transition: all 0.3s var(--ease); user-select: none; background: transparent;
+}
+.chip:hover { border-color: var(--line-gold); color: var(--cream); }
+.chip.sel { background: var(--gold); border-color: var(--gold); color: var(--navy-950); font-weight: 600; }
+.form-card .btn { width: 100%; justify-content: center; margin-top: 8px; }
+.form-card .btn[disabled] { opacity: 0.6; pointer-events: none; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-error { display: none; color: #e89b86; font-size: 0.84rem; margin: 4px 0 12px; }
+.form-error.show { display: block; }
+.form-success { display: none; text-align: center; padding: 30px 10px; }
+.form-success.show { display: block; animation: fadeUp 0.7s var(--ease); }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+.form-success .check { width: 64px; height: 64px; margin: 0 auto 22px; }
+.form-success .check circle { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 226; stroke-dashoffset: 226; animation: drawPath 0.8s var(--ease) forwards; }
+.form-success .check path { fill: none; stroke: var(--gold-bright); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: drawPath 0.5s var(--ease) 0.5s forwards; }
+@keyframes drawPath { to { stroke-dashoffset: 0; } }
+.form-success h2 { color: var(--cream); margin-bottom: 10px; }
+.form-success p { color: rgba(247,243,234,0.6); max-width: 34ch; margin-inline: auto; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1040px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .nav-links { gap: 20px; }
+}
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .mobile-drawer { display: block; }
+  .bc-grid, .sample-grid, .intake-grid { grid-template-columns: 1fr; }
+  .report-card { max-width: 100%; }
+  .panel-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 700px) {
+  .bc-steps { grid-template-columns: 1fr; }
+  .panel-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .verdict-row { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="AYiN Advisors home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"/>
+        <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity=".45"/>
+        <circle cx="20" cy="20" r="5.4" fill="#c6a15c"/>
+        <circle cx="20" cy="20" r="2" fill="#061325"/>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-ayin">AY<span class="lc">i</span>N</span>
+        <span class="logo-adv">Advisors</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Services.html" class="nav-link">Services</a>
+      <a href="About.html" class="nav-link">About</a>
+      <a href="Projects.html" class="nav-link">Projects</a>
+      <a href="BizCheck.html" class="nav-link gold active">BizCheck</a>
+      <a href="Contact.html" class="nav-link">Contact</a>
+      <span class="nav-cta"><a href="#submit" class="btn"><span>Submit Your Idea</span></a></span>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="index.html">Home</a>
+  <a href="Services.html">Services</a>
+  <a href="About.html">About</a>
+  <a href="Projects.html">Projects</a>
+  <a href="BizCheck.html" class="gold">BizCheck</a>
+  <a href="Contact.html">Contact</a>
+  <a href="#submit" class="md-cta">Submit Your Idea</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<header class="bc-hero">
+  <canvas id="iris"></canvas>
+  <div class="bc-grid">
+    <div>
+      <div class="bc-eyebrow-tag reveal">
+        <span class="tag-pill">AN AYIN ADVISORS EVALUATION SYSTEM</span>
+      </div>
+      <h1 class="display reveal" data-d="1">Your friends say it's a great idea.</h1>
+      <div class="bc-tagline reveal" data-d="2">Let's find out if they're right.</div>
+      <p class="lead reveal" data-d="3">A ten-agent expert panel evaluates your business idea the way a real advisory firm would. They review capital, demand, operations and risk — and return a single verdict: <strong style="color:var(--gold-bright);font-weight:500">GO, CONDITIONAL GO,</strong> or <strong style="color:var(--gold-bright);font-weight:500">NO GO</strong>. Before you spend a year finding out the hard way.</p>
+      <div class="bc-actions reveal" data-d="4">
+        <a href="#submit" class="btn">Submit Your Idea →</a>
+        <a href="#how" class="btn-ghost">How It Works</a>
+      </div>
+    </div>
+    <div class="reveal" data-d="2">
+      <div class="report-card">
+        <div class="rc-header">
+          <div class="rc-brand"><span>AYIN ADVISORS</span> · BIZCHECK</div>
+          <div class="rc-scan-type">RAPID SCAN</div>
+        </div>
+        <div class="rc-section-label">PANEL SCORES</div>
+        <div class="score-row"><span class="score-name">The Sales Director</span><span class="score-val hi">7.5</span></div>
+        <div class="score-row"><span class="score-name">The Operator</span><span class="score-val hi">7.0</span></div>
+        <div class="score-row"><span class="score-name">The CFO</span><span class="score-val">6.0</span></div>
+        <div class="score-row"><span class="score-name">The VC</span><span class="score-val lo">5.5</span></div>
+        <div class="score-row"><span class="score-name">The Channel Strategist</span><span class="score-val hi">7.8</span></div>
+        <div class="rc-divider"></div>
+        <div class="rc-overall"><span class="label">Overall</span><span class="n">6.8</span></div>
+        <div class="verdict-badge">
+          <span class="vd-label">Panel Verdict</span>
+          <span class="vd-val">Conditional Go</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="section paper" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="sec-index">01</span> &nbsp;The process</span>
+        <h2 class="h2 reveal" data-d="1">Submit once.<br />Ten experts evaluate.</h2>
+      </div>
+      <p class="muted lead reveal" data-d="2" style="max-width:34ch">Fast, honest, structured — the kind of pressure-test that saves founders months of misdirected effort.</p>
+    </div>
+    <div class="bc-steps">
+      <div class="bc-step reveal">
+        <div class="step-n">01</div>
+        <h3 class="h3">Describe your idea</h3>
+        <p>Fill out a focused brief: what your business does, who it serves, your stage and market. No deck required.</p>
+      </div>
+      <div class="bc-step reveal" data-d="1">
+        <div class="step-n">02</div>
+        <h3 class="h3">Panel evaluates</h3>
+        <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk — independently.</p>
+      </div>
+      <div class="bc-step reveal" data-d="2">
+        <div class="step-n">03</div>
+        <h3 class="h3">Receive your verdict</h3>
+        <p>A structured report with each panelist's score, their key concerns, and a single aggregate verdict with findings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE PANEL ══ -->
+<section class="section navy" id="panel">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow on-navy reveal"><span class="sec-index">02</span> &nbsp;The evaluators</span>
+        <h2 class="h2 reveal" data-d="1" style="color:var(--cream)">Ten perspectives.<br />One verdict.</h2>
+      </div>
+      <p class="muted lead reveal" data-d="2" style="max-width:36ch;color:rgba(247,243,234,0.6)">Each agent specialises in a distinct dimension of business viability — and none of them pull punches.</p>
+    </div>
+    <div class="panel-grid reveal" data-d="1">
+      <div class="panel-member"><div class="pm-num">01</div><div class="pm-title">The Sales Director</div><div class="pm-focus">Revenue potential, channel velocity &amp; sales-cycle realism</div></div>
+      <div class="panel-member"><div class="pm-num">02</div><div class="pm-title">The Operator</div><div class="pm-focus">Execution feasibility, operational risk &amp; team readiness</div></div>
+      <div class="panel-member"><div class="pm-num">03</div><div class="pm-title">The CFO</div><div class="pm-focus">Unit economics, burn rate &amp; path to profitability</div></div>
+      <div class="panel-member"><div class="pm-num">04</div><div class="pm-title">The VC</div><div class="pm-focus">Scalability, defensibility &amp; investment thesis strength</div></div>
+      <div class="panel-member"><div class="pm-num">05</div><div class="pm-title">The Marketing Director</div><div class="pm-focus">Brand clarity, customer acquisition &amp; demand generation</div></div>
+      <div class="panel-member"><div class="pm-num">06</div><div class="pm-title">The Channel Strategist</div><div class="pm-focus">Distribution fit, partner economics &amp; route-to-market</div></div>
+      <div class="panel-member"><div class="pm-num">07</div><div class="pm-title">The Legal Advisor</div><div class="pm-focus">Regulatory risk, IP exposure &amp; compliance landscape</div></div>
+      <div class="panel-member"><div class="pm-num">08</div><div class="pm-title">The Market Analyst</div><div class="pm-focus">Competitive density, market timing &amp; addressable size</div></div>
+      <div class="panel-member"><div class="pm-num">09</div><div class="pm-title">The Customer Advocate</div><div class="pm-focus">Product-market fit signals, retention risk &amp; buyer psychology</div></div>
+      <div class="panel-member"><div class="pm-num">10</div><div class="pm-title">The Product Director</div><div class="pm-focus">Product clarity, differentiation &amp; build-vs-buy logic</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SAMPLE REPORT ══ -->
+<section class="section paper" id="sample">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="sec-index">03</span> &nbsp;Sample output</span>
+        <h2 class="h2 reveal" data-d="1">What you receive.</h2>
+      </div>
+      <p class="muted lead reveal" data-d="2" style="max-width:34ch">A structured score from each panelist, their top concerns, and a clear aggregate verdict — not a list of platitudes.</p>
+    </div>
+    <div class="sample-grid reveal" data-d="1">
+      <div>
+        <h3 class="h3" style="margin-bottom:22px">The three possible outcomes</h3>
+        <div style="border:1px solid var(--line);border-radius:2px;overflow:hidden">
+          <div style="padding:24px 26px;border-bottom:1px solid var(--line)">
+            <div style="font-size:0.66rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);margin-bottom:8px">GO</div>
+            <div style="font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);margin-bottom:8px">Clear to proceed.</div>
+            <p style="color:var(--slate);font-size:0.94rem">The panel sees credible demand, a workable model and acceptable risk. A strong signal to invest the next phase of effort.</p>
+          </div>
+          <div style="padding:24px 26px;border-bottom:1px solid var(--line);background:var(--paper)">
+            <div style="font-size:0.66rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);margin-bottom:8px">CONDITIONAL GO</div>
+            <div style="font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);margin-bottom:8px">Proceed — but fix these first.</div>
+            <p style="color:var(--slate);font-size:0.94rem">The idea has real merit, but specific gaps in model, channel or execution must be addressed before committing capital.</p>
+          </div>
+          <div style="padding:24px 26px">
+            <div style="font-size:0.66rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:var(--slate);margin-bottom:8px">NO GO</div>
+            <div style="font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--ink);margin-bottom:8px">Don't proceed as defined.</div>
+            <p style="color:var(--slate);font-size:0.94rem">The panel has identified structural obstacles — market, model, or competition — that make the current approach unlikely to succeed.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.28em;color:var(--slate);text-align:center;margin-bottom:14px;text-transform:uppercase">Sample Report</div>
+        <div class="sample-report-full">
+          <div class="full-rc-header">
+            <div class="rc-brand"><span>AYIN ADVISORS</span> · BIZCHECK</div>
+            <div class="rc-scan-type">RAPID SCAN</div>
+          </div>
+          <div class="rc-section-label">PANEL SCORES</div>
+          <div class="full-score-row"><span class="fs-name">The Sales Director</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:75%"></span></span><span class="fs-val">7.5</span></div>
+          <div class="full-score-row"><span class="fs-name">The Operator</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:70%"></span></span><span class="fs-val">7.0</span></div>
+          <div class="full-score-row"><span class="fs-name">The CFO</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:60%"></span></span><span class="fs-val">6.0</span></div>
+          <div class="full-score-row"><span class="fs-name">The VC</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:55%"></span></span><span class="fs-val">5.5</span></div>
+          <div class="full-score-row"><span class="fs-name">The Marketing Dir.</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:80%"></span></span><span class="fs-val">8.0</span></div>
+          <div class="full-score-row"><span class="fs-name">The Channel Strat.</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:78%"></span></span><span class="fs-val">7.8</span></div>
+          <div class="full-score-row"><span class="fs-name">The Legal Advisor</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:85%"></span></span><span class="fs-val">8.5</span></div>
+          <div class="full-score-row"><span class="fs-name">The Market Analyst</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:65%"></span></span><span class="fs-val">6.5</span></div>
+          <div class="full-score-row"><span class="fs-name">The Cust. Advocate</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:72%"></span></span><span class="fs-val">7.2</span></div>
+          <div class="full-score-row"><span class="fs-name">The Product Dir.</span><span class="fs-bar-wrap"><span class="fs-bar" style="width:68%"></span></span><span class="fs-val">6.8</span></div>
+          <div class="full-divider"></div>
+          <div class="full-overall"><span class="fo-label">Overall Score</span><span class="fo-val">7.1 / 10</span></div>
+          <div class="verdict-row">
+            <div class="verdict-opt"><span class="vo-label">Go</span><span class="vo-val">Clear</span></div>
+            <div class="verdict-opt active"><span class="vo-label">Conditional Go ✓</span><span class="vo-val">Proceed with fixes</span></div>
+            <div class="verdict-opt"><span class="vo-label">No Go</span><span class="vo-val">Blocked</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTAKE FORM ══ -->
+<section class="section navy intake-hero" id="submit">
+  <canvas id="iris2"></canvas>
+  <div class="wrap">
+    <div class="intake-grid">
+      <div class="intake-intro">
+        <span class="eyebrow on-navy reveal"><span class="sec-index">04</span> &nbsp;Submit your idea</span>
+        <h2 class="h2 reveal" data-d="1">Let the panel<br />read your idea.</h2>
+        <p class="lead reveal" data-d="2">Give us the brief. We'll return a candid panel evaluation — the kind of review most founders only get after they've already committed to the wrong path.</p>
+        <div class="intake-meta reveal" data-d="3">
+          <div class="imeta"><span class="k">Turnaround</span><span class="v">Within 48 hours<small>Business days</small></span></div>
+          <div class="imeta"><span class="k">Format</span><span class="v">Structured report<small>Score + findings per panelist</small></span></div>
+          <div class="imeta"><span class="k">Obligation</span><span class="v">None<small>A conversation follows if there's a fit</small></span></div>
+        </div>
+      </div>
+      <div class="form-card reveal" data-d="2">
+        <form id="bizcheck-form" novalidate>
+          <h2>Request a BizCheck</h2>
+          <p class="sub">The brief that powers the panel — take 3 minutes.</p>
+          <div class="hp" aria-hidden="true"><label for="website_url">Leave blank</label><input id="website_url" name="website_url" type="text" tabindex="-1" autocomplete="off" /></div>
+          <input type="hidden" id="focus_areas" name="focus_areas" value="" />
+          <input type="hidden" name="_subject" value="BizCheck submission — AYiN Advisors" />
+          <div class="field-row">
+            <div class="field"><label for="bc_name">Full name</label><input id="bc_name" name="name" type="text" placeholder="Your name" required /></div>
+            <div class="field"><label for="bc_company">Company / startup</label><input id="bc_company" name="company" type="text" placeholder="Name or working title" required /></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="bc_email">Work email</label><input id="bc_email" name="email" type="email" placeholder="you@company.com" required /></div>
+            <div class="field"><label for="bc_hq">Based in</label><input id="bc_hq" name="hq" type="text" placeholder="Country / region" /></div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="bc_stage">Stage</label>
+              <select id="bc_stage" name="stage">
+                <option value="" disabled selected>Select stage…</option>
+                <option value="Idea">Idea stage</option>
+                <option value="MVP">MVP / prototype</option>
+                <option value="Early Revenue">Early revenue</option>
+                <option value="Growth">Growth / scaling</option>
+              </select>
+            </div>
+            <div class="field"><label for="bc_industry">Industry / sector</label><input id="bc_industry" name="industry" type="text" placeholder="e.g. B2B SaaS, logistics…" /></div>
+          </div>
+          <div class="field">
+            <label for="bc_desc">Describe your business idea</label>
+            <textarea id="bc_desc" name="description" placeholder="What does it do, who does it serve, what problem does it solve — and why now?" required></textarea>
+          </div>
+          <div class="field">
+            <label>Primary evaluation focus</label>
+            <div class="chips" id="bc-chips">
+              <button type="button" class="chip" data-v="Market Fit">Market Fit</button>
+              <button type="button" class="chip" data-v="Financial Model">Financial Model</button>
+              <button type="button" class="chip" data-v="Channel Access">Channel Access</button>
+              <button type="button" class="chip" data-v="Competition">Competition</button>
+              <button type="button" class="chip" data-v="Regulatory Risk">Regulatory Risk</button>
+            </div>
+          </div>
+          <p class="form-error" id="bc-error" role="alert"></p>
+          <button type="submit" class="btn">Submit for Evaluation →</button>
+        </form>
+        <div class="form-success" id="bc-success">
+          <svg class="check" viewBox="0 0 80 80" aria-hidden="true">
+            <circle cx="40" cy="40" r="36"/>
+            <path d="M25 41l11 11 20-22"/>
+          </svg>
+          <h2>Submission received.</h2>
+          <p>The panel is reviewing your idea. You'll hear from us within 48 business hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="margin-bottom:0">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"/>
+            <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity=".45"/>
+            <circle cx="20" cy="20" r="5.4" fill="#c6a15c"/>
+            <circle cx="20" cy="20" r="2" fill="#061325"/>
+          </svg>
+          <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+        </a>
+        <p class="footer-tag">Channel-led US market entry for international companies. New York · Valencia · Mexico City.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="About.html">About</a>
+        <a href="Projects.html">Projects</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <a href="Services.html#research">Market Entry Research</a>
+        <a href="Services.html#channel">Channel Strategy</a>
+        <a href="Services.html#introductions">Partner Introductions</a>
+        <a href="Services.html#expansion">Regional Expansion</a>
+        <a href="BizCheck.html">BizCheck ↗</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="Contact.html">Book a consultation</a>
+        <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
+        <a href="BizCheck.html">Submit a BizCheck</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="yr"></span> AYiN Advisors. All rights reserved.</span>
+      <span>Entering the US market, clearly.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ══ YEAR ══ */
+var y = document.getElementById('yr');
+if (y) y.textContent = new Date().getFullYear();
+
+/* ══ NAV SCROLL ══ */
+var nav = document.getElementById('nav');
+function onScroll() {
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ══ MOBILE DRAWER ══ */
+var toggle = document.getElementById('nav-toggle');
+var drawer = document.getElementById('mobile-drawer');
+if (toggle && drawer) {
+  toggle.addEventListener('click', function () {
+    var open = drawer.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  drawer.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      drawer.classList.remove('open');
+      toggle.classList.remove('open');
+    });
+  });
+}
+
+/* ══ REVEAL ══ */
+(function () {
+  if (!window.IntersectionObserver) {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+})();
+
+/* ══ IRIS CANVAS (hero) ══ */
+(function () {
+  var canvas = document.getElementById('iris');
+  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx = canvas.getContext('2d');
+  var W, H, cx, cy, R, dpr;
+  var GOLD = '198,161,92';
+  var nodes = [];
+  function initNodes() {
+    nodes = [];
+    for (var i = 0; i < 6; i++) {
+      var angle = (i / 6) * Math.PI * 2;
+      nodes.push({ baseAngle: angle, speed: 0.0004 + Math.random() * 0.0003, r: R * 0.58 });
+    }
+  }
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cx = W * 0.72; cy = H * 0.5;
+    R = Math.min(W, H) * 0.42;
+    initNodes();
+  }
+  var t = 0;
+  function draw() {
+    t++;
+    ctx.clearRect(0, 0, W, H);
+    /* rings */
+    for (var i = 1; i <= 6; i++) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, (R * i) / 6, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(' + GOLD + ',' + (0.03 + (i / 6) * 0.1) + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    /* dashed rotating ring */
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * 0.0006);
+    ctx.beginPath(); ctx.arc(0, 0, R * 0.72, 0, Math.PI * 2);
+    ctx.setLineDash([3, 14]); ctx.strokeStyle = 'rgba(' + GOLD + ',0.4)';
+    ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]); ctx.restore();
+    /* radar sweep */
+    if (ctx.createConicGradient) {
+      var sg = ctx.createConicGradient(t * 0.008, cx, cy);
+      sg.addColorStop(0, 'rgba(' + GOLD + ',0)');
+      sg.addColorStop(0.07, 'rgba(' + GOLD + ',0.22)');
+      sg.addColorStop(0.14, 'rgba(' + GOLD + ',0)');
+      sg.addColorStop(1, 'rgba(' + GOLD + ',0)');
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.fillStyle = sg; ctx.fill();
+    }
+    /* iris core */
+    var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 0.28);
+    grad.addColorStop(0, 'rgba(' + GOLD + ',0.25)');
+    grad.addColorStop(1, 'rgba(' + GOLD + ',0)');
+    ctx.beginPath(); ctx.arc(cx, cy, R * 0.28, 0, Math.PI * 2);
+    ctx.fillStyle = grad; ctx.fill();
+    /* pupil */
+    var pulse = 1 + Math.sin(t * 0.04) * 0.06;
+    ctx.beginPath(); ctx.arc(cx, cy, R * 0.1 * pulse, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(6,19,37,0.9)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(cx, cy, R * 0.1 * pulse, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(' + GOLD + ',0.6)'; ctx.lineWidth = 1; ctx.stroke();
+    /* nodes */
+    nodes.forEach(function (nd) {
+      var a = nd.baseAngle + t * nd.speed;
+      var nx = cx + Math.cos(a) * nd.r;
+      var ny = cy + Math.sin(a) * nd.r;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(nx, ny);
+      ctx.strokeStyle = 'rgba(' + GOLD + ',0.12)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.arc(nx, ny, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + GOLD + ',0.55)'; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  var ro = new ResizeObserver(resize);
+  ro.observe(canvas); resize(); requestAnimationFrame(draw);
+})();
+
+/* ══ IRIS2 (intake) ══ */
+(function () {
+  var c2 = document.getElementById('iris2');
+  if (!c2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx2 = c2.getContext('2d');
+  var W2, H2, cx2, cy2, R2, dpr2;
+  var GOLD = '198,161,92';
+  function resize2() {
+    dpr2 = Math.min(window.devicePixelRatio || 1, 2);
+    var rect = c2.getBoundingClientRect();
+    W2 = rect.width; H2 = rect.height;
+    c2.width = W2 * dpr2; c2.height = H2 * dpr2;
+    ctx2.setTransform(dpr2, 0, 0, dpr2, 0, 0);
+    cx2 = W2 / 2; cy2 = H2 / 2; R2 = Math.min(W2, H2) * 0.38;
+  }
+  var t2 = 0;
+  function draw2() {
+    t2++;
+    ctx2.clearRect(0, 0, W2, H2);
+    for (var i = 1; i <= 5; i++) {
+      ctx2.beginPath(); ctx2.arc(cx2, cy2, (R2 * i) / 5, 0, Math.PI * 2);
+      ctx2.strokeStyle = 'rgba(' + GOLD + ',' + (0.04 + (i / 5) * 0.08) + ')';
+      ctx2.lineWidth = 1; ctx2.stroke();
+    }
+    ctx2.save(); ctx2.translate(cx2, cy2); ctx2.rotate(t2 * 0.0007);
+    ctx2.beginPath(); ctx2.arc(0, 0, R2 * 0.7, 0, Math.PI * 2);
+    ctx2.setLineDash([2, 12]); ctx2.strokeStyle = 'rgba(' + GOLD + ',0.35)';
+    ctx2.lineWidth = 1; ctx2.stroke(); ctx2.setLineDash([]); ctx2.restore();
+    if (ctx2.createConicGradient) {
+      var sg = ctx2.createConicGradient(t2 * 0.01, cx2, cy2);
+      sg.addColorStop(0, 'rgba(' + GOLD + ',0)');
+      sg.addColorStop(0.06, 'rgba(' + GOLD + ',0.18)');
+      sg.addColorStop(0.11, 'rgba(' + GOLD + ',0)');
+      sg.addColorStop(1, 'rgba(' + GOLD + ',0)');
+      ctx2.beginPath(); ctx2.arc(cx2, cy2, R2, 0, Math.PI * 2);
+      ctx2.fillStyle = sg; ctx2.fill();
+    }
+    requestAnimationFrame(draw2);
+  }
+  var ro2 = new ResizeObserver(resize2);
+  ro2.observe(c2); resize2(); requestAnimationFrame(draw2);
+})();
+
+/* ══ CHIP SELECTION ══ */
+var chips = document.getElementById('bc-chips');
+var focusInput = document.getElementById('focus_areas');
+function syncFocus() {
+  if (!chips || !focusInput) return;
+  focusInput.value = [].slice.call(chips.querySelectorAll('.chip.sel'))
+    .map(function (c) { return c.getAttribute('data-v'); }).join(', ');
+}
+if (chips) chips.addEventListener('click', function (e) {
+  var c = e.target.closest('.chip');
+  if (c) { c.classList.toggle('sel'); syncFocus(); }
+});
+
+/* ══ FORM SUBMISSION ══ */
+/*
+  Set BIZCHECK_ENDPOINT to your Formspree URL, e.g.:
+    var BIZCHECK_ENDPOINT = "https://formspree.io/f/abcdwxyz";
+  Create a free form at https://formspree.io pointing at hello@ayinadvisors.com.
+  Until set, submissions open a pre-filled mailto: link.
+*/
+var BIZCHECK_ENDPOINT = "https://formspree.io/f/your-form-id";
+var CONTACT_EMAIL = "hello@ayinadvisors.com";
+var configured = BIZCHECK_ENDPOINT.indexOf('your-form-id') === -1;
+
+var form = document.getElementById('bizcheck-form');
+var errEl = document.getElementById('bc-error');
+function showErr(msg) { if (errEl) { errEl.textContent = msg; errEl.classList.add('show'); } }
+function clearErr() { if (errEl) errEl.classList.remove('show'); }
+
+if (form) form.addEventListener('submit', function (e) {
+  e.preventDefault(); clearErr();
+  var hp = document.getElementById('website_url');
+  if (hp && hp.value) { showSuccess(); return; }
+  var ok = true;
+  ['bc_name','bc_company','bc_email','bc_desc'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el || !el.value.trim()) { if (el) el.style.borderColor = '#c0654a'; ok = false; }
+    else el.style.borderColor = '';
+  });
+  var em = document.getElementById('bc_email');
+  if (em && em.value && !/^[^@]+@[^@]+\.[^@]+$/.test(em.value)) { em.style.borderColor = '#c0654a'; ok = false; }
+  if (!ok) { showErr('Please complete the highlighted fields.'); return; }
+  syncFocus();
+  function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+  function showSuccess() { form.style.display = 'none'; document.getElementById('bc-success').classList.add('show'); }
+  if (!configured) {
+    var body = [
+      'Name: ' + val('bc_name'), 'Company: ' + val('bc_company'),
+      'Email: ' + val('bc_email'), 'Based in: ' + (val('bc_hq')||'—'),
+      'Stage: ' + (val('bc_stage')||'—'), 'Industry: ' + (val('bc_industry')||'—'),
+      'Focus: ' + (focusInput.value||'—'), '', val('bc_desc')
+    ].join('\n');
+    window.location.href = 'mailto:' + CONTACT_EMAIL
+      + '?subject=' + encodeURIComponent('BizCheck — ' + (val('bc_company')||val('bc_name')))
+      + '&body=' + encodeURIComponent(body);
+    showSuccess(); return;
+  }
+  var btn = form.querySelector('.btn');
+  if (btn) { btn.setAttribute('disabled',''); btn.textContent = 'Submitting…'; }
+  fetch(BIZCHECK_ENDPOINT, { method:'POST', headers:{Accept:'application/json'}, body: new FormData(form) })
+    .then(function (r) { if (r.ok) showSuccess(); else throw 0; })
+    .catch(function () {
+      if (btn) { btn.removeAttribute('disabled'); btn.textContent = 'Submit for Evaluation →'; }
+      showErr('Something went wrong. Please email ' + CONTACT_EMAIL + ' directly.');
+    });
+});
+</script>
+</body>
+</html>
