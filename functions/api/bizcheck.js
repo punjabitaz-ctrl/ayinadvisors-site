@@ -36,19 +36,7 @@ export async function onRequestPost(context) {
   // Fail closed when the environment is not configured, rather than forwarding
   // unverified submissions.
   if (!env.TURNSTILE_SECRET || !env.FORMSPREE_ENDPOINT || expectedHostnames.size === 0) {
-    // TEMPORARY: reports which of the three names are bound, never their values.
-    // The names are already public in this repo and the 500 already reveals the
-    // endpoint is unconfigured, so this adds no meaningful disclosure. Remove
-    // once the variables are confirmed bound.
-    return Response.json({
-      ok: false,
-      error: 'not configured',
-      bound: {
-        TURNSTILE_SECRET: Boolean(env.TURNSTILE_SECRET),
-        TURNSTILE_HOSTNAMES: Boolean(env.TURNSTILE_HOSTNAMES),
-        FORMSPREE_ENDPOINT: Boolean(env.FORMSPREE_ENDPOINT),
-      },
-    }, { status: 500 });
+    return reject(500, 'not configured');
   }
 
   let form;
