@@ -7,7 +7,11 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://challenges.cloudflare.com https://cloudflareinsights.com; frame-src https://challenges.cloudflare.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
 
 /assets/*
-  Cache-Control: public, max-age=31536000, immutable
+  # Not "immutable" with a long max-age: these filenames carry no content hash,
+  # so that would pin styles.css and site.js in caches for a year and make every
+  # future change invisible to returning visitors. Short TTL plus revalidation —
+  # the ETag turns the recheck into a cheap 304.
+  Cache-Control: public, max-age=600, must-revalidate
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
