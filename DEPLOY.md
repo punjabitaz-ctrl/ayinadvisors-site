@@ -32,13 +32,39 @@ Managed in Cloudflare. Both records are proxied (orange cloud):
 (Workers & Pages → ayin-advisors → Custom domains), otherwise Cloudflare
 proxies the hostname but no origin is bound to it and it returns a 522.
 
-## Contact form
+## BizCheck form
 
-`BizCheck.html` posts to Formspree (`https://formspree.io/f/xrpbkony`) via
-`fetch` with `Accept: application/json`, and swaps the form for a success panel
-on `{"ok":true}`. The honeypot posts as `_gotcha` so Formspree's own spam filter
-sees it. If the POST fails, the error surfaces hello@ayinadvisors.com so nobody
-is left without somewhere to send the brief.
+`BizCheck.html` posts to `/api/bizcheck` — a Pages Function that verifies the
+Turnstile token server-side before relaying to Formspree. The Formspree URL is
+never in the page; it lives in the `FORMSPREE_ENDPOINT` variable.
+
+Required Pages environment variables (Settings → Environment variables →
+**Production**, then redeploy — Pages binds them at build time):
+
+| Variable | Value | Type |
+|---|---|---|
+| `TURNSTILE_SECRET` | Turnstile widget secret | Encrypt |
+| `TURNSTILE_HOSTNAMES` | `ayinadvisors.com` | Plaintext |
+| `FORMSPREE_ENDPOINT` | the Formspree form URL | Encrypt |
+
+`TURNSTILE_HOSTNAMES` must not include `localhost` in production, or a token
+minted locally would be accepted.
+
+Do not enable Formspree's own reCAPTCHA on this form. It only works when a
+browser posts directly to Formspree; the Function posts server-to-server, so
+Formspree rejects with *"In order to submit via AJAX, you need to set a custom
+key or reCAPTCHA must be disabled"*. Turnstile already covers it, and runs
+before Formspree is contacted at all.
+
+If the endpoint is ever committed to this public repo, rotate it — history
+outlives the file.
+
+## Contact form — not yet hardened
+
+`Contact.html` still posts **directly from the browser to Formspree**, with its
+endpoint visible in page source. That is the same weakness BizCheck had before
+the Function: anyone can read the URL and POST to it, skipping every
+client-side check. Route it through a Function the same way when convenient.
 
 ## Local preview
 
