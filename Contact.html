@@ -26,6 +26,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/styles.css" />
+<script>
+  /* api.js is async, so it can fire this callback before the page script at the
+     bottom has defined the renderer. Latch here and let whichever runs second
+     do the render. */
+  window.__ctTurnstileReady = false;
+  window.onloadTurnstileCallback = function () {
+    window.__ctTurnstileReady = true;
+    if (window.__ctRenderTurnstile) window.__ctRenderTurnstile();
+  };
+</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>
+<style>.ct-turnstile { margin: 4px 0 14px; min-height: 65px; }</style>
 <script>document.documentElement.classList.add('js');</script>
 <style>
   .contact-hero { position: relative; min-height: 100vh; display: flex; align-items: stretch; background: radial-gradient(120% 120% at 80% 10%, var(--navy-800) 0%, var(--navy-900) 50%, var(--navy-950) 100%); overflow: hidden; }
@@ -160,6 +172,7 @@
           </div>
         </div>
         <div class="field"><label for="msg">What are you trying to achieve?</label><textarea id="msg" name="msg" placeholder="A few lines about your product and your US goals…"></textarea></div>
+        <div id="ct-turnstile" class="ct-turnstile"></div>
         <p class="form-error" id="form-error" role="alert"></p>
         <button type="submit" class="btn" data-magnetic="0.25"><span class="btn-label">Send Request</span><span class="btn-arrow">→</span></button>
       </form>
@@ -202,22 +215,27 @@
 <script src="assets/site.js"></script>
 <script>
   (function () {
-    /* ============================================================
-       CONTACT FORM SETUP — read before publishing
-       ------------------------------------------------------------
-       This form works out of the box: with no endpoint set, it opens
-       the visitor's email client pre-addressed to CONTACT_EMAIL with
-       all fields filled in (no signup, no backend required).
-
-       To collect submissions in a dashboard instead, paste a form
-       handler URL into FORM_ENDPOINT — e.g. a free form from
-       https://formspree.io:
-         var FORM_ENDPOINT = "https://formspree.io/f/abcdwxyz";
-       When set, submissions POST silently to that handler instead.
-       ============================================================ */
-    var FORM_ENDPOINT = "https://formspree.io/f/mkolqeyo";
+    /* Posts to our own Pages Function, which verifies the Turnstile token
+       server-side before relaying to Formspree. The Formspree URL lives in the
+       CONTACT_FORMSPREE_ENDPOINT Pages variable rather than in this page, so it
+       cannot be read from source and POSTed to directly. */
+    var FORM_ENDPOINT = "/api/contact";
     var CONTACT_EMAIL = "hello@ayinadvisors.com";
-    var configured = FORM_ENDPOINT.indexOf("your-form-id") === -1;
+    var TURNSTILE_SITEKEY = "0x4AAAAAAFBdMMxC7N5y_3Ya";
+    var widgetId = null;
+
+    /* Rendered explicitly so we keep the widget id: the page stays on screen
+       after a failed submit and Turnstile tokens are single use, so without a
+       reset the visitor could never retry. */
+    window.__ctRenderTurnstile = function () {
+      if (widgetId !== null) return;
+      widgetId = window.turnstile.render("#ct-turnstile", {
+        sitekey: TURNSTILE_SITEKEY,
+        action: "contact",
+        theme: "dark"
+      });
+    };
+    if (window.__ctTurnstileReady) window.__ctRenderTurnstile();
 
     var chips = document.getElementById("chips");
     var interests = document.getElementById("interests");
@@ -260,44 +278,33 @@
       if (email.value && !/^[^@]+@[^@]+\.[^@]+$/.test(email.value)) { email.style.borderColor = "#c0654a"; ok = false; }
       if (!ok) { showError("Please complete the highlighted fields."); return; }
 
-      syncInterests();
-      var done = function () { form.style.display = "none"; document.getElementById("success").classList.add("show"); };
-      var val = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; };
-
-      // NO ENDPOINT — open the visitor's email client, pre-filled
-      if (!configured) {
-        var lines = [
-          "Name: " + val("name"),
-          "Company: " + val("company"),
-          "Work email: " + val("email"),
-          "Headquartered in: " + (val("hq") || "—"),
-          "Area of interest: " + (interests.value || "—"),
-          "",
-          val("msg") || "(no message)"
-        ];
-        var subject = "Consultation request — " + (val("company") || val("name"));
-        var href = "mailto:" + CONTACT_EMAIL +
-          "?subject=" + encodeURIComponent(subject) +
-          "&body=" + encodeURIComponent(lines.join("\n"));
-        window.location.href = href;
-        done();
+      if (!window.turnstile || !window.turnstile.getResponse(widgetId)) {
+        showError("Please complete the verification check above.");
         return;
       }
 
-      // ENDPOINT SET — POST to the configured handler
+      syncInterests();
+      var done = function () { form.style.display = "none"; document.getElementById("success").classList.add("show"); };
+
       var btn = form.querySelector(".btn");
       if (btn) { btn.setAttribute("disabled", ""); btn.querySelector(".btn-label").textContent = "Sending…"; }
-      fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: new FormData(form)
-      }).then(function (res) {
-        if (res.ok) { done(); }
-        else { throw new Error("bad status"); }
-      }).catch(function () {
+
+      function recover(msg) {
         if (btn) { btn.removeAttribute("disabled"); btn.querySelector(".btn-label").textContent = "Send Request"; }
-        showError("Something went wrong sending your request. Please email " + CONTACT_EMAIL + " instead.");
-      });
+        if (window.turnstile && widgetId !== null) window.turnstile.reset(widgetId);
+        showError(msg);
+      }
+
+      fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form) })
+        .then(function (res) {
+          if (res.ok) { done(); return; }
+          recover(res.status === 403
+            ? "Verification failed. Please complete the check and try again."
+            : "Something went wrong sending your request. Please email " + CONTACT_EMAIL + " instead.");
+        })
+        .catch(function () {
+          recover("Something went wrong sending your request. Please email " + CONTACT_EMAIL + " instead.");
+        });
     });
   })();
 </script>

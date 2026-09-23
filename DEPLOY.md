@@ -59,12 +59,19 @@ before Formspree is contacted at all.
 If the endpoint is ever committed to this public repo, rotate it — history
 outlives the file.
 
-## Contact form — not yet hardened
+## Contact form
 
-`Contact.html` still posts **directly from the browser to Formspree**, with its
-endpoint visible in page source. That is the same weakness BizCheck had before
-the Function: anyone can read the URL and POST to it, skipping every
-client-side check. Route it through a Function the same way when convenient.
+`Contact.html` posts to `/api/contact`, hardened identically to BizCheck. It
+reuses the same Turnstile widget and the same `TURNSTILE_SECRET` /
+`TURNSTILE_HOSTNAMES`, with its own action (`contact`) so the two surfaces stay
+distinguishable at siteverify, and its own form:
+
+| Variable | Value | Type |
+|---|---|---|
+| `CONTACT_FORMSPREE_ENDPOINT` | the contact form's Formspree URL | Encrypt |
+
+Its previous endpoint was public in page source and in this repo's history, so
+rotate it rather than reusing it.
 
 ## Local preview
 
