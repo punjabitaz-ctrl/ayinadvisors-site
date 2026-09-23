@@ -2,3 +2,80 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ayinadvisors.com/sitemap.xml
+
+# ---------------------------------------------------------------
+# AI training / scraping crawlers — disallowed.
+# Search crawlers (Googlebot, Bingbot, DuckDuckBot) are deliberately
+# NOT listed here; blocking those would remove the site from search
+# and cut off inbound leads. Google-Extended and Applebot-Extended
+# govern AI training only and do not affect search indexing.
+#
+# robots.txt is advisory. Crawlers that ignore it must be stopped at
+# the edge — see Cloudflare AI Crawl Control / Bot Fight Mode.
+# ---------------------------------------------------------------
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
