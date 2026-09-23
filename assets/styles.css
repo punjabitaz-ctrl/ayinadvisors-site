@@ -335,7 +335,10 @@ html.js .line-reveal.in > span { transform: none; }
   .footer-top { grid-template-columns: 1fr; }
 }
 
-/* ---------- BizCheck nav accent ---------- */
-.nav-link.gold { color: var(--gold-bright); }
-.nav-link.gold:hover { color: var(--gold); }
-.mobile-drawer a.gold { color: var(--gold-bright); }
+/* ---------- BizCheck nav accent ----------
+   Brand gold at rest so it reads as a product, not as the active page —
+   --gold-bright is already the hover/active colour for every nav link. */
+.nav-link.gold { color: var(--gold); font-weight: 600; }
+.nav-link.gold:hover, .nav-link.gold.active { color: var(--gold-bright); }
+.mobile-drawer a.gold { color: var(--gold); font-weight: 600; }
+.mobile-drawer a.gold:hover { color: var(--gold-bright); }
