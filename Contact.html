@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Consultation — AYiN Advisors</title>
+<meta name="description" content="Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy." />
+<link rel="canonical" href="https://ayinadvisors.com/Contact.html" />
+<meta name="theme-color" content="#061325" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="AYiN Advisors" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="Book a Consultation — AYiN Advisors" />
+<meta property="og:description" content="Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy." />
+<meta property="og:url" content="https://ayinadvisors.com/Contact.html" />
+<meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Book a Consultation — AYiN Advisors" />
+<meta name="twitter:description" content="Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy." />
+<meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  .contact-hero { position: relative; min-height: 100vh; display: flex; align-items: stretch; background: radial-gradient(120% 120% at 80% 10%, var(--navy-800) 0%, var(--navy-900) 50%, var(--navy-950) 100%); overflow: hidden; }
+  .contact-hero #iris { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.8; }
+  .contact-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); padding-top: calc(var(--nav-h) + 40px); padding-bottom: 60px; gap: clamp(40px, 6vw, 90px); align-items: center; }
+
+  .contact-intro h1 { color: var(--cream); margin: 22px 0 24px; }
+  .contact-intro .lead { color: rgba(247,243,234,0.74); max-width: 44ch; }
+  .contact-meta { margin-top: 44px; display: flex; flex-direction: column; gap: 2px; border-top: 1px solid var(--line-on-navy); }
+  .cmeta { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line-on-navy); align-items: baseline; }
+  .cmeta .k { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); width: 88px; flex: none; }
+  .cmeta .v { color: var(--cream); font-size: 1.02rem; }
+  .cmeta .v a { transition: color 0.3s; }
+  .cmeta .v a:hover { color: var(--gold-bright); }
+  .cmeta .v small { display: block; color: rgba(247,243,234,0.5); font-size: 0.85rem; margin-top: 4px; }
+
+  /* FORM CARD */
+  .form-card { background: rgba(247,243,234,0.04); border: 1px solid var(--line-on-navy); backdrop-filter: blur(10px); padding: clamp(28px, 3.4vw, 44px); border-radius: 3px; position: relative; }
+  .form-card::before { content: ""; position: absolute; top: 0; left: 0; height: 2px; width: 64px; background: var(--gold); }
+  .form-card h2 { color: var(--cream); font-size: 1.7rem; margin-bottom: 6px; }
+  .form-card .sub { color: rgba(247,243,234,0.55); font-size: 0.92rem; margin-bottom: 26px; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,243,234,0.6); margin-bottom: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: rgba(6,19,37,0.5); border: 1px solid var(--line-on-navy);
+    color: var(--cream); font-family: var(--sans); font-size: 0.98rem; padding: 13px 15px; border-radius: 2px;
+    transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease); outline: none;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(247,243,234,0.32); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c6a15c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
+  .field textarea { resize: vertical; min-height: 96px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 0.78rem; padding: 8px 14px; border: 1px solid var(--line-on-navy); border-radius: 100px; color: rgba(247,243,234,0.7); cursor: pointer; transition: all 0.3s var(--ease); user-select: none; background: transparent; }
+  .chip:hover { border-color: var(--line-gold); color: var(--cream); }
+  .chip.sel { background: var(--gold); border-color: var(--gold); color: var(--navy-950); font-weight: 600; }
+  .form-card .btn { width: 100%; justify-content: center; margin-top: 8px; }
+  .form-card .btn[disabled] { opacity: 0.6; pointer-events: none; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .form-error { display: none; color: #e89b86; font-size: 0.86rem; margin: 4px 0 14px; }
+  .form-error.show { display: block; }
+
+  .form-success { display: none; text-align: center; padding: 30px 10px; }
+  .form-success.show { display: block; animation: fadeUp 0.7s var(--ease); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  .form-success .check { width: 64px; height: 64px; margin: 0 auto 22px; }
+  .form-success .check circle { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 226; stroke-dashoffset: 226; animation: draw 0.8s var(--ease) forwards; }
+  .form-success .check path { fill: none; stroke: var(--gold-bright); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw 0.5s var(--ease) 0.5s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .form-success h2 { color: var(--cream); margin-bottom: 10px; }
+  .form-success p { color: rgba(247,243,234,0.6); max-width: 34ch; margin-inline: auto; }
+
+  @media (max-width: 920px) {
+    .contact-grid { grid-template-columns: 1fr; align-items: start; gap: 40px; }
+    .contact-hero { min-height: auto; }
+  }
+  @media (max-width: 480px) { .field-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body><nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="AYiN Advisors home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
+        <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
+        <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
+        <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+      </svg>
+      <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Services.html" class="nav-link">Services</a>
+      <a href="About.html" class="nav-link">About</a>
+      <a href="Projects.html" class="nav-link">Projects</a>
+      <a href="BizCheck.html" class="nav-link gold">BizCheck</a>
+      <a href="Contact.html" class="nav-link active">Contact</a>
+      <span class="nav-cta"><a href="#book" class="btn" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
+    </div>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <a href="index.html">Home</a>
+  <a href="Services.html">Services</a>
+  <a href="About.html">About</a>
+  <a href="Projects.html">Projects</a>
+  <a href="BizCheck.html" class="gold">BizCheck</a>
+  <a href="Contact.html">Contact</a>
+  <a href="#book" class="md-cta">Book a Consultation</a>
+</div>
+
+<!-- CONTACT -->
+<header class="contact-hero">
+  <canvas id="iris"></canvas>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <span class="eyebrow on-navy reveal">Book a Consultation</span>
+      <h1 class="display reveal" data-d="1" style="font-size:clamp(2.6rem,5.4vw,4.6rem)">Let us read the<br />market together.</h1>
+      <p class="lead reveal" data-d="2">Tell us where you're headed. We'll come back within two business days with a candid first view — and the shape of an engagement if it's a fit.</p>
+      <div class="contact-meta reveal" data-d="3">
+        <div class="cmeta"><span class="k">Email</span><span class="v"><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a></span></div>
+        <div class="cmeta"><span class="k">Offices</span><span class="v">New York · Toronto · Mexico City<small>By appointment</small></span></div>
+        <div class="cmeta"><span class="k">Response</span><span class="v">Within 2 business days</span></div>
+      </div>
+    </div>
+
+    <div class="form-card reveal" data-d="2" id="book">
+      <form id="consult-form" novalidate>
+        <h2>Request a consultation</h2>
+        <p class="sub">No obligation — a focused conversation about your US ambitions.</p>
+        <!-- honeypot: hidden from humans, catches bots -->
+        <div class="hp" aria-hidden="true"><label for="company_url">Leave this blank</label><input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
+        <input type="hidden" id="interests" name="interests" value="" />
+        <input type="hidden" name="_subject" value="New consultation request — AYiN Advisors" />
+        <div class="field-row">
+          <div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" placeholder="Company name" required /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" placeholder="you@company.com" required /></div>
+          <div class="field"><label for="hq">Headquartered in</label><input id="hq" name="hq" type="text" placeholder="Country / region" /></div>
+        </div>
+        <div class="field">
+          <label>Area of interest</label>
+          <div class="chips" id="chips">
+            <button type="button" class="chip" data-v="Market Entry Research">Market Entry</button>
+            <button type="button" class="chip" data-v="Channel Strategy">Channel Strategy</button>
+            <button type="button" class="chip" data-v="Partner Introductions">Partner Intros</button>
+            <button type="button" class="chip" data-v="Regional Expansion">Regional Expansion</button>
+          </div>
+        </div>
+        <div class="field"><label for="msg">What are you trying to achieve?</label><textarea id="msg" name="msg" placeholder="A few lines about your product and your US goals…"></textarea></div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button type="submit" class="btn" data-magnetic="0.25"><span class="btn-label">Send Request</span><span class="btn-arrow">→</span></button>
+      </form>
+      <div class="form-success" id="success">
+        <svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"></circle><path d="M25 41l11 11 20-22"></path></svg>
+        <h2>Request received.</h2>
+        <p>Thank you — we'll be in touch within two business days to find a time.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
+            <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
+            <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
+            <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+          </svg>
+          <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+        </a>
+        <p class="footer-tag">Channel-led US market entry for international companies. New York · Toronto · Mexico City.</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><a href="index.html">Home</a><a href="Services.html">Services</a><a href="About.html">About</a><a href="Projects.html">Projects</a>
+  <a href="Contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Practice</h4><a href="Services.html#research">Market Entry Research</a><a href="Services.html#channel">Channel Strategy</a><a href="Services.html#introductions">Partner Introductions</a><a href="Services.html#expansion">Regional Expansion</a></div>
+      <div class="footer-col"><h4>Get in touch</h4><a href="Contact.html">Book a consultation</a><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a><a href="Contact.html">Request a market brief</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AYiN Advisors. All rights reserved.</span>
+      <span>Entering the US market, clearly.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  (function () {
+    /* ============================================================
+       CONTACT FORM SETUP — read before publishing
+       ------------------------------------------------------------
+       This form works out of the box: with no endpoint set, it opens
+       the visitor's email client pre-addressed to CONTACT_EMAIL with
+       all fields filled in (no signup, no backend required).
+
+       To collect submissions in a dashboard instead, paste a form
+       handler URL into FORM_ENDPOINT — e.g. a free form from
+       https://formspree.io:
+         var FORM_ENDPOINT = "https://formspree.io/f/abcdwxyz";
+       When set, submissions POST silently to that handler instead.
+       ============================================================ */
+    var FORM_ENDPOINT = "https://formspree.io/f/mkolqeyo";
+    var CONTACT_EMAIL = "hello@ayinadvisors.com";
+    var configured = FORM_ENDPOINT.indexOf("your-form-id") === -1;
+
+    var chips = document.getElementById("chips");
+    var interests = document.getElementById("interests");
+    function syncInterests() {
+      if (!chips || !interests) return;
+      var picked = [].slice.call(chips.querySelectorAll(".chip.sel"))
+        .map(function (c) { return c.getAttribute("data-v"); });
+      interests.value = picked.join(", ");
+    }
+    if (chips) chips.addEventListener("click", function (e) {
+      var c = e.target.closest(".chip");
+      if (c) { c.classList.toggle("sel"); syncInterests(); }
+    });
+
+    var form = document.getElementById("consult-form");
+    var errEl = document.getElementById("form-error");
+    function showError(msg) {
+      if (!errEl) return;
+      errEl.textContent = msg;
+      errEl.classList.add("show");
+    }
+    function clearError() { if (errEl) errEl.classList.remove("show"); }
+
+    if (form) form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      clearError();
+
+      // honeypot — silently succeed for bots
+      var hp = document.getElementById("company_url");
+      if (hp && hp.value) { form.style.display = "none"; document.getElementById("success").classList.add("show"); return; }
+
+      var req = ["name", "company", "email"];
+      var ok = true;
+      req.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el.value.trim()) { el.style.borderColor = "#c0654a"; ok = false; }
+        else { el.style.borderColor = ""; }
+      });
+      var email = document.getElementById("email");
+      if (email.value && !/^[^@]+@[^@]+\.[^@]+$/.test(email.value)) { email.style.borderColor = "#c0654a"; ok = false; }
+      if (!ok) { showError("Please complete the highlighted fields."); return; }
+
+      syncInterests();
+      var done = function () { form.style.display = "none"; document.getElementById("success").classList.add("show"); };
+      var val = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; };
+
+      // NO ENDPOINT — open the visitor's email client, pre-filled
+      if (!configured) {
+        var lines = [
+          "Name: " + val("name"),
+          "Company: " + val("company"),
+          "Work email: " + val("email"),
+          "Headquartered in: " + (val("hq") || "—"),
+          "Area of interest: " + (interests.value || "—"),
+          "",
+          val("msg") || "(no message)"
+        ];
+        var subject = "Consultation request — " + (val("company") || val("name"));
+        var href = "mailto:" + CONTACT_EMAIL +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(lines.join("\n"));
+        window.location.href = href;
+        done();
+        return;
+      }
+
+      // ENDPOINT SET — POST to the configured handler
+      var btn = form.querySelector(".btn");
+      if (btn) { btn.setAttribute("disabled", ""); btn.querySelector(".btn-label").textContent = "Sending…"; }
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(form)
+      }).then(function (res) {
+        if (res.ok) { done(); }
+        else { throw new Error("bad status"); }
+      }).catch(function () {
+        if (btn) { btn.removeAttribute("disabled"); btn.querySelector(".btn-label").textContent = "Send Request"; }
+        showError("Something went wrong sending your request. Please email " + CONTACT_EMAIL + " instead.");
+      });
+    });
+  })();
+</script>
+</body>
+</html>

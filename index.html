@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AYiN Advisors — US Market Entry & Channel Strategy</title>
+<meta name="description" content="AYiN Advisors helps international companies enter the US market through channel activities, partner introductions and regional expansion." />
+<link rel="canonical" href="https://ayinadvisors.com/" />
+<meta name="theme-color" content="#061325" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="AYiN Advisors" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="AYiN Advisors — See the American market clearly" />
+<meta property="og:description" content="AYiN Advisors helps international companies enter the US market through channel activities, partner introductions and regional expansion." />
+<meta property="og:url" content="https://ayinadvisors.com/" />
+<meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AYiN Advisors — See the American market clearly" />
+<meta name="twitter:description" content="AYiN Advisors helps international companies enter the US market through channel activities, partner introductions and regional expansion." />
+<meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  /* ---------- HERO ---------- */
+  .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(120% 100% at 70% 20%, var(--navy-800) 0%, var(--navy-900) 45%, var(--navy-950) 100%); overflow: hidden; }
+  #iris { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+  .hero-vignette { position: absolute; inset: 0; z-index: 2; background: radial-gradient(80% 80% at 28% 50%, rgba(6,19,37,0.0) 0%, rgba(6,19,37,0.55) 70%, rgba(6,19,37,0.85) 100%); pointer-events: none; }
+  .hero > .wrap { position: relative; z-index: 3; width: 100%; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--nav-h) + 28px); padding-bottom: 48px; }
+  .hero-inner { max-width: 760px; }
+  .hero h1 { color: var(--cream); margin: 26px 0 28px; }
+  .hero h1 .italic-accent { font-weight: 500; }
+  .hero-lead { color: rgba(247,243,234,0.74); max-width: 50ch; }
+  .hero-actions { display: flex; gap: 18px; margin-top: 40px; flex-wrap: wrap; }
+  .scroll-hint { position: absolute; bottom: 130px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 10px; color: rgba(247,243,234,0.5); font-size: 0.66rem; letter-spacing: 0.25em; text-transform: uppercase; pointer-events: none; }
+  .scroll-hint .bar { width: 1px; height: 46px; background: linear-gradient(var(--gold), transparent); position: relative; overflow: hidden; }
+  .scroll-hint .bar::after { content: ""; position: absolute; top: -50%; left: 0; width: 100%; height: 50%; background: var(--gold-bright); animation: scrolldot 2.2s var(--ease) infinite; }
+  @keyframes scrolldot { 0% { top: -50%; } 60%,100% { top: 100%; } }
+
+  .hero-stats { position: relative; z-index: 3; flex-shrink: 0; border-top: 1px solid var(--line-on-navy); background: rgba(6,19,37,0.5); backdrop-filter: blur(6px); }
+  .hero-stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .hstat { padding: 26px 0; border-left: 1px solid var(--line-on-navy); padding-left: 28px; }
+  .hstat:first-child { border-left: 0; padding-left: 0; }
+  .hstat .n { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--gold-bright); line-height: 1; }
+  .hstat .l { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,243,234,0.6); margin-top: 8px; }
+
+  /* ---------- SECTION HEADER ---------- */
+  .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: clamp(44px, 6vw, 76px); flex-wrap: wrap; }
+  .sec-head .left { max-width: 60ch; }
+  .sec-head h2 { margin-top: 20px; }
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .svc { position: relative; padding: clamp(34px, 4vw, 56px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; transition: background 0.6s var(--ease); }
+  .svc::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--gold); transition: width 0.6s var(--ease); }
+  .svc:hover { background: var(--navy-900); }
+  .svc:hover::before { width: 100%; }
+  .svc-num { font-family: var(--serif); font-size: 0.95rem; color: var(--gold-deep); letter-spacing: 0.2em; }
+  .svc:hover .svc-num { color: var(--gold-bright); }
+  .svc h3 { margin: 22px 0 16px; transition: color 0.5s var(--ease); }
+  .svc:hover h3 { color: var(--cream); }
+  .svc p { color: var(--slate); max-width: 42ch; transition: color 0.5s var(--ease); }
+  .svc:hover p { color: rgba(247,243,234,0.72); }
+  .svc-arrow { margin-top: 26px; display: inline-flex; align-items: center; gap: 0.6em; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--gold-deep); opacity: 0; transform: translateY(8px); transition: all 0.5s var(--ease); }
+  .svc:hover .svc-arrow { opacity: 1; transform: none; color: var(--gold-bright); }
+
+  /* ---------- PROCESS ---------- */
+  .proc-wrap { position: relative; }
+  .proc-line { position: absolute; left: 0; right: 0; top: 38px; height: 1px; background: var(--line-on-navy); }
+  .proc-line .fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--gold-deep), var(--gold-bright)); transition: width 1.6s var(--ease); }
+  .proc-wrap.in .proc-line .fill { width: 100%; }
+  .proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; }
+  .proc-step .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--navy-700); border: 1px solid var(--gold); position: relative; margin-bottom: 36px; transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease); }
+  .proc-wrap.in .proc-step .dot { background: var(--gold); box-shadow: 0 0 0 6px var(--gold-glow); }
+  .proc-step .pn { font-family: var(--serif); font-size: 0.9rem; color: var(--gold); letter-spacing: 0.2em; }
+  .proc-step h3 { color: var(--cream); margin: 12px 0 14px; font-size: 1.5rem; }
+  .proc-step p { color: rgba(247,243,234,0.62); font-size: 0.96rem; max-width: 30ch; }
+
+  /* ---------- WHY US ---------- */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+  .globe-stage { position: relative; aspect-ratio: 1; max-width: 520px; margin-inline: auto; width: 100%; }
+  .globe-stage svg { width: 100%; height: 100%; overflow: visible; }
+  .meridian { fill: none; stroke: var(--line-gold); stroke-width: 0.6; }
+  .latitude { fill: none; stroke: var(--line-gold); stroke-width: 0.6; }
+  .globe-outer { fill: none; stroke: var(--gold); stroke-width: 0.8; }
+  .arc { fill: none; stroke: var(--gold-bright); stroke-width: 1.2; stroke-dasharray: 240; stroke-dashoffset: 240; }
+  .why-grid.in .arc { animation: drawArc 2.4s var(--ease) forwards; }
+  .why-grid.in .arc.a2 { animation-delay: 0.5s; }
+  .why-grid.in .arc.a3 { animation-delay: 1s; }
+  @keyframes drawArc { to { stroke-dashoffset: 0; } }
+  .node { fill: var(--gold-bright); }
+  .node-pulse { fill: none; stroke: var(--gold-bright); transform-origin: center; }
+  .why-grid.in .node-pulse { animation: nodePulse 2.6s var(--ease) infinite; }
+  @keyframes nodePulse { 0% { r: 4; opacity: 0.9; } 100% { r: 22; opacity: 0; } }
+  .dest { fill: var(--gold); }
+  .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--line); border: 1px solid var(--line); margin-top: 40px; }
+  .why-stat { background: var(--paper); padding: 26px 24px; }
+  .why-stat .n { font-family: var(--serif); font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
+  .why-stat .l { font-size: 0.82rem; color: var(--slate); margin-top: 8px; line-height: 1.4; }
+
+  /* ---------- ABOUT TEASER ---------- */
+  .about-teaser { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+  .about-teaser .quote { font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.25; color: var(--cream); font-weight: 400; }
+  .about-teaser .quote .hl { color: var(--gold-bright); font-style: italic; }
+  .principle-list { display: flex; flex-direction: column; }
+  .principle { display: flex; gap: 22px; padding: 24px 0; border-top: 1px solid var(--line-on-navy); }
+  .principle:last-child { border-bottom: 1px solid var(--line-on-navy); }
+  .principle .pk { font-family: var(--serif); color: var(--gold); font-size: 1.1rem; flex: none; width: 34px; }
+  .principle h4 { font-family: var(--sans); font-size: 1.05rem; font-weight: 600; color: var(--cream); margin-bottom: 6px; }
+  .principle p { color: rgba(247,243,234,0.6); font-size: 0.95rem; }
+
+  /* ---------- CTA ---------- */
+  .cta { position: relative; overflow: hidden; }
+  .cta-inner { text-align: center; max-width: 780px; margin-inline: auto; position: relative; z-index: 2; }
+  .cta h2 { color: var(--cream); margin: 24px 0 26px; }
+  .cta .lead { color: rgba(247,243,234,0.7); margin-inline: auto; }
+  .cta-glow { position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; left: 50%; top: 50%; transform: translate(-50%,-50%); background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%); opacity: 0.5; z-index: 1; pointer-events: none; }
+
+  @media (max-width: 880px) {
+    .svc-grid, .proc-grid, .why-grid, .about-teaser, .hero-stats .wrap { grid-template-columns: 1fr; }
+    .proc-line { display: none; }
+    .proc-grid { gap: 0; }
+    .proc-step { padding: 22px 0; border-top: 1px solid var(--line-on-navy); display: grid; grid-template-columns: auto 1fr; gap: 20px; }
+    .proc-step .dot { margin-bottom: 0; }
+    .hstat { border-left: 0; padding-left: 0; border-top: 1px solid var(--line-on-navy); }
+    .hstat:first-child { border-top: 0; }
+    .why-stats { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body><!-- ===================== NAV ===================== -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="AYiN Advisors home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
+        <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
+        <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
+        <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+      </svg>
+      <span class="logo-text">
+        <span class="logo-ayin">AY<span class="lc">i</span>N</span>
+        <span class="logo-adv">Advisors</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="Services.html" class="nav-link">Services</a>
+      <a href="About.html" class="nav-link">About</a>
+      <a href="Projects.html" class="nav-link">Projects</a>
+      <a href="BizCheck.html" class="nav-link gold">BizCheck</a>
+      <a href="Contact.html" class="nav-link">Contact</a>
+      <span class="nav-cta"><a href="Contact.html" class="btn" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
+    </div>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-drawer">
+  <a href="index.html">Home</a>
+  <a href="Services.html">Services</a>
+  <a href="About.html">About</a>
+  <a href="Projects.html">Projects</a>
+  <a href="BizCheck.html" class="gold">BizCheck</a>
+  <a href="Contact.html">Contact</a>
+  <a href="Contact.html" class="md-cta">Book a Consultation</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <canvas id="iris"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow on-navy reveal">US Market Entry · Channel Strategy</span>
+      <h1 class="display reveal" data-d="1">See the American<br />Business market <span class="italic-accent">clearly.</span></h1>
+      <p class="hero-lead lead reveal" data-d="2">AYiN Advisors guides international companies into the United States through disciplined channel activity, turning ambition into distribution, partners and revenue.</p>
+      <div class="hero-actions reveal" data-d="3">
+        <a href="Contact.html" class="btn" data-magnetic><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a>
+        <a href="Services.html" class="btn-ghost btn on-navy" data-magnetic><span class="btn-label">Our Services</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><span class="bar"></span></div>
+  <div class="hero-stats">
+    <div class="wrap">
+      <div class="hstat reveal"><div class="n"><span data-count="3" data-suffix="+"></span></div><div class="l">Markets · US · Canada · LATAM</div></div>
+      <div class="hstat reveal" data-d="1"><div class="n"><span data-count="90" data-suffix=" Days"></span></div><div class="l">To first qualified partner</div></div>
+      <div class="hstat reveal" data-d="2"><div class="n"><span data-count="100" data-suffix="%"></span></div><div class="l">Channel-led, founder-aligned</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Market Entry Research</span>
+    <span class="marquee-item">Channel Enablement</span>
+    <span class="marquee-item">Partner Introductions</span>
+    <span class="marquee-item">Regional Expansion</span>
+    <span class="marquee-item">Market Entry Research</span>
+    <span class="marquee-item">Channel Enablement</span>
+    <span class="marquee-item">Partner Introductions</span>
+    <span class="marquee-item">Regional Expansion</span>
+  </div>
+</div>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="section paper" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="sec-index">01</span> &nbsp;What we do</span>
+        <h2 class="h2 reveal" data-d="1">A focused practice for<br />crossing the border.</h2>
+      </div>
+      <p class="muted reveal" data-d="2" style="max-width:34ch">Four disciplines, one objective — a commercial foothold in North America built on real channel relationships.</p>
+    </div>
+
+    <div class="svc-grid">
+      <a class="svc reveal" href="Services.html">
+        <div class="svc-num">01</div>
+        <h3 class="h3">US Market Entry Research</h3>
+        <p>Sizing, segmentation and competitive intelligence that tells you where to play — and where not to — before you spend a dollar on the ground.</p>
+        <span class="svc-arrow">Explore →</span>
+      </a>
+      <a class="svc reveal" data-d="1" href="Services.html">
+        <div class="svc-num">02</div>
+        <h3 class="h3">Channel Strategy &amp; Enablement</h3>
+        <p>Designing the route to market — distributors, resellers, agents — and equipping them with the tools, terms and training to actually sell.</p>
+        <span class="svc-arrow">Explore →</span>
+      </a>
+      <a class="svc reveal" href="Services.html">
+        <div class="svc-num">03</div>
+        <h3 class="h3">B2B Partner Introductions</h3>
+        <p>Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.</p>
+        <span class="svc-arrow">Explore →</span>
+      </a>
+      <a class="svc reveal" data-d="1" href="Services.html">
+        <div class="svc-num">04</div>
+        <h3 class="h3">Regional Expansion · Canada &amp; LATAM</h3>
+        <p>Extending the playbook north and south — adapting channel models for Canada and Latin America once the US engine is running.</p>
+        <span class="svc-arrow">Explore →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="section navy" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow on-navy reveal"><span class="sec-index">02</span> &nbsp;How it works</span>
+        <h2 class="h2 reveal" data-d="1">From outside looking in, to inside the channel.</h2>
+      </div>
+      <p class="muted reveal" data-d="2" style="max-width:34ch">A clear, sequenced engagement.<br /><b>No</b> open-ended retainers, no theory without traction.</p>
+    </div>
+
+    <div class="proc-wrap reveal">
+      <div class="proc-line"><div class="fill"></div></div>
+      <div class="proc-grid">
+        <div class="proc-step"><div class="dot"></div><div class="pn">Step 01</div><h3>Diagnose</h3><p>We assess fit, readiness and the realistic shape of US demand for your offer.</p></div>
+        <div class="proc-step"><div class="dot"></div><div class="pn">Step 02</div><h3>Map</h3><p>We design the channel architecture and identify the partners worth pursuing.</p></div>
+        <div class="proc-step"><div class="dot"></div><div class="pn">Step 03</div><h3>Connect</h3><p>We open doors with structured introductions to vetted partners and buyers.</p></div>
+        <div class="proc-step"><div class="dot"></div><div class="pn">Step 04</div><h3>Enable</h3><p>We equip the channel to sell and hand you a running commercial engine.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY US ===================== -->
+<section class="section paper" id="why">
+  <div class="wrap">
+    <div class="why-grid reveal">
+      <div class="globe-stage" data-parallax="0.02">
+        <svg viewBox="0 0 200 200" role="img" aria-label="Global routes converging on the United States">
+          <circle class="globe-outer" cx="100" cy="100" r="80"></circle>
+          <ellipse class="meridian" cx="100" cy="100" rx="80" ry="80"></ellipse>
+          <ellipse class="meridian" cx="100" cy="100" rx="60" ry="80"></ellipse>
+          <ellipse class="meridian" cx="100" cy="100" rx="38" ry="80"></ellipse>
+          <ellipse class="meridian" cx="100" cy="100" rx="14" ry="80"></ellipse>
+          <line class="latitude" x1="20" y1="100" x2="180" y2="100"></line>
+          <ellipse class="latitude" cx="100" cy="100" rx="80" ry="58"></ellipse>
+          <ellipse class="latitude" cx="100" cy="100" rx="80" ry="30"></ellipse>
+          <!-- flight arcs -->
+          <path class="arc a1" d="M40,150 Q70,70 96,104"></path>
+          <path class="arc a2" d="M60,40 Q110,60 96,104"></path>
+          <path class="arc a3" d="M160,150 Q120,120 96,104"></path>
+          <!-- origin nodes -->
+          <circle class="node" cx="40" cy="150" r="2.4"></circle>
+          <circle class="node" cx="60" cy="40" r="2.4"></circle>
+          <circle class="node" cx="160" cy="150" r="2.4"></circle>
+          <!-- destination (US) -->
+          <circle class="node-pulse" cx="96" cy="104" r="4"></circle>
+          <circle class="dest" cx="96" cy="104" r="4"></circle>
+        </svg>
+      </div>
+      <div>
+        <span class="eyebrow reveal"><span class="sec-index">03</span> &nbsp;Why the US market</span>
+        <h2 class="h2 reveal" data-d="1" style="margin:20px 0 22px;font-size:60px">The largest opportunity<br />is also the hardest to read.</h2>
+        <p class="lead reveal" data-d="2" style="margin-bottom:8px">The United States is a continent of distinct regional markets, regulatory regimes and buying cultures. Winning it is rarely about the product - it's all about the channels.</p>
+        <div class="why-stats reveal" data-d="3">
+          <div class="why-stat"><div class="n">$24 Trillion<span data-count="27" data-suffix="T"></span></div><div class="l">US consumer + B2B economy</div></div>
+          <div class="why-stat"><div class="n"><span data-count="50"></span></div><div class="n" style="font-size:46px;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif"><span style="font-family:'Cormorant Garamond',Georgia,serif;font-size:46.4px">50 States</span></div><div class="l">State markets, one entry strategy</div></div>
+          <div class="why-stat"><div class="n"><span data-count="70" data-suffix="%"></span></div><div class="l">Of B2B revenue flows through partners</div></div>
+          <div class="why-stat"><div class="n"><span data-count="3" data-suffix="x"></span></div><div class="l">Faster scale with the right channel</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT TEASER ===================== -->
+<section class="section navy" id="about">
+  <div class="wrap">
+    <div class="about-teaser">
+      <div>
+        <span class="eyebrow on-navy reveal"><span class="sec-index">04</span> &nbsp;Who we are</span>
+        <p class="quote reveal" data-d="1" style="margin-top:24px">We are operators, not<br />observers.<br />Advisors who <span class="hl">open doors</span> and stay until the channel is selling.</p>
+        <div class="reveal" data-d="2" style="margin-top:36px"><a href="About.html" class="tlink on-navy">More about AYiN <span class="btn-arrow">→</span></a></div>
+      </div>
+      <div class="principle-list reveal" data-d="2">
+        <div class="principle"><span class="pk">i.</span><div><h4>Channel first</h4><p>Distribution is the strategy. We build the route to market, not just the deck.</p></div></div>
+        <div class="principle"><span class="pk">ii.</span><div><h4>Founder aligned</h4><p>Senior attention, candid counsel and incentives tied to traction with results, not hours.</p></div></div>
+        <div class="principle"><span class="pk">iii.</span><div><h4>On the ground</h4><p>A live North American network of partners, buyers and operators you can work with.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="section cta navy">
+  <div class="cta-glow"></div>
+  <div class="wrap">
+    <div class="cta-inner">
+      <span class="eyebrow on-navy center reveal" style="justify-content:center">Begin the engagement</span>
+      <h2 class="h2 reveal" data-d="1">Let us read the market<br />together.</h2>
+      <p class="lead reveal" data-d="2">A focused, candid conversation about your US ambitions and the channel that gets you there. No obligation, just clarity.</p>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="margin-bottom:0">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
+            <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
+            <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
+            <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+          </svg>
+          <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+        </a>
+        <p class="footer-tag">Channel led US market entry for international companies.<br />New York · Valencia · Mexico City.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="Services.html">Services</a>
+        <a href="About.html">About</a>
+        <a href="Projects.html">Projects</a>
+  <a href="Contact.html">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <a href="Services.html#research">Market Entry Research</a>
+        <a href="Services.html#channel">Channel Strategy</a>
+        <a href="Services.html#introductions">Partner Introductions</a>
+        <a href="Services.html#expansion">Regional Expansion</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <a href="Contact.html">Book a consultation</a>
+        <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
+        <a href="Contact.html">Request a market brief</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AYiN Advisors. All rights reserved.</span>
+      <span>Entering the US market, clearly.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

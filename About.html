@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — AYiN Advisors</title>
+<meta name="description" content="AYiN Advisors are operators, not observers — a channel-first advisory opening the US market for international companies." />
+<link rel="canonical" href="https://ayinadvisors.com/About.html" />
+<meta name="theme-color" content="#061325" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="favicon.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="AYiN Advisors" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content="About — AYiN Advisors" />
+<meta property="og:description" content="AYiN Advisors are operators, not observers — a channel-first advisory opening the US market for international companies." />
+<meta property="og:url" content="https://ayinadvisors.com/About.html" />
+<meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="About — AYiN Advisors" />
+<meta name="twitter:description" content="AYiN Advisors are operators, not observers — a channel-first advisory opening the US market for international companies." />
+<meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  .pagehead { position: relative; padding-top: calc(var(--nav-h) + clamp(60px, 9vw, 120px)); padding-bottom: clamp(50px, 7vw, 96px); background: radial-gradient(120% 130% at 22% 0%, var(--navy-800) 0%, var(--navy-900) 50%, var(--navy-950) 100%); overflow: hidden; }
+  .pagehead .wrap { position: relative; z-index: 2; }
+  .pagehead h1 { color: var(--cream); margin: 22px 0 24px; max-width: 18ch; }
+  .pagehead .lead { max-width: 54ch; }
+  .ph-eye { position: absolute; left: 50%; top: -10%; transform: translateX(-50%); width: 900px; height: 900px; z-index: 1; opacity: 0.5; pointer-events: none; }
+  .ph-eye circle { fill: none; stroke: var(--line-gold); stroke-width: 0.6; }
+
+  .meaning { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(34px, 6vw, 90px); align-items: center; }
+  .eye-mark { max-width: 360px; margin-inline: auto; width: 100%; }
+  .eye-mark circle, .eye-mark ellipse { fill: none; stroke: var(--gold); }
+  .eye-mark .ring { stroke: var(--line-gold); stroke-width: 1; }
+  .eye-mark .iris { fill: rgba(198,161,92,0.14); stroke-width: 1.2; }
+  .eye-mark .pupil { fill: var(--navy-900); stroke-width: 1.2; }
+  .eye-mark .scan { stroke: var(--gold-bright); stroke-width: 1.4; transform-origin: 130px 130px; animation: spin 14s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .meaning h2 { margin-bottom: 22px; }
+  .meaning p { color: var(--ink-soft); font-size: 1.12rem; margin-bottom: 20px; max-width: 52ch; }
+  .meaning p .lead-word { font-family: var(--serif); font-style: italic; font-size: 1.3em; color: var(--gold-deep); }
+
+  .stat-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-on-navy); border-block: 1px solid var(--line-on-navy); }
+  .sb { background: var(--navy-900); padding: clamp(34px, 5vw, 56px) 28px; }
+  .sb .n { font-family: var(--serif); font-size: clamp(2.4rem, 4.5vw, 3.8rem); color: var(--gold-bright); line-height: 1; }
+  .sb .l { font-size: 0.86rem; color: rgba(247,243,234,0.62); margin-top: 12px; line-height: 1.45; }
+
+  .approach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .ap { padding: clamp(30px, 4vw, 48px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.5s var(--ease); }
+  .ap:hover { background: var(--paper); }
+  .ap .k { font-family: var(--serif); font-size: 1.1rem; color: var(--gold-deep); letter-spacing: 0.15em; }
+  .ap h3 { font-size: 1.5rem; margin: 16px 0 12px; }
+  .ap p { color: var(--slate); font-size: 0.98rem; }
+
+  .team-grid { display: grid; grid-template-columns: 360px; gap: clamp(24px, 3vw, 40px); }
+  .member { }
+  .avatar { aspect-ratio: 4/5; background: linear-gradient(160deg, var(--navy-700), var(--navy-900)); border: 1px solid var(--line-on-navy); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .avatar .mono { font-family: var(--serif); font-size: clamp(3rem, 6vw, 4.4rem); color: var(--gold); opacity: 0.85; letter-spacing: 0.05em; }
+  .avatar::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 35%, rgba(198,161,92,0.08), transparent 70%); pointer-events: none; }
+  .avatar .ring-deco { position: absolute; width: 150%; height: 150%; border: 1px solid var(--line-gold); border-radius: 50%; left: -25%; bottom: -75%; }
+  .member h3 { font-size: 1.45rem; margin: 22px 0 4px; color: var(--cream); }
+  .member .role { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  .member p { color: rgba(247,243,234,0.6); font-size: 0.95rem; margin-top: 14px; }
+
+  @media (max-width: 880px) {
+    .meaning, .approach-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; max-width: 360px; }
+    .stat-band { grid-template-columns: 1fr 1fr; }
+    .eye-mark { max-width: 260px; }
+  }
+  @media (max-width: 560px) { .stat-band { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body><nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="AYiN Advisors home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
+        <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
+        <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
+        <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+      </svg>
+      <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="Services.html" class="nav-link">Services</a>
+      <a href="About.html" class="nav-link active">About</a>
+      <a href="Projects.html" class="nav-link">Projects</a>
+      <a href="BizCheck.html" class="nav-link gold">BizCheck</a>
+      <a href="Contact.html" class="nav-link">Contact</a>
+      <span class="nav-cta"><a href="Contact.html" class="btn" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
+    </div>
+    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <a href="index.html">Home</a>
+  <a href="Services.html">Services</a>
+  <a href="About.html">About</a>
+  <a href="Projects.html">Projects</a>
+  <a href="BizCheck.html" class="gold">BizCheck</a>
+  <a href="Contact.html">Contact</a>
+  <a href="Contact.html" class="md-cta">Book a Consultation</a>
+</div>
+
+<!-- PAGE HEADER -->
+<header class="pagehead">
+  <svg class="ph-eye" viewBox="0 0 900 900" aria-hidden="true">
+    <circle cx="450" cy="450" r="448"></circle>
+    <circle cx="450" cy="450" r="350"></circle>
+    <circle cx="450" cy="450" r="250"></circle>
+    <circle cx="450" cy="450" r="150"></circle>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow on-navy reveal">About AYiN</span>
+    <h1 class="display reveal" data-d="1">Operators, not observers.</h1>
+    <p class="lead reveal" data-d="2">We are advisors who open doors and stay until the channel is selling. No theory without traction, no strategy that doesn't end in a signed partner.</p>
+  </div>
+</header>
+
+<!-- MEANING OF AYIN -->
+<section class="section paper">
+  <div class="wrap">
+    <div class="meaning">
+      <div class="reveal">
+        <svg class="eye-mark" viewBox="0 0 260 260" role="img" aria-label="The AYiN eye mark">
+          <circle class="ring" cx="130" cy="130" r="126"></circle>
+          <circle class="ring" cx="130" cy="130" r="98" opacity="0.7"></circle>
+          <ellipse cx="130" cy="130" rx="120" ry="62" fill="none" stroke="var(--line-gold)" stroke-width="1.2"></ellipse>
+          <circle class="iris" cx="130" cy="130" r="46"></circle>
+          <circle class="pupil" cx="130" cy="130" r="17"></circle>
+          <line class="scan" x1="130" y1="130" x2="130" y2="8" stroke-dasharray="3 9"></line>
+          <circle cx="130" cy="130" r="3" fill="var(--gold-bright)"></circle>
+        </svg>
+      </div>
+      <div>
+        <span class="eyebrow reveal"><span class="sec-index">01</span> &nbsp;The name</span>
+        <h2 class="h2 reveal" data-d="1" style="margin-top:18px">AYiN means <span class="italic-accent">the eye.</span></h2>
+        <p class="reveal" data-d="2">In the languages of the ancient Near East, <span class="lead-word">ayin</span> is the eye — perception, insight, the faculty of seeing what others miss. It is the right name for what we do.</p>
+        <p class="reveal" data-d="3">Entering the United States is rarely defeated by a weak product. It is defeated by misreading the market — the regional nuance, the buying culture, the partner who looks right but isn't. We are the eye that reads it clearly, before you commit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT BAND -->
+<section class="navy">
+  <div class="wrap"><div class="stat-band">
+    <div class="sb reveal"><div class="n"><span data-count="3" data-suffix=""></span></div><div class="l">Markets served — US, Canada, LATAM</div></div>
+    <div class="sb reveal" data-d="1"><div class="n"><span data-count="40" data-suffix="+"></span></div><div class="l">Channel partners in the network</div></div>
+    <div class="sb reveal" data-d="2"><div class="n"><span data-count="90" data-suffix="d"></span></div><div class="l">Typical time to first introduction</div></div>
+    <div class="sb reveal" data-d="3"><div class="n"><span data-count="100" data-suffix="%"></span></div><div class="l">Senior-led, founder-aligned work</div></div>
+  </div></div>
+</section>
+
+<!-- APPROACH -->
+<section class="section paper">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal"><span class="sec-index">02</span> &nbsp;How we work</span>
+        <h2 class="h2 reveal" data-d="1">Principles that hold<br />on the ground.</h2>
+      </div>
+      <p class="muted reveal" data-d="2" style="max-width:34ch">We keep engagements small, senior and accountable — measured by partners signed, not slides delivered.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="ap reveal"><div class="k">i.</div><h3 class="h3">Channel-first</h3><p>Distribution is the strategy. We design the route to market and the partners who carry it — not a deck that sits on a shelf.</p></div>
+      <div class="ap reveal" data-d="1"><div class="k">ii.</div><h3 class="h3">Founder-aligned</h3><p>Senior attention and candid counsel, with incentives tied to traction. You work with principals, every meeting.</p></div>
+      <div class="ap reveal" data-d="2"><div class="k">iii.</div><h3 class="h3">Evidence over theory</h3><p>Every recommendation is grounded in real demand signals and real conversations with the market — not assumption.</p></div>
+      <div class="ap reveal"><div class="k">iv.</div><h3 class="h3">Warm, not cold</h3><p>We open doors through relationships we already hold. Introductions arrive with trust attached, so they convert.</p></div>
+      <div class="ap reveal" data-d="1"><div class="k">v.</div><h3 class="h3">Sequenced, not open-ended</h3><p>Clear phases with defined outcomes. You always know what comes next and what it costs — no drifting retainers.</p></div>
+      <div class="ap reveal" data-d="2"><div class="k">vi.</div><h3 class="h3">Built to hand over</h3><p>Success is your team running the engine without us. We transfer the relationships and the playbook, then step back.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section navy">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow on-navy reveal"><span class="sec-index">03</span> &nbsp;The principals</span>
+        <h2 class="h2 reveal" data-d="1">Small team.<br />Senior hands.</h2>
+      </div>
+      <p class="muted reveal" data-d="2" style="max-width:34ch">Operators who have built channels, signed distributors and carried foreign brands into North America.</p>
+    </div>
+    <div class="team-grid">
+      <div class="member reveal">
+        <div class="avatar"><img src="assets/taz-abbas.jpg" alt="Taz Abbas — Managing Partner, AYiN Advisors" /><span class="ring-deco"></span></div>
+        <h3>Taz Abbas</h3>
+        <div class="role">Managing Partner · Market Entry &amp; Strategy</div>
+        <p>Two decades guiding international firms from first market read to commercial foothold across the Americas.</p>
+      </div>
+    </div>
+    <p class="muted reveal" style="margin-top:36px;font-size:0.9rem;font-style:italic;font-family:var(--serif)">Detailed partner bios available on request — <a href="Contact.html" class="tlink on-navy" style="font-family:var(--sans);font-style:normal">get in touch <span class="btn-arrow">→</span></a></p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta navy" style="border-top:1px solid var(--line-on-navy)">
+  <div class="cta-glow"></div>
+  <div class="wrap">
+    <div class="cta-inner">
+      <span class="eyebrow on-navy center reveal" style="justify-content:center">Work with us</span>
+      <h2 class="h2 reveal" data-d="1" style="color:var(--cream);margin:24px 0 26px">Let us read your<br />market together.</h2>
+      <p class="lead reveal" data-d="2" style="color:rgba(247,243,234,0.7);margin-inline:auto">A candid first conversation about your US ambitions — and the channel that delivers them.</p>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="index.html" class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
+            <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
+            <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
+            <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+          </svg>
+          <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+        </a>
+        <p class="footer-tag">Channel-led US market entry for international companies. New York · Toronto · Mexico City.</p>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><a href="index.html">Home</a><a href="Services.html">Services</a><a href="About.html">About</a><a href="Projects.html">Projects</a>
+  <a href="Contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Practice</h4><a href="Services.html#research">Market Entry Research</a><a href="Services.html#channel">Channel Strategy</a><a href="Services.html#introductions">Partner Introductions</a><a href="Services.html#expansion">Regional Expansion</a></div>
+      <div class="footer-col"><h4>Get in touch</h4><a href="Contact.html">Book a consultation</a><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a><a href="Contact.html">Request a market brief</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AYiN Advisors. All rights reserved.</span>
+      <span>Entering the US market, clearly.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
