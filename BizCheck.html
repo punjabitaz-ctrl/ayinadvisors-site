@@ -401,7 +401,7 @@
         <form id="bizcheck-form" novalidate>
           <h2>Request a BizCheck</h2>
           <p class="sub">The brief that powers the panel — takes about three minutes.</p>
-          <div class="hp" aria-hidden="true"><label for="website_url">Leave blank</label><input id="website_url" name="website_url" type="text" tabindex="-1" autocomplete="off" /></div>
+          <div class="hp" aria-hidden="true"><label for="website_url">Leave blank</label><input id="website_url" name="_gotcha" type="text" tabindex="-1" autocomplete="off" /></div>
           <input type="hidden" id="focus_areas" name="focus_areas" value="" />
           <input type="hidden" name="_subject" value="BizCheck submission — AYiN Advisors" />
           <div class="field-row">
@@ -514,16 +514,10 @@
     if (c) { c.classList.toggle('sel'); syncFocus(); }
   });
 
-  /* ──────────────────────────────────────────────────────────
-     Set BIZCHECK_ENDPOINT to your Formspree form URL, e.g.
-       var BIZCHECK_ENDPOINT = "https://formspree.io/f/abcdwxyz";
-     Create a free form at https://formspree.io pointing at
-     hello@ayinadvisors.com. Until it is set, submitting opens
-     the visitor's mail client with the brief pre-filled.
-  ────────────────────────────────────────────────────────── */
-  var BIZCHECK_ENDPOINT = "https://formspree.io/f/your-form-id";
+  /* Submissions post to Formspree; on failure we surface the address
+     so a visitor is never left with nowhere to send the brief. */
+  var BIZCHECK_ENDPOINT = "https://formspree.io/f/xrpbkony";
   var CONTACT_EMAIL = "hello@ayinadvisors.com";
-  var configured = BIZCHECK_ENDPOINT.indexOf('your-form-id') === -1;
 
   var form = document.getElementById('bizcheck-form');
   var errEl = document.getElementById('bc-error');
@@ -531,7 +525,6 @@
 
   function showErr(m) { if (errEl) { errEl.textContent = m; errEl.classList.add('show'); } }
   function done() { form.style.display = 'none'; doneEl.classList.add('show'); }
-  function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -551,23 +544,6 @@
     if (!ok) { showErr('Please complete the highlighted fields.'); return; }
 
     syncFocus();
-
-    if (!configured) {
-      var body = [
-        'Name: ' + val('bc_name'),
-        'Company: ' + val('bc_company'),
-        'Email: ' + val('bc_email'),
-        'Based in: ' + (val('bc_hq') || '—'),
-        'Stage: ' + (val('bc_stage') || '—'),
-        'Industry: ' + (val('bc_industry') || '—'),
-        'Focus: ' + (focusInput.value || '—'),
-        '', val('bc_desc')
-      ].join('\n');
-      window.location.href = 'mailto:' + CONTACT_EMAIL
-        + '?subject=' + encodeURIComponent('BizCheck — ' + (val('bc_company') || val('bc_name')))
-        + '&body=' + encodeURIComponent(body);
-      done(); return;
-    }
 
     var btn = form.querySelector('.btn');
     var lbl = btn && btn.querySelector('.btn-label');
