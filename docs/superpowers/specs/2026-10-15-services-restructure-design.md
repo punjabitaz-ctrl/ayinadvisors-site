@@ -107,6 +107,19 @@ six hand-written pages — the exact failure this is meant to end. So `index`, `
 with its head latch, and its own inline script. All of that is body/head content, not
 chrome, and must survive byte-for-byte.
 
+Sprint 1 implemented the content model as `content/site.json` and the templates as
+`templates/*.j2`, with per-page `templates/pages/<stem>.body.frag` + `<stem>.json`. The
+non-`.html` extensions are deliberate: Cloudflare serves the repo root, so any `.html`
+under `templates/` would be published as a page.
+
+**Baseline policy.** Sprint 1's frozen `tests/baseline/*.snap` are a one-time proof that
+the generated pages match the pre-build site. After Sprint 1 merges, a sprint that
+intentionally changes visible output states an explicit, pinned delta in its own test (as
+Sprint 1 did for the footer); durable protection comes from baseline-independent
+invariants (chrome identical across pages, links resolve, forms/ids/scripts present,
+accessibility and contrast gates). Baselines are re-snapshotted from merged output at the
+start of the next sprint, never edited to turn a red test green.
+
 ### Also generated
 
 `sitemap.xml`, from the same content tree — 20 URLs, no longer hand-maintained.
@@ -114,9 +127,10 @@ chrome, and must survive byte-for-byte.
 ## What does not change
 
 Design system and `assets/styles.css`; both Turnstile Pages Functions and their
-environment variables; `_headers` and the enforcing CSP; `robots.txt`; BizCheck's page
+environment variables; `_headers` and the enforcing CSP; BizCheck's page
 and its gold nav pill; the white consultation buttons; the deploy path; DNS and the
-www redirect.
+www redirect. `robots.txt` gained `Disallow` lines for `/templates/ /content/ /tests/ /docs/`
+in the `*` group (advisory); everything else in it is unchanged.
 
 ## Content
 
@@ -131,7 +145,7 @@ owner's shorthand:
 - **Digital Presence** — websites (brand presence), digital marketing (brand online),
   community and content (brand connect).
 
-Claude drafts from that; the owner edits. Draft copy is a deliverable of each sprint,
+Copy for new pages is drafted from that for owner review and edit. Draft copy is a deliverable of each sprint,
 not a prerequisite for starting the build system.
 
 **Pricing appears nowhere on the site.** This is a standing constraint, not an
@@ -197,14 +211,6 @@ differs from what it expects to overwrite.
 pages carry working forms and a CSP that took real effort. Mitigated by diffing rendered
 output against current production before merge, rather than trusting the templates.
 
-**Repo going private breaks the Cloudflare deploy.** Unverified — the GitHub App
-should retain its grant, but it could not be confirmed with available token scopes.
-Mitigated by one test push after flipping visibility.
-
-**Push currently blocked.** GitHub rejects pushes from `punjabitaz@gmail.com` under
-email privacy. Resolve before Sprint 1 merges, with
-`git config user.email "244595756+punjabitaz-ctrl@users.noreply.github.com"`.
-
 ## Success criteria
 
 - 20 pages live, every sub-service on its own indexable URL
@@ -216,13 +222,6 @@ email privacy. Resolve before Sprint 1 merges, with
 
 ## Resolved
 
-1. **Copy** — Claude drafts every pillar and sub-service page; the owner edits. Not
-   blocking Sprint 1.
+1. **Copy** — every pillar and sub-service page is drafted for owner review and edit.
+   Not blocking Sprint 1.
 2. **`Projects`** — left as is. Not reorganised by pillar in this restructure.
-3. **Former collaborator** — removed from the repo 2026-10-15. The owner is the only
-   collaborator; no pending invitations.
-4. **Push block** — resolved. The repo-local `user.email` is now
-   `244595756+punjabitaz-ctrl@users.noreply.github.com`; the global config is
-   untouched. Commits already on `master` keep the old address, which is fine because
-   they are already pushed — but **`master` must not be rewritten or force-pushed**, or
-   those commits would be re-evaluated and rejected.

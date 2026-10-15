@@ -100,3 +100,15 @@ from `content/site.json`, `templates/` and `templates/pages/`.
   Cloudflare Pages may auto-run `pip install -r requirements.txt`, and a failure
   there would break the production deploy for a build the deploy does not use.
   The generated `.html` is committed; Cloudflare runs no build.
+
+## Testing
+
+`tests/baseline/*.snap` are frozen snapshots taken before the build system
+existed. They are a one-time proof that the generated pages match the pre-build
+site, not a permanent contract. After Sprint 1 merges, a sprint that
+intentionally changes visible output states an explicit, pinned delta in its own
+test (as Sprint 1 did for the footer). Durable protection comes from
+baseline-independent invariants: chrome identical across pages, links resolve,
+forms/ids/scripts present, accessibility and contrast gates. Baselines are
+re-snapshotted from merged output at the start of the next sprint, never edited
+to turn a red test green.
