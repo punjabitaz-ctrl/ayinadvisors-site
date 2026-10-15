@@ -1,9 +1,9 @@
 from pathlib import Path
 import shutil
 import pytest
+from build import PAGES  # noqa: F401  (re-exported for tests)
 
 ROOT = Path(__file__).resolve().parent.parent
-PAGES = ["index", "About", "Services", "Projects", "BizCheck", "Contact", "404"]
 
 
 @pytest.fixture(scope="session")

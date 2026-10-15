@@ -1,4 +1,5 @@
 import build
+import pytest
 from bs4 import BeautifulSoup
 from parity import page_facts
 
@@ -52,3 +53,16 @@ def test_ampersand_titles_render_as_entities():
     assert "US Market Entry &amp; Channel Strategy</title>" in html
     html = build.render_page("Services", "<main>x</main>")
     assert "channel strategy &amp; enablement" in html
+
+
+def test_pages_derive_from_site_json_in_order():
+    assert build.PAGES == list(build.load_site()["pages"])
+
+
+def test_unknown_stem_names_it_and_lists_known_ones():
+    with pytest.raises(KeyError) as exc:
+        build.render_page("Nope", "<main>x</main>")
+    msg = str(exc.value)
+    assert "Nope" in msg
+    for stem in build.PAGES:
+        assert stem in msg

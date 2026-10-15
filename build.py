@@ -5,7 +5,8 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 ROOT = Path(__file__).resolve().parent
-PAGES = ["index", "About", "Services", "Projects", "BizCheck", "Contact", "404"]
+# Pages are defined by content/site.json, in the order listed there.
+PAGES = list(json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))["pages"])
 
 # Autoescape is OFF: page bodies are pre-authored HTML, not user input.
 # Plain-text head/nav/footer values are escaped explicitly with |e in the templates.
@@ -22,6 +23,8 @@ def load_site() -> dict:
 
 def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = "") -> str:
     site = load_site()
+    if stem not in site["pages"]:
+        raise KeyError(f"unknown page {stem!r}; known pages: {', '.join(site['pages'])}")
     return env.get_template("base.j2").render(
         site=site,
         page=site["pages"][stem],
@@ -53,12 +56,13 @@ def main() -> None:
 
 
 def check() -> list[str]:
-    """Return generated files whose content differs from a fresh render."""
-    return [
-        f"{stem}.html"
-        for stem, fresh in render_all().items()
-        if (ROOT / f"{stem}.html").read_text(encoding="utf-8") != fresh
-    ]
+    """Return generated files that are missing or differ from a fresh render."""
+    stale = []
+    for stem, fresh in render_all().items():
+        path = ROOT / f"{stem}.html"
+        if not path.exists() or path.read_text(encoding="utf-8") != fresh:
+            stale.append(f"{stem}.html")
+    return stale
 
 
 if __name__ == "__main__":

@@ -37,3 +37,8 @@ def test_no_requirements_txt_at_repo_root():
     ).stdout.splitlines()
     assert "requirements.txt" not in tracked
     assert "dev-requirements.txt" in tracked or (ROOT / "dev-requirements.txt").exists()
+
+
+def test_check_reports_a_deleted_page_as_stale(sandbox):
+    (sandbox / "Contact.html").unlink()
+    assert build.check() == ["Contact.html"]
