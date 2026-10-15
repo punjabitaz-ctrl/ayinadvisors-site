@@ -32,3 +32,35 @@ def test_bizcheck_cta_differs_from_about():
     about = page_facts(baseline_html("About"))
     assert biz["nav_cta"] == ("#submit", "Submit Your Idea", "btn")
     assert about["nav_cta"] == ("Contact.html", "Book a Consultation", "btn btn-white")
+
+
+def test_body_rest_nonempty_for_every_page():
+    for stem in PAGES:
+        assert page_facts(baseline_html(stem))["body_rest"], stem
+
+
+def test_body_rest_excludes_chrome():
+    for stem in PAGES:
+        rest = page_facts(baseline_html(stem))["body_rest"]
+        assert 'class="nav"' not in rest, stem
+        assert "<footer" not in rest, stem
+
+
+def test_body_rest_differs_between_pages():
+    a = page_facts(baseline_html("About"))["body_rest"]
+    b = page_facts(baseline_html("Services"))["body_rest"]
+    assert a != b
+
+
+def test_body_rest_tracks_body_copy_not_nav():
+    html = baseline_html("About")
+    base = page_facts(html)["body_rest"]
+    # pick a word of real body copy: first <h1> text
+    from bs4 import BeautifulSoup
+    h1 = BeautifulSoup(html, "html.parser").find("h1").get_text().split()[0]
+    assert h1 in html
+    edited = html.replace(h1, h1 + "ZZ", 1)
+    assert page_facts(edited)["body_rest"] != base
+    nav_only = html.replace('<nav class="nav"', '<nav class="nav" data-x="1"', 1)
+    assert nav_only != html
+    assert page_facts(nav_only)["body_rest"] == base

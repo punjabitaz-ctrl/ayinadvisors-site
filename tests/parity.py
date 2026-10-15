@@ -24,6 +24,16 @@ def _head_children(soup) -> list:
     return out
 
 
+def _body_rest(html: str) -> str:
+    soup = BeautifulSoup(html, "html.parser")
+    for sel in ("nav.nav", ".mobile-drawer", "footer.footer"):
+        for el in soup.select(sel):
+            el.decompose()
+    for el in soup.find_all("script"):
+        el.decompose()
+    return _norm(soup.body.decode_contents()) if soup.body else ""
+
+
 def page_facts(html: str) -> dict:
     soup = BeautifulSoup(html, "html.parser")
 
@@ -68,6 +78,7 @@ def page_facts(html: str) -> dict:
         "head": _head_children(soup),
         "inline_scripts": [s.get_text() for s in soup.find_all("script") if not s.get("src")],
         "inline_styles": [s.get_text() for s in soup.find_all("style")],
+        "body_rest": _body_rest(html),
     }
 
 
