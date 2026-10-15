@@ -52,5 +52,20 @@ def main() -> None:
         print(f"  wrote {stem}.html")
 
 
+def check() -> list[str]:
+    """Return generated files whose content differs from a fresh render."""
+    return [
+        f"{stem}.html"
+        for stem, fresh in render_all().items()
+        if (ROOT / f"{stem}.html").read_text(encoding="utf-8") != fresh
+    ]
+
+
 if __name__ == "__main__":
+    import sys
+
+    if "--check" in sys.argv:
+        stale = check()
+        print("  stale:", ", ".join(stale) if stale else "none")
+        sys.exit(1 if stale else 0)
     main()
