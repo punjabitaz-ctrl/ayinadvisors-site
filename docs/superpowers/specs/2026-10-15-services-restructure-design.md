@@ -207,8 +207,15 @@ email privacy. Resolve before Sprint 1 merges, with
 - Existing URLs unchanged; sitemap lists all 20
 - No pricing anywhere
 
-## Open questions
+## Resolved
 
-1. Pillar and sub-service copy — Claude drafts, owner edits. Not blocking Sprint 1.
-2. Does `Projects` get reorganised by pillar? Assumed no for now.
-3. Is `BamOfLutes` (write access) expected to work in this repo during the rebuild?
+1. **Copy** — Claude drafts every pillar and sub-service page; the owner edits. Not
+   blocking Sprint 1.
+2. **`Projects`** — left as is. Not reorganised by pillar in this restructure.
+3. **`BamOfLutes`** — removed from the repo 2026-10-15. `punjabitaz-ctrl` is the only
+   collaborator; no pending invitations.
+4. **Push block** — resolved. The repo-local `user.email` is now
+   `244595756+punjabitaz-ctrl@users.noreply.github.com`; the global config is
+   untouched. Commits already on `master` keep the old address, which is fine because
+   they are already pushed — but **`master` must not be rewritten or force-pushed**, or
+   those commits would be re-evaluated and rejected.
