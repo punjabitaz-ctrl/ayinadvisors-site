@@ -219,7 +219,7 @@ email privacy. Resolve before Sprint 1 merges, with
 1. **Copy** — Claude drafts every pillar and sub-service page; the owner edits. Not
    blocking Sprint 1.
 2. **`Projects`** — left as is. Not reorganised by pillar in this restructure.
-3. **`BamOfLutes`** — removed from the repo 2026-10-15. `punjabitaz-ctrl` is the only
+3. **Former collaborator** — removed from the repo 2026-10-15. The owner is the only
    collaborator; no pending invitations.
 4. **Push block** — resolved. The repo-local `user.email` is now
    `244595756+punjabitaz-ctrl@users.noreply.github.com`; the global config is
