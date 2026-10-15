@@ -81,3 +81,22 @@ python -m http.server 4173
 
 Note: the site must be served over HTTP, not opened as `file://` — relative
 asset paths won't resolve otherwise.
+
+## Building
+
+The site is generated: run `python build.py` to render the seven root pages
+from `content/site.json`, `templates/` and `templates/pages/`.
+
+- **Never edit a root `.html` file.** Edit `content/site.json`, `templates/` or
+  `templates/pages/`, then rebuild and commit the regenerated output.
+- `python build.py --check` reports any page that has drifted from its
+  templates (`stale: none` and exit 0 when clean, otherwise lists names, exit 1).
+- Install tooling with `pip install -r dev-requirements.txt`; run tests with
+  `PYTHONUTF8=1 python -m pytest`.
+- Templates are named `.j2` and page body fragments `.frag` because Cloudflare
+  Pages serves the whole repo root: no `.html` other than the seven real pages
+  may be committed (`tests/test_no_stray_html.py` enforces this).
+- The dev dependency file is deliberately **not** named `requirements.txt`:
+  Cloudflare Pages may auto-run `pip install -r requirements.txt`, and a failure
+  there would break the production deploy for a build the deploy does not use.
+  The generated `.html` is committed; Cloudflare runs no build.
