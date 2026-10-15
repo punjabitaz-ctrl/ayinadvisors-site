@@ -1,0 +1,193 @@
+{
+  "nav": [
+    {
+      "label": "Home",
+      "href": "index.html",
+      "class": ""
+    },
+    {
+      "label": "BizCheck",
+      "href": "BizCheck.html",
+      "class": "gold"
+    },
+    {
+      "label": "Services",
+      "href": "Services.html",
+      "class": ""
+    },
+    {
+      "label": "About",
+      "href": "About.html",
+      "class": ""
+    },
+    {
+      "label": "Projects",
+      "href": "Projects.html",
+      "class": ""
+    },
+    {
+      "label": "Contact",
+      "href": "Contact.html",
+      "class": ""
+    }
+  ],
+  "footer": {
+    "tagline": "Channel-led US market entry for international companies.<br />New York.",
+    "columns": [
+      {
+        "heading": "Navigate",
+        "links": [
+          {
+            "label": "Home",
+            "href": "index.html"
+          },
+          {
+            "label": "Services",
+            "href": "Services.html"
+          },
+          {
+            "label": "About",
+            "href": "About.html"
+          },
+          {
+            "label": "Projects",
+            "href": "Projects.html"
+          },
+          {
+            "label": "BizCheck",
+            "href": "BizCheck.html"
+          },
+          {
+            "label": "Contact",
+            "href": "Contact.html"
+          }
+        ]
+      },
+      {
+        "heading": "Practice",
+        "links": [
+          {
+            "label": "Market Entry Research",
+            "href": "Services.html#research"
+          },
+          {
+            "label": "Channel Strategy",
+            "href": "Services.html#channel"
+          },
+          {
+            "label": "Partner Introductions",
+            "href": "Services.html#introductions"
+          },
+          {
+            "label": "Regional Expansion",
+            "href": "Services.html#expansion"
+          }
+        ]
+      },
+      {
+        "heading": "Get in touch",
+        "links": [
+          {
+            "label": "Book a consultation",
+            "href": "Contact.html"
+          },
+          {
+            "label": "hello@ayinadvisors.com",
+            "href": "mailto:hello@ayinadvisors.com"
+          },
+          {
+            "label": "Submit a BizCheck",
+            "href": "BizCheck.html"
+          }
+        ]
+      }
+    ],
+    "legal": "AYiN Advisors. All rights reserved.",
+    "strapline": "Entering the US market, clearly."
+  },
+  "pages": {
+    "index": {
+      "title": "AYiN Advisors — US Market Entry & Channel Strategy",
+      "description": "AYiN Advisors helps international companies enter the US market through channel activities, partner introductions and regional expansion.",
+      "canonical": "https://ayinadvisors.com/",
+      "active": "Home",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true
+    },
+    "About": {
+      "title": "About — AYiN Advisors",
+      "description": "AYiN Advisors are operators, not observers — a channel-first advisory opening the US market for international companies.",
+      "canonical": "https://ayinadvisors.com/About.html",
+      "active": "About",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true
+    },
+    "Services": {
+      "title": "Services — AYiN Advisors",
+      "description": "Market entry research, channel strategy & enablement, B2B partner introductions, and regional expansion to Canada and LATAM.",
+      "canonical": "https://ayinadvisors.com/Services.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true
+    },
+    "Projects": {
+      "title": "Projects — AYiN Advisors",
+      "description": "Ventures and products built by AYiN Advisors — from completed launches to projects in development and testing.",
+      "canonical": "https://ayinadvisors.com/Projects.html",
+      "active": "Projects",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true
+    },
+    "BizCheck": {
+      "title": "BizCheck — Business Idea Evaluation · AYiN Advisors",
+      "description": "A ten-agent expert panel evaluates your business idea the way a real advisory firm would — and returns a single verdict: GO, CONDITIONAL GO, or NO GO.",
+      "canonical": "https://ayinadvisors.com/BizCheck.html",
+      "active": "BizCheck",
+      "cta": {
+        "href": "#submit",
+        "label": "Submit Your Idea",
+        "class": "btn"
+      },
+      "footer": true
+    },
+    "Contact": {
+      "title": "Book a Consultation — AYiN Advisors",
+      "description": "Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy.",
+      "canonical": "https://ayinadvisors.com/Contact.html",
+      "active": "Contact",
+      "cta": {
+        "href": "#book",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true
+    },
+    "404": {
+      "title": "Page not found — AYiN Advisors",
+      "description": "The page you're looking for can't be found. Return to AYiN Advisors.",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": false
+    }
+  }
+}
