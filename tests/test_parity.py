@@ -33,6 +33,7 @@ def test_footer_delta_is_exactly_the_agreed_links(stem, rendered):
     assert set(b) - set(a) == FOOTER_ADDED
     assert set(a) - set(b) == FOOTER_REMOVED
     assert b == page_facts(baseline_html("BizCheck"))["footer_links"]
+    assert page_facts(rendered[stem])["footer_text"] == page_facts(baseline_html("BizCheck"))["footer_text"]
 
 
 def test_bizcheck_turnstile_latch_precedes_api_js(rendered):
