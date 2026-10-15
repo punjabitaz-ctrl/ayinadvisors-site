@@ -173,6 +173,13 @@ Three pages, new copy.
 **Sprint 5 — Digital Presence sub-pages.**
 Three pages, new copy.
 
+**Sprint 6 — The 404 page.** Last, deliberately.
+A redesign in the AYiN visual language, led by the line *"You've found a page that's
+not ready for Primetime."* It goes last because a 404's job is to recover a lost
+visitor, and it cannot route them anywhere useful until the twenty pages it would route
+them to exist. Earlier sprints regenerate `404.html` verbatim, including its currently
+missing footer, which this sprint reconsiders.
+
 Sitemap regenerates every sprint automatically.
 
 The implementation plan is written **per sprint**, not once for all five. Sprint 1
