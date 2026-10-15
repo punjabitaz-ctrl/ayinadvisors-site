@@ -64,3 +64,14 @@ def test_body_rest_tracks_body_copy_not_nav():
     nav_only = html.replace('<nav class="nav"', '<nav class="nav" data-x="1"', 1)
     assert nav_only != html
     assert page_facts(nav_only)["body_rest"] == base
+
+
+def test_body_rest_ignores_comments_but_not_copy():
+    html = baseline_html("About")
+    base = page_facts(html)["body_rest"]
+    with_comment = html.replace("<body>", "<body><!-- decorative -->", 1)
+    assert with_comment != html
+    assert page_facts(with_comment)["body_rest"] == base
+    from bs4 import BeautifulSoup
+    h1 = BeautifulSoup(html, "html.parser").find("h1").get_text().split()[0]
+    assert page_facts(with_comment.replace(h1, h1 + "ZZ", 1))["body_rest"] != base

@@ -1,5 +1,5 @@
 import re
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 
 def _norm(s: str) -> str:
@@ -31,6 +31,8 @@ def _body_rest(html: str) -> str:
             el.decompose()
     for el in soup.find_all("script"):
         el.decompose()
+    for c in soup.find_all(string=lambda t: isinstance(t, Comment)):
+        c.extract()
     return _norm(soup.body.decode_contents()) if soup.body else ""
 
 
