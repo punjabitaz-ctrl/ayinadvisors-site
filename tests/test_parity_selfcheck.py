@@ -52,6 +52,15 @@ def test_body_rest_differs_between_pages():
     assert a != b
 
 
+def _edit_in_h1(html, word):
+    """Append ZZ to `word` inside the first <h1> only (never <head>, title or meta)."""
+    import re
+    m = re.search(r"<h1[^>]*>.*?</h1>", html, re.S)
+    assert m and word in m.group(0)
+    edited = m.group(0).replace(word, word + "ZZ", 1)
+    return html[: m.start()] + edited + html[m.end():]
+
+
 def test_body_rest_tracks_body_copy_not_nav():
     html = baseline_html("About")
     base = page_facts(html)["body_rest"]
@@ -59,7 +68,7 @@ def test_body_rest_tracks_body_copy_not_nav():
     from bs4 import BeautifulSoup
     h1 = BeautifulSoup(html, "html.parser").find("h1").get_text().split()[0]
     assert h1 in html
-    edited = html.replace(h1, h1 + "ZZ", 1)
+    edited = _edit_in_h1(html, h1)
     assert page_facts(edited)["body_rest"] != base
     nav_only = html.replace('<nav class="nav"', '<nav class="nav" data-x="1"', 1)
     assert nav_only != html
@@ -74,4 +83,4 @@ def test_body_rest_ignores_comments_but_not_copy():
     assert page_facts(with_comment)["body_rest"] == base
     from bs4 import BeautifulSoup
     h1 = BeautifulSoup(html, "html.parser").find("h1").get_text().split()[0]
-    assert page_facts(with_comment.replace(h1, h1 + "ZZ", 1))["body_rest"] != base
+    assert page_facts(_edit_in_h1(with_comment, h1))["body_rest"] != base

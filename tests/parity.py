@@ -1,5 +1,5 @@
 import re
-from bs4 import BeautifulSoup, Comment
+from bs4 import BeautifulSoup, Comment, Doctype, NavigableString
 
 
 def _norm(s: str) -> str:
@@ -34,6 +34,53 @@ def _body_rest(html: str) -> str:
     for c in soup.find_all(string=lambda t: isinstance(t, Comment)):
         c.extract()
     return _norm(soup.body.decode_contents()) if soup.body else ""
+
+
+def _attrs(el) -> tuple:
+    return tuple(sorted(
+        (k, " ".join(v) if isinstance(v, list) else v) for k, v in el.attrs.items()
+    ))
+
+
+def canon_subtree(soup, selector: str) -> list:
+    """Every element under the first match of `selector`, depth-first in document order.
+
+    Entry: (depth, tag, sorted attributes, whitespace-collapsed direct text).
+    """
+    root = soup.select_one(selector)
+    if root is None:
+        return []
+    out = []
+
+    def walk(el, depth):
+        text = _norm(" ".join(
+            str(c) for c in el.children
+            if isinstance(c, NavigableString) and not isinstance(c, Comment)
+        ))
+        out.append((depth, el.name, _attrs(el), text))
+        for child in el.find_all(True, recursive=False):
+            walk(child, depth + 1)
+
+    walk(root, 0)
+    return out
+
+
+def _doc_shape(html: str) -> list:
+    soup = BeautifulSoup(html, "html.parser")
+    meta = lambda sel: _attrs(soup.select_one(sel)) if soup.select_one(sel) else None
+    return [
+        ("doctype", any(isinstance(n, Doctype) and n.lower() == "html" for n in soup.contents)),
+        ("html", _attrs(soup.html) if soup.html else None),
+        ("body", _attrs(soup.body) if soup.body else None),
+        ("meta-charset", meta("meta[charset]")),
+        ("meta-viewport", meta('meta[name="viewport"]')),
+        ("nav.nav", canon_subtree(soup, "nav.nav")),
+        (".mobile-drawer", canon_subtree(soup, ".mobile-drawer")),
+        ("footer.footer", canon_subtree(soup, "footer.footer")),
+        ("scripts", [
+            (s.get("src"), _attrs(s), _norm(s.get_text())) for s in soup.find_all("script")
+        ]),
+    ]
 
 
 def page_facts(html: str) -> dict:
@@ -81,11 +128,5 @@ def page_facts(html: str) -> dict:
         "inline_scripts": [s.get_text() for s in soup.find_all("script") if not s.get("src")],
         "inline_styles": [s.get_text() for s in soup.find_all("style")],
         "body_rest": _body_rest(html),
+        "doc_shape": _doc_shape(html),
     }
-
-
-def diff_facts(a: dict, b: dict) -> list[str]:
-    return [
-        f"{k}:\n  baseline={a[k]!r}\n  built   ={b[k]!r}"
-        for k in a if a[k] != b[k]
-    ]

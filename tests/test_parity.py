@@ -19,11 +19,35 @@ def rendered():
 def test_generated_page_matches_baseline(stem, rendered):
     a = page_facts(baseline_html(stem))
     b = page_facts(rendered[stem])
+    # doc_shape is compared separately below (its footer entry is unified).
     ignore = {"footer_links", "footer_text"} if stem in FOOTER_UNIFIED else set()
+    ignore.add("doc_shape")
     for key in a:
         if key in ignore:
             continue
         assert a[key] == b[key], f"{stem}: {key}\n  baseline={a[key]!r}\n  built   ={b[key]!r}"
+
+
+def _split_footer(shape):
+    footer = [v for k, v in shape if k == "footer.footer"]
+    rest = [(k, v) for k, v in shape if k != "footer.footer"]
+    return footer, rest
+
+
+@pytest.mark.parametrize("stem", PAGES)
+def test_doc_shape_matches_baseline(stem, rendered):
+    """Doctype, <html>/<body> attrs, charset/viewport, full chrome subtrees and every script."""
+    built = page_facts(rendered[stem])["doc_shape"]
+    base = page_facts(baseline_html(stem))["doc_shape"]
+    if stem not in FOOTER_UNIFIED:
+        assert built == base, stem
+        return
+    # Footer is unified to BizCheck's baseline footer; everything else is the page's own.
+    built_footer, built_rest = _split_footer(built)
+    base_footer, base_rest = _split_footer(base)
+    biz_footer, _ = _split_footer(page_facts(baseline_html("BizCheck"))["doc_shape"])
+    assert built_footer == biz_footer, stem
+    assert built_rest == base_rest, stem
 
 
 @pytest.mark.parametrize("stem", FOOTER_UNIFIED)
