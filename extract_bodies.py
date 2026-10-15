@@ -10,7 +10,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 for stem in PAGES:
     src = (ROOT / "tests" / "baseline" / f"{stem}.snap").read_text(encoding="utf-8")
 
-    # head_extra is the whole head MINUS the five things base.html owns, verbatim and
+    # head_extra is the whole head MINUS the five things base.j2 owns, verbatim and
     # in source order. Do not enumerate what to keep: six pages write their fonts link
     # as <link href=... rel="stylesheet"> and an allow-list regex silently drops it.
     head = src[src.index("<head>") + len("<head>"): src.index("</head>")]
@@ -32,7 +32,7 @@ for stem in PAGES:
 
     after = src[tail + len('<script src="assets/site.js"></script>'): src.rindex("</body>")].strip()
 
-    (OUT / f"{stem}.body.html").write_text(body + "\n", encoding="utf-8")
+    (OUT / f"{stem}.body.frag").write_text(body + "\n", encoding="utf-8")
     (OUT / f"{stem}.json").write_text(
         json.dumps({"head_extra": head_extra, "body_scripts": after}, indent=2, ensure_ascii=False),
         encoding="utf-8")

@@ -22,14 +22,14 @@ def load_site() -> dict:
 
 def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = "") -> str:
     site = load_site()
-    return env.get_template("base.html").render(
+    return env.get_template("base.j2").render(
         site=site,
         page=site["pages"][stem],
         body=body,
         head_extra=head_extra,
         body_scripts=body_scripts,
-        logo=env.get_template("_logo.html").render(),
-        footer=env.get_template("_footer.html").render(site=site),
+        logo=env.get_template("_logo.j2").render(),
+        footer=env.get_template("_footer.j2").render(site=site),
     )
 
 
@@ -39,7 +39,7 @@ def render_all() -> dict[str, str]:
         parts = json.loads((ROOT / "templates" / "pages" / f"{stem}.json").read_text(encoding="utf-8"))
         out[stem] = render_page(
             stem,
-            (ROOT / "templates" / "pages" / f"{stem}.body.html").read_text(encoding="utf-8"),
+            (ROOT / "templates" / "pages" / f"{stem}.body.frag").read_text(encoding="utf-8"),
             parts.get("head_extra", ""),
             parts.get("body_scripts", ""),
         )

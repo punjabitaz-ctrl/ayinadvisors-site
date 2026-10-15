@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /templates/
+Disallow: /content/
+Disallow: /tests/
+Disallow: /docs/
 
 Sitemap: https://ayinadvisors.com/sitemap.xml
 
