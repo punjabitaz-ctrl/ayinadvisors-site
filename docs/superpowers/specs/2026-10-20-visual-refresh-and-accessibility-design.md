@@ -2,7 +2,7 @@
 
 Date: 2026-10-20
 Branch: `phase-2a-theme` (off `master` after Sprint 1)
-Status: awaiting review
+Status: approved 2026-10-20
 Covers: Phase 2a in full; Phase 2b, 2c and Phase 3 in outline.
 
 ## Purpose
@@ -18,12 +18,11 @@ accessibility a property of the design system rather than a repair job afterward
 | Page rhythm | **Light-led.** Navy only in the hero and the footer. Almond, cream and white carry the page. The closing call-to-action band is a gold fill. |
 | Palette | Existing navy and cream, plus white, beige and almond. Gold stays the brand accent. |
 | Accessibility enforcement | **Full gate**: contrast-checked tokens, a static HTML lint, axe-core in real Chromium, and a per-sprint manual checklist. |
-| Order of work | Theme tokens (2a) before the Phase 1 content sprints 2 to 6, so the fourteen new pages are built once in the new look. |
+| Order of work | 2a, then 2b and 2c, all **before** the Phase 1 content sprints 2 to 6, so the fourteen new pages are built once in the final look and in both themes. Phase 3 follows. |
+| Release | Nothing is pushed to production until the whole set of updates is finished. |
+| Output folder | Unchanged: Cloudflare keeps serving the repo root. No `public/` split. |
 | Site tagline | "AYiN Advisors - Business Solutions for a Digital World". Applied with the Sprint 2 homepage rewrite, not now. |
 | Pricing | Appears nowhere on the site. |
-
-Not yet decided: whether 2b and 2c also run before the Phase 1 content sprints. That is a separate
-call once 2a has landed.
 
 ## What the audit found
 
@@ -45,8 +44,10 @@ The contrast failures have five root causes:
 3. Projects: slate `#5d6c7b` on navy 3.45:1, `#747b82` on `#08182c` 4.16:1, gold-deep on `#232b33` 4.17:1.
 4. Decorative ghost numerals (`#efe9da` on cream, 1.09 to 1.13:1) on Projects and BizCheck. These are
    decoration and should be marked as such, not recoloured.
-5. Projects: `#f9f5ed` on `#faf7f0`, 1.01:1, on two small elements. Unexplained: either near-invisible
-   text or axe misreading a gradient. Must be investigated before 2a changes that page.
+5. Projects: the "In Development" status badge on the third and fourth cards, `#f9f5ed` on `#faf7f0`,
+   1.01:1. A real bug, not an axe artefact: `.badge-dev` sets cream text at half opacity on a faint cream
+   wash, which was designed for a dark card, but those two cards are light. The label is effectively
+   invisible to every visitor today. A contextual token system fixes it by construction.
 
 Axe also reports about 20 contrast items per page as "needs review" (text over the canvas and
 gradients). Automation cannot resolve those; they need a human sign-off recorded in an allowlist.
@@ -200,7 +201,8 @@ identical across pages, links resolve, forms, ids and scripts present) provide t
 
 Each task is test-first and individually reviewable.
 
-- **T0** Re-snapshot baselines from merged output; investigate root cause 5 on Projects.
+- **T0** Re-snapshot baselines from merged output, and add `tools/baseline.py` so each later task can
+  show its exact delta against the previous snapshot before re-snapshotting.
 - **T1** `theme.json`, the generator, and the contrast test (red against today's colours).
 - **T2** Static HTML lint and the browser gate wired up, red against today's pages.
 - **T3** Migrate `assets/styles.css`, page fragments and inline styles to semantic tokens; the colour-literal lint goes green.
@@ -228,13 +230,14 @@ Each task is test-first and individually reviewable.
   undeclared pair.
 - **Text over photos.** Prevented by rule; the one exception (hero scrim) is allowlisted with a reason.
 - **Internal folders are fetchable by URL** because Cloudflare serves the repo root. Unchanged from
-  Sprint 1; a `public/` output folder would fix it and is worth doing before more assets land here.
+  Sprint 1 by decision (no `public/` split); `robots.txt` disallows `/templates/`, `/content/`,
+  `/tests/`, `/docs/` and, from this sprint, `/tools/`.
 - **Playwright version drift against the installed Chromium.** Pin the version and document the
   `playwright install chromium` step.
 
 ## Open questions
 
-1. Whether 2b and 2c also precede the Phase 1 content sprints (recommended: decide after 2a).
-2. Projects root cause 5 (the `#f9f5ed` text): investigated in T0 before anything changes there.
-3. Exact gold-ink values: solved by the generator, then eyeballed on the real pages.
-4. Whether to switch the Pages output to a `public/` folder before the image assets arrive.
+1. Exact gold-ink values: solved by the generator, then eyeballed on the real pages.
+
+Resolved: 2b and 2c run before the Phase 1 content sprints; no `public/` split; Projects root cause 5
+is explained above.
