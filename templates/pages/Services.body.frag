@@ -1,12 +1,12 @@
 <!-- PAGE HEADER -->
-<header class="pagehead">
+<header class="pagehead surface-inverse">
   <svg class="ph-motif" viewBox="0 0 460 460" aria-hidden="true">
     <g class="spin">
       <circle cx="230" cy="230" r="228"></circle>
       <circle cx="230" cy="230" r="170"></circle>
       <circle cx="230" cy="230" r="110"></circle>
     </g>
-    <circle cx="230" cy="230" r="50" fill="rgba(198,161,92,0.12)" stroke="#c6a15c" stroke-width="0.8"></circle>
+    <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
   </svg>
   <div class="wrap">
     <span class="eyebrow on-navy reveal">Our Practice</span>
@@ -16,12 +16,12 @@
 </header>
 
 <!-- SERVICES DETAIL -->
-<main class="section paper" style="padding-top:clamp(40px,6vw,80px)">
+<main class="section surface-page" style="padding-top:clamp(40px,6vw,80px)">
   <div class="wrap">
 
     <article class="svc-detail reveal" id="research">
       <div class="sd-left">
-        <div class="sd-num">01</div>
+        <div class="sd-num" aria-hidden="true">01</div>
         <h2 class="h2">US Market Entry Research</h2>
         <span class="tag">Discovery</span>
       </div>
@@ -40,7 +40,7 @@
 
     <article class="svc-detail reveal" id="channel">
       <div class="sd-left">
-        <div class="sd-num">02</div>
+        <div class="sd-num" aria-hidden="true">02</div>
         <h2 class="h2">Channel Strategy &amp; Enablement</h2>
         <span class="tag">Architecture</span>
       </div>
@@ -59,7 +59,7 @@
 
     <article class="svc-detail reveal" id="introductions">
       <div class="sd-left">
-        <div class="sd-num">03</div>
+        <div class="sd-num" aria-hidden="true">03</div>
         <h2 class="h2">B2B Partner Introductions</h2>
         <span class="tag">Access</span>
       </div>
@@ -78,7 +78,7 @@
 
     <article class="svc-detail reveal" id="expansion">
       <div class="sd-left">
-        <div class="sd-num">04</div>
+        <div class="sd-num" aria-hidden="true">04</div>
         <h2 class="h2">Regional Expansion · Canada &amp; LATAM</h2>
         <span class="tag">Scale</span>
       </div>
@@ -99,13 +99,13 @@
 </main>
 
 <!-- CTA -->
-<section class="section cta navy">
+<section class="section cta surface-inverse">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">
       <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with clarity</span>
-      <h2 class="h2 reveal" data-d="1" style="color:var(--cream);margin:24px 0 26px">Not sure where to begin?</h2>
-      <p class="lead reveal" data-d="2" style="color:rgba(247,243,234,0.7);margin-inline:auto">Most engagements start with a market read. Book a consultation and we'll tell you — candidly — where the opening is.</p>
+      <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Not sure where to begin?</h2>
+      <p class="lead reveal" data-d="2" style="margin-inline:auto">Most engagements start with a market read. Book a consultation and we'll tell you — candidly — where the opening is.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>

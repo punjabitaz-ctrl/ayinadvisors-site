@@ -1,5 +1,5 @@
 <!-- ===================== HERO ===================== -->
-<header class="hero">
+<header class="hero surface-inverse">
   <canvas id="iris"></canvas>
   <div class="hero-vignette"></div>
   <div class="wrap">
@@ -24,7 +24,7 @@
 </header>
 
 <!-- ===================== MARQUEE ===================== -->
-<div class="marquee" aria-hidden="true">
+<div class="marquee surface-inverse" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Market Entry Research</span>
     <span class="marquee-item">Channel Enablement</span>
@@ -38,7 +38,7 @@
 </div>
 
 <!-- ===================== SERVICES ===================== -->
-<section class="section paper" id="services">
+<section class="section surface-page" id="services">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -78,7 +78,7 @@
 </section>
 
 <!-- ===================== PROCESS ===================== -->
-<section class="section navy" id="process">
+<section class="section surface-inverse" id="process">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -101,7 +101,7 @@
 </section>
 
 <!-- ===================== WHY US ===================== -->
-<section class="section paper" id="why">
+<section class="section surface-page" id="why">
   <div class="wrap">
     <div class="why-grid reveal">
       <div class="globe-stage" data-parallax="0.02">
@@ -143,7 +143,7 @@
 </section>
 
 <!-- ===================== ABOUT TEASER ===================== -->
-<section class="section navy" id="about">
+<section class="section surface-inverse" id="about">
   <div class="wrap">
     <div class="about-teaser">
       <div>
@@ -161,7 +161,7 @@
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="section cta navy">
+<section class="section cta surface-inverse">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">

@@ -1,0 +1,142 @@
+[
+  {
+    "path": "assets/site.js",
+    "literal": "#061325",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},${alpha})",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},${p})",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.0)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.08)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.26)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.42)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.5)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.55)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.8)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "assets/site.js",
+    "literal": "rgba(${GOLD},0.95)",
+    "reason": "Iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "templates/_footer.j2",
+    "literal": "#061325",
+    "reason": "Logo mark SVG fill/stroke: SVG presentation attributes cannot reference CSS custom properties; the mark is fixed brand artwork on the inverse (navy) surfaces."
+  },
+  {
+    "path": "templates/_footer.j2",
+    "literal": "#c6a15c",
+    "reason": "Logo mark SVG fill/stroke: SVG presentation attributes cannot reference CSS custom properties; the mark is fixed brand artwork on the inverse (navy) surfaces."
+  },
+  {
+    "path": "templates/_logo.j2",
+    "literal": "#061325",
+    "reason": "Logo mark SVG fill/stroke: SVG presentation attributes cannot reference CSS custom properties; the mark is fixed brand artwork on the inverse (navy) surfaces."
+  },
+  {
+    "path": "templates/_logo.j2",
+    "literal": "#c6a15c",
+    "reason": "Logo mark SVG fill/stroke: SVG presentation attributes cannot reference CSS custom properties; the mark is fixed brand artwork on the inverse (navy) surfaces."
+  },
+  {
+    "path": "templates/pages/404.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  },
+  {
+    "path": "templates/pages/About.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  },
+  {
+    "path": "templates/pages/BizCheck.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  },
+  {
+    "path": "templates/pages/BizCheck.json",
+    "literal": "%23c6a15c",
+    "reason": "Select-arrow data-URI: a background image URL cannot reference CSS custom properties."
+  },
+  {
+    "path": "templates/pages/BizCheck.json",
+    "literal": "rgba(' + GOLD + ',' + (0.04 + i / 5 * 0.08)",
+    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "templates/pages/BizCheck.json",
+    "literal": "rgba(' + GOLD + ',0)",
+    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "templates/pages/BizCheck.json",
+    "literal": "rgba(' + GOLD + ',0.18)",
+    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "templates/pages/BizCheck.json",
+    "literal": "rgba(' + GOLD + ',0.35)",
+    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
+  },
+  {
+    "path": "templates/pages/Contact.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  },
+  {
+    "path": "templates/pages/Contact.json",
+    "literal": "%23c6a15c",
+    "reason": "Select-arrow data-URI: a background image URL cannot reference CSS custom properties."
+  },
+  {
+    "path": "templates/pages/Projects.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  },
+  {
+    "path": "templates/pages/Services.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  },
+  {
+    "path": "templates/pages/index.json",
+    "literal": "#061325",
+    "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
+  }
+]

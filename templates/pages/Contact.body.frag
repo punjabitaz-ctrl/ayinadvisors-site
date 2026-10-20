@@ -1,5 +1,5 @@
 <!-- CONTACT -->
-<header class="contact-hero">
+<header class="contact-hero surface-inverse">
   <canvas id="iris"></canvas>
   <div class="contact-grid">
     <div class="contact-intro">

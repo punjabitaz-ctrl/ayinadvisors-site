@@ -21,21 +21,21 @@
   .nf {
     position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
     text-align: center; overflow: hidden;
-    background: radial-gradient(120% 100% at 50% 18%, var(--navy-800) 0%, var(--navy-900) 48%, var(--navy-950) 100%);
+    background: radial-gradient(120% 100% at 50% 18%, var(--field-bg) 0%, var(--surface) 48%, var(--surface) 100%);
   }
   .nf-rings { position: absolute; left: 50%; top: 42%; transform: translate(-50%,-50%); width: min(120vmin,1100px); height: min(120vmin,1100px); z-index: 1; opacity: 0.55; pointer-events: none; }
   .nf-rings circle { fill: none; stroke: var(--line-gold); stroke-width: 0.5; }
   .nf-rings .spin { transform-origin: 550px 550px; animation: spin 90s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .nf-inner { position: relative; z-index: 2; padding: var(--gutter); max-width: 640px; }
-  .nf .code { font-family: var(--serif); font-weight: 500; font-style: italic; color: var(--gold-bright); font-size: clamp(5rem, 16vw, 11rem); line-height: 0.9; letter-spacing: -0.02em; }
-  .nf h1 { color: var(--cream); font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 18px 0 18px; }
-  .nf p { color: rgba(247,243,234,0.66); max-width: 44ch; margin: 0 auto 38px; }
+  .nf .code { font-family: var(--serif); font-weight: 500; font-style: italic; color: var(--accent-ink); font-size: clamp(5rem, 16vw, 11rem); line-height: 0.9; letter-spacing: -0.02em; }
+  .nf h1 { color: var(--ink); font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 18px 0 18px; }
+  .nf p { color: var(--ink-muted); max-width: 44ch; margin: 0 auto 38px; }
   .nf-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 </style>
 </head>
 <body>
-<nav class="nav">
+<nav class="nav surface-inverse">
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -60,7 +60,7 @@
   </div>
 </nav>
 
-<div class="mobile-drawer">
+<div class="mobile-drawer surface-inverse">
   <a href="index.html">Home</a>
   <a href="BizCheck.html" class="gold">BizCheck</a>
   <a href="Services.html">Services</a>
@@ -70,7 +70,7 @@
   <a href="Contact.html" class="md-cta">Book a Consultation</a>
 </div>
 
-<main class="nf">
+<main class="nf surface-inverse">
   <svg class="nf-rings" viewBox="0 0 1100 1100" aria-hidden="true">
     <g class="spin">
       <circle cx="550" cy="550" r="544"></circle>
@@ -78,7 +78,7 @@
       <circle cx="550" cy="550" r="316"></circle>
     </g>
     <circle cx="550" cy="550" r="200"></circle>
-    <circle cx="550" cy="550" r="90" fill="rgba(198,161,92,0.10)" stroke="#c6a15c" stroke-width="0.8"></circle>
+    <circle cx="550" cy="550" r="90" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
   </svg>
   <div class="nf-inner">
     <span class="eyebrow on-navy center reveal" style="justify-content:center">Off the map</span>

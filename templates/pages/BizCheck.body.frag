@@ -1,5 +1,5 @@
 <!-- ===================== HERO ===================== -->
-<header class="bc-hero">
+<header class="bc-hero surface-inverse">
   <canvas id="iris"></canvas>
   <div class="wrap bc-grid">
     <div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="reveal" data-d="2">
-      <div class="report-card">
+      <div class="report-card surface-card">
         <div class="rc-top">
           <div class="rc-brand"><span>AYiN Advisors</span> · BizCheck</div>
           <div class="rc-scan">Rapid Scan</div>
@@ -33,7 +33,7 @@
 </header>
 
 <!-- ===================== HOW IT WORKS ===================== -->
-<section class="section paper" id="how">
+<section class="section surface-page" id="how">
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
@@ -44,17 +44,17 @@
     </div>
     <div class="bc-steps">
       <div class="bc-step reveal">
-        <div class="n">01</div>
+        <div class="n" aria-hidden="true">01</div>
         <h3 class="h3">Describe your idea</h3>
         <p>Fill out a focused brief: what your business does, who it serves, your stage and market. No deck required.</p>
       </div>
       <div class="bc-step reveal" data-d="1">
-        <div class="n">02</div>
+        <div class="n" aria-hidden="true">02</div>
         <h3 class="h3">Panel evaluates</h3>
         <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk — independently.</p>
       </div>
       <div class="bc-step reveal" data-d="2">
-        <div class="n">03</div>
+        <div class="n" aria-hidden="true">03</div>
         <h3 class="h3">Receive your verdict</h3>
         <p>A structured report with each panelist's score, their key concerns, and a single aggregate verdict with findings.</p>
       </div>
@@ -63,14 +63,14 @@
 </section>
 
 <!-- ===================== THE PANEL ===================== -->
-<section class="section navy" id="panel">
+<section class="section surface-inverse" id="panel">
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
         <span class="eyebrow on-navy reveal">The Evaluators</span>
-        <h2 class="h2 reveal" data-d="1" style="color:var(--cream)">Ten perspectives.<br />One verdict.</h2>
+        <h2 class="h2 reveal" data-d="1">Ten perspectives.<br />One verdict.</h2>
       </div>
-      <p class="lead right reveal" data-d="2" style="color:rgba(247,243,234,0.6)">Each agent specialises in a distinct dimension of business viability — and none of them pull punches.</p>
+      <p class="lead right reveal" data-d="2" style="color:var(--ink-muted)">Each agent specialises in a distinct dimension of business viability — and none of them pull punches.</p>
     </div>
     <div class="panel-grid reveal" data-d="1">
       <div class="pm"><div class="pm-n">01</div><div class="pm-t">The Sales Director</div><div class="pm-f">Revenue potential, channel velocity &amp; sales-cycle realism</div></div>
@@ -88,7 +88,7 @@
 </section>
 
 <!-- ===================== SAMPLE OUTPUT ===================== -->
-<section class="section paper" id="sample">
+<section class="section surface-page" id="sample">
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
@@ -119,7 +119,7 @@
         </div>
       </div>
       <div class="reveal" data-d="1">
-        <div style="font-size:.6rem;font-weight:700;letter-spacing:.26em;color:var(--slate);text-align:center;margin-bottom:14px;text-transform:uppercase">Sample Report</div>
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:.26em;color:var(--ink-muted);text-align:center;margin-bottom:14px;text-transform:uppercase">Sample Report</div>
         <div class="sample-report">
           <div class="rc-top">
             <div class="rc-brand"><span>AYiN Advisors</span> · BizCheck</div>
@@ -150,7 +150,7 @@
 </section>
 
 <!-- ===================== INTAKE ===================== -->
-<section class="section navy intake" id="submit">
+<section class="section surface-inverse intake" id="submit">
   <canvas id="iris2"></canvas>
   <div class="wrap">
     <div class="intake-grid">

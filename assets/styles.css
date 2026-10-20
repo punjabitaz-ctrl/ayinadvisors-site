@@ -1,33 +1,19 @@
 /* ============================================================
    AYiN Advisors — Shared Design System
    Premium institutional advisory · navy + gold · eye motif
+
+   Colour comes from assets/theme.css (generated from content/theme.json).
+   Components read only the contextual roles --surface --ink --ink-muted
+   --accent-ink --line --field-* --focus-ring --danger-ink --success-ink,
+   and the globals --accent-fill --accent-fill-hover --on-accent. A band
+   picks its roles by carrying .surface-page / -alt / -card / -inverse /
+   -accent. No colour literal belongs in this file.
    ============================================================ */
 
 :root {
-  /* Palette */
-  --navy-950: #061325;
-  --navy-900: #08182c;
-  --navy-850: #0a1f37;
-  --navy-800: #0d2742;
-  --navy-700: #143150;
-  --navy-600: #1d4067;
-
-  --gold: #c6a15c;
-  --gold-bright: #ddbd7e;
-  --gold-deep: #a8854a;
-  --gold-glow: rgba(198, 161, 92, 0.45);
-
-  --paper: #f7f3ea;
-  --paper-2: #efe9da;
-  --cream: #faf7f0;
-
-  --ink: #0f1a26;
-  --ink-soft: #2a3a49;
-  --slate: #5d6c7b;
-  --slate-light: #8a98a6;
-  --line: rgba(15, 26, 38, 0.12);
-  --line-gold: rgba(198, 161, 92, 0.30);
-  --line-on-navy: rgba(255, 255, 255, 0.10);
+  /* Washes derived from the gold fill (never used for text) */
+  --line-gold: color-mix(in srgb, var(--accent-fill) 30%, transparent);
+  --gold-glow: color-mix(in srgb, var(--accent-fill) 45%, transparent);
 
   /* Type */
   --serif: "Cormorant Garamond", Georgia, serif;
@@ -49,14 +35,14 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-render
 
 body {
   font-family: var(--sans);
-  background: var(--cream);
+  background: var(--surface);
   color: var(--ink);
   font-size: 17px;
   line-height: 1.7;
   overflow-x: hidden;
 }
 
-::selection { background: var(--gold); color: var(--navy-950); }
+::selection { background: var(--accent-fill); color: var(--on-accent); }
 
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -69,7 +55,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gold-deep);
+  color: var(--accent-ink);
   display: inline-flex;
   align-items: center;
   gap: 0.85em;
@@ -78,11 +64,10 @@ button { font-family: inherit; cursor: pointer; }
   content: "";
   width: 28px;
   height: 1px;
-  background: var(--gold);
+  background: var(--accent-fill);
   display: inline-block;
 }
 .eyebrow.center::before { display: none; }
-.on-navy .eyebrow, .eyebrow.on-navy { color: var(--gold-bright); }
 
 h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; letter-spacing: -0.01em; }
 
@@ -101,31 +86,24 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 .lead {
   font-size: clamp(1.18rem, 1.7vw, 1.42rem);
   line-height: 1.55;
-  color: var(--ink-soft);
+  color: var(--ink-muted);
   font-weight: 400;
 }
-.italic-accent { font-style: italic; color: var(--gold-deep); }
-.on-navy .italic-accent { color: var(--gold-bright); }
+.italic-accent { font-style: italic; color: var(--accent-ink); }
 
 /* ---------- Layout helpers ---------- */
 .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: clamp(90px, 12vw, 168px); position: relative; }
 .section-sm { padding-block: clamp(64px, 8vw, 110px); }
 
-.navy { background: var(--navy-900); color: var(--paper); }
-.navy h1, .navy h2, .navy h3 { color: var(--cream); }
-.navy .lead { color: rgba(247, 243, 234, 0.72); }
-.paper { background: var(--paper); }
-
-.muted { color: var(--slate); }
-.navy .muted { color: rgba(247, 243, 234, 0.6); }
+.muted { color: var(--ink-muted); }
 
 /* section index number */
 .sec-index {
   font-family: var(--serif);
   font-size: 1rem;
   letter-spacing: 0.2em;
-  color: var(--gold-deep);
+  color: var(--accent-ink);
   font-weight: 600;
 }
 
@@ -141,9 +119,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 1.15em 1.9em;
-  border: 1px solid var(--gold);
-  background: var(--gold);
-  color: var(--navy-950);
+  border: 1px solid var(--accent-fill);
+  background: var(--accent-fill);
+  color: var(--on-accent);
   border-radius: 2px;
   overflow: hidden;
   white-space: nowrap;
@@ -155,24 +133,22 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 .btn::before {
   content: "";
   position: absolute; inset: 0;
-  background: var(--navy-900);
+  background: var(--on-accent);
   transform: translateY(101%);
   transition: transform 0.5s var(--ease);
   z-index: 1;
 }
-.btn:hover { color: var(--gold-bright); border-color: var(--navy-900); }
+.btn:hover { color: var(--accent-fill-hover); border-color: var(--on-accent); }
 .btn:hover::before { transform: translateY(0); }
 .btn:hover .btn-arrow { transform: translateX(5px); }
 
 .btn-ghost {
   background: transparent;
-  color: var(--gold-deep);
+  color: var(--accent-ink);
   border: 1px solid var(--line-gold);
 }
-.btn-ghost::before { background: var(--gold); }
-.btn-ghost:hover { color: var(--navy-950); border-color: var(--gold); }
-.on-navy .btn-ghost, .btn-ghost.on-navy { color: var(--gold-bright); border-color: rgba(221,189,126,0.4); }
-.on-navy .btn-ghost:hover, .btn-ghost.on-navy:hover { color: var(--navy-950); }
+.btn-ghost::before { background: var(--accent-fill); }
+.btn-ghost:hover { color: var(--on-accent); border-color: var(--accent-fill); }
 
 /* text link with animated underline */
 .tlink {
@@ -181,13 +157,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
   font-size: 0.82rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold-deep);
+  color: var(--accent-ink);
   display: inline-flex;
   gap: 0.55em;
   align-items: center;
   padding-bottom: 3px;
 }
-.on-navy .tlink { color: var(--gold-bright); }
 .tlink::after {
   content: ""; position: absolute; left: 0; bottom: 0;
   width: 100%; height: 1px; background: currentColor;
@@ -203,27 +178,28 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: var(--nav-h);
   display: flex; align-items: center;
+  background-color: transparent;
   transition: background 0.5s var(--ease), box-shadow 0.5s var(--ease), height 0.4s var(--ease);
 }
 .nav .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 .nav.scrolled {
   height: 68px;
-  background: rgba(8, 24, 44, 0.86);
+  background-color: color-mix(in srgb, var(--surface) 86%, transparent);
   backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 var(--line-on-navy);
+  box-shadow: 0 1px 0 var(--line);
 }
 .nav-links { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 40px); }
 .nav-link {
   position: relative;
   font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em;
-  color: rgba(247,243,234,0.78);
+  color: var(--ink);
   transition: color 0.3s var(--ease);
   padding: 6px 0;
 }
-.nav-link:hover, .nav-link.active { color: var(--gold-bright); }
+.nav-link:hover, .nav-link.active { color: var(--accent-ink); }
 .nav-link::after {
   content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 100%;
-  background: var(--gold); transform: scaleX(0); transform-origin: left;
+  background: var(--accent-fill); transform: scaleX(0); transform-origin: left;
   transition: transform 0.4s var(--ease);
 }
 .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
@@ -231,7 +207,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 .nav-cta .btn { padding: 0.85em 1.4em; }
 
 .nav-toggle { display: none; background: none; border: 0; flex-direction: column; gap: 5px; padding: 8px; }
-.nav-toggle span { width: 24px; height: 1.5px; background: var(--cream); display: block; transition: transform 0.4s var(--ease), opacity 0.3s; }
+.nav-toggle span { width: 24px; height: 1.5px; background: var(--ink); display: block; transition: transform 0.4s var(--ease), opacity 0.3s; }
 .nav-toggle.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-toggle.is-open span:nth-child(2) { opacity: 0; }
 .nav-toggle.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -239,7 +215,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 /* ---------- Mobile drawer ---------- */
 .mobile-drawer {
   position: fixed; inset: 0; z-index: 99;
-  background: var(--navy-950);
+  background-color: var(--surface);
   display: flex; flex-direction: column; justify-content: center;
   gap: 6px; padding: 0 var(--gutter);
   transform: translateY(-100%);
@@ -247,12 +223,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 }
 .mobile-drawer.open { transform: translateY(0); }
 .mobile-drawer a {
-  font-family: var(--serif); font-size: 2.4rem; color: var(--cream);
-  padding: 10px 0; border-bottom: 1px solid var(--line-on-navy);
+  font-family: var(--serif); font-size: 2.4rem; color: var(--ink);
+  padding: 10px 0; border-bottom: 1px solid var(--line);
   transition: color 0.3s, padding-left 0.4s var(--ease);
 }
-.mobile-drawer a:hover { color: var(--gold-bright); padding-left: 10px; }
-.mobile-drawer a.md-cta { color: var(--gold-bright); border-bottom: 0; margin-top: 14px; font-style: italic; }
+.mobile-drawer a:hover { color: var(--accent-ink); padding-left: 10px; }
+.mobile-drawer a.md-cta { color: var(--accent-ink); border-bottom: 0; margin-top: 14px; font-style: italic; }
 
 /* ---------- Logo / wordmark ---------- */
 .logo { display: inline-flex; align-items: center; gap: 12px; }
@@ -260,26 +236,23 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 .logo-text { display: flex; flex-direction: column; line-height: 1; }
 .logo-ayin {
   font-family: var(--serif); font-weight: 600;
-  font-size: 1.6rem; letter-spacing: 0.02em; color: var(--cream);
+  font-size: 1.6rem; letter-spacing: 0.02em; color: var(--ink);
 }
-.logo-ayin .lc { font-style: italic; color: var(--gold-bright); }
+.logo-ayin .lc { font-style: italic; color: var(--accent-ink); }
 .logo-adv {
   font-family: var(--sans); font-weight: 600;
   font-size: 0.56rem; letter-spacing: 0.42em; text-transform: uppercase;
-  color: rgba(247,243,234,0.65); margin-top: 3px; padding-left: 2px;
+  color: var(--ink-muted); margin-top: 3px; padding-left: 2px;
 }
-.logo.dark .logo-ayin { color: var(--ink); }
-.logo.dark .logo-adv { color: var(--slate); }
-.logo.dark .logo-ayin .lc { color: var(--gold-deep); }
 
 /* ---------- Footer ---------- */
-.footer { background: var(--navy-950); color: var(--paper); padding-top: clamp(70px, 9vw, 120px); }
-.footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 64px; border-bottom: 1px solid var(--line-on-navy); }
-.footer h4 { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
-.footer-col a { display: block; color: rgba(247,243,234,0.7); padding: 7px 0; font-size: 0.95rem; transition: color 0.3s, transform 0.3s var(--ease); }
-.footer-col a:hover { color: var(--gold-bright); transform: translateX(4px); }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-block: 30px; font-size: 0.8rem; color: rgba(247,243,234,0.45); flex-wrap: wrap; gap: 14px; }
-.footer-tag { max-width: 30ch; color: rgba(247,243,234,0.62); line-height: 1.6; font-size: 0.95rem; margin-top: 20px; }
+.footer { background-color: var(--surface); color: var(--ink); padding-top: clamp(70px, 9vw, 120px); }
+.footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 64px; border-bottom: 1px solid var(--line); }
+.footer h4 { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 22px; }
+.footer-col a { display: block; color: var(--ink-muted); padding: 7px 0; font-size: 0.95rem; transition: color 0.3s, transform 0.3s var(--ease); }
+.footer-col a:hover { color: var(--accent-ink); transform: translateX(4px); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-block: 30px; font-size: 0.8rem; color: var(--ink-muted); flex-wrap: wrap; gap: 14px; }
+.footer-tag { max-width: 30ch; color: var(--ink-muted); line-height: 1.6; font-size: 0.95rem; margin-top: 20px; }
 
 /* ---------- Reveal animations (progressive enhancement) ----------
    Visible by default; only hidden once JS confirms it can reveal them. */
@@ -306,14 +279,13 @@ html.js .line-reveal.in > span { transform: none; }
 /* ---------- Hairline rule ---------- */
 .rule { height: 1px; background: var(--line); width: 100%; }
 .rule-gold { height: 1px; background: var(--line-gold); }
-.navy .rule { background: var(--line-on-navy); }
 
 /* ---------- Marquee ---------- */
-.marquee { overflow: hidden; border-block: 1px solid var(--line-gold); padding-block: 22px; background: var(--navy-950); }
+.marquee { overflow: hidden; border-block: 1px solid var(--line-gold); padding-block: 22px; background-color: var(--surface); }
 .marquee-track { display: flex; gap: 56px; width: max-content; animation: marquee 38s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
-.marquee-item { display: inline-flex; align-items: center; gap: 56px; font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: rgba(247,243,234,0.55); white-space: nowrap; }
-.marquee-item::after { content: "✦"; font-size: 0.7rem; color: var(--gold); font-style: normal; }
+.marquee-item { display: inline-flex; align-items: center; gap: 56px; font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: var(--ink-muted); white-space: nowrap; }
+.marquee-item::after { content: "✦"; font-size: 0.7rem; color: var(--accent-fill); font-style: normal; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Utility ---------- */
@@ -338,10 +310,11 @@ html.js .line-reveal.in > span { transform: none; }
 /* ---------- BizCheck nav accent ----------
    A filled gold pill so it reads as a product rather than another page.
    The underline sweep every other nav link gets is suppressed — it collides
-   with the filled background. */
+   with the filled background. Navy text on the gold fill (light text on the gold fill is
+   only 2.43:1). */
 .nav-link.gold {
-  color: #fff;
-  background: var(--gold);
+  color: var(--on-accent);
+  background: var(--accent-fill);
   font-weight: 600;
   padding: 7px 16px;
   border-radius: 100px;
@@ -349,15 +322,15 @@ html.js .line-reveal.in > span { transform: none; }
 }
 .nav-link.gold:hover,
 .nav-link.gold.active {
-  color: #fff;
-  background: var(--gold-bright);
-  box-shadow: 0 4px 16px rgba(198, 161, 92, 0.3);
+  color: var(--on-accent);
+  background: var(--accent-fill-hover);
+  box-shadow: 0 4px 16px var(--line-gold);
 }
 .nav-link.gold::after { display: none; }
 
 .mobile-drawer a.gold {
-  color: #fff;
-  background: var(--gold);
+  color: var(--on-accent);
+  background: var(--accent-fill);
   font-weight: 600;
   align-self: flex-start;
   padding: 4px 22px;
@@ -365,19 +338,19 @@ html.js .line-reveal.in > span { transform: none; }
   border-bottom: 0;
   margin: 6px 0;
 }
-.mobile-drawer a.gold:hover { background: var(--gold-bright); color: #fff; padding-left: 22px; }
+.mobile-drawer a.gold:hover { background: var(--accent-fill-hover); color: var(--on-accent); padding-left: 22px; }
 
-/* ---------- White consultation CTA ----------
+/* ---------- Light consultation CTA ----------
    Keeps the gold BizCheck pill as the only gold element in the nav. Inherits
    the slide-up navy fill on hover from .btn, so the motion stays consistent;
    only the resting colours change. Form submit buttons stay gold so the
    primary action on a form still reads as primary. */
 .btn.btn-white {
-  background: #fff;
-  border-color: #fff;
-  color: var(--navy-950);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--surface);
 }
 .btn.btn-white:hover {
-  color: var(--gold-bright);
-  border-color: var(--navy-900);
+  color: var(--accent-fill-hover);
+  border-color: var(--on-accent);
 }

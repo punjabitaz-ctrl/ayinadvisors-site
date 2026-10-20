@@ -70,7 +70,7 @@ def test_body_rest_tracks_body_copy_not_nav():
     assert h1 in html
     edited = _edit_in_h1(html, h1)
     assert page_facts(edited)["body_rest"] != base
-    nav_only = html.replace('<nav class="nav"', '<nav class="nav" data-x="1"', 1)
+    nav_only = html.replace('<nav class="nav surface-inverse"', '<nav class="nav surface-inverse" data-x="1"', 1)
     assert nav_only != html
     assert page_facts(nav_only)["body_rest"] == base
 

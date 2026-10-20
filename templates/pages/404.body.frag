@@ -1,4 +1,4 @@
-<main class="nf">
+<main class="nf surface-inverse">
   <svg class="nf-rings" viewBox="0 0 1100 1100" aria-hidden="true">
     <g class="spin">
       <circle cx="550" cy="550" r="544"></circle>
@@ -6,7 +6,7 @@
       <circle cx="550" cy="550" r="316"></circle>
     </g>
     <circle cx="550" cy="550" r="200"></circle>
-    <circle cx="550" cy="550" r="90" fill="rgba(198,161,92,0.10)" stroke="#c6a15c" stroke-width="0.8"></circle>
+    <circle cx="550" cy="550" r="90" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
   </svg>
   <div class="nf-inner">
     <span class="eyebrow on-navy center reveal" style="justify-content:center">Off the map</span>

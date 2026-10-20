@@ -11,7 +11,7 @@
 {{ head_extra }}
 </head>
 <body>
-<nav class="nav">
+<nav class="nav surface-inverse">
   <div class="wrap">
     {{ logo }}
     <div class="nav-links">
@@ -24,7 +24,7 @@
   </div>
 </nav>
 
-<div class="mobile-drawer">
+<div class="mobile-drawer surface-inverse">
   {% for n in site.nav -%}
   <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}>{{ n.label|e }}</a>
   {% endfor -%}

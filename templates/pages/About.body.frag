@@ -1,5 +1,5 @@
 <!-- PAGE HEADER -->
-<header class="pagehead">
+<header class="pagehead surface-inverse">
   <svg class="ph-eye" viewBox="0 0 900 900" aria-hidden="true">
     <circle cx="450" cy="450" r="448"></circle>
     <circle cx="450" cy="450" r="350"></circle>
@@ -14,7 +14,7 @@
 </header>
 
 <!-- MEANING OF AYIN -->
-<section class="section paper">
+<section class="section surface-page">
   <div class="wrap">
     <div class="meaning">
       <div class="reveal">
@@ -25,7 +25,7 @@
           <circle class="iris" cx="130" cy="130" r="46"></circle>
           <circle class="pupil" cx="130" cy="130" r="17"></circle>
           <line class="scan" x1="130" y1="130" x2="130" y2="8" stroke-dasharray="3 9"></line>
-          <circle cx="130" cy="130" r="3" fill="var(--gold-bright)"></circle>
+          <circle cx="130" cy="130" r="3" fill="var(--accent-fill-hover)"></circle>
         </svg>
       </div>
       <div>
@@ -39,7 +39,7 @@
 </section>
 
 <!-- STAT BAND -->
-<section class="navy">
+<section class="surface-inverse">
   <div class="wrap"><div class="stat-band">
     <div class="sb reveal"><div class="n"><span data-count="3" data-suffix=""></span></div><div class="l">Markets served — US, Canada, LATAM</div></div>
     <div class="sb reveal" data-d="1"><div class="n"><span data-count="40" data-suffix="+"></span></div><div class="l">Channel partners in the network</div></div>
@@ -49,7 +49,7 @@
 </section>
 
 <!-- APPROACH -->
-<section class="section paper">
+<section class="section surface-page">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -70,7 +70,7 @@
 </section>
 
 <!-- TEAM -->
-<section class="section navy">
+<section class="section surface-inverse">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -92,13 +92,13 @@
 </section>
 
 <!-- CTA -->
-<section class="section cta navy" style="border-top:1px solid var(--line-on-navy)">
+<section class="section cta surface-inverse" style="border-top:1px solid var(--line)">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">
       <span class="eyebrow on-navy center reveal" style="justify-content:center">Work with us</span>
-      <h2 class="h2 reveal" data-d="1" style="color:var(--cream);margin:24px 0 26px">Let us read your<br />market together.</h2>
-      <p class="lead reveal" data-d="2" style="color:rgba(247,243,234,0.7);margin-inline:auto">A candid first conversation about your US ambitions — and the channel that delivers them.</p>
+      <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Let us read your<br />market together.</h2>
+      <p class="lead reveal" data-d="2" style="margin-inline:auto">A candid first conversation about your US ambitions — and the channel that delivers them.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>

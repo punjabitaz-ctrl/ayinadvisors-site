@@ -605,13 +605,6 @@
     {
       "page": "BizCheck",
       "rule": "color-contrast",
-      "selector": ".report-card > .rc-label",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
       "selector": ".report-card > .rc-overall > .l",
       "reason": "",
       "status": "unreviewed"
