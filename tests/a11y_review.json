@@ -1,0 +1,1402 @@
+{
+  "items": [
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".btn-ghost > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".btn-white > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".btn[data-magnetic=\"\"][href=\"index.html\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".code",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".eyebrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Services.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href=\"index.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "404",
+      "rule": "color-contrast",
+      "selector": "p",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".active",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".member > h3",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".member > p",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Services.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href=\"index.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".role",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".tlink > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".wrap > .lead[data-d=\"2\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".wrap > .on-navy.eyebrow.reveal",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_company",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_desc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_email",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_hq",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_industry",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bc_stage",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#bizcheck-form > h2",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-tagline",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".btn-ghost > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".field:nth-child(10) > label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(10) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(10) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(11) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(11) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(12) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(12) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(3) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(3) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(4) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(4) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(5) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(5) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(6) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(6) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(7) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(7) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(8) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(8) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(9) > .fs-n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".fs-row:nth-child(9) > .fs-v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(1) > .k",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(1) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(1) > .v > small",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(2) > .k",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(2) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(2) > .v > small",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(3) > .k",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(3) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".imeta:nth-child(3) > .v > small",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".intake-intro > .h2",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".intake-intro > .lead[data-d=\"2\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".intake-intro > .on-navy.eyebrow.reveal",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".lead[data-d=\"3\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".lo",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Services.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href=\"index.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".on > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".on > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".report-card > .rc-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".report-card > .rc-overall > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".report-card > .rc-overall > .n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".report-card > .rc-top > .rc-brand",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".report-card > .rc-top > .rc-brand > span",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".report-card > .rc-top > .rc-scan",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".sample-report > .rc-overall > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".sample-report > .rc-overall > .n",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".sample-report > .rc-top > .rc-brand",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".sample-report > .rc-top > .rc-brand > span",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".sample-report > .rc-top > .rc-scan",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(3) > .hi.score-val",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(3) > .score-name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(4) > .hi.score-val",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(4) > .score-name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(5) > .score-name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(5) > .score-val",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(6) > .score-name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(7) > .hi.score-val",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".score-row:nth-child(7) > .score-name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".sub",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".tag-pill",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".vl",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".vo:nth-child(1) > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".vo:nth-child(1) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".vo:nth-child(3) > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".vo:nth-child(3) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".vv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Channel Access\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Competition\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Financial Model\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Market Fit\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Regulatory Risk\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[type=\"submit\"] > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "button[type=\"submit\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_company\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_desc\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_email\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_hq\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_industry\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_name\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "label[for=\"bc_stage\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "strong:nth-child(1)",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "strong:nth-child(2)",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "#company",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "#consult-form > h2",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "#email",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "#hq",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "#msg",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "#name",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".active",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".btn-white > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".cmeta:nth-child(1) > .k",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".cmeta:nth-child(2) > .k",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".cmeta:nth-child(2) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".cmeta:nth-child(3) > .k",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".cmeta:nth-child(3) > .v",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".eyebrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".field:nth-child(8) > label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".lead",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Services.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href=\"index.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".sub",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": ".v > a[href=\"mailto:hello@ayinadvisors.com\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Channel Strategy\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Market Entry Research\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Partner Introductions\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "button[data-v=\"Regional Expansion\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "button[type=\"submit\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "label[for=\"company\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "label[for=\"email\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "label[for=\"hq\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "label[for=\"msg\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "label[for=\"name\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Contact",
+      "rule": "color-contrast",
+      "selector": "small",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".active",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Services.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href=\"index.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".wrap > .eyebrow.on-navy.reveal",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".wrap > .lead[data-d=\"2\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".active",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href=\"index.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".wrap > .eyebrow.on-navy.reveal",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".wrap > .lead[data-d=\"2\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".active",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".btn-ghost > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".btn-white.btn[data-magnetic=\"\"] > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".center",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".cta-inner > .lead[data-d=\"2\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".cta-inner > h2",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hero-actions > .btn-white.btn[data-magnetic=\"\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hero-inner > .eyebrow.on-navy.reveal",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hero-lead",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hstat.reveal.in:nth-child(1) > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hstat.reveal[data-d=\"1\"] > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hstat.reveal[data-d=\"2\"] > .l",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".italic-accent",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".nav-cta > .btn-white.btn[data-magnetic=\"\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Services.html\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".scroll-hint > span:nth-child(1)",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".tlink > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-arrow",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "div:nth-child(2) > h2",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "span[data-count=\"100\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "span[data-count=\"90\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "span[data-suffix=\"+\"]",
+      "reason": "Recorded at the Task 2 baseline: axe cannot resolve the effective background (gradient, translucent layer or overlap). Re-check by hand once the page is re-themed."
+    }
+  ]
+}

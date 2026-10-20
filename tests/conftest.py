@@ -6,6 +6,14 @@ from build import PAGES  # noqa: F401  (re-exported for tests)
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def pytest_configure(config):
+    config.addinivalue_line(
+        "markers",
+        "browser: drives headless Chromium (needs `python -m playwright install chromium`); "
+        "skips cleanly when the browser is unavailable. Deselect with -m 'not browser'.",
+    )
+
+
 @pytest.fixture(scope="session")
 def root() -> Path:
     return ROOT

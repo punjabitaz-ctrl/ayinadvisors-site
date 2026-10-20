@@ -112,3 +112,27 @@ baseline-independent invariants: chrome identical across pages, links resolve,
 forms/ids/scripts present, accessibility and contrast gates. Baselines are
 re-snapshotted from merged output at the start of the next sprint, never edited
 to turn a red test green.
+
+## Accessibility gate (development only)
+
+The gate is part of the normal test run; it does not affect the deploy path.
+
+```
+pip install -r dev-requirements.txt
+python -m playwright install chromium     # browser tests need Chromium
+python -m pytest tests                    # includes the gate
+python -m pytest tests -m "not browser"   # static checks only, no Chromium
+python tools/a11y_ratchet.py              # print current static + axe totals
+python tools/a11y_ratchet.py --update     # record a lower total after fixing problems
+```
+
+- Tests marked `browser` drive headless Chromium against the repo root served
+  on a local port; if Chromium is not installed they skip with the install
+  command in the reason.
+- The ratchet (`tests/a11y_known_issues.json`) records known problems: the
+  suite fails on any new problem and also when a problem is fixed but the
+  ratchet was not lowered, so the totals only go down.
+- axe "needs review" results must each have a written reason in
+  `tests/a11y_review.json`.
+- Tests marked `xfail(strict=True)` are known defects with a named fixing task;
+  one that starts passing fails the run until the marker is removed.
