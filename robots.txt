@@ -4,6 +4,7 @@ Disallow: /templates/
 Disallow: /content/
 Disallow: /tests/
 Disallow: /docs/
+Disallow: /tools/
 
 Sitemap: https://ayinadvisors.com/sitemap.xml
 

@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from tools import theme as theme_tools
+
 ROOT = Path(__file__).resolve().parent
 # Pages are defined by content/site.json, in the order listed there.
 PAGES = list(json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))["pages"])
@@ -49,7 +51,20 @@ def render_all() -> dict[str, str]:
     return out
 
 
+def render_theme() -> str:
+    """assets/theme.css from content/theme.json; refuses to emit a failing contrast pairing."""
+    theme = theme_tools.load_theme(ROOT / "content" / "theme.json")
+    resolved = theme_tools.resolve(theme)
+    bad = theme_tools.failures(resolved, theme)
+    if bad:
+        raise SystemExit("theme contrast failures:\n  " + "\n  ".join(bad))
+    return theme_tools.render_css(resolved)
+
+
 def main() -> None:
+    (ROOT / "assets").mkdir(exist_ok=True)
+    (ROOT / "assets" / "theme.css").write_text(render_theme(), encoding="utf-8", newline="\n")
+    print("  wrote assets/theme.css")
     for stem, html in render_all().items():
         (ROOT / f"{stem}.html").write_text(html, encoding="utf-8")
         print(f"  wrote {stem}.html")
@@ -62,6 +77,9 @@ def check() -> list[str]:
         path = ROOT / f"{stem}.html"
         if not path.exists() or path.read_text(encoding="utf-8") != fresh:
             stale.append(f"{stem}.html")
+    css = ROOT / "assets" / "theme.css"
+    if not css.exists() or css.read_text(encoding="utf-8") != render_theme():
+        stale.append("assets/theme.css")
     return stale
 
 

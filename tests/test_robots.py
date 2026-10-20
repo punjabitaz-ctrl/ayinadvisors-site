@@ -16,7 +16,7 @@ def _groups(text):
 def test_catch_all_group_blocks_source_dirs():
     text = (ROOT / "robots.txt").read_text(encoding="utf-8")
     star = next(g for g in _groups(text) if g[0] == "User-agent: *")
-    for d in ("templates", "content", "tests", "docs"):
+    for d in ("templates", "content", "tests", "docs", "tools"):
         assert f"Disallow: /{d}/" in star, d
     assert "Allow: /" in star
     assert "Sitemap: https://ayinadvisors.com/sitemap.xml" in text

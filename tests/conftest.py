@@ -28,6 +28,8 @@ def sandbox(tmp_path, monkeypatch):
     import build
     shutil.copytree(ROOT / "content", tmp_path / "content")
     shutil.copytree(ROOT / "templates" / "pages", tmp_path / "templates" / "pages")
+    (tmp_path / "assets").mkdir()
+    shutil.copy(ROOT / "assets" / "theme.css", tmp_path / "assets" / "theme.css")
     for s in PAGES:
         shutil.copy(ROOT / f"{s}.html", tmp_path / f"{s}.html")
     monkeypatch.setattr(build, "ROOT", tmp_path)
