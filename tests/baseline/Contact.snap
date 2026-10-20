@@ -102,7 +102,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<nav class="nav surface-inverse">
+<nav class="nav surface-inverse" aria-label="Primary">
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -120,14 +120,14 @@
       <a href="Services.html" class="nav-link">Services</a>
       <a href="About.html" class="nav-link">About</a>
       <a href="Projects.html" class="nav-link">Projects</a>
-      <a href="Contact.html" class="nav-link active">Contact</a>
+      <a href="Contact.html" class="nav-link active" aria-current="page">Contact</a>
       <span class="nav-cta"><a href="#book" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
     </div>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<div class="mobile-drawer surface-inverse" role="navigation" aria-label="Mobile menu">
+<nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   <a href="index.html">Home</a>
   <a href="BizCheck.html" class="gold">BizCheck</a>
   <a href="Services.html">Services</a>
@@ -135,7 +135,7 @@
   <a href="Projects.html">Projects</a>
   <a href="Contact.html">Contact</a>
   <a href="#book" class="md-cta">Book a Consultation</a>
-</div>
+</nav>
 
 <main id="main" tabindex="-1">
 <!-- CONTACT -->
@@ -152,7 +152,7 @@
         <div class="cmeta"><span class="k">Response</span><span class="v">Within 2 business days</span></div>
       </div>
       <figure class="photo-card surface-card reveal" data-d="4">
-        <picture><source type="image/webp" srcset="assets/img/globe-480.webp 480w, assets/img/globe-960.webp 960w, assets/img/globe-1600.webp 1600w" sizes="(min-width: 900px) 440px, calc(100vw - 40px)"><img src="assets/img/globe-960.webp" width="1600" height="1067" alt="A desk globe turned to Africa, the Middle East and Asia, in a warmly lit, wood-panelled room." loading="lazy" decoding="async"></picture>
+        <picture><source type="image/webp" srcset="assets/img/globe-480.webp 480w, assets/img/globe-960.webp 960w, assets/img/globe-1600.webp 1600w" sizes="(min-width: 900px) 440px, calc(100vw - 40px)"><img src="assets/img/globe-960.webp" width="1600" height="1067" alt="A desk globe turned to Africa, the Middle East and Asia, in a warmly lit interior." loading="lazy" decoding="async"></picture>
       </figure>
     </div>
 
@@ -295,15 +295,23 @@
       if (hp && hp.value) { form.style.display = "none"; document.getElementById("success").classList.add("show"); return; }
 
       var req = ["name", "company", "email"];
-      var ok = true;
+      var bad = [];
       req.forEach(function (id) {
         var el = document.getElementById(id);
-        if (!el.value.trim()) { el.style.borderColor = "var(--danger-ink)"; ok = false; }
-        else { el.style.borderColor = ""; }
+        var invalid = !el.value.trim() || (id === "email" && !/^[^@]+@[^@]+\.[^@]+$/.test(el.value));
+        el.style.borderColor = invalid ? "var(--danger-ink)" : "";
+        if (invalid) { el.setAttribute("aria-invalid", "true"); el.setAttribute("aria-describedby", "form-error"); bad.push(el); }
+        else { el.removeAttribute("aria-invalid"); el.removeAttribute("aria-describedby"); }
       });
-      var email = document.getElementById("email");
-      if (email.value && !/^[^@]+@[^@]+\.[^@]+$/.test(email.value)) { email.style.borderColor = "var(--danger-ink)"; ok = false; }
-      if (!ok) { showError("Please complete the highlighted fields."); return; }
+      if (bad.length) {
+        var names = bad.map(function (el) {
+          var l = document.querySelector('label[for="' + el.id + '"]');
+          return l ? l.textContent.replace(/[*]/g, "").trim() : el.id;
+        });
+        showError("Please check: " + names.join(", ") + ".");
+        bad[0].focus();
+        return;
+      }
 
       if (!window.turnstile || !window.turnstile.getResponse(widgetId)) {
         showError("Please complete the verification check above.");

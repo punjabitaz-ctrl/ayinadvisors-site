@@ -9,7 +9,7 @@
       <p class="lead reveal" data-d="3">A ten-agent expert panel evaluates your business idea the way a real advisory firm would. They review capital, demand, operations and risk — and return a single verdict: <strong>GO, CONDITIONAL GO,</strong> or <strong>NO GO</strong>. Before you spend a year finding out the hard way.</p>
       <div class="bc-actions reveal" data-d="4">
         <a href="#submit" class="btn" data-magnetic="0.4"><span class="btn-label">Submit Your Idea</span><span class="btn-arrow">→</span></a>
-        <a href="#how" class="btn-ghost" data-magnetic="0.3"><span class="btn-label">How It Works</span></a>
+        <a href="#how" class="btn-ghost btn on-navy" data-magnetic="0.3"><span class="btn-label">How It Works</span></a>
       </div>
     </div>
     <div class="reveal" data-d="2">
@@ -48,17 +48,17 @@
     </figure>
     <div class="bc-steps">
       <div class="bc-step reveal">
-        <div class="n" aria-hidden="true">01</div>
+        <div class="n" aria-hidden="true" data-n="01"></div>
         <h3 class="h3">Describe your idea</h3>
         <p>Fill out a focused brief: what your business does, who it serves, your stage and market. No deck required.</p>
       </div>
       <div class="bc-step reveal" data-d="1">
-        <div class="n" aria-hidden="true">02</div>
+        <div class="n" aria-hidden="true" data-n="02"></div>
         <h3 class="h3">Panel evaluates</h3>
         <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk — independently.</p>
       </div>
       <div class="bc-step reveal" data-d="2">
-        <div class="n" aria-hidden="true">03</div>
+        <div class="n" aria-hidden="true" data-n="03"></div>
         <h3 class="h3">Receive your verdict</h3>
         <p>A structured report with each panelist's score, their key concerns, and a single aggregate verdict with findings.</p>
       </div>

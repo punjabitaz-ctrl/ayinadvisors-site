@@ -107,6 +107,7 @@
 .bc-step { padding: clamp(28px,4vw,48px) clamp(22px,3vw,38px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .5s var(--ease); }
 .bc-step:hover { background: var(--field-bg); }
 .bc-step .n { font-family: var(--serif); font-size: clamp(3.2rem,6vw,5rem); color: var(--line); line-height: .9; margin-bottom: 20px; transition: color .5s var(--ease); }
+.bc-step .n::before { content: attr(data-n); }
 .bc-step:hover .n { color: color-mix(in srgb, var(--accent-fill) 28%, var(--surface)); }
 .bc-step .h3 { margin-bottom: 12px; }
 .bc-step p { color: var(--ink-muted); font-size: .97rem; max-width: 30ch; }
@@ -209,7 +210,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<nav class="nav surface-inverse">
+<nav class="nav surface-inverse" aria-label="Primary">
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -223,18 +224,18 @@
 
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="BizCheck.html" class="nav-link gold active">BizCheck</a>
+      <a href="BizCheck.html" class="nav-link gold active" aria-current="page">BizCheck</a>
       <a href="Services.html" class="nav-link">Services</a>
       <a href="About.html" class="nav-link">About</a>
       <a href="Projects.html" class="nav-link">Projects</a>
       <a href="Contact.html" class="nav-link">Contact</a>
       <span class="nav-cta"><a href="#submit" class="btn" data-magnetic><span class="btn-label">Submit Your Idea</span></a></span>
     </div>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<div class="mobile-drawer surface-inverse" role="navigation" aria-label="Mobile menu">
+<nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   <a href="index.html">Home</a>
   <a href="BizCheck.html" class="gold">BizCheck</a>
   <a href="Services.html">Services</a>
@@ -242,7 +243,7 @@
   <a href="Projects.html">Projects</a>
   <a href="Contact.html">Contact</a>
   <a href="#submit" class="md-cta">Submit Your Idea</a>
-</div>
+</nav>
 
 <!-- ===================== HERO ===================== -->
 <header class="bc-hero surface-inverse">
@@ -255,7 +256,7 @@
       <p class="lead reveal" data-d="3">A ten-agent expert panel evaluates your business idea the way a real advisory firm would. They review capital, demand, operations and risk — and return a single verdict: <strong>GO, CONDITIONAL GO,</strong> or <strong>NO GO</strong>. Before you spend a year finding out the hard way.</p>
       <div class="bc-actions reveal" data-d="4">
         <a href="#submit" class="btn" data-magnetic="0.4"><span class="btn-label">Submit Your Idea</span><span class="btn-arrow">→</span></a>
-        <a href="#how" class="btn-ghost" data-magnetic="0.3"><span class="btn-label">How It Works</span></a>
+        <a href="#how" class="btn-ghost btn on-navy" data-magnetic="0.3"><span class="btn-label">How It Works</span></a>
       </div>
     </div>
     <div class="reveal" data-d="2">
@@ -294,17 +295,17 @@
     </figure>
     <div class="bc-steps">
       <div class="bc-step reveal">
-        <div class="n" aria-hidden="true">01</div>
+        <div class="n" aria-hidden="true" data-n="01"></div>
         <h3 class="h3">Describe your idea</h3>
         <p>Fill out a focused brief: what your business does, who it serves, your stage and market. No deck required.</p>
       </div>
       <div class="bc-step reveal" data-d="1">
-        <div class="n" aria-hidden="true">02</div>
+        <div class="n" aria-hidden="true" data-n="02"></div>
         <h3 class="h3">Panel evaluates</h3>
         <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk — independently.</p>
       </div>
       <div class="bc-step reveal" data-d="2">
-        <div class="n" aria-hidden="true">03</div>
+        <div class="n" aria-hidden="true" data-n="03"></div>
         <h3 class="h3">Receive your verdict</h3>
         <p>A structured report with each panelist's score, their key concerns, and a single aggregate verdict with findings.</p>
       </div>
@@ -566,15 +567,23 @@
     var hp = document.getElementById('website_url');
     if (hp && hp.value) { done(); return; }
 
-    var ok = true;
+    var bad = [];
     ['bc_name', 'bc_company', 'bc_email', 'bc_desc'].forEach(function (id) {
       var el = document.getElementById(id);
-      if (!el.value.trim()) { el.style.borderColor = 'var(--danger-ink)'; ok = false; }
-      else el.style.borderColor = '';
+      var invalid = !el.value.trim() || (id === 'bc_email' && !/^[^@]+@[^@]+\.[^@]+$/.test(el.value));
+      el.style.borderColor = invalid ? 'var(--danger-ink)' : '';
+      if (invalid) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', 'bc-error'); bad.push(el); }
+      else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); }
     });
-    var em = document.getElementById('bc_email');
-    if (em.value && !/^[^@]+@[^@]+\.[^@]+$/.test(em.value)) { em.style.borderColor = 'var(--danger-ink)'; ok = false; }
-    if (!ok) { showErr('Please complete the highlighted fields.'); return; }
+    if (bad.length) {
+      var names = bad.map(function (el) {
+        var l = document.querySelector('label[for="' + el.id + '"]');
+        return l ? l.textContent.replace(/[*]/g, '').trim() : el.id;
+      });
+      showErr('Please check: ' + names.join(', ') + '.');
+      bad[0].focus();
+      return;
+    }
 
     if (!window.turnstile || !window.turnstile.getResponse(widgetId)) {
       showErr('Please complete the verification check above.');

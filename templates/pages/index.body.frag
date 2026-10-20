@@ -135,7 +135,7 @@
       </div>
       <div>
         <span class="eyebrow reveal"><span class="sec-index">03</span> &nbsp;Why the US market</span>
-        <h2 class="h2 reveal" data-d="1" style="margin:20px 0 22px;font-size:60px">The largest opportunity<br />is also the hardest to read.</h2>
+        <h2 class="h2 why-title reveal" data-d="1">The largest opportunity<br />is also the hardest to read.</h2>
         <p class="lead reveal" data-d="2" style="margin-bottom:8px">The United States is a continent of distinct regional markets, regulatory regimes and buying cultures. Winning it is rarely about the product - it's all about the channels.</p>
         <div class="why-stats reveal" data-d="3">
           <div class="why-stat"><div class="n">$24 Trillion<span data-count="27" data-suffix="T"></span></div><div class="l">US consumer + B2B economy</div></div>

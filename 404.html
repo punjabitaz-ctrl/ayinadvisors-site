@@ -36,7 +36,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<nav class="nav surface-inverse">
+<nav class="nav surface-inverse" aria-label="Primary">
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -57,11 +57,11 @@
       <a href="Contact.html" class="nav-link">Contact</a>
       <span class="nav-cta"><a href="Contact.html" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
     </div>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<div class="mobile-drawer surface-inverse" role="navigation" aria-label="Mobile menu">
+<nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   <a href="index.html">Home</a>
   <a href="BizCheck.html" class="gold">BizCheck</a>
   <a href="Services.html">Services</a>
@@ -69,7 +69,7 @@
   <a href="Projects.html">Projects</a>
   <a href="Contact.html">Contact</a>
   <a href="Contact.html" class="md-cta">Book a Consultation</a>
-</div>
+</nav>
 
 <main id="main" tabindex="-1" class="nf surface-inverse">
   <svg class="nf-rings" viewBox="0 0 1100 1100" aria-hidden="true">

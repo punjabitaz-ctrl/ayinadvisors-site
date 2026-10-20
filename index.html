@@ -106,6 +106,8 @@
   .why-stat .n { font-family: var(--serif); font-size: clamp(2rem, 3.4vw, 2.9rem); color: var(--ink); line-height: 1; }
   .why-stat .l { font-size: 0.82rem; color: var(--ink-muted); margin-top: 8px; line-height: 1.4; }
 
+  .why-title { margin: 20px 0 22px; font-size: clamp(2.25rem, 5vw + 1rem, 3.75rem); overflow-wrap: break-word; }
+
   /* ---------- ABOUT TEASER ---------- */
   .about-teaser { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
   .about-teaser .quote { font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.25; color: var(--ink); font-weight: 400; }
@@ -138,7 +140,7 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<nav class="nav surface-inverse">
+<nav class="nav surface-inverse" aria-label="Primary">
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -151,7 +153,7 @@
     </a>
 
     <div class="nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
+      <a href="index.html" class="nav-link active" aria-current="page">Home</a>
       <a href="BizCheck.html" class="nav-link gold">BizCheck</a>
       <a href="Services.html" class="nav-link">Services</a>
       <a href="About.html" class="nav-link">About</a>
@@ -159,11 +161,11 @@
       <a href="Contact.html" class="nav-link">Contact</a>
       <span class="nav-cta"><a href="Contact.html" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
     </div>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<div class="mobile-drawer surface-inverse" role="navigation" aria-label="Mobile menu">
+<nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   <a href="index.html">Home</a>
   <a href="BizCheck.html" class="gold">BizCheck</a>
   <a href="Services.html">Services</a>
@@ -171,7 +173,7 @@
   <a href="Projects.html">Projects</a>
   <a href="Contact.html">Contact</a>
   <a href="Contact.html" class="md-cta">Book a Consultation</a>
-</div>
+</nav>
 
 <!-- ===================== HERO ===================== -->
 <header class="hero surface-inverse">
@@ -310,7 +312,7 @@
       </div>
       <div>
         <span class="eyebrow reveal"><span class="sec-index">03</span> &nbsp;Why the US market</span>
-        <h2 class="h2 reveal" data-d="1" style="margin:20px 0 22px;font-size:60px">The largest opportunity<br />is also the hardest to read.</h2>
+        <h2 class="h2 why-title reveal" data-d="1">The largest opportunity<br />is also the hardest to read.</h2>
         <p class="lead reveal" data-d="2" style="margin-bottom:8px">The United States is a continent of distinct regional markets, regulatory regimes and buying cultures. Winning it is rarely about the product - it's all about the channels.</p>
         <div class="why-stats reveal" data-d="3">
           <div class="why-stat"><div class="n">$24 Trillion<span data-count="27" data-suffix="T"></span></div><div class="l">US consumer + B2B economy</div></div>

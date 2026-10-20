@@ -22,7 +22,7 @@
 
     <article class="svc-detail reveal" id="research">
       <div class="sd-left">
-        <div class="sd-num" aria-hidden="true">01</div>
+        <div class="sd-num" aria-hidden="true" data-n="01"></div>
         <h2 class="h2">US Market Entry Research</h2>
         <span class="tag">Discovery</span>
       </div>
@@ -41,7 +41,7 @@
 
     <article class="svc-detail reveal" id="channel">
       <div class="sd-left">
-        <div class="sd-num" aria-hidden="true">02</div>
+        <div class="sd-num" aria-hidden="true" data-n="02"></div>
         <h2 class="h2">Channel Strategy &amp; Enablement</h2>
         <span class="tag">Architecture</span>
       </div>
@@ -60,7 +60,7 @@
 
     <article class="svc-detail reveal" id="introductions">
       <div class="sd-left">
-        <div class="sd-num" aria-hidden="true">03</div>
+        <div class="sd-num" aria-hidden="true" data-n="03"></div>
         <h2 class="h2">B2B Partner Introductions</h2>
         <span class="tag">Access</span>
       </div>
@@ -79,7 +79,7 @@
 
     <article class="svc-detail reveal" id="expansion">
       <div class="sd-left">
-        <div class="sd-num" aria-hidden="true">04</div>
+        <div class="sd-num" aria-hidden="true" data-n="04"></div>
         <h2 class="h2">Regional Expansion · Canada &amp; LATAM</h2>
         <span class="tag">Scale</span>
       </div>
