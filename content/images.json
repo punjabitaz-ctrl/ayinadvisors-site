@@ -1,0 +1,36 @@
+{
+  "images": [
+    {
+      "slug": "us-night",
+      "source": "nasa-1lfI7wkGWZ4-unsplash.jpg",
+      "alt": "Satellite view of the United States at night, with city lights tracing the major metropolitan areas and the highway corridors between them.",
+      "focal": [0.55, 0.5],
+      "pillar": "market-entry",
+      "crop": "3:2"
+    },
+    {
+      "slug": "skyscrapers",
+      "source": "sean-pollock-PhYq704ffdA-unsplash.jpg",
+      "alt": "Dark glass skyscrapers seen from street level, rising toward a pale, cloudy sky.",
+      "focal": [0.5, 0.5],
+      "pillar": "about",
+      "crop": "3:2"
+    },
+    {
+      "slug": "globe",
+      "source": "kyle-glenn-nXt5HtLmlgE-unsplash.jpg",
+      "alt": "A desk globe turned to Africa, the Middle East and Asia, in a warmly lit, wood-panelled room.",
+      "focal": [0.68, 0.5],
+      "pillar": "contact",
+      "crop": "3:2"
+    },
+    {
+      "slug": "lightbulb",
+      "source": "diego-ph-fIq0tET6llw-unsplash.jpg",
+      "alt": "A hand reaching up and holding a clear light bulb against a pastel sky that fades from teal to coral.",
+      "focal": [0.5, 0.52],
+      "pillar": "bizcheck",
+      "crop": "4:3"
+    }
+  ]
+}

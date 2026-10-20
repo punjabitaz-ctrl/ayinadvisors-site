@@ -42,6 +42,9 @@
       </div>
       <p class="lead muted right reveal" data-d="2">Fast, honest and structured — the kind of pressure test that saves founders months of misdirected effort.</p>
     </div>
+    <figure class="photo-card photo-card-wide surface-card reveal">
+      <image-slot slug="lightbulb" sizes="(min-width: 900px) 720px, calc(100vw - 40px)" loading="lazy"></image-slot>
+    </figure>
     <div class="bc-steps">
       <div class="bc-step reveal">
         <div class="n" aria-hidden="true">01</div>

@@ -367,3 +367,25 @@ html.js .line-reveal.in > span { transform: none; }
 }
 .surface-accent ::selection { background: var(--ink); color: var(--surface); }
 .surface-accent .tlink::after { background: var(--ink); }
+
+/* ---------- Photography ----------
+   Photos are <img> elements in a framed card, beside or above text on a solid surface,
+   never a background behind text. width/height attributes reserve the space (no layout shift);
+   the card shrinks with its column so it can never cause horizontal scroll. */
+.photo-card {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  padding: 10px;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px -26px color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.photo-card picture { display: block; }
+.photo-card img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.why-visual, .meaning > div, .contact-intro { min-width: 0; }
+.why-visual .photo-card, .meaning .photo-card { max-width: 460px; margin: 28px auto 0; }
+.contact-intro .photo-card { max-width: min(440px, calc(100vw - 2 * var(--gutter))); margin-top: 36px; }
+.photo-card-wide { max-width: 720px; margin: 0 auto clamp(40px, 6vw, 64px); }
+.photo-card-wide img { aspect-ratio: 16 / 8; object-fit: cover; object-position: 50% 42%; }

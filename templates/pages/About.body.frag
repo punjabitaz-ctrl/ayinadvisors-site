@@ -27,6 +27,9 @@
           <line class="scan" x1="130" y1="130" x2="130" y2="8" stroke-dasharray="3 9"></line>
           <circle cx="130" cy="130" r="3" fill="var(--accent-fill-hover)"></circle>
         </svg>
+        <figure class="photo-card surface-card reveal" data-d="1">
+          <image-slot slug="skyscrapers" sizes="(min-width: 900px) 440px, calc(100vw - 80px)" loading="lazy"></image-slot>
+        </figure>
       </div>
       <div>
         <span class="eyebrow reveal"><span class="sec-index">01</span> &nbsp;The name</span>

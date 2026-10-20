@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Render the site from content/site.json + templates/ to .html at the repo root."""
 import json
+import re
 from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+from tools import images as image_tools
 from tools import theme as theme_tools
 
 ROOT = Path(__file__).resolve().parent
@@ -21,6 +23,31 @@ env = Environment(
 
 def load_site() -> dict:
     return json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))
+
+
+_SLOT = re.compile(r"<image-slot(?=[\s>])([^>]*)></image-slot>")
+_ATTR = re.compile(r'([\w-]+)="([^"]*)"')
+
+
+def expand_image_slots(html: str) -> str:
+    """Replace <image-slot slug sizes [loading] [class]> placeholders with <picture> markup.
+
+    An unknown slug raises KeyError naming it, so a typo can never ship.
+    """
+    registry = image_tools.load_registry(ROOT / "content" / "images.json")
+
+    def one(m: re.Match) -> str:
+        attrs = dict(_ATTR.findall(m.group(1)))
+        if "slug" not in attrs:
+            raise ValueError("image-slot without a slug")
+        if not attrs.get("sizes"):
+            raise ValueError(f"image-slot {attrs['slug']!r} needs a sizes attribute")
+        return image_tools.render_picture(
+            attrs["slug"], attrs["sizes"], attrs.get("loading", "lazy"), attrs.get("class", ""),
+            registry=registry,
+        )
+
+    return _SLOT.sub(one, html)
 
 
 def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = "") -> str:
@@ -44,7 +71,9 @@ def render_all() -> dict[str, str]:
         parts = json.loads((ROOT / "templates" / "pages" / f"{stem}.json").read_text(encoding="utf-8"))
         out[stem] = render_page(
             stem,
-            (ROOT / "templates" / "pages" / f"{stem}.body.frag").read_text(encoding="utf-8"),
+            expand_image_slots(
+                (ROOT / "templates" / "pages" / f"{stem}.body.frag").read_text(encoding="utf-8")
+            ),
             parts.get("head_extra", ""),
             parts.get("body_scripts", ""),
         )

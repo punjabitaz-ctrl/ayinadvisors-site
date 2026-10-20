@@ -104,6 +104,7 @@
 <section class="section surface-page" id="why">
   <div class="wrap">
     <div class="why-grid reveal">
+      <div class="why-visual">
       <div class="globe-stage" data-parallax="0.02">
         <svg viewBox="0 0 200 200" role="img" aria-label="Global routes converging on the United States">
           <circle class="globe-outer" cx="100" cy="100" r="80"></circle>
@@ -126,6 +127,10 @@
           <circle class="node-pulse" cx="96" cy="104" r="4"></circle>
           <circle class="dest" cx="96" cy="104" r="4"></circle>
         </svg>
+      </div>
+        <figure class="photo-card surface-card reveal" data-d="1">
+          <image-slot slug="us-night" sizes="(min-width: 900px) 460px, calc(100vw - 80px)" loading="lazy"></image-slot>
+        </figure>
       </div>
       <div>
         <span class="eyebrow reveal"><span class="sec-index">03</span> &nbsp;Why the US market</span>
