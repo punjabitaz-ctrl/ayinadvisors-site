@@ -354,3 +354,16 @@ html.js .line-reveal.in > span { transform: none; }
   color: var(--accent-fill-hover);
   border-color: var(--on-accent);
 }
+
+/* ---------- Gold call-to-action band (surface-accent) ----------
+   The gold fill is the surface, so anything that is gold elsewhere needs a
+   different treatment here: the eyebrow rule and glow go navy/bright, the
+   selection colour inverts, and .btn-white (navy fill, gold label) is the
+   button. Text roles come from the surface-accent context (navy on gold). */
+.surface-accent .eyebrow::before { background: var(--ink); }
+.surface-accent .cta-glow {
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-fill-hover) 70%, transparent) 0%, transparent 62%);
+  opacity: 0.9;
+}
+.surface-accent ::selection { background: var(--ink); color: var(--surface); }
+.surface-accent .tlink::after { background: var(--ink); }

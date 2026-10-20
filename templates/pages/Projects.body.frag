@@ -28,7 +28,7 @@
     <div class="projects-grid">
 
       <!-- COMPLETED: Thinkers Dilemma — featured full-width -->
-      <div class="project-card featured surface-inverse reveal">
+      <div class="project-card featured surface-card reveal">
         <div class="card-left">
           <span class="status-badge badge-complete"><span class="badge-dot"></span>Completed</span>
           <div class="project-index" aria-hidden="true">01</div>
@@ -51,7 +51,7 @@
       </div>
 
       <!-- IN TESTING: BizCheck -->
-      <div class="project-card navy-card surface-inverse reveal">
+      <div class="project-card navy-card surface-card reveal">
         <span class="status-badge badge-testing"><span class="badge-dot"></span>In Testing</span>
         <div class="project-index" aria-hidden="true">02</div>
         <h2>BizCheck</h2>
@@ -65,7 +65,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: Channel -->
-      <div class="project-card reveal" data-d="1">
+      <div class="project-card surface-card reveal" data-d="1">
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">03</div>
         <h2>Channel</h2>
@@ -79,7 +79,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: Trust -->
-      <div class="project-card reveal" data-d="2">
+      <div class="project-card surface-card reveal" data-d="2">
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">04</div>
         <h2>Trust</h2>
@@ -93,7 +93,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: SceneCraft -->
-      <div class="project-card navy-card surface-inverse reveal" data-d="3">
+      <div class="project-card navy-card surface-card reveal" data-d="3">
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">05</div>
         <h2>SceneCraft</h2>
@@ -111,7 +111,7 @@
 </main>
 
 <!-- CTA -->
-<section class="section cta surface-inverse" style="border-top:1px solid var(--line)">
+<section class="section cta surface-accent" style="border-top:1px solid var(--line)">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">

@@ -42,7 +42,7 @@
   .eye-mark circle, .eye-mark ellipse { fill: none; stroke: var(--accent-fill); }
   .eye-mark .ring { stroke: var(--line-gold); stroke-width: 1; }
   .eye-mark .iris { fill: color-mix(in srgb, var(--accent-fill) 14%, transparent); stroke-width: 1.2; }
-  .eye-mark .pupil { fill: var(--surface); stroke-width: 1.2; }
+  .eye-mark .pupil { fill: var(--ink); stroke-width: 1.2; }
   .eye-mark .scan { stroke: var(--accent-fill-hover); stroke-width: 1.4; transform-origin: 130px 130px; animation: spin 14s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .meaning h2 { margin-bottom: 22px; }
@@ -158,7 +158,7 @@
 </section>
 
 <!-- STAT BAND -->
-<section class="surface-inverse">
+<section class="surface-alt">
   <div class="wrap"><div class="stat-band">
     <div class="sb reveal"><div class="n"><span data-count="3" data-suffix=""></span></div><div class="l">Markets served — US, Canada, LATAM</div></div>
     <div class="sb reveal" data-d="1"><div class="n"><span data-count="40" data-suffix="+"></span></div><div class="l">Channel partners in the network</div></div>
@@ -189,7 +189,7 @@
 </section>
 
 <!-- TEAM -->
-<section class="section surface-inverse">
+<section class="section surface-alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -211,7 +211,7 @@
 </section>
 
 <!-- CTA -->
-<section class="section cta surface-inverse" style="border-top:1px solid var(--line)">
+<section class="section cta surface-accent" style="border-top:1px solid var(--line)">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">

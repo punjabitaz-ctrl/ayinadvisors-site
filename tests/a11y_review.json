@@ -241,56 +241,7 @@
     {
       "page": "BizCheck",
       "rule": "color-contrast",
-      "selector": "#bc_company",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "#bc_desc",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "#bc_email",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "#bc_hq",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "#bc_industry",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "#bc_name",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
       "selector": "#bc_stage",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "#bizcheck-form > h2",
       "reason": "",
       "status": "unreviewed"
     },
@@ -305,13 +256,6 @@
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".btn-ghost > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".field:nth-child(10) > label",
       "reason": "",
       "status": "unreviewed"
     },
@@ -452,90 +396,6 @@
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(9) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(1) > .k",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(1) > .v",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(1) > .v > small",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(2) > .k",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(2) > .v",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(2) > .v > small",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(3) > .k",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(3) > .v",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".imeta:nth-child(3) > .v > small",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".intake-intro > .h2",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".intake-intro > .lead[data-d=\"2\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": ".intake-intro > .on-navy.eyebrow.reveal",
       "reason": "",
       "status": "unreviewed"
     },
@@ -738,13 +598,6 @@
     {
       "page": "BizCheck",
       "rule": "color-contrast",
-      "selector": ".sub",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
       "selector": ".tag-pill",
       "reason": "",
       "status": "unreviewed"
@@ -836,41 +689,6 @@
     {
       "page": "BizCheck",
       "rule": "color-contrast",
-      "selector": "button[data-v=\"Channel Access\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "button[data-v=\"Competition\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "button[data-v=\"Financial Model\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "button[data-v=\"Market Fit\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "button[data-v=\"Regulatory Risk\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
       "selector": "button[type=\"submit\"] > .btn-arrow",
       "reason": "",
       "status": "unreviewed"
@@ -886,55 +704,6 @@
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_company\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_desc\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_email\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_hq\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_industry\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_name\"]",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "BizCheck",
-      "rule": "color-contrast",
-      "selector": "label[for=\"bc_stage\"]",
       "reason": "",
       "status": "unreviewed"
     },

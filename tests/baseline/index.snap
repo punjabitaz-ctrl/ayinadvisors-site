@@ -198,7 +198,7 @@
 </header>
 
 <!-- ===================== MARQUEE ===================== -->
-<div class="marquee surface-inverse" aria-hidden="true">
+<div class="marquee surface-alt" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-item">Market Entry Research</span>
     <span class="marquee-item">Channel Enablement</span>
@@ -252,7 +252,7 @@
 </section>
 
 <!-- ===================== PROCESS ===================== -->
-<section class="section surface-inverse" id="process">
+<section class="section surface-alt" id="process">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -317,7 +317,7 @@
 </section>
 
 <!-- ===================== ABOUT TEASER ===================== -->
-<section class="section surface-inverse" id="about">
+<section class="section surface-alt" id="about">
   <div class="wrap">
     <div class="about-teaser">
       <div>
@@ -335,7 +335,7 @@
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="section cta surface-inverse">
+<section class="section cta surface-accent">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">

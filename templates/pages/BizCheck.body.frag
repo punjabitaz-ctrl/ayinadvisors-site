@@ -63,7 +63,7 @@
 </section>
 
 <!-- ===================== THE PANEL ===================== -->
-<section class="section surface-inverse" id="panel">
+<section class="section surface-alt" id="panel">
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
@@ -120,7 +120,7 @@
       </div>
       <div class="reveal" data-d="1">
         <div style="font-size:.6rem;font-weight:700;letter-spacing:.26em;color:var(--ink-muted);text-align:center;margin-bottom:14px;text-transform:uppercase">Sample Report</div>
-        <div class="sample-report">
+        <div class="sample-report surface-card">
           <div class="rc-top">
             <div class="rc-brand"><span>AYiN Advisors</span> · BizCheck</div>
             <div class="rc-scan">Rapid Scan</div>
@@ -150,8 +150,7 @@
 </section>
 
 <!-- ===================== INTAKE ===================== -->
-<section class="section surface-inverse intake" id="submit">
-  <canvas id="iris2"></canvas>
+<section class="section surface-alt intake" id="submit">
   <div class="wrap">
     <div class="intake-grid">
       <div class="intake-intro">
@@ -164,7 +163,7 @@
           <div class="imeta"><span class="k">Obligation</span><span class="v">None<small>A conversation follows if there's a fit</small></span></div>
         </div>
       </div>
-      <div class="form-card reveal" data-d="2">
+      <div class="form-card surface-card reveal" data-d="2">
         <form id="bizcheck-form" novalidate>
           <h2>Request a BizCheck</h2>
           <p class="sub">The brief that powers the panel — takes about three minutes.</p>

@@ -99,7 +99,7 @@
 </main>
 
 <!-- CTA -->
-<section class="section cta surface-inverse">
+<section class="section cta surface-accent">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">

@@ -1,0 +1,101 @@
+"""Light-led page rhythm: navy only in the hero, nav, drawer and footer; bands alternate;
+closing CTA is the gold accent band; cards are white."""
+import pytest
+import build
+from bs4 import BeautifulSoup
+
+SURFACES = ("surface-page", "surface-alt", "surface-card", "surface-inverse", "surface-accent")
+HEROES = ("header.hero", "header.pagehead", "header.bc-hero", "header.contact-hero", "main.nf")
+
+# Top-level band surfaces in document order (hero first, footer last), from the task BAND_MAP.
+BAND_MAP = {
+    "index": ["inverse", "alt", "page", "alt", "page", "alt", "accent", "inverse"],
+    "About": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
+    "Services": ["inverse", "page", "accent", "inverse"],
+    "Projects": ["inverse", "page", "accent", "inverse"],
+    "BizCheck": ["inverse", "page", "alt", "page", "alt", "inverse"],
+    "Contact": ["inverse", "inverse"],
+    "404": ["inverse"],
+}
+
+
+@pytest.fixture(scope="module")
+def soups():
+    return {stem: BeautifulSoup(html, "html.parser") for stem, html in build.render_all().items()}
+
+
+def _surface(el):
+    found = [c[len("surface-"):] for c in el.get("class", []) if c in SURFACES]
+    return found[0] if found else None
+
+
+def _bands(soup):
+    """Top-level page bands in order, nav and drawer excluded."""
+    out = []
+    for el in soup.body.find_all(True, recursive=False):
+        if el.name in ("script", "nav") or "mobile-drawer" in el.get("class", []):
+            continue
+        if _surface(el):
+            out.append(el)
+    return out
+
+
+def test_inverse_surface_only_on_hero_nav_drawer_footer(soups):
+    for stem, soup in soups.items():
+        allowed = set()
+        for sel in ("nav.nav", ".mobile-drawer", "footer.footer", *HEROES):
+            allowed.update(id(e) for e in soup.select(sel))
+        for el in soup.select(".surface-inverse"):
+            assert id(el) in allowed, f"{stem}: <{el.name} class={el.get('class')}> is navy but is not hero/nav/drawer/footer"
+
+
+@pytest.mark.parametrize("stem", list(BAND_MAP))
+def test_band_map(soups, stem):
+    assert [_surface(b) for b in _bands(soups[stem])] == BAND_MAP[stem]
+
+
+def test_no_two_adjacent_bands_share_a_surface(soups):
+    for stem, soup in soups.items():
+        surfaces = [_surface(b) for b in _bands(soup)]
+        for a, b in zip(surfaces, surfaces[1:]):
+            # Contact is a single hero followed by the footer: both deliberately navy.
+            if stem == "Contact":
+                continue
+            assert a != b, f"{stem}: adjacent bands both surface-{a}: {surfaces}"
+
+
+def test_final_band_is_the_gold_cta(soups):
+    seen = 0
+    for stem, soup in soups.items():
+        ctas = soup.select("section.cta")
+        for cta in ctas:
+            assert _surface(cta) == "accent", f"{stem}: .cta band is not surface-accent"
+        if ctas:
+            seen += 1
+            content_bands = [b for b in _bands(soup) if b.name != "footer"]
+            assert content_bands[-1] is ctas[-1], f"{stem}: the CTA is not the last band before the footer"
+        for el in soup.select(".surface-accent"):
+            assert "cta" in el.get("class", []), f"{stem}: surface-accent used outside the CTA band"
+    assert seen == 4, "Home, About, Services and Projects close with a CTA"
+
+
+def test_cards_use_the_card_surface(soups):
+    checked = 0
+    for stem, soup in soups.items():
+        for el in soup.select(".project-card, .report-card, .sample-report, #submit .form-card"):
+            checked += 1
+            assert "surface-card" in el.get("class", []), f"{stem}: <{el.name} class={el.get('class')}> is not surface-card"
+            assert "surface-inverse" not in el.get("class", [])
+    assert checked == 8
+
+
+def test_bizcheck_intake_has_no_decorative_canvas(soups):
+    soup = soups["BizCheck"]
+    assert soup.select_one("#iris2") is None
+    assert soup.select_one("#iris") is not None, "the hero iris canvas stays"
+
+
+def test_site_js_tolerates_a_missing_canvas(root):
+    js = (root / "assets" / "site.js").read_text(encoding="utf-8")
+    assert "iris2" not in js
+    assert 'getElementById("iris")' in js and "if (canvas && !reduce)" in js

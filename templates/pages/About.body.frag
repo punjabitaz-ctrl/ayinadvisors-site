@@ -39,7 +39,7 @@
 </section>
 
 <!-- STAT BAND -->
-<section class="surface-inverse">
+<section class="surface-alt">
   <div class="wrap"><div class="stat-band">
     <div class="sb reveal"><div class="n"><span data-count="3" data-suffix=""></span></div><div class="l">Markets served — US, Canada, LATAM</div></div>
     <div class="sb reveal" data-d="1"><div class="n"><span data-count="40" data-suffix="+"></span></div><div class="l">Channel partners in the network</div></div>
@@ -70,7 +70,7 @@
 </section>
 
 <!-- TEAM -->
-<section class="section surface-inverse">
+<section class="section surface-alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -92,7 +92,7 @@
 </section>
 
 <!-- CTA -->
-<section class="section cta surface-inverse" style="border-top:1px solid var(--line)">
+<section class="section cta surface-accent" style="border-top:1px solid var(--line)">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">

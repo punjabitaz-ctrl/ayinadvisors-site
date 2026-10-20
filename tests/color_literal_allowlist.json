@@ -95,26 +95,6 @@
     "reason": "Select-arrow data-URI: a background image URL cannot reference CSS custom properties."
   },
   {
-    "path": "templates/pages/BizCheck.json",
-    "literal": "rgba(' + GOLD + ',' + (0.04 + i / 5 * 0.08)",
-    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
-  },
-  {
-    "path": "templates/pages/BizCheck.json",
-    "literal": "rgba(' + GOLD + ',0)",
-    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
-  },
-  {
-    "path": "templates/pages/BizCheck.json",
-    "literal": "rgba(' + GOLD + ',0.18)",
-    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
-  },
-  {
-    "path": "templates/pages/BizCheck.json",
-    "literal": "rgba(' + GOLD + ',0.35)",
-    "reason": "BizCheck iris canvas colour: 2D canvas paints need literal colour strings; made token-driven in Phase 2c."
-  },
-  {
     "path": "templates/pages/Contact.json",
     "literal": "#061325",
     "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
