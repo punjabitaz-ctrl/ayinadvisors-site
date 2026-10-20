@@ -124,6 +124,7 @@ python -m pytest tests                    # includes the gate
 python -m pytest tests -m "not browser"   # static checks only, no Chromium
 python tools/a11y_ratchet.py              # print current static + axe totals
 python tools/a11y_ratchet.py --update     # record a lower total after fixing problems
+                                          # (refuses to raise a count unless --allow-increase)
 ```
 
 - Tests marked `browser` drive headless Chromium against the repo root served
@@ -132,7 +133,8 @@ python tools/a11y_ratchet.py --update     # record a lower total after fixing pr
 - The ratchet (`tests/a11y_known_issues.json`) records known problems: the
   suite fails on any new problem and also when a problem is fixed but the
   ratchet was not lowered, so the totals only go down.
-- axe "needs review" results must each have a written reason in
-  `tests/a11y_review.json`.
+- axe "needs review" results must each have an entry in
+  `tests/a11y_review.json`: `unreviewed` (auto-recorded) until a person checks
+  it and sets `justified` with a reason. Stale entries fail the suite.
 - Tests marked `xfail(strict=True)` are known defects with a named fixing task;
   one that starts passing fails the run until the marker is removed.

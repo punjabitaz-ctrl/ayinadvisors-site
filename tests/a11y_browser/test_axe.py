@@ -41,22 +41,57 @@ def test_axe_ratchet_is_tight(axe_cache, stem, width):
     )
 
 
-def _justified(entries, page, rule, selector) -> bool:
-    return any(
-        e["page"] == page and e["rule"] == rule and e["selector"] in ("*", selector) and e.get("reason", "").strip()
-        for e in entries
-    )
+# Task 7: set to 0 so that any unreviewed needs-review entry fails the suite.
+MAX_UNREVIEWED = None
+
+
+def _entries() -> list:
+    return json.loads(REVIEW.read_text(encoding="utf-8"))["items"]
+
+
+def _covers(e, page, rule, selector) -> bool:
+    return e["page"] == page and e["rule"] == rule and e["selector"] in ("*", selector)
+
+
+def test_review_entries_are_well_formed():
+    bad = []
+    for e in _entries():
+        if e.get("status") not in ("unreviewed", "justified"):
+            bad.append((e.get("page"), e.get("rule"), "status must be 'unreviewed' or 'justified'"))
+        elif e["status"] == "justified" and not e.get("reason", "").strip():
+            bad.append((e["page"], e["rule"], "justified entry needs a real reason"))
+    assert not bad, f"malformed tests/a11y_review.json entries: {bad}"
 
 
 @pytest.mark.parametrize("stem,width", CASES, ids=IDS)
 def test_every_needs_review_item_is_justified(axe_cache, stem, width):
-    entries = json.loads(REVIEW.read_text(encoding="utf-8"))["items"]
+    entries = _entries()
     missing = [
         (stem, r.rule, sel)
         for r in axe_cache(stem, width)[1]
         for sel in r.selectors
-        if not _justified(entries, stem, r.rule, sel)
+        if not any(_covers(e, stem, r.rule, sel) for e in entries)
     ]
     assert not missing, (
-        f"axe 'needs review' results with no justification in tests/a11y_review.json: {missing}"
+        f"axe 'needs review' results with no entry in tests/a11y_review.json: {missing}. "
+        "Run `python tools/a11y_ratchet.py --update` to record them as 'unreviewed', then review by hand."
     )
+
+
+def test_unreviewed_needs_review_count_is_reported(axe_cache):
+    unreviewed = [e for e in _entries() if e.get("status") == "unreviewed"]
+    msg = f"{len(unreviewed)} needs-review entries are still 'unreviewed' (set status 'justified' with a reason)"
+    print(msg)
+    if MAX_UNREVIEWED is not None:
+        assert len(unreviewed) <= MAX_UNREVIEWED, msg
+
+
+def test_no_stale_review_entries(axe_cache):
+    """An entry matching no current needs-review result must be removed (the tool's --update prunes them)."""
+    seen = [(stem, r.rule, sel) for stem, w in CASES for r in axe_cache(stem, w)[1] for sel in r.selectors]
+    stale = [
+        (e["page"], e["rule"], e["selector"])
+        for e in _entries()
+        if not any(_covers(e, p, ru, sel) for p, ru, sel in seen)
+    ]
+    assert not stale, f"stale tests/a11y_review.json entries (run `python tools/a11y_ratchet.py --update`): {stale}"

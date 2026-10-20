@@ -44,7 +44,7 @@ def _walk_tab(page, key="Tab", limit=120):
     return out
 
 
-@pytest.mark.xfail(strict=True, reason="fixed in Task 6")
+@pytest.mark.xfail(strict=True, raises=AssertionError, reason="fixed in Task 6")
 def test_tab_order_reaches_main_content(home):
     """First Tab lands on a skip link; activating it puts keyboard focus in <main>."""
     home.keyboard.press("Tab")
@@ -67,7 +67,7 @@ def test_tab_order_reaches_main_content(home):
     assert in_main, "after the skip link, the next Tab does not land inside <main>"
 
 
-@pytest.mark.xfail(strict=True, reason="fixed in Task 6")
+@pytest.mark.xfail(strict=True, raises=AssertionError, reason="fixed in Task 6")
 def test_focus_outline_is_visible(home):
     """Every keyboard-focusable control on Home shows an outline of at least 2px."""
     controls = _walk_tab(home)
@@ -105,7 +105,7 @@ OBSCURED_JS = """() => {
 }"""
 
 
-@pytest.mark.xfail(strict=True, reason="fixed in Task 6")
+@pytest.mark.xfail(strict=True, raises=AssertionError, reason="fixed in Task 6")
 def test_focus_is_not_obscured_by_the_sticky_nav(home):
     """A control that takes focus near the top edge must not stay hidden behind the fixed nav."""
     res = home.evaluate(OBSCURED_JS)
@@ -114,7 +114,7 @@ def test_focus_is_not_obscured_by_the_sticky_nav(home):
 
 
 @pytest.mark.parametrize("stem", [
-    pytest.param(s, marks=pytest.mark.xfail(strict=True, reason="fixed in Task 7")) if s == "index" else s
+    pytest.param(s, marks=pytest.mark.xfail(strict=True, raises=AssertionError, reason="fixed in Task 7")) if s == "index" else s
     for s in PAGES
 ])
 def test_no_horizontal_scroll_at_320(browser, site_url, stem):
@@ -127,7 +127,7 @@ def test_no_horizontal_scroll_at_320(browser, site_url, stem):
         ctx.close()
 
 
-@pytest.mark.xfail(strict=True, reason="fixed in Task 6")
+@pytest.mark.xfail(strict=True, raises=AssertionError, reason="fixed in Task 6")
 def test_reduced_motion_disables_animation(browser, site_url):
     """With prefers-reduced-motion: reduce no CSS animation runs and the iris canvas stays still."""
     problems = []
