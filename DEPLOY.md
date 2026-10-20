@@ -113,6 +113,34 @@ forms/ids/scripts present, accessibility and contrast gates. Baselines are
 re-snapshotted from merged output at the start of the next sprint, never edited
 to turn a red test green.
 
+## Theme (generated)
+
+Every colour on the site comes from `content/theme.json` (palette, per-surface
+roles, derived text tones, required contrast pairings). `python build.py` turns
+it into `assets/theme.css`, so **`assets/theme.css` is generated: never edit it
+by hand**. The build refuses to write the file if any declared pairing (normal
+text 4.5:1, large text and UI 3:1, including hover and placeholder states, in
+every surface context and both themes) fails, and the tests re-check the same
+pairings. Colour literals are not allowed anywhere else (`tests/test_no_color_literals.py`).
+To change a colour, edit `content/theme.json`, run `python build.py` and commit
+the regenerated `assets/theme.css` with the pages.
+
+## Images (pipeline)
+
+Photography is registered in `content/images.json` (slug, source file name,
+alt text or `decorative: true`, focal point, crop). Pages place a photo with an
+`<image-slot slug="...">` element; `build.py` expands it to a `<picture>` with
+480, 960 and 1600px WebP sources. Originals are never committed. To (re)generate
+the files, pass the folder that holds the originals on the command line:
+
+```bash
+python tools/optimize_images.py <folder-with-originals>
+```
+
+Output goes to `assets/img/<slug>-{480,960,1600}.webp` (EXIF stripped, never
+upscaled, each 1600px file within 160 KB); commit the results, then run
+`python build.py`. Changing only alt text needs no optimiser run.
+
 ## Accessibility gate (development only)
 
 The gate is part of the normal test run; it does not affect the deploy path.
@@ -120,21 +148,23 @@ The gate is part of the normal test run; it does not affect the deploy path.
 ```
 pip install -r dev-requirements.txt
 python -m playwright install chromium     # browser tests need Chromium
-python -m pytest tests                    # includes the gate
-python -m pytest tests -m "not browser"   # static checks only, no Chromium
-python tools/a11y_ratchet.py              # print current static + axe totals
-python tools/a11y_ratchet.py --update     # record a lower total after fixing problems
-                                          # (refuses to raise a count unless --allow-increase)
+PYTHONUTF8=1 python -m pytest tests                    # includes the gate (about 5 minutes)
+PYTHONUTF8=1 python -m pytest tests -m "not browser"   # static checks only, no Chromium
 ```
 
 - Tests marked `browser` drive headless Chromium against the repo root served
   on a local port; if Chromium is not installed they skip with the install
   command in the reason.
-- The ratchet (`tests/a11y_known_issues.json`) records known problems: the
-  suite fails on any new problem and also when a problem is fixed but the
-  ratchet was not lowered, so the totals only go down.
-- axe "needs review" results must each have an entry in
-  `tests/a11y_review.json`: `unreviewed` (auto-recorded) until a person checks
-  it and sets `justified` with a reason. Stale entries fail the suite.
-- Tests marked `xfail(strict=True)` are known defects with a named fixing task;
-  one that starts passing fails the run until the marker is removed.
+- The standard is zero: axe-core reports no violations on any page at 320, 768
+  and 1280px, and the static lint reports nothing. There is no tolerance file.
+- axe "needs review" results (text over gradients, translucent headers,
+  decorative layers) each need an entry in `tests/a11y_review.json` with
+  `status: "justified"` and a specific reason, and
+  `tests/a11y_browser/test_review_contrast.py` backs every such entry by
+  measuring real glyph-on-background contrast from rendered pixels. Stale
+  entries and `unreviewed` entries fail the suite.
+- Behaviour checks (keyboard order, focus visibility, sticky-header focus
+  clearance, mobile menu, 320px reflow, reduced motion) live in
+  `tests/a11y_browser/test_behaviour.py`.
+- Manual checks that automation cannot do are listed in
+  `docs/accessibility/checklist.md`; the dated results are in `docs/accessibility/`.

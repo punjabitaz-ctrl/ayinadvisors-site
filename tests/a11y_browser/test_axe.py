@@ -1,4 +1,4 @@
-"""axe-core over every page at three widths, ratcheted against tests/a11y_known_issues.json."""
+"""axe-core over every page at three widths: zero violations, and every "needs review" result justified."""
 import json
 
 import pytest
@@ -7,42 +7,19 @@ from a11y_browser.conftest import PAGES, ROOT, WIDTHS
 
 pytestmark = pytest.mark.browser
 
-KNOWN = ROOT / "tests" / "a11y_known_issues.json"
 REVIEW = ROOT / "tests" / "a11y_review.json"
 CASES = [(s, w) for s in PAGES for w in WIDTHS]
 IDS = [f"{s}-{w}" for s, w in CASES]
 
 
-def _known_axe() -> dict:
-    return json.loads(KNOWN.read_text(encoding="utf-8")).get("axe", {})
-
-
-def _counts(stem, width, violations) -> dict:
-    return {f"{stem}|{width}|{v.rule}": v.nodes for v in violations}
-
-
 @pytest.mark.parametrize("stem,width", CASES, ids=IDS)
-def test_axe_has_no_new_violations(axe_cache, stem, width):
-    known = _known_axe()
-    now = _counts(stem, width, axe_cache(stem, width)[0])
-    worse = {k: (known.get(k, 0), n) for k, n in now.items() if n > known.get(k, 0)}
-    assert not worse, f"new axe violations (recorded, now): {worse}"
+def test_axe_reports_no_violations(axe_cache, stem, width):
+    found = {v.rule: (v.nodes, v.selectors[:5]) for v in axe_cache(stem, width)[0]}
+    assert not found, f"{stem}@{width}: axe violations (rule: (nodes, first selectors)): {found}"
 
 
-@pytest.mark.parametrize("stem,width", CASES, ids=IDS)
-def test_axe_ratchet_is_tight(axe_cache, stem, width):
-    known = _known_axe()
-    now = _counts(stem, width, axe_cache(stem, width)[0])
-    prefix = f"{stem}|{width}|"
-    better = {k: (n, now.get(k, 0)) for k, n in known.items() if k.startswith(prefix) and now.get(k, 0) < n}
-    assert not better, (
-        f"axe violations fixed but ratchet not lowered (recorded, now): {better}. "
-        "Run `python tools/a11y_ratchet.py --update` and commit tests/a11y_known_issues.json."
-    )
-
-
-# Task 7: set to 0 so that any unreviewed needs-review entry fails the suite.
-MAX_UNREVIEWED = None
+# Any entry still marked "unreviewed" fails the suite: a needs-review item is either fixed or justified.
+MAX_UNREVIEWED = 0
 
 
 def _entries() -> list:
@@ -58,8 +35,10 @@ def test_review_entries_are_well_formed():
     for e in _entries():
         if e.get("status") not in ("unreviewed", "justified"):
             bad.append((e.get("page"), e.get("rule"), "status must be 'unreviewed' or 'justified'"))
-        elif e["status"] == "justified" and not e.get("reason", "").strip():
-            bad.append((e["page"], e["rule"], "justified entry needs a real reason"))
+        elif e["status"] == "justified" and len(e.get("reason", "").strip()) < 40:
+            bad.append((e["page"], e["rule"], "justified entry needs a specific reason"))
+        elif e["status"] == "justified" and e["rule"] == "color-contrast" and "test_review_contrast" not in e["reason"]:
+            bad.append((e["page"], e["rule"], "a colour-contrast justification must cite the pixel measurement test"))
     assert not bad, f"malformed tests/a11y_review.json entries: {bad}"
 
 
@@ -74,16 +53,15 @@ def test_every_needs_review_item_is_justified(axe_cache, stem, width):
     ]
     assert not missing, (
         f"axe 'needs review' results with no entry in tests/a11y_review.json: {missing}. "
-        "Run `python tools/a11y_ratchet.py --update` to record them as 'unreviewed', then review by hand."
+        "Fix the cause, or add an entry with status 'justified' and a specific, verified reason."
     )
 
 
-def test_unreviewed_needs_review_count_is_reported(axe_cache):
+def test_no_unreviewed_needs_review_entries():
     unreviewed = [e for e in _entries() if e.get("status") == "unreviewed"]
     msg = f"{len(unreviewed)} needs-review entries are still 'unreviewed' (set status 'justified' with a reason)"
     print(msg)
-    if MAX_UNREVIEWED is not None:
-        assert len(unreviewed) <= MAX_UNREVIEWED, msg
+    assert len(unreviewed) <= MAX_UNREVIEWED, msg
 
 
 def test_no_stale_review_entries(axe_cache):
@@ -94,4 +72,4 @@ def test_no_stale_review_entries(axe_cache):
         for e in _entries()
         if not any(_covers(e, p, ru, sel) for p, ru, sel in seen)
     ]
-    assert not stale, f"stale tests/a11y_review.json entries (run `python tools/a11y_ratchet.py --update`): {stale}"
+    assert not stale, f"stale tests/a11y_review.json entries (delete them): {stale}"

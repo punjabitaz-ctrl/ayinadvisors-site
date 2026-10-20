@@ -4,1394 +4,1585 @@
       "page": "404",
       "rule": "color-contrast",
       "selector": ".btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".btn-ghost > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".btn-white > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".btn[data-magnetic=\"\"][href=\"index.html\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".code",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".eyebrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"About.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Contact.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Projects.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Services.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": ".nav-link[href=\"index.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring,imgNode"
     },
     {
       "page": "404",
       "rule": "color-contrast",
       "selector": "p",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring,imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".active",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".member > h3",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because another positioned element overlaps the text box, so axe cannot attribute a background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".member > p",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because another positioned element overlaps the text box, so axe cannot attribute a background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Contact.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Projects.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Services.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".nav-link[href=\"index.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".role",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because another positioned element overlaps the text box, so axe cannot attribute a background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".tlink > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".wrap > .lead[data-d=\"2\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring,imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": ".wrap > .on-navy.eyebrow.reveal",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "About",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring,imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "#bc_stage",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a background image or the fixed header's backdrop lies behind the element, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgImage"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".bc-tagline",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".btn-ghost > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(10) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(10) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(11) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(11) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(12) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(12) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(3) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(3) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(4) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(4) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(5) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(5) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(6) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(6) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(7) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(7) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(8) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(8) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(9) > .fs-n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".fs-row:nth-child(9) > .fs-v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".lead[data-d=\"3\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".lo",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"About.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Contact.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Projects.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Services.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".nav-link[href=\"index.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".on > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".on > .v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".report-card > .rc-overall > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".report-card > .rc-overall > .n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".report-card > .rc-top > .rc-brand",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".report-card > .rc-top > .rc-brand > span",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".report-card > .rc-top > .rc-scan",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".sample-report > .rc-overall > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".sample-report > .rc-overall > .n",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".sample-report > .rc-top > .rc-brand",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".sample-report > .rc-top > .rc-brand > span",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".sample-report > .rc-top > .rc-scan",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(3) > .hi.score-val",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(3) > .score-name",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(4) > .hi.score-val",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(4) > .score-name",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(5) > .score-name",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(5) > .score-val",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(6) > .score-name",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(7) > .hi.score-val",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".score-row:nth-child(7) > .score-name",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".tag-pill",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".vl",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".vo:nth-child(1) > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".vo:nth-child(1) > .v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".vo:nth-child(3) > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".vo:nth-child(3) > .v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": ".vv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "button[type=\"submit\"] > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "button[type=\"submit\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "strong:nth-child(1)",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "BizCheck",
       "rule": "color-contrast",
       "selector": "strong:nth-child(2)",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "#company",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "#consult-form > h2",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "#email",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "#hq",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "#msg",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "#name",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".active",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".btn-white > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".cmeta:nth-child(1) > .k",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".cmeta:nth-child(2) > .k",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".cmeta:nth-child(2) > .v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".cmeta:nth-child(3) > .k",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".cmeta:nth-child(3) > .v",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".eyebrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".field:nth-child(8) > label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".lead",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"About.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Projects.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Services.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".nav-link[href=\"index.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".sub",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": ".v > a[href=\"mailto:hello@ayinadvisors.com\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "button[data-v=\"Channel Strategy\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "button[data-v=\"Market Entry Research\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "button[data-v=\"Partner Introductions\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "button[data-v=\"Regional Expansion\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "button[type=\"submit\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "label[for=\"company\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "label[for=\"email\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "label[for=\"hq\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "label[for=\"msg\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "label[for=\"name\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Contact",
       "rule": "color-contrast",
       "selector": "small",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".active",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"About.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Contact.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Services.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".nav-link[href=\"index.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".wrap > .eyebrow.on-navy.reveal",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": ".wrap > .lead[data-d=\"2\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "Projects",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".active",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"About.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Contact.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Projects.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".nav-link[href=\"index.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".wrap > .eyebrow.on-navy.reveal",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".wrap > .lead[data-d=\"2\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "Services",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".active",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".btn-ghost > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".btn-white.btn[data-magnetic=\"\"] > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".center",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".cta-inner > .h2",
-      "status": "unreviewed",
-      "reason": ""
+      "status": "justified",
+      "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "cause": "bgGradient,elmPartiallyObscuring"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".cta-inner > .lead[data-d=\"2\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".hero-actions > .btn-white.btn[data-magnetic=\"\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".hero-inner > .eyebrow.on-navy.reveal",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".hero-lead",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".hstat.reveal.in:nth-child(1) > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".hstat.reveal[data-d=\"1\"] > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".hstat.reveal[data-d=\"2\"] > .l",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".italic-accent",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".nav-cta > .btn-white.btn[data-magnetic=\"\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"About.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Contact.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Projects.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".nav-link[href$=\"Services.html\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".scroll-hint > span:nth-child(1)",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because another positioned element overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient,bgOverlap"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": ".tlink > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-arrow",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
-      "reason": "",
-      "status": "unreviewed"
-    },
-    {
-      "page": "index",
-      "rule": "color-contrast",
-      "selector": "div:nth-child(2) > .h2",
-      "status": "unreviewed",
-      "reason": ""
+      "reason": "axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "span[data-count=\"100\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "span[data-count=\"90\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     },
     {
       "page": "index",
       "rule": "color-contrast",
       "selector": "span[data-suffix=\"+\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient"
     }
   ]
 }
