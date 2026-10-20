@@ -14,6 +14,7 @@ def _normalised(soup, selector):
     """Canonical subtree minus the parts that legitimately vary per page."""
     soup = BeautifulSoup(str(soup), "html.parser")
     for a in soup.select(f"{selector} a"):
+        a.attrs.pop("aria-current", None)
         classes = [c for c in a.get("class", []) if c != "active"]
         if classes:
             a["class"] = classes

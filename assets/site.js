@@ -18,18 +18,18 @@
   const toggle = document.querySelector(".nav-toggle");
   const drawer = document.querySelector(".mobile-drawer");
   if (toggle && drawer) {
-    toggle.addEventListener("click", () => {
-      const open = drawer.classList.toggle("open");
+    const setOpen = (open, returnFocus) => {
+      drawer.classList.toggle("open", open);
       toggle.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
       document.body.style.overflow = open ? "hidden" : "";
+      if (!open && returnFocus) toggle.focus();
+    };
+    toggle.addEventListener("click", () => setOpen(!drawer.classList.contains("open")));
+    drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && drawer.classList.contains("open")) setOpen(false, true);
     });
-    drawer.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
-        drawer.classList.remove("open");
-        toggle.classList.remove("is-open");
-        document.body.style.overflow = "";
-      })
-    );
   }
 
   /* ---------- Reveal on scroll ---------- */

@@ -12,25 +12,25 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
-<nav class="nav surface-inverse">
+<nav class="nav surface-inverse" aria-label="Primary">
   <div class="wrap">
     {{ logo }}
     <div class="nav-links">
       {% for n in site.nav -%}
-      <a href="{{ n.href|e }}" class="nav-link{% if n.class %} {{ n.class|e }}{% endif %}{% if n.label == page.active %} active{% endif %}">{{ n.label|e }}</a>
+      <a href="{{ n.href|e }}" class="nav-link{% if n.class %} {{ n.class|e }}{% endif %}{% if n.label == page.active %} active{% endif %}"{% if n.label == page.active %} aria-current="page"{% endif %}>{{ n.label|e }}</a>
       {% endfor -%}
       <span class="nav-cta"><a href="{{ page.cta.href|e }}" class="{{ page.cta['class']|e }}" data-magnetic><span class="btn-label">{{ page.cta.label|e }}</span></a></span>
     </div>
-    <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<div class="mobile-drawer surface-inverse" role="navigation" aria-label="Mobile menu">
+<nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   {% for n in site.nav -%}
   <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}>{{ n.label|e }}</a>
   {% endfor -%}
   <a href="{{ page.cta.href|e }}" class="md-cta">{{ page.cta.label|e }}</a>
-</div>
+</nav>
 
 {{ body }}
 

@@ -110,16 +110,40 @@ def test_focus_is_not_obscured_by_the_sticky_nav(home):
     assert not res["bad"], f"focused controls hidden behind the sticky nav (tag, text, top, nav bottom): {res['bad']}"
 
 
-@pytest.mark.parametrize("stem", [
-    pytest.param(s, marks=pytest.mark.xfail(strict=True, raises=AssertionError, reason="fixed in Task 7")) if s == "index" else s
-    for s in PAGES
-])
+@pytest.mark.parametrize("stem", PAGES)
 def test_no_horizontal_scroll_at_320(browser, site_url, stem):
     ctx = new_context(browser, 320, 800)
     try:
         page = open_page(ctx, site_url, stem)
         sw, cw = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
         assert sw <= cw, f"{stem}: page scrolls horizontally at 320px (scrollWidth {sw} > clientWidth {cw})"
+    finally:
+        ctx.close()
+
+
+CLIPPED_JS = """() => {
+  const out = [];
+  for (const e of document.querySelectorAll('body *')) {
+    if (e.closest('.mobile-drawer, .marquee')) continue;
+    if (![...e.childNodes].some(n => n.nodeType === 3 && n.nodeValue.trim())) continue;
+    const rg = document.createRange(); rg.selectNodeContents(e);
+    const right = [...rg.getClientRects()].reduce((m, c) => Math.max(m, c.right), 0);
+    if (right > innerWidth + 1 && e.getBoundingClientRect().left >= -1)
+      out.push((e.className || e.tagName) + ' ' + Math.round(right) + ' ' + e.textContent.trim().slice(0, 30));
+  }
+  return out;
+}"""
+
+
+@pytest.mark.parametrize("stem", PAGES)
+def test_no_text_is_clipped_at_320(browser, site_url, stem):
+    """Reflow at 400% zoom: scrollWidth can look fine while an overflow:hidden ancestor hides text."""
+    ctx = new_context(browser, 320, 800)
+    try:
+        page = open_page(ctx, site_url, stem)
+        page.add_style_tag(content=""".reveal,.line-reveal>span{opacity:1!important;transform:none!important;transition:none!important}""")
+        clipped = page.evaluate(CLIPPED_JS)
+        assert not clipped, f"{stem}: text extends past the 320px viewport (clipped): {clipped[:5]}"
     finally:
         ctx.close()
 
@@ -147,3 +171,56 @@ def test_reduced_motion_disables_animation(browser, site_url):
         finally:
             ctx.close()
     assert not problems, f"motion not disabled under prefers-reduced-motion: {problems}"
+
+
+DRAWER_TABBABLE_JS = """() => [...document.querySelectorAll('.mobile-drawer a')].filter(a => {
+  const cs = getComputedStyle(a);
+  return cs.visibility !== 'hidden' && cs.display !== 'none' && !a.closest('[inert]');
+}).length"""
+
+
+@pytest.fixture
+def phone(browser, site_url):
+    ctx = new_context(browser, 375, 800)
+    page = open_page(ctx, site_url, "index")
+    yield page
+    ctx.close()
+
+
+def test_closed_drawer_links_are_not_tabbable(phone):
+    """A closed mobile menu must not trap keyboard focus on links nobody can see."""
+    assert phone.evaluate(DRAWER_TABBABLE_JS) == 0, "closed drawer still exposes focusable links"
+    stops = []
+    for _ in range(40):
+        phone.keyboard.press("Tab")
+        stops.append(phone.evaluate("() => !!document.activeElement.closest('.mobile-drawer')"))
+    assert not any(stops), "Tab reached a link inside the closed drawer"
+
+
+def test_menu_toggle_state_is_exposed_and_in_sync(phone):
+    toggle = phone.locator(".nav-toggle")
+    assert toggle.get_attribute("aria-controls") == "mobile-menu"
+    assert phone.locator("#mobile-menu.mobile-drawer").count() == 1
+    assert toggle.get_attribute("aria-expanded") == "false"
+    toggle.click()
+    assert toggle.get_attribute("aria-expanded") == "true"
+    assert phone.locator(".mobile-drawer").get_attribute("class").split().count("open") == 1
+    phone.wait_for_timeout(700)
+    assert phone.evaluate(DRAWER_TABBABLE_JS) > 0, "open drawer has no reachable links"
+    toggle.click()
+    assert toggle.get_attribute("aria-expanded") == "false"
+
+
+def test_escape_closes_the_drawer_and_returns_focus(phone):
+    toggle = phone.locator(".nav-toggle")
+    toggle.focus()
+    phone.keyboard.press("Enter")
+    assert toggle.get_attribute("aria-expanded") == "true"
+    phone.wait_for_timeout(700)
+    phone.keyboard.press("Tab")  # focus moves into the open drawer
+    assert phone.evaluate("() => !!document.activeElement.closest('.mobile-drawer')"), "Tab did not enter the open drawer"
+    phone.keyboard.press("Escape")
+    assert toggle.get_attribute("aria-expanded") == "false"
+    assert phone.evaluate("() => document.activeElement.classList.contains('nav-toggle')"), "focus did not return to the menu button"
+    phone.wait_for_timeout(700)
+    assert phone.evaluate(DRAWER_TABBABLE_JS) == 0

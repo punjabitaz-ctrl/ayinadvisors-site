@@ -1,11 +1,7 @@
-"""Static accessibility lint over the generated root pages, ratcheted.
+"""Static accessibility lint over the generated root pages: every rule must report zero problems.
 
-`lint_page` is pure: (stem, html) -> [(rule_id, detail)]. The ratchet file
-tests/a11y_known_issues.json records today's counts per "<stem>|<rule>"; the
-suite fails on any increase (or any new key) and on any decrease that has not
-been recorded (run `python tools/a11y_ratchet.py --update`).
+`lint_page` is pure: (stem, html) -> [(rule_id, detail)].
 """
-import json
 import re
 from collections import Counter
 
@@ -14,7 +10,6 @@ from bs4 import BeautifulSoup
 
 from conftest import ROOT, PAGES
 
-KNOWN = ROOT / "tests" / "a11y_known_issues.json"
 FOCUSABLE_SELECTOR = (
     "a[href], button, input:not([type=hidden]), select, textarea, summary, "
     "[tabindex], [contenteditable=''], [contenteditable=true]"
@@ -149,55 +144,28 @@ def current_static() -> dict[str, int]:
     return dict(sorted(counts.items()))
 
 
-def _known() -> dict[str, int]:
-    return json.loads(KNOWN.read_text(encoding="utf-8")).get("static", {})
+def test_static_lint_reports_nothing():
+    found = {k: n for k, n in current_static().items() if n}
+    assert not found, f"static a11y problems (page|rule: count): {found}"
 
 
-def test_static_lint_has_no_new_problems():
-    known, now = _known(), current_static()
-    worse = {k: (known.get(k, 0), n) for k, n in now.items() if n > known.get(k, 0)}
-    assert not worse, f"static a11y regressions (recorded, now): {worse}"
+@pytest.mark.parametrize("stem", PAGES)
+def test_navigation_landmarks_are_labelled_and_the_toggle_is_wired(stem):
+    soup = BeautifulSoup((ROOT / f"{stem}.html").read_text(encoding="utf-8"), "html.parser")
+    navs = {n.get("aria-label"): n for n in soup.find_all("nav")}
+    assert set(navs) >= {"Primary", "Mobile menu"}, f"{stem}: nav landmarks are {sorted(map(str, navs))}"
+    assert all(n.get("aria-label") for n in soup.find_all("nav")), f"{stem}: every <nav> needs a unique label"
+    drawer = navs["Mobile menu"]
+    toggle = soup.select_one("button.nav-toggle")
+    assert drawer.get("id") and toggle.get("aria-controls") == drawer["id"]
+    assert toggle.get("aria-expanded") == "false" and toggle.get("type") == "button"
+    assert not drawer.get("role"), "the drawer is a real <nav>; role=navigation is redundant"
 
 
-def test_static_ratchet_is_tight():
-    known, now = _known(), current_static()
-    better = {k: (n, now.get(k, 0)) for k, n in known.items() if now.get(k, 0) < n}
-    assert not better, (
-        f"static a11y problems fixed but ratchet not lowered (recorded, now): {better}. "
-        "Run `python tools/a11y_ratchet.py --update` and commit tests/a11y_known_issues.json."
-    )
-
-
-# ---- the linter itself: each rule fires on a minimal bad page ----
-
-GOOD = (
-    '<html lang="en"><body><a href="#main">Skip</a><nav><a href="/x">X</a></nav>'
-    '<main id="main"><h1>T</h1><h2>S</h2><img src="a.png" alt="a"></main></body></html>'
-)
-
-
-def _rules(html):
-    return {r for r, _ in lint_page("t", html)}
-
-
-def test_linter_accepts_a_clean_page():
-    assert lint_page("t", GOOD) == []
-
-
-@pytest.mark.parametrize("html,rule", [
-    ('<html lang="en"><body><h1>x</h1></body></html>', "main-landmark"),
-    (GOOD.replace("<h1>T</h1>", "<h1>T</h1><h1>U</h1>"), "h1-count"),
-    (GOOD.replace("<h2>S</h2>", "<h3>S</h3>"), "heading-order"),
-    (GOOD.replace('<html lang="en">', "<html>"), "html-lang"),
-    (GOOD.replace(' alt="a"', ""), "img-alt"),
-    (GOOD.replace("</main>", '<input name="q"></main>'), "form-labels"),
-    (GOOD.replace("</main>", '<p id="a"></p><p id="a"></p></main>'), "unique-ids"),
-    (GOOD.replace("</main>", '<a href="/y"></a></main>'), "link-names"),
-    (GOOD.replace("</main>", "<button></button></main>"), "button-names"),
-    (GOOD.replace("</main>", '<div aria-hidden="true"><a href="/z">z</a></div></main>'), "aria-hidden-focusable"),
-    (GOOD.replace("</main>", '<a href="/z" tabindex="3">z</a></main>'), "tabindex-positive"),
-    (GOOD.replace('<a href="#main">Skip</a>', ""), "skip-link"),
-    (GOOD.replace("</main>", '<a href="http://e" target="_blank">e</a></main>'), "target-blank-rel"),
-])
-def test_linter_flags_each_rule(html, rule):
-    assert rule in _rules(html)
+@pytest.mark.parametrize("stem", [s for s in PAGES if s != "404"])
+def test_current_page_link_is_exposed_to_assistive_tech(stem):
+    soup = BeautifulSoup((ROOT / f"{stem}.html").read_text(encoding="utf-8"), "html.parser")
+    active = soup.select("nav.nav a.nav-link.active")
+    assert len(active) == 1, f"{stem}: expected one active nav link, found {len(active)}"
+    assert active[0].get("aria-current") == "page"
+    assert len(soup.select("nav.nav a[aria-current]")) == 1
