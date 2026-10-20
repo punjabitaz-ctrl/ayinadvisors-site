@@ -31,7 +31,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html { scroll-padding-top: calc(var(--nav-h) + 16px); scroll-behavior: smooth; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
 body {
   font-family: var(--sans);
@@ -248,7 +248,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; let
 /* ---------- Footer ---------- */
 .footer { background-color: var(--surface); color: var(--ink); padding-top: clamp(70px, 9vw, 120px); }
 .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 64px; border-bottom: 1px solid var(--line); }
-.footer h4 { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 22px; }
+.footer h2 { font-family: var(--sans); font-size: 0.72rem; font-weight: 600; line-height: 1.7; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-ink); margin-bottom: 22px; }
 .footer-col a { display: block; color: var(--ink-muted); padding: 7px 0; font-size: 0.95rem; transition: color 0.3s, transform 0.3s var(--ease); }
 .footer-col a:hover { color: var(--accent-ink); transform: translateX(4px); }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-block: 30px; font-size: 0.8rem; color: var(--ink-muted); flex-wrap: wrap; gap: 14px; }
@@ -271,9 +271,17 @@ html.js .line-reveal > span { transform: translateY(110%); }
 html.js .line-reveal.in > span { transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition-duration: 0.001s !important; scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; }
-  .line-reveal > span { transform: none; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: 0.001s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  html.js .reveal, .reveal { opacity: 1; transform: none; }
+  html.js .line-reveal > span, .line-reveal > span { transform: none; }
+  /* Drawn-on strokes would stay undrawn without their animation: show the finished state. */
+  .arc, .form-done circle, .form-done path, .form-success .check circle, .form-success .check path { stroke-dashoffset: 0 !important; }
+  .marquee-track { transform: none !important; }
 }
 
 /* ---------- Hairline rule ---------- */
@@ -389,3 +397,38 @@ html.js .line-reveal.in > span { transform: none; }
 .contact-intro .photo-card { max-width: min(440px, calc(100vw - 2 * var(--gutter))); margin-top: 36px; }
 .photo-card-wide { max-width: 720px; margin: 0 auto clamp(40px, 6vw, 64px); }
 .photo-card-wide img { aspect-ratio: 16 / 8; object-fit: cover; object-position: 50% 42%; }
+
+/* ---------- Accessibility floor ---------- */
+
+/* Skip link: first focusable element on every page, off-screen until it takes focus. */
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 300;
+  padding: 14px 22px; min-height: 24px;
+  background: var(--accent-fill); color: var(--on-accent);
+  font-family: var(--sans); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.04em;
+  border-radius: 2px;
+  transform: translateY(calc(-100% - 24px));
+}
+.skip-link:focus, .skip-link:focus-visible { transform: none; }
+main:focus { outline: none; }
+
+/* Focus: a two-tone ring. The outer ring is the context's focus-ring role (navy on light
+   surfaces, bright gold on navy), the inner halo is the surface it sits on, so the ring
+   reads against both the control and its background. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--surface);
+}
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+.skip-link:focus-visible { outline-color: var(--on-accent); box-shadow: 0 0 0 2px var(--accent-fill); }
+
+/* Target size (WCAG 2.2 SC 2.5.8): controls are at least 24x24 CSS px. */
+.nav-toggle { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+.chip { min-height: 24px; }
+.footer-col a { min-height: 24px; }
+.nav-link, .mobile-drawer a, .tlink { min-height: 24px; }
+.contact-meta a { display: inline-block; min-height: 24px; }

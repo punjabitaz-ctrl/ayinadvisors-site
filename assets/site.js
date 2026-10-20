@@ -35,7 +35,7 @@
   /* ---------- Reveal on scroll ---------- */
   const revealEls = document.querySelectorAll(".reveal, .line-reveal");
   if (revealEls.length) {
-    if (!("IntersectionObserver" in window)) {
+    if (reduce || !("IntersectionObserver" in window)) {
       revealEls.forEach((el) => el.classList.add("in"));
     } else {
       const io = new IntersectionObserver(

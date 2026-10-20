@@ -13,6 +13,7 @@
   </div>
 </header>
 
+<main id="main" tabindex="-1">
 <!-- MEANING OF AYIN -->
 <section class="section surface-page">
   <div class="wrap">
@@ -106,3 +107,4 @@
     </div>
   </div>
 </section>
+</main>

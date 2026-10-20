@@ -38,7 +38,7 @@ MUTATIONS = [
     ("remove nav-toggle aria-label", "About", _sub(' aria-label="Menu"', "")),
     ("drop md-cta class from drawer", "About", _sub(' class="md-cta"', "")),
     ("drop gold class from drawer", "About",
-     _regex(r'(<div class="mobile-drawer surface-inverse">.*?<a href="BizCheck.html") class="gold"', r"\1", re.S)),
+     _regex(r'(<div class="mobile-drawer surface-inverse"[^>]*>.*?<a href="BizCheck.html") class="gold"', r"\1", re.S)),
     ("hidden on nav.nav", "About", _sub('<nav class="nav surface-inverse">', '<nav class="nav surface-inverse" hidden>')),
     ("style on .nav-links", "About", _sub('<div class="nav-links">', '<div class="nav-links" style="display:none">')),
     ("footer class", "About", _sub('<footer class="footer surface-inverse">', '<footer class="footer surface-inverse dark">')),

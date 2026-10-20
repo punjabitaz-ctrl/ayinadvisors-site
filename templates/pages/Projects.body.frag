@@ -16,7 +16,8 @@
 </header>
 
 <!-- PROJECTS -->
-<main class="section surface-page" style="padding-top:clamp(40px,5vw,72px)">
+<main id="main" tabindex="-1">
+<section class="section surface-page" style="padding-top:clamp(40px,5vw,72px)">
   <div class="wrap">
 
     <div class="status-legend reveal">
@@ -108,7 +109,7 @@
 
     </div>
   </div>
-</main>
+</section>
 
 <!-- CTA -->
 <section class="section cta surface-accent" style="border-top:1px solid var(--line)">
@@ -122,3 +123,4 @@
     </div>
   </div>
 </section>
+</main>

@@ -11,6 +11,7 @@
 {{ head_extra }}
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 <nav class="nav surface-inverse">
   <div class="wrap">
     {{ logo }}
@@ -24,7 +25,7 @@
   </div>
 </nav>
 
-<div class="mobile-drawer surface-inverse">
+<div class="mobile-drawer surface-inverse" role="navigation" aria-label="Mobile menu">
   {% for n in site.nav -%}
   <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}>{{ n.label|e }}</a>
   {% endfor -%}

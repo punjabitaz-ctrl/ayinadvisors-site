@@ -1214,14 +1214,14 @@
     {
       "page": "index",
       "rule": "color-contrast",
-      "selector": ".cta-inner > .lead[data-d=\"2\"]",
-      "reason": "",
-      "status": "unreviewed"
+      "selector": ".cta-inner > .h2",
+      "status": "unreviewed",
+      "reason": ""
     },
     {
       "page": "index",
       "rule": "color-contrast",
-      "selector": ".cta-inner > h2",
+      "selector": ".cta-inner > .lead[data-d=\"2\"]",
       "reason": "",
       "status": "unreviewed"
     },
@@ -1361,9 +1361,9 @@
     {
       "page": "index",
       "rule": "color-contrast",
-      "selector": "div:nth-child(2) > h2",
-      "reason": "",
-      "status": "unreviewed"
+      "selector": "div:nth-child(2) > .h2",
+      "status": "unreviewed",
+      "reason": ""
     },
     {
       "page": "index",

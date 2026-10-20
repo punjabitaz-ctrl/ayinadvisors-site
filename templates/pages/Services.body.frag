@@ -16,7 +16,8 @@
 </header>
 
 <!-- SERVICES DETAIL -->
-<main class="section surface-page" style="padding-top:clamp(40px,6vw,80px)">
+<main id="main" tabindex="-1">
+<section class="section surface-page" style="padding-top:clamp(40px,6vw,80px)">
   <div class="wrap">
 
     <article class="svc-detail reveal" id="research">
@@ -96,7 +97,7 @@
     </article>
 
   </div>
-</main>
+</section>
 
 <!-- CTA -->
 <section class="section cta surface-accent">
@@ -110,3 +111,4 @@
     </div>
   </div>
 </section>
+</main>

@@ -1,3 +1,4 @@
+<main id="main" tabindex="-1">
 <!-- CONTACT -->
 <header class="contact-hero surface-inverse">
   <canvas id="iris"></canvas>
@@ -54,3 +55,4 @@
     </div>
   </div>
 </header>
+</main>

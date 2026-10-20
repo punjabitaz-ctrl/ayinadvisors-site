@@ -14,7 +14,7 @@
         <p class="footer-tag">{{ site.footer.tagline }}</p>
       </div>
       {% for col in site.footer.columns -%}
-      <div class="footer-col"><h4>{{ col.heading|e }}</h4>
+      <div class="footer-col"><h2>{{ col.heading|e }}</h2>
         {% for l in col.links -%}
         <a href="{{ l.href|e }}">{{ l.label|e }}</a>
         {% endfor -%}

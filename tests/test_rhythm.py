@@ -37,6 +37,9 @@ def _bands(soup):
             continue
         if _surface(el):
             out.append(el)
+        elif el.name == "main":
+            # <main id="main"> is a wrapper, not a band: the bands inside it count in order.
+            out.extend(c for c in el.find_all(True, recursive=False) if _surface(c))
     return out
 
 

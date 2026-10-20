@@ -23,6 +23,7 @@
   </div>
 </header>
 
+<main id="main" tabindex="-1">
 <!-- ===================== MARQUEE ===================== -->
 <div class="marquee surface-alt" aria-hidden="true">
   <div class="marquee-track">
@@ -157,9 +158,9 @@
         <div class="reveal" data-d="2" style="margin-top:36px"><a href="About.html" class="tlink on-navy">More about AYiN <span class="btn-arrow">→</span></a></div>
       </div>
       <div class="principle-list reveal" data-d="2">
-        <div class="principle"><span class="pk">i.</span><div><h4>Channel first</h4><p>Distribution is the strategy. We build the route to market, not just the deck.</p></div></div>
-        <div class="principle"><span class="pk">ii.</span><div><h4>Founder aligned</h4><p>Senior attention, candid counsel and incentives tied to traction with results, not hours.</p></div></div>
-        <div class="principle"><span class="pk">iii.</span><div><h4>On the ground</h4><p>A live North American network of partners, buyers and operators you can work with.</p></div></div>
+        <div class="principle"><span class="pk">i.</span><div><h3>Channel first</h3><p>Distribution is the strategy. We build the route to market, not just the deck.</p></div></div>
+        <div class="principle"><span class="pk">ii.</span><div><h3>Founder aligned</h3><p>Senior attention, candid counsel and incentives tied to traction with results, not hours.</p></div></div>
+        <div class="principle"><span class="pk">iii.</span><div><h3>On the ground</h3><p>A live North American network of partners, buyers and operators you can work with.</p></div></div>
       </div>
     </div>
   </div>
@@ -177,5 +178,6 @@
     </div>
   </div>
 </section>
+</main>
 
 <!-- ===================== FOOTER ===================== -->

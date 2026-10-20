@@ -1,4 +1,4 @@
-<main class="nf surface-inverse">
+<main id="main" tabindex="-1" class="nf surface-inverse">
   <svg class="nf-rings" viewBox="0 0 1100 1100" aria-hidden="true">
     <g class="spin">
       <circle cx="550" cy="550" r="544"></circle>

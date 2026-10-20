@@ -32,6 +32,7 @@
   </div>
 </header>
 
+<main id="main" tabindex="-1">
 <!-- ===================== HOW IT WORKS ===================== -->
 <section class="section surface-page" id="how">
   <div class="wrap">
@@ -221,5 +222,6 @@
     </div>
   </div>
 </section>
+</main>
 
 <!-- ===================== FOOTER ===================== -->
