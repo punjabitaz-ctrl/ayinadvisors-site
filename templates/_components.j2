@@ -1,0 +1,106 @@
+{#- Shared pieces of the template-rendered pages (hub and pillars). Every macro takes what it needs as arguments. -#}
+
+{%- macro iris_mark() -%}
+<svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>
+{%- endmacro -%}
+
+{#- The three pillar icons, reused from the Home service cards: linked rings, focus iris, widening arcs. -#}
+{%- macro iris_ico(key) -%}
+{%- if key == "linked" -%}
+<svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="14" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="14" cy="27" r="3" stroke="none"/><circle cx="40" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="40" cy="27" r="3" stroke="none"/><path d="M24 27h6" stroke-linecap="round" pathLength="200"/></svg>
+{%- elif key == "focus" -%}
+<svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="22" pathLength="200"/><circle cx="27" cy="27" r="12" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/><path d="M27 2v8M27 44v8M2 27h8M44 27h8" stroke-linecap="round" pathLength="200"/></svg>
+{%- elif key == "arcs" -%}
+<svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle class="fillgold" cx="16" cy="27" r="3.6" stroke="none"/><circle cx="16" cy="27" r="9" pathLength="200"/><path d="M30 14a19 19 0 0 1 0 26M38 9a27 27 0 0 1 0 36M46 5a35 35 0 0 1 0 44" stroke-linecap="round" pathLength="200"/></svg>
+{%- else -%}
+{{ fail("unknown iris icon " ~ key) }}
+{%- endif -%}
+{%- endmacro -%}
+
+{#- Ripples that fan down from the top edge of a band that has a section heading (geometry as on Home). -#}
+{%- macro ripples(left=false) -%}
+<svg class="ripples ripples-top{% if left %} ripples-top-l{% endif %}" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
+{%- endmacro -%}
+
+{#- The page head: ring motif, eyebrow, the one h1, lead. -#}
+{%- macro pagehead(eyebrow, headline, lead) %}
+<!-- PAGE HEADER -->
+<header class="pagehead surface-inverse">
+  <svg class="ph-motif" viewBox="0 0 460 460" aria-hidden="true">
+    <g class="spin">
+      <circle cx="230" cy="230" r="228"></circle>
+      <circle cx="230" cy="230" r="170"></circle>
+      <circle cx="230" cy="230" r="110"></circle>
+    </g>
+    <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow on-navy reveal">{{ eyebrow|e }}</span>
+    <h1 class="display reveal" data-d="1">{{ headline|e }}</h1>
+    <p class="lead reveal" data-d="2">{{ lead|e }}</p>
+  </div>
+</header>
+{% endmacro -%}
+
+{#- "How we work": the Home process pattern (four iris markers on one line), generic across the practices. -#}
+{%- macro process_band(process, surface) %}
+<!-- HOW WE WORK -->
+<section class="section {{ surface }} has-ripples assemble" id="process" data-assemble>
+  {{ ripples(true) }}
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow asm-fade">{{ iris_mark() }}{{ process.eyebrow|e }}</span>
+        <h2 class="h2 asm-fade">{{ process.heading|e }}</h2>
+      </div>
+      <p class="muted asm-fade" style="max-width:34ch">{{ process.intro|e }}</p>
+    </div>
+
+    <div class="proc-wrap asm-stage">
+      <div class="proc-line"><div class="fill asm-grow"></div></div>
+      <div class="proc-grid">
+        {%- for step in process.steps %}
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/>{% if loop.index > 1 %}<circle cx="17" cy="17" r="8"/>{% endif %}{% if loop.index > 2 %}<circle cx="17" cy="17" r="13"/>{% endif %}{% if loop.index > 3 %}<circle cx="17" cy="17" r="16.4" opacity=".5"/>{% endif %}</svg><div class="pn">Step 0{{ loop.index }}</div><h3>{{ step.name|e }}</h3><p>{{ step.text|e }}</p></div>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endmacro -%}
+
+{#- "Who it is for": heading and intro on the left, three fits on the right. -#}
+{%- macro who_band(who, surface) %}
+<!-- WHO IT IS FOR -->
+<section class="section {{ surface }}" id="who">
+  <div class="wrap">
+    <div class="who-grid">
+      <div>
+        <span class="eyebrow reveal">{{ iris_mark() }}Who it is for</span>
+        <h2 class="h2 who-title reveal" data-d="1">{{ who.heading|e }}</h2>
+        <p class="lead reveal" data-d="2">{{ who.intro|e }}</p>
+      </div>
+      <div class="principle-list reveal" data-d="2">
+        {%- for item in who["items"] %}
+        <div class="principle"><span class="pk" aria-hidden="true">{{ ["i.", "ii.", "iii.", "iv."][loop.index0] }}</span><div><h3>{{ item.title|e }}</h3><p>{{ item.text|e }}</p></div></div>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endmacro -%}
+
+{#- The closing gold band; the copy is per page. -#}
+{%- macro cta_band(cta) %}
+<!-- CTA -->
+<section class="section cta surface-accent">
+  <div class="cta-glow"></div>
+  <div class="wrap">
+    <div class="cta-inner">
+      <span class="eyebrow on-navy center reveal" style="justify-content:center">{{ cta.eyebrow|e }}</span>
+      <h2 class="h2 reveal" data-d="1">{{ cta.heading|e }}</h2>
+      <p class="lead reveal" data-d="2">{{ cta.text|e }}</p>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+    </div>
+  </div>
+</section>
+{% endmacro -%}

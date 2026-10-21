@@ -1,47 +1,53 @@
-{#- Services hub (shell): page head, one card per pillar, the gold CTA band. Final copy and design: Sprint 2 Task 2. -#}
-<!-- PAGE HEADER -->
-<header class="pagehead surface-inverse">
-  <svg class="ph-motif" viewBox="0 0 460 460" aria-hidden="true">
-    <g class="spin">
-      <circle cx="230" cy="230" r="228"></circle>
-      <circle cx="230" cy="230" r="170"></circle>
-      <circle cx="230" cy="230" r="110"></circle>
-    </g>
-    <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
-  </svg>
-  <div class="wrap">
-    <span class="eyebrow on-navy reveal">Our Practice</span>
-    <h1 class="display reveal" data-d="1">Three practices. One firm.</h1>
-    <p class="lead reveal" data-d="2">Business Solutions for a Digital World.</p>
-  </div>
-</header>
-
+{#- Services hub: page head, one card per practice, how the practices fit together, the gold CTA band. Copy: content/services.json "hub" and each pillar's hub_line. -#}
+{%- from "_components.j2" import iris_mark, iris_ico, ripples, pagehead, cta_band -%}
+{{ pagehead(hub.eyebrow, hub.headline, hub.lead) }}
 <main id="main" tabindex="-1">
-<!-- PILLARS -->
-<section class="section surface-page clip-x" style="padding-top:clamp(40px,6vw,80px)">
+<!-- PRACTICES -->
+<section class="section surface-page has-ripples assemble" id="practices" data-assemble>
+  {{ ripples() }}
   <div class="wrap">
-    <h2 class="h2">Choose a practice</h2>
-    <div class="svc-grid" style="margin-top:clamp(28px,4vw,48px)">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow asm-fade">{{ iris_mark() }}{{ hub.choose.eyebrow|e }}</span>
+        <h2 class="h2 asm-fade">{{ hub.choose.heading|e }}</h2>
+      </div>
+      <p class="muted asm-fade" style="max-width:34ch">{{ hub.choose.intro|e }}</p>
+    </div>
+
+    <div class="svc-grid asm-stage">
       {%- for p in pillars %}
-      <a class="svc" href="{{ p.stem|e }}.html">
+      <a class="svc asm-card tilt3d" data-tilt href="{{ p.stem|e }}.html">
+        {{ iris_ico(p.icon) }}
         <h3 class="h3">{{ p.name|e }}</h3>
-        <p>{{ p.summary|e }}</p>
+        <p class="svc-buyer">{{ p.hub_line|e }}</p>
+        <ul class="svc-names">
+          {%- for s in p.services %}
+          <li>{{ s.name|e }}</li>
+          {%- endfor %}
+        </ul>
+        <span class="svc-arrow">Explore<span aria-hidden="true">→</span></span>
       </a>
       {%- endfor %}
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section cta surface-accent">
-  <div class="cta-glow"></div>
+<!-- HOW THE PRACTICES FIT TOGETHER -->
+<section class="section surface-alt" id="fit">
   <div class="wrap">
-    <div class="cta-inner">
-      <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with clarity</span>
-      <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Not sure where to begin?</h2>
-      <p class="lead reveal" data-d="2" style="margin-inline:auto">Most engagements start with a market read. Book a consultation and we'll tell you — candidly — where the opening is.</p>
-      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+    <div class="fit-grid">
+      <div>
+        <span class="eyebrow reveal">{{ iris_mark() }}{{ hub.fit.eyebrow|e }}</span>
+        <h2 class="h2 fit-title reveal" data-d="1">{{ hub.fit.heading|e }}</h2>
+      </div>
+      <div class="fit-copy reveal" data-d="2">
+        {%- for para in hub.fit.paragraphs %}
+        <p{% if loop.first %} class="lead"{% endif %}>{{ para|e }}</p>
+        {%- endfor %}
+      </div>
     </div>
   </div>
 </section>
+
+{{ cta_band(hub.cta) }}
 </main>

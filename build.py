@@ -22,6 +22,13 @@ env = Environment(
 )
 
 
+def _fail(message: str):
+    raise ValueError(message)
+
+
+env.globals["fail"] = _fail
+
+
 def load_site() -> dict:
     return json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))
 
@@ -66,6 +73,7 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
     return env.get_template("base.j2").render(
         site=site,
         page=site["pages"][stem],
+        stem=stem,
         body=body,
         head_extra=head_extra,
         body_scripts=body_scripts,
@@ -96,8 +104,10 @@ def page_parts(stem: str) -> tuple[str, str, str]:
         return body, parts.get("head_extra", ""), parts.get("body_scripts", "")
     site = load_site()
     page = site["pages"][stem]
-    pillars = load_services()["pillars"]
-    ctx = {"site": site, "page": page, "stem": stem, "kind": kind, "pillars": pillars, "pillar": None}
+    services = load_services()
+    pillars = services["pillars"]
+    ctx = {"site": site, "page": page, "stem": stem, "kind": kind, "pillars": pillars, "pillar": None,
+           "hub": services["hub"], "process": services["process"]}
     if kind == "pillar":
         ctx["pillar"] = next((p for p in pillars if p["slug"] == page.get("pillar")), None)
         if ctx["pillar"] is None:

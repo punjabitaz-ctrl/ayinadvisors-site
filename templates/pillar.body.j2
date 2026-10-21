@@ -1,29 +1,22 @@
-{#- Pillar page (shell): page head, the pillar's services listed (not linked), the gold CTA band. Final copy and design: Sprint 2 Task 2. -#}
-<!-- PAGE HEADER -->
-<header class="pagehead surface-inverse">
-  <svg class="ph-motif" viewBox="0 0 460 460" aria-hidden="true">
-    <g class="spin">
-      <circle cx="230" cy="230" r="228"></circle>
-      <circle cx="230" cy="230" r="170"></circle>
-      <circle cx="230" cy="230" r="110"></circle>
-    </g>
-    <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
-  </svg>
-  <div class="wrap">
-    <span class="eyebrow on-navy reveal">{{ pillar.buyer|e }}</span>
-    <h1 class="display reveal" data-d="1">{{ pillar.name|e }}</h1>
-    <p class="lead reveal" data-d="2">{{ pillar.summary|e }}</p>
-  </div>
-</header>
-
+{#- Pillar page: page head (buyer, headline, lead), what we do (services listed, not linked), [Partnerships only: the four verbatim market-entry blocks and the moved US proof band], how we work, who it is for, the gold CTA band. Copy: content/services.json. -#}
+{%- from "_components.j2" import iris_mark, ripples, pagehead, process_band, who_band, cta_band -%}
+{%- set partnerships = pillar.slug == "partnerships" -%}
+{{ pagehead(pillar.buyer, pillar.tagline, pillar.lead) }}
 <main id="main" tabindex="-1">
-<!-- SERVICES IN THIS PRACTICE -->
-<section class="section {{ "surface-alt" if pillar.slug == "partnerships" else "surface-page" }} clip-x" style="padding-top:clamp(40px,6vw,80px)">
+<!-- WHAT WE DO -->
+<section class="section {{ "surface-alt" if partnerships else "surface-page" }} clip-x assemble" id="what" data-assemble>
   <div class="wrap">
-    <h2 class="h2">{{ pillar.tagline|e }}</h2>
-    <ul class="ps-list" style="margin-top:clamp(28px,4vw,48px)">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow asm-fade">{{ iris_mark() }}{{ pillar.name|e }}</span>
+        <h2 class="h2 asm-fade">{{ pillar.do_heading|e }}</h2>
+      </div>
+      <p class="muted asm-fade" style="max-width:34ch">{{ pillar.intro|e }}</p>
+    </div>
+
+    <ul class="ps-list ps-{{ pillar.services|length }} asm-stage">
       {%- for s in pillar.services %}
-      <li>
+      <li class="asm-card tilt3d" data-tilt>
         <h3 class="h3">{{ s.name|e }}</h3>
         <p>{{ s.summary|e }}</p>
       </li>
@@ -32,20 +25,13 @@
   </div>
 </section>
 
-{% if pillar.slug == "partnerships" -%}
+{% if partnerships -%}
 {% include "_partnerships_detail.j2" %}
 
+{% include "partials/partnerships-proof.frag" %}
+
 {% endif -%}
-<!-- CTA -->
-<section class="section cta surface-accent">
-  <div class="cta-glow"></div>
-  <div class="wrap">
-    <div class="cta-inner">
-      <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with clarity</span>
-      <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Not sure where to begin?</h2>
-      <p class="lead reveal" data-d="2" style="margin-inline:auto">Most engagements start with a market read. Book a consultation and we'll tell you — candidly — where the opening is.</p>
-      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
-    </div>
-  </div>
-</section>
+{{ process_band(process, "surface-page" if partnerships else "surface-alt") }}
+{{ who_band(pillar.who, "surface-alt" if partnerships else "surface-page") }}
+{{ cta_band(pillar.cta) }}
 </main>

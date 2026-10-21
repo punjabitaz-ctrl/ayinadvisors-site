@@ -34,36 +34,60 @@
 <style>
   .pagehead { position: relative; padding-top: calc(var(--nav-h) + clamp(60px, 9vw, 120px)); padding-bottom: clamp(50px, 7vw, 96px); background: radial-gradient(120% 130% at 78% 0%, var(--field-bg) 0%, var(--surface) 50%, var(--surface) 100%); overflow: hidden; }
   .pagehead .wrap { position: relative; z-index: 2; }
-  .pagehead h1 { color: var(--ink); margin: 22px 0 24px; max-width: 16ch; }
+  .pagehead h1 { color: var(--ink); margin: 22px 0 24px; max-width: 20ch; }
   .pagehead .lead { max-width: 52ch; }
   .ph-motif { position: absolute; right: -120px; top: 50%; transform: translateY(-50%); width: 460px; height: 460px; z-index: 1; opacity: 0.6; }
   .ph-motif circle { fill: none; stroke: var(--line-gold); stroke-width: 0.8; }
   .ph-motif .spin { transform-origin: 230px 230px; animation: spin 60s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .ps-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
-  .ps-list li { background: var(--surface); padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  /* ---------- WHAT WE DO ---------- */
+  .ps-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
+  .ps-list.ps-3 { grid-template-columns: repeat(3, 1fr); }
+  .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .ps-list h3 { margin: 0 0 12px; }
   .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
-  .svc-detail { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px, 6vw, 90px); padding-block: clamp(56px, 7vw, 96px); border-top: 1px solid var(--line); align-items: start; }
-  .svc-detail:first-of-type { border-top: 0; }
-  .svc-detail .sd-left { position: sticky; top: 110px; }
-  .svc-detail .sd-num { font-family: var(--serif); font-size: clamp(3.4rem, 7vw, 6rem); color: var(--line); line-height: 0.8; }
-.sd-num::before { content: attr(data-n); }
-  .js .svc-detail:hover .sd-num, .svc-detail.in .sd-num { color: var(--accent-ink); transition: color 0.8s var(--ease); }
-  .svc-detail h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 18px 0 0; }
-  .svc-detail .tag { display: inline-block; margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--line-gold); padding: 6px 12px; border-radius: 2px; }
-  .svc-detail .sd-body p { font-size: 1.12rem; color: var(--ink); max-width: 54ch; margin-bottom: 30px; }
-  .deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-  .deliverables li { list-style: none; background: var(--surface); padding: 18px 20px; font-size: 0.98rem; display: flex; gap: 12px; align-items: flex-start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.4s var(--ease), transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: 0s, calc(var(--i, 0) * 0.1s), 0s, calc(var(--i, 0) * 0.1s); }
-  .deliverables li:hover { background: color-mix(in srgb, var(--ink) 4%, var(--surface)); }
-  .deliverables li::before { content: "→"; color: var(--accent-ink); font-size: 0.9rem; margin-top: 2px; }
 
-  @media (max-width: 820px) {
-    .svc-detail { grid-template-columns: 1fr; gap: 24px; }
-    .svc-detail .sd-left { position: static; }
-    .deliverables { grid-template-columns: 1fr; }
+  /* ---------- HOW WE WORK ---------- */
+  .proc-wrap { position: relative; }
+  /* One marker row: the step irises sit on the line, which starts at the first iris centre */
+  .proc-line { position: absolute; left: 17px; right: 0; top: 17px; height: 1px; background: var(--line); }
+  .proc-line .fill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--accent-fill), var(--accent-fill-hover)); }
+  .proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; }
+  .proc-step .step-iris { background: var(--surface); border-radius: 50%; position: relative; }
+  .proc-step .pn { font-family: var(--serif); font-size: 0.9rem; color: var(--accent-ink); letter-spacing: 0.2em; }
+  .proc-step h3 { color: var(--ink); margin: 12px 0 14px; font-size: 1.5rem; }
+  .proc-step p { color: var(--ink-muted); font-size: 0.96rem; max-width: 30ch; }
+
+  /* ---------- WHO IT IS FOR ---------- */
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 90px); align-items: center; }
+  .who-title { margin: 20px 0 22px; }
+  .who-grid .lead { max-width: 40ch; }
+  .principle-list { display: flex; flex-direction: column; }
+  .principle { display: flex; gap: 22px; padding: 24px 0; border-top: 1px solid var(--line); }
+  .principle:last-child { border-bottom: 1px solid var(--line); }
+  .principle .pk { font-family: var(--serif); color: var(--accent-ink); font-size: 1.1rem; flex: none; width: 34px; }
+  .principle h3 { font-family: var(--sans); font-size: 1.05rem; font-weight: 600; line-height: 1.7; letter-spacing: normal; color: var(--ink); margin-bottom: 6px; }
+  .principle p { color: var(--ink-muted); font-size: 0.95rem; }
+
+  /* ---------- CTA ---------- */
+  .cta { position: relative; overflow: hidden; }
+  .cta-inner { text-align: center; max-width: 780px; margin-inline: auto; position: relative; z-index: 2; }
+  .cta h2 { color: var(--ink); margin: 24px 0 26px; }
+  .cta .lead { color: var(--ink-muted); margin-inline: auto; }
+  .cta-glow { position: absolute; width: 60vw; height: 60vw; max-width: 720px; max-height: 720px; left: calc(50% - min(30vw, 360px)); top: calc(50% - min(30vw, 360px)); background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%); opacity: 0.5; z-index: 1; pointer-events: none; }
+
+  @media (max-width: 880px) {
+    .ps-list.ps-3, .proc-grid, .who-grid { grid-template-columns: 1fr; }
+    .proc-line { display: none; }
+    .proc-grid { gap: 0; }
+    .proc-step { padding: 22px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: auto 1fr; gap: 20px; }
+      .proc-step .step-iris { grid-column: 1; grid-row: 1 / span 3; margin: 0; }
+    .proc-step > :is(.pn, h3, p) { grid-column: 2; }
     .ph-motif { opacity: 0.3; right: -200px; }
+  }
+  @media (max-width: 640px) {
+    .ps-list { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -85,7 +109,7 @@
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
       <a href="BizCheck.html" class="nav-link gold">BizCheck</a>
-      <a href="Services.html" class="nav-link active" aria-current="page">Services</a>
+      <a href="Services.html" class="nav-link active" aria-current="true">Services</a>
       <a href="About.html" class="nav-link">About</a>
       <a href="Projects.html" class="nav-link">Projects</a>
       <a href="Contact.html" class="nav-link">Contact</a>
@@ -99,13 +123,14 @@
 <nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   <a href="index.html">Home</a>
   <a href="BizCheck.html" class="gold">BizCheck</a>
-  <a href="Services.html" aria-current="page">Services</a>
+  <a href="Services.html" aria-current="true">Services</a>
   <a href="About.html">About</a>
   <a href="Projects.html">Projects</a>
   <a href="Contact.html">Contact</a>
   <a href="Contact.html" class="md-cta">Book a Consultation</a>
   <button class="theme-toggle theme-toggle-row" type="button" aria-pressed="false" aria-label="Dark mode"><svg class="theme-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path class="ico-moon" d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.2 8.2 0 1 0 20 14.2z"/><g class="ico-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg><span class="theme-toggle-label">Dark mode</span></button>
 </nav>
+
 
 <!-- PAGE HEADER -->
 <header class="pagehead surface-inverse">
@@ -118,27 +143,34 @@
     <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
   </svg>
   <div class="wrap">
-    <span class="eyebrow on-navy reveal">Businesses needing web, marketing and community</span>
-    <h1 class="display reveal" data-d="1">Digital Presence</h1>
+    <span class="eyebrow on-navy reveal">Businesses building their presence online</span>
+    <h1 class="display reveal" data-d="1">Be found, be clear, be connected online.</h1>
     <p class="lead reveal" data-d="2">Websites, digital marketing, and community and content, so your business is seen, understood and connected online.</p>
   </div>
 </header>
 
 <main id="main" tabindex="-1">
-<!-- SERVICES IN THIS PRACTICE -->
-<section class="section surface-page clip-x" style="padding-top:clamp(40px,6vw,80px)">
+<!-- WHAT WE DO -->
+<section class="section surface-page clip-x assemble" id="what" data-assemble>
   <div class="wrap">
-    <h2 class="h2">Be found, be clear, be connected online.</h2>
-    <ul class="ps-list" style="margin-top:clamp(28px,4vw,48px)">
-      <li>
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Digital Presence</span>
+        <h2 class="h2 asm-fade">Three parts of a strong presence.</h2>
+      </div>
+      <p class="muted asm-fade" style="max-width:34ch">A website says who you are. Marketing puts you in front of the right people. Content and community keep them engaged.</p>
+    </div>
+
+    <ul class="ps-list ps-3 asm-stage">
+      <li class="asm-card tilt3d" data-tilt>
         <h3 class="h3">Websites</h3>
         <p>Brand presence: a clear, fast, accessible website that says who you are and what you do.</p>
       </li>
-      <li>
+      <li class="asm-card tilt3d" data-tilt>
         <h3 class="h3">Digital Marketing</h3>
         <p>Brand online: reaching the right people through search, email and social, and learning from what works.</p>
       </li>
-      <li>
+      <li class="asm-card tilt3d" data-tilt>
         <h3 class="h3">Community &amp; Content</h3>
         <p>Brand connect: useful content and an active community that keep your audience engaged with you over time.</p>
       </li>
@@ -146,18 +178,64 @@
   </div>
 </section>
 
+
+<!-- HOW WE WORK -->
+<section class="section surface-alt has-ripples assemble" id="process" data-assemble>
+  <svg class="ripples ripples-top ripples-top-l" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How we work</span>
+        <h2 class="h2 asm-fade">From first call to handover.</h2>
+      </div>
+      <p class="muted asm-fade" style="max-width:34ch">A clear, sequenced engagement. No open-ended retainers, no theory without traction.</p>
+    </div>
+
+    <div class="proc-wrap asm-stage">
+      <div class="proc-line"><div class="fill asm-grow"></div></div>
+      <div class="proc-grid">
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Understand</h3><p>We start with your goals, your constraints and what you have already tried.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Plan</h3><p>We agree what will be done, in what order, and what a good result looks like.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Deliver</h3><p>We do the work, led by senior people, and keep you informed as it happens.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Hand over</h3><p>Success is your team running it without us. We transfer what we built and step back.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHO IT IS FOR -->
+<section class="section surface-page" id="who">
+  <div class="wrap">
+    <div class="who-grid">
+      <div>
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Who it is for</span>
+        <h2 class="h2 who-title reveal" data-d="1">Businesses that want to be found and trusted.</h2>
+        <p class="lead reveal" data-d="2">Whether you are starting out or your website no longer matches your business, we meet you where you are.</p>
+      </div>
+      <div class="principle-list reveal" data-d="2">
+        <div class="principle"><span class="pk" aria-hidden="true">i.</span><div><h3>Businesses without a site that works</h3><p>You need a clear, fast website that says who you are and what you do.</p></div></div>
+        <div class="principle"><span class="pk" aria-hidden="true">ii.</span><div><h3>Businesses with a site and no audience</h3><p>The website is there, but the right people are not finding it.</p></div></div>
+        <div class="principle"><span class="pk" aria-hidden="true">iii.</span><div><h3>Businesses with an audience to look after</h3><p>You want useful content and an active community that keep people engaged over time.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- CTA -->
 <section class="section cta surface-accent">
   <div class="cta-glow"></div>
   <div class="wrap">
     <div class="cta-inner">
-      <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with clarity</span>
-      <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Not sure where to begin?</h2>
-      <p class="lead reveal" data-d="2" style="margin-inline:auto">Most engagements start with a market read. Book a consultation and we'll tell you — candidly — where the opening is.</p>
+      <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with where you are</span>
+      <h2 class="h2 reveal" data-d="1">Let us look at your presence together.</h2>
+      <p class="lead reveal" data-d="2">A short, candid conversation about how your business shows up online today and what to fix first.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>
 </section>
+
 </main>
 
 

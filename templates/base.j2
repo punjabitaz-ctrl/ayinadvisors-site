@@ -21,7 +21,7 @@
     {{ logo }}
     <div class="nav-links">
       {% for n in site.nav -%}
-      <a href="{{ n.href|e }}" class="nav-link{% if n.class %} {{ n.class|e }}{% endif %}{% if n.label == page.active %} active{% endif %}"{% if n.label == page.active %} aria-current="page"{% endif %}>{{ n.label|e }}</a>
+      <a href="{{ n.href|e }}" class="nav-link{% if n.class %} {{ n.class|e }}{% endif %}{% if n.label == page.active %} active{% endif %}"{% if n.label == page.active %} aria-current="{{ 'page' if n.href == stem ~ '.html' else 'true' }}"{% endif %}>{{ n.label|e }}</a>
       {% endfor -%}
       <span class="nav-cta"><a href="{{ page.cta.href|e }}" class="{{ page.cta['class']|e }}" data-magnetic><span class="btn-label">{{ page.cta.label|e }}</span></a></span>
     </div>
@@ -32,7 +32,7 @@
 
 <nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   {% for n in site.nav -%}
-  <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}{% if n.label == page.active %} aria-current="page"{% endif %}>{{ n.label|e }}</a>
+  <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}{% if n.label == page.active %} aria-current="{{ 'page' if n.href == stem ~ '.html' else 'true' }}"{% endif %}>{{ n.label|e }}</a>
   {% endfor -%}
   <a href="{{ page.cta.href|e }}" class="md-cta">{{ page.cta.label|e }}</a>
   {{ theme_toggle(true) }}

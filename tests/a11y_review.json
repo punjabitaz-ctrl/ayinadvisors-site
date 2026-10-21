@@ -1105,7 +1105,7 @@
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".pagehead .eyebrow.on-navy",
-      "reason": "An eyebrow label (`.pagehead .eyebrow.on-navy` on the Services page): axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The eyebrow label in the page head (`.pagehead .eyebrow.on-navy` on the Services page): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,imgNode"
     },
@@ -1113,7 +1113,7 @@
       "page": "Services",
       "rule": "color-contrast",
       "selector": ".pagehead .lead",
-      "reason": "A lead paragraph (`.pagehead .lead` on the Services page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the Services page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1164,7 +1164,7 @@
       "page": "Services",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "The page heading (h1) (`h1` on the Services page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The page heading (h1) (`h1` on the Services page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1494,7 +1494,7 @@
       "page": "partnerships",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "The page heading (h1) (`h1` on the Partnerships page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The page heading (h1) (`h1` on the Partnerships page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1519,8 +1519,8 @@
     {
       "page": "partnerships",
       "rule": "color-contrast",
-      "selector": ".nav-link[aria-current=\"page\"]",
-      "reason": "A primary-navigation link in the fixed header (`.nav-link[aria-current=\"page\"]` on the Partnerships page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the Partnerships page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient",
       "theme": "light"
@@ -1563,7 +1563,7 @@
       "page": "partnerships",
       "rule": "color-contrast",
       "selector": ".pagehead .lead",
-      "reason": "A lead paragraph (`.pagehead .lead` on the Partnerships page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the Partnerships page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1588,7 +1588,7 @@
       "page": "partnerships",
       "rule": "color-contrast",
       "selector": ".pagehead .eyebrow.on-navy",
-      "reason": "An eyebrow label (`.pagehead .eyebrow.on-navy` on the Partnerships page): axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The eyebrow label in the page head (`.pagehead .eyebrow.on-navy` on the Partnerships page): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,imgNode"
     },
@@ -1614,7 +1614,7 @@
       "page": "ai-solutions",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "The page heading (h1) (`h1` on the AI Solutions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The page heading (h1) (`h1` on the AI Solutions page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1639,8 +1639,8 @@
     {
       "page": "ai-solutions",
       "rule": "color-contrast",
-      "selector": ".nav-link[aria-current=\"page\"]",
-      "reason": "A primary-navigation link in the fixed header (`.nav-link[aria-current=\"page\"]` on the AI Solutions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the AI Solutions page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient",
       "theme": "light"
@@ -1683,7 +1683,7 @@
       "page": "ai-solutions",
       "rule": "color-contrast",
       "selector": ".pagehead .lead",
-      "reason": "A lead paragraph (`.pagehead .lead` on the AI Solutions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the AI Solutions page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1708,7 +1708,7 @@
       "page": "ai-solutions",
       "rule": "color-contrast",
       "selector": ".pagehead .eyebrow.on-navy",
-      "reason": "An eyebrow label (`.pagehead .eyebrow.on-navy` on the AI Solutions page): axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The eyebrow label in the page head (`.pagehead .eyebrow.on-navy` on the AI Solutions page): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,imgNode"
     },
@@ -1734,7 +1734,7 @@
       "page": "digital-presence",
       "rule": "color-contrast",
       "selector": "h1",
-      "reason": "The page heading (h1) (`h1` on the Digital Presence page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The page heading (h1) (`h1` on the Digital Presence page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1759,8 +1759,8 @@
     {
       "page": "digital-presence",
       "rule": "color-contrast",
-      "selector": ".nav-link[aria-current=\"page\"]",
-      "reason": "A primary-navigation link in the fixed header (`.nav-link[aria-current=\"page\"]` on the Digital Presence page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the Digital Presence page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient",
       "theme": "light"
@@ -1803,7 +1803,7 @@
       "page": "digital-presence",
       "rule": "color-contrast",
       "selector": ".pagehead .lead",
-      "reason": "A lead paragraph (`.pagehead .lead` on the Digital Presence page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour; axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) or the closing-band glow is drawn behind or beside the element and partially overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the Digital Presence page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
     },
@@ -1828,9 +1828,217 @@
       "page": "digital-presence",
       "rule": "color-contrast",
       "selector": ".pagehead .eyebrow.on-navy",
-      "reason": "An eyebrow label (`.pagehead .eyebrow.on-navy` on the Digital Presence page): axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "reason": "The eyebrow label in the page head (`.pagehead .eyebrow.on-navy` on the Digital Presence page): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgGradient,imgNode"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the Services page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the Services page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the Services page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "#practices .sec-head .eyebrow",
+      "reason": "A section-head eyebrow (`#practices .sec-head .eyebrow` on the Services page): axe could not decide because an image-bearing element lies in the stacking order: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) drawn in this band, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "#practices .sec-head h2",
+      "reason": "A section-head heading (`#practices .sec-head h2` on the Services page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "#practices .sec-head > .muted",
+      "reason": "A section-head intro paragraph (`#practices .sec-head > .muted` on the Services page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": ".svc-arrow > span[aria-hidden=\"true\"]",
+      "reason": "The arrow glyph after \"Explore\" on a practice card (`.svc-arrow > span[aria-hidden=\"true\"]` on the Services page): axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "nonBmp"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the Partnerships page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the Partnerships page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the Partnerships page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head .eyebrow",
+      "reason": "A section-head eyebrow (`#process .sec-head .eyebrow` on the Partnerships page): axe could not decide because an image-bearing element lies in the stacking order: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) drawn in this band, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head h2",
+      "reason": "A section-head heading (`#process .sec-head h2` on the Partnerships page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head > .muted",
+      "reason": "A section-head intro paragraph (`#process .sec-head > .muted` on the Partnerships page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the AI Solutions page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the AI Solutions page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the AI Solutions page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head .eyebrow",
+      "reason": "A section-head eyebrow (`#process .sec-head .eyebrow` on the AI Solutions page): axe could not decide because an image-bearing element lies in the stacking order: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) drawn in this band, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head h2",
+      "reason": "A section-head heading (`#process .sec-head h2` on the AI Solutions page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head > .muted",
+      "reason": "A section-head intro paragraph (`#process .sec-head > .muted` on the AI Solutions page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the Digital Presence page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the Digital Presence page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the Digital Presence page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head .eyebrow",
+      "reason": "A section-head eyebrow (`#process .sec-head .eyebrow` on the Digital Presence page): axe could not decide because an image-bearing element lies in the stacking order: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) drawn in this band, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head h2",
+      "reason": "A section-head heading (`#process .sec-head h2` on the Digital Presence page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head > .muted",
+      "reason": "A section-head intro paragraph (`#process .sec-head > .muted` on the Digital Presence page): axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships",
+      "rule": "color-contrast",
+      "selector": ".why-stat:nth-child(4) > .l",
+      "reason": "The caption of the fourth proof-band statistic (`.why-stat:nth-child(4) > .l` on the Partnerships page, in the stacked layout at 320 and 768px): axe reports the label as overlapped by another element (bgOverlap) and so cannot read its background, which is the plain tile colour of `.why-stat` with no image, gradient or graphic behind it. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgOverlap"
     }
   ]
 }

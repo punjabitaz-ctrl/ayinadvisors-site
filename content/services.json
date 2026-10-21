@@ -1,4 +1,51 @@
 {
+  "hub": {
+    "eyebrow": "Our Practice",
+    "headline": "Three practices. One firm.",
+    "lead": "Business Solutions for a Digital World. Partnerships for firms entering the US, AI built around real problems, and a digital presence that works.",
+    "choose": {
+      "eyebrow": "What we do",
+      "heading": "Choose the practice that fits your problem.",
+      "intro": "Three practices, each for a different kind of buyer. Start with the one that matches what you need."
+    },
+    "fit": {
+      "eyebrow": "How the practices fit together",
+      "heading": "Separate practices, one way of working.",
+      "paragraphs": [
+        "Each practice stands on its own. You can start with one and add another later.",
+        "They share the same way of working: senior attention, plain advice and clear steps from the first call to the handover.",
+        "Some problems cross the lines. A firm entering the US may also need a website that speaks to American buyers. A team building an application may need clear content to explain it. When that happens, the practices work from one brief."
+      ]
+    },
+    "cta": {
+      "eyebrow": "Start with clarity",
+      "heading": "Not sure which practice fits?",
+      "text": "Book a consultation and tell us what you are trying to do. We will say, candidly, which practice can help and where to begin."
+    }
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "heading": "From first call to handover.",
+    "intro": "A clear, sequenced engagement. No open-ended retainers, no theory without traction.",
+    "steps": [
+      {
+        "name": "Understand",
+        "text": "We start with your goals, your constraints and what you have already tried."
+      },
+      {
+        "name": "Plan",
+        "text": "We agree what will be done, in what order, and what a good result looks like."
+      },
+      {
+        "name": "Deliver",
+        "text": "We do the work, led by senior people, and keep you informed as it happens."
+      },
+      {
+        "name": "Hand over",
+        "text": "Success is your team running it without us. We transfer what we built and step back."
+      }
+    ]
+  },
   "pillars": [
     {
       "slug": "partnerships",
@@ -7,7 +54,34 @@
       "tagline": "Enter new markets through the right partners.",
       "buyer": "International firms entering the US",
       "summary": "Market entry research, channel strategy and enablement, partner introductions and regional expansion for international companies entering the United States.",
-      "icon": "overlap",
+      "icon": "linked",
+      "hub_line": "For international firms entering the US. We find the partners and build the channel that gets you to market.",
+      "lead": "We guide international companies into the United States through disciplined channel activity, turning ambition into distribution, partners and revenue.",
+      "do_heading": "A focused practice for crossing the border.",
+      "intro": "Four disciplines, one objective: a commercial foothold in North America built on real channel relationships.",
+      "who": {
+        "heading": "Companies ready to sell in the United States.",
+        "intro": "Our work suits international firms with a product that already sells at home and a decision to make about North America.",
+        "items": [
+          {
+            "title": "Firms deciding whether to enter",
+            "text": "You want an honest read on whether, where and how to enter before you commit."
+          },
+          {
+            "title": "Firms that need a route to market",
+            "text": "You need distributors, resellers or agents, and the terms and training that make them sell."
+          },
+          {
+            "title": "Firms ready to grow beyond the US",
+            "text": "Your US engine is running and Canada and Latin America are next."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Start with clarity",
+        "heading": "Not sure where to begin?",
+        "text": "Most engagements start with a market read. Book a consultation and we'll tell you, candidly, where the opening is."
+      },
       "services": [
         {
           "slug": "market-entry-research",
@@ -40,9 +114,36 @@
       "stem": "ai-solutions",
       "name": "AI Solutions Development",
       "tagline": "AI built around the problem in front of you.",
-      "buyer": "Anyone needing AI built",
+      "buyer": "Teams that need AI built",
       "summary": "We solve business problems with AI: custom applications, workflow automation and operational efficiency.",
-      "icon": "network",
+      "icon": "focus",
+      "hub_line": "For teams that need AI built. We turn a business problem into a working application, an automated workflow or a leaner operation.",
+      "lead": "We solve business problems with AI: custom applications, workflow automation and operational efficiency.",
+      "do_heading": "Three ways we put AI to work.",
+      "intro": "We start with the problem, not the technology. Sometimes the answer is AI. Sometimes a simpler fix is better. We tell you which.",
+      "who": {
+        "heading": "Teams with a real problem to solve.",
+        "intro": "You do not need to know what the technology should be. You need to know where the work is slow, repetitive or stuck.",
+        "items": [
+          {
+            "title": "Teams buried in manual work",
+            "text": "People re-keying data, chasing approvals or moving files by hand, and wanting that time back."
+          },
+          {
+            "title": "Businesses the standard tools do not fit",
+            "text": "You have tried off-the-shelf software and the way you work does not fit it."
+          },
+          {
+            "title": "Leaders who want to know where the time goes",
+            "text": "You suspect there are gaps in how the operation runs and want someone to find them and fix the biggest ones."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Start with the problem",
+        "heading": "Tell us what is slowing you down.",
+        "text": "A short, candid conversation about the work you want off your plate. We will tell you what is worth building and what is not."
+      },
       "services": [
         {
           "slug": "custom-applications",
@@ -69,9 +170,36 @@
       "stem": "digital-presence",
       "name": "Digital Presence",
       "tagline": "Be found, be clear, be connected online.",
-      "buyer": "Businesses needing web, marketing and community",
+      "buyer": "Businesses building their presence online",
       "summary": "Websites, digital marketing, and community and content, so your business is seen, understood and connected online.",
-      "icon": "ripple",
+      "icon": "arcs",
+      "hub_line": "For businesses building their presence online. A clear website, marketing that reaches the right people, and content that keeps them engaged.",
+      "lead": "Websites, digital marketing, and community and content, so your business is seen, understood and connected online.",
+      "do_heading": "Three parts of a strong presence.",
+      "intro": "A website says who you are. Marketing puts you in front of the right people. Content and community keep them engaged.",
+      "who": {
+        "heading": "Businesses that want to be found and trusted.",
+        "intro": "Whether you are starting out or your website no longer matches your business, we meet you where you are.",
+        "items": [
+          {
+            "title": "Businesses without a site that works",
+            "text": "You need a clear, fast website that says who you are and what you do."
+          },
+          {
+            "title": "Businesses with a site and no audience",
+            "text": "The website is there, but the right people are not finding it."
+          },
+          {
+            "title": "Businesses with an audience to look after",
+            "text": "You want useful content and an active community that keep people engaged over time."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Start with where you are",
+        "heading": "Let us look at your presence together.",
+        "text": "A short, candid conversation about how your business shows up online today and what to fix first."
+      },
       "services": [
         {
           "slug": "websites",
