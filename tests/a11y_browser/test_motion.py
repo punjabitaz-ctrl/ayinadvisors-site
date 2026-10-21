@@ -268,3 +268,101 @@ def test_settled_icons_are_solid_strokes(mo_page):
         "[...document.querySelectorAll('.iris-ico :is(circle, path)')].map(e => getComputedStyle(e).strokeDasharray)"
     )
     assert dashes and all(d == "none" for d in dashes), dashes
+
+
+# ---------------------------------------------------------------- Home placement (T2)
+
+def _home(browser, site_url, **kw):
+    ctx = new_context(browser, kw.pop("width", 1280), kw.pop("height", 800), **kw)
+    page = ctx.new_page()
+    page.goto(f"{site_url}/index.html", wait_until="load")
+    return ctx, page
+
+
+def test_letters_band_has_text_label(browser, site_url):
+    """Font failure must not hide the meaning: the group carries it as text, the glyphs are decorative."""
+    ctx, page = _home(browser, site_url)
+    try:
+        group = page.locator(".letters [role='img']")
+        assert group.count() == 1
+        label = group.get_attribute("aria-label")
+        assert re.search(r"\bayin\b", label, re.I) and re.search(r"\bthe eye\b", label, re.I), label
+        glyphs = page.locator(".letters .glyph")
+        assert glyphs.count() == 4
+        assert [glyphs.nth(i).inner_text() for i in range(4)] == ["ع", "ע", "𐤏", "O"]
+        assert all(glyphs.nth(i).get_attribute("aria-hidden") == "true" for i in range(4))
+        # separators are non-text shapes and decorative
+        seps = page.locator(".letters .lt-sep")
+        assert seps.count() == 3
+        assert all(seps.nth(i).get_attribute("aria-hidden") == "true" and seps.nth(i).inner_text() == "" for i in range(3))
+    finally:
+        ctx.close()
+
+
+def test_marquee_is_replaced(browser, site_url):
+    ctx, page = _home(browser, site_url)
+    try:
+        assert page.locator(".marquee, .marquee-track, .marquee-item").count() == 0
+        first_band = page.evaluate(
+            "document.querySelector('main#main').firstElementChild.className"
+        )
+        assert "letters" in first_band and "surface-alt" in first_band, first_band
+        # Home still carries the services/process placements
+        assert page.locator("#services.has-ripples .ripples-r, #process.has-ripples .ripples-l").count() == 2
+        assert page.locator("#services .iris-ico").count() == 4
+        assert page.locator(".svc-num").count() == 0 and page.locator(".sec-index").count() == 2
+        assert page.locator("#services .iris-mark, #process .iris-mark").count() == 2
+        assert page.locator("#process .step-iris").count() == 4
+    finally:
+        ctx.close()
+
+
+# Animations that existed before Phase 2b and are owned by Phase 3, named explicitly:
+#  - scrolldot: the hero scroll-hint dot (infinite, `.scroll-hint .bar::after`)
+#  - nodePulse: the Why-section globe destination pulse (infinite, `.why-grid.in .node-pulse`); it starts
+#    when the Why band, which sits directly under the process band, scrolls into view
+#  - drawArc: the same globe's flight arcs (finite, 2.4 s plus up to 1 s delay, same trigger); it can still be
+#    mid-run 6 s after the bands entered view when the Why band is revealed later than them
+# The hero iris is a canvas driven by requestAnimationFrame, so it never appears in getAnimations().
+PRE_EXISTING_RUNNING = {"scrolldot", "nodePulse", "drawArc"}
+
+
+def test_no_long_running_animation_after_load(browser, site_url):
+    ctx, page = _home(browser, site_url, reduced_motion="no-preference")
+    try:
+        for sel in ("#letters", "#services", "#process"):
+            page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
+            page.wait_for_function(f"document.querySelector('{sel}').dataset.assemble === 'in'", timeout=3000)
+        page.wait_for_timeout(6000)
+        running = page.evaluate(
+            """() => document.getAnimations().filter(a => a.playState === 'running').map(a => ({
+              name: a.animationName || a.transitionProperty || a.constructor.name,
+              kind: a.constructor.name,
+              target: a.effect && a.effect.target ? (a.effect.target.className.baseVal ?? a.effect.target.className) : ''}))"""
+        )
+        extra = [a for a in running if a["name"] not in PRE_EXISTING_RUNNING]
+        assert extra == [], f"still running 6 s after the bands entered view: {extra}"
+        # nothing at all runs inside the three bands this plan owns
+        inside = page.evaluate(
+            """() => document.getAnimations().filter(a => a.playState === 'running' && a.effect && a.effect.target
+              && a.effect.target.closest('#letters, #services, #process')).length"""
+        )
+        assert inside == 0
+        assert page.evaluate("document.querySelectorAll('.is-emitting').length") == 0
+    finally:
+        ctx.close()
+
+
+def test_home_no_horizontal_scroll_at_320_after_assemble(browser, site_url):
+    ctx, page = _home(browser, site_url, width=320, height=700, reduced_motion="no-preference")
+    try:
+        for sel in ("#letters", "#services", "#process"):
+            page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
+            page.wait_for_timeout(300)
+            sw, cw = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
+            assert sw <= cw, f"{sel}: page scrolls horizontally mid-assemble ({sw} > {cw})"
+        page.wait_for_timeout(3600)
+        sw, cw = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
+        assert sw <= cw
+    finally:
+        ctx.close()

@@ -102,3 +102,12 @@ def test_site_js_tolerates_a_missing_canvas(root):
     js = (root / "assets" / "site.js").read_text(encoding="utf-8")
     assert "iris2" not in js
     assert 'getElementById("iris")' in js and "if (canvas && !reduce)" in js
+
+
+def test_home_rhythm_still_alternates(soups):
+    """The letters band replaces the marquee as the first surface-alt band right after the hero."""
+    soup = soups["index"]
+    assert soup.select_one(".marquee") is None
+    bands = _bands(soup)
+    assert "letters" in bands[1].get("class", []) and _surface(bands[1]) == "alt"
+    assert [_surface(b) for b in bands][:4] == ["inverse", "alt", "page", "alt"]

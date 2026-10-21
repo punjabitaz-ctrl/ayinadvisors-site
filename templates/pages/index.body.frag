@@ -24,52 +24,55 @@
 </header>
 
 <main id="main" tabindex="-1">
-<!-- ===================== MARQUEE ===================== -->
-<div class="marquee surface-alt" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">Market Entry Research</span>
-    <span class="marquee-item">Channel Enablement</span>
-    <span class="marquee-item">Partner Introductions</span>
-    <span class="marquee-item">Regional Expansion</span>
-    <span class="marquee-item">Market Entry Research</span>
-    <span class="marquee-item">Channel Enablement</span>
-    <span class="marquee-item">Partner Introductions</span>
-    <span class="marquee-item">Regional Expansion</span>
+<!-- ===================== LETTERS BAND (replaces the marquee) ===================== -->
+<div class="letters surface-alt assemble" id="letters" data-assemble data-tilt="group">
+  <div class="wrap">
+    <div class="letters-row asm-stage" role="img" aria-label="The letter ayin in Arabic, Hebrew and Phoenician, and its descendant, the Latin letter O. In each it means the eye.">
+      <div class="lt asm-scatter"><span class="glyph ar" aria-hidden="true">ع</span><span class="sub" aria-hidden="true">ʿayn</span><span class="cap" aria-hidden="true">Arabic</span></div>
+      <span class="lt-sep asm-fade" aria-hidden="true"></span>
+      <div class="lt asm-scatter"><span class="glyph he" aria-hidden="true">ע</span><span class="sub" aria-hidden="true">ayin</span><span class="cap" aria-hidden="true">Hebrew</span></div>
+      <span class="lt-sep asm-fade" aria-hidden="true"></span>
+      <div class="lt asm-scatter"><span class="glyph ph" aria-hidden="true">𐤏</span><span class="sub" aria-hidden="true">ʿayin</span><span class="cap" aria-hidden="true">Phoenician</span></div>
+      <span class="lt-sep asm-fade" aria-hidden="true"></span>
+      <div class="lt asm-scatter"><span class="glyph la" aria-hidden="true">O</span><span class="sub" aria-hidden="true">omicron · O</span><span class="cap" aria-hidden="true">Greek &amp; Latin</span></div>
+    </div>
+    <p class="letters-line asm-fade">One letter, three thousand years, and every language that kept it kept its meaning: <b>to see.</b></p>
   </div>
 </div>
 
 <!-- ===================== SERVICES ===================== -->
-<section class="section surface-page" id="services">
+<section class="section surface-page has-ripples assemble" id="services" data-assemble>
+  <svg class="ripples ripples-r" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow reveal"><span class="sec-index">01</span> &nbsp;What we do</span>
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>What we do</span>
         <h2 class="h2 reveal" data-d="1">A focused practice for<br />crossing the border.</h2>
       </div>
       <p class="muted reveal" data-d="2" style="max-width:34ch">Four disciplines, one objective — a commercial foothold in North America built on real channel relationships.</p>
     </div>
 
-    <div class="svc-grid">
-      <a class="svc reveal" href="Services.html">
-        <div class="svc-num">01</div>
+    <div class="svc-grid asm-stage">
+      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
+        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="22" pathLength="200"/><circle cx="27" cy="27" r="12" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/><path d="M27 2v8M27 44v8M2 27h8M44 27h8" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">US Market Entry Research</h3>
         <p>Sizing, segmentation and competitive intelligence that tells you where to play — and where not to — before you spend a dollar on the ground.</p>
         <span class="svc-arrow">Explore →</span>
       </a>
-      <a class="svc reveal" data-d="1" href="Services.html">
-        <div class="svc-num">02</div>
+      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
+        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="19" cy="27" r="15" pathLength="200"/><circle cx="35" cy="27" r="15" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/></svg>
         <h3 class="h3">Channel Strategy &amp; Enablement</h3>
         <p>Designing the route to market — distributors, resellers, agents — and equipping them with the tools, terms and training to actually sell.</p>
         <span class="svc-arrow">Explore →</span>
       </a>
-      <a class="svc reveal" href="Services.html">
-        <div class="svc-num">03</div>
+      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
+        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="14" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="14" cy="27" r="3" stroke="none"/><circle cx="40" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="40" cy="27" r="3" stroke="none"/><path d="M24 27h6" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">B2B Partner Introductions</h3>
         <p>Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.</p>
         <span class="svc-arrow">Explore →</span>
       </a>
-      <a class="svc reveal" data-d="1" href="Services.html">
-        <div class="svc-num">04</div>
+      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
+        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle class="fillgold" cx="16" cy="27" r="3.6" stroke="none"/><circle cx="16" cy="27" r="9" pathLength="200"/><path d="M30 14a19 19 0 0 1 0 26M38 9a27 27 0 0 1 0 36M46 5a35 35 0 0 1 0 44" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">Regional Expansion · Canada &amp; LATAM</h3>
         <p>Extending the playbook north and south — adapting channel models for Canada and Latin America once the US engine is running.</p>
         <span class="svc-arrow">Explore →</span>
@@ -79,23 +82,24 @@
 </section>
 
 <!-- ===================== PROCESS ===================== -->
-<section class="section surface-alt" id="process">
+<section class="section surface-alt has-ripples assemble" id="process" data-assemble>
+  <svg class="ripples ripples-l" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow on-navy reveal"><span class="sec-index">02</span> &nbsp;How it works</span>
+        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How it works</span>
         <h2 class="h2 reveal" data-d="1">From outside looking in, to inside the channel.</h2>
       </div>
       <p class="muted reveal" data-d="2" style="max-width:34ch">A clear, sequenced engagement.<br /><b>No</b> open-ended retainers, no theory without traction.</p>
     </div>
 
-    <div class="proc-wrap reveal">
-      <div class="proc-line"><div class="fill"></div></div>
+    <div class="proc-wrap asm-stage">
+      <div class="proc-line"><div class="fill asm-grow"></div></div>
       <div class="proc-grid">
-        <div class="proc-step"><div class="dot"></div><div class="pn">Step 01</div><h3>Diagnose</h3><p>We assess fit, readiness and the realistic shape of US demand for your offer.</p></div>
-        <div class="proc-step"><div class="dot"></div><div class="pn">Step 02</div><h3>Map</h3><p>We design the channel architecture and identify the partners worth pursuing.</p></div>
-        <div class="proc-step"><div class="dot"></div><div class="pn">Step 03</div><h3>Connect</h3><p>We open doors with structured introductions to vetted partners and buyers.</p></div>
-        <div class="proc-step"><div class="dot"></div><div class="pn">Step 04</div><h3>Enable</h3><p>We equip the channel to sell and hand you a running commercial engine.</p></div>
+        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Diagnose</h3><p>We assess fit, readiness and the realistic shape of US demand for your offer.</p></div>
+        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Map</h3><p>We design the channel architecture and identify the partners worth pursuing.</p></div>
+        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Connect</h3><p>We open doors with structured introductions to vetted partners and buyers.</p></div>
+        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Enable</h3><p>We equip the channel to sell and hand you a running commercial engine.</p></div>
       </div>
     </div>
   </div>
