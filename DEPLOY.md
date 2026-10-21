@@ -168,3 +168,22 @@ PYTHONUTF8=1 python -m pytest tests -m "not browser"   # static checks only, no 
   `tests/a11y_browser/test_behaviour.py`.
 - Manual checks that automation cannot do are listed in
   `docs/accessibility/checklist.md`; the dated results are in `docs/accessibility/`.
+
+## Motion notes
+
+The accents (letters band, ripples, iris markers, assembling and tilting cards)
+are plain CSS and `assets/site.js`; there is nothing to configure or deploy
+separately.
+
+- Content is never hidden by CSS alone. The hidden starting state is applied
+  only by `site.js`, so a page whose script is blocked or fails shows everything.
+- With the visitor's reduced-motion preference on, every element is in its
+  final state: no assemble, no tilt, no parallax drift, no ripple emission.
+- Nothing animates on its own for more than 5 seconds after entering view
+  (ripples emit once, then rest). The hero canvases, the hero scroll hint and
+  the pulse on the Home "Why" globe predate this and are tracked for Phase 3.
+- Home loads one extra Google Fonts stylesheet, limited with `text=` to the four
+  letter glyphs. The existing CSP already allows it; if the font fails, the
+  band's text label still carries the meaning.
+- Details and what has not been checked by a person are in
+  `docs/accessibility/2026-10-2b-review.md`.

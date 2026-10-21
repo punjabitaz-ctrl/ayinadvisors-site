@@ -38,7 +38,7 @@
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
-        <span class="eyebrow reveal">The Process</span>
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The Process</span>
         <h2 class="h2 reveal" data-d="1">Submit once.<br />Ten experts evaluate.</h2>
       </div>
       <p class="lead muted right reveal" data-d="2">Fast, honest and structured — the kind of pressure test that saves founders months of misdirected effort.</p>
@@ -46,18 +46,18 @@
     <figure class="photo-card photo-card-wide surface-card reveal">
       <image-slot slug="lightbulb" sizes="(min-width: 900px) 720px, calc(100vw - 40px)" loading="lazy"></image-slot>
     </figure>
-    <div class="bc-steps">
-      <div class="bc-step reveal">
+    <div class="bc-steps assemble asm-stage" data-assemble>
+      <div class="bc-step asm-card tilt3d" data-tilt>
         <div class="n" aria-hidden="true" data-n="01"></div>
         <h3 class="h3">Describe your idea</h3>
         <p>Fill out a focused brief: what your business does, who it serves, your stage and market. No deck required.</p>
       </div>
-      <div class="bc-step reveal" data-d="1">
+      <div class="bc-step asm-card tilt3d" data-tilt>
         <div class="n" aria-hidden="true" data-n="02"></div>
         <h3 class="h3">Panel evaluates</h3>
         <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk — independently.</p>
       </div>
-      <div class="bc-step reveal" data-d="2">
+      <div class="bc-step asm-card tilt3d" data-tilt>
         <div class="n" aria-hidden="true" data-n="03"></div>
         <h3 class="h3">Receive your verdict</h3>
         <p>A structured report with each panelist's score, their key concerns, and a single aggregate verdict with findings.</p>
@@ -67,11 +67,12 @@
 </section>
 
 <!-- ===================== THE PANEL ===================== -->
-<section class="section surface-alt" id="panel">
+<section class="section surface-alt has-ripples" id="panel">
+  <svg class="ripples ripples-l ripples-up" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
-        <span class="eyebrow on-navy reveal">The Evaluators</span>
+        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The Evaluators</span>
         <h2 class="h2 reveal" data-d="1">Ten perspectives.<br />One verdict.</h2>
       </div>
       <p class="lead right reveal" data-d="2" style="color:var(--ink-muted)">Each agent specialises in a distinct dimension of business viability — and none of them pull punches.</p>
@@ -96,7 +97,7 @@
   <div class="wrap">
     <div class="bc-head">
       <div class="left">
-        <span class="eyebrow reveal">Sample Output</span>
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Sample Output</span>
         <h2 class="h2 reveal" data-d="1">What you receive.</h2>
       </div>
       <p class="lead muted right reveal" data-d="2">A structured score from each panelist, their top concerns, and a clear aggregate verdict — not a list of platitudes.</p>
@@ -158,7 +159,7 @@
   <div class="wrap">
     <div class="intake-grid">
       <div class="intake-intro">
-        <span class="eyebrow on-navy reveal">Submit Your Idea</span>
+        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Submit Your Idea</span>
         <h2 class="h2 reveal" data-d="1">Let the panel<br />read your idea.</h2>
         <p class="lead reveal" data-d="2">Give us the brief. We'll return a candid panel evaluation — the kind of review most founders only get after they've already committed to the wrong path.</p>
         <div class="imeta-list reveal" data-d="3">

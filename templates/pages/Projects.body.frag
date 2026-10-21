@@ -17,7 +17,8 @@
 
 <!-- PROJECTS -->
 <main id="main" tabindex="-1">
-<section class="section surface-page" style="padding-top:clamp(40px,5vw,72px)">
+<section class="section surface-page has-ripples" style="padding-top:clamp(40px,5vw,72px)">
+  <svg class="ripples ripples-r ripples-up" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
   <div class="wrap">
 
     <div class="status-legend reveal">
@@ -26,10 +27,10 @@
       <div class="sl-item"><span class="dot dot-dev"></span>In development</div>
     </div>
 
-    <div class="projects-grid">
+    <div class="projects-grid assemble asm-stage" data-assemble>
 
       <!-- COMPLETED: Thinkers Dilemma — featured full-width -->
-      <div class="project-card featured surface-card reveal">
+      <div class="project-card featured surface-card asm-card tilt3d" data-tilt>
         <div class="card-left">
           <span class="status-badge badge-complete"><span class="badge-dot"></span>Completed</span>
           <div class="project-index" aria-hidden="true">01</div>
@@ -52,7 +53,7 @@
       </div>
 
       <!-- IN TESTING: BizCheck -->
-      <div class="project-card navy-card surface-card reveal">
+      <div class="project-card navy-card surface-card asm-card tilt3d" data-tilt>
         <span class="status-badge badge-testing"><span class="badge-dot"></span>In Testing</span>
         <div class="project-index" aria-hidden="true">02</div>
         <h2>BizCheck</h2>
@@ -66,7 +67,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: Channel -->
-      <div class="project-card surface-card reveal" data-d="1">
+      <div class="project-card surface-card asm-card tilt3d" data-tilt>
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">03</div>
         <h2>Channel</h2>
@@ -80,7 +81,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: Trust -->
-      <div class="project-card surface-card reveal" data-d="2">
+      <div class="project-card surface-card asm-card tilt3d" data-tilt>
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">04</div>
         <h2>Trust</h2>
@@ -94,7 +95,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: SceneCraft -->
-      <div class="project-card navy-card surface-card reveal" data-d="3">
+      <div class="project-card navy-card surface-card asm-card tilt3d" data-tilt>
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">05</div>
         <h2>SceneCraft</h2>

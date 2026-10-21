@@ -139,6 +139,38 @@
     {
       "page": "About",
       "rule": "color-contrast",
+      "selector": ".ap.reveal.in:nth-child(1) > p",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".has-ripples > .wrap > .sec-head > .left > .eyebrow",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".has-ripples > .wrap > .sec-head > .left > .h2",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".has-ripples > .wrap > .sec-head > .muted[data-d=\"2\"]",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
       "selector": ".member > h3",
       "reason": "axe could not decide because another positioned element overlaps the text box, so axe cannot attribute a background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
@@ -195,6 +227,38 @@
     {
       "page": "About",
       "rule": "color-contrast",
+      "selector": ".sb.reveal.in:nth-child(1) > .l",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".sb.reveal[data-d=\"1\"] > .l",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".sb.reveal[data-d=\"2\"] > .l",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
+      "selector": ".sb.reveal[data-d=\"3\"] > .l",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "About",
+      "rule": "color-contrast",
       "selector": ".tlink > .btn-arrow",
       "reason": "axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
@@ -211,7 +275,7 @@
     {
       "page": "About",
       "rule": "color-contrast",
-      "selector": ".wrap > .on-navy.eyebrow.reveal",
+      "selector": ".wrap > .on-navy.eyebrow",
       "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient,imgNode"
@@ -279,6 +343,62 @@
       "reason": "axe could not decide because a background image or the fixed header's backdrop lies behind the element, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgImage"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": "#panel > .wrap > .bc-head > .left > .h2[data-d=\"1\"]",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode,elmPartiallyObscuring"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-step.asm-card.tilt3d:nth-child(1) > h3",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-step.asm-card.tilt3d:nth-child(1) > p",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-step.asm-card.tilt3d:nth-child(2) > h3",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-step.asm-card.tilt3d:nth-child(2) > p",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-step.asm-card.tilt3d:nth-child(3) > h3",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".bc-step.asm-card.tilt3d:nth-child(3) > p",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgOverlap"
     },
     {
       "page": "BizCheck",
@@ -461,6 +581,14 @@
       "rule": "color-contrast",
       "selector": ".lead[data-d=\"3\"]",
       "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "BizCheck",
+      "rule": "color-contrast",
+      "selector": ".left > .on-navy.eyebrow.reveal",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "imgNode"
     },
@@ -1139,6 +1267,30 @@
     {
       "page": "Projects",
       "rule": "color-contrast",
+      "selector": ".sl-item:nth-child(1)",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".sl-item:nth-child(2)",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
+      "selector": ".sl-item:nth-child(3)",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "Projects",
+      "rule": "color-contrast",
       "selector": ".wrap > .eyebrow.on-navy.reveal",
       "reason": "axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
@@ -1199,6 +1351,22 @@
       "reason": "axe could not decide because a decorative element partially overlaps the text box, so axe cannot attribute a background; the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "#research > .sd-body > p",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "Services",
+      "rule": "color-contrast",
+      "selector": "#research > .sd-left > .h2",
+      "reason": "axe could not decide because the decorative ripples graphic (an aria-hidden SVG of thin, low-opacity rings, clipped to its band and not hit-testable) overlaps this element's box in axe's geometry, so axe cannot attribute a single background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
     },
     {
       "page": "Services",

@@ -4,7 +4,7 @@
   <canvas id="iris"></canvas>
   <div class="contact-grid">
     <div class="contact-intro">
-      <span class="eyebrow on-navy reveal">Book a Consultation</span>
+      <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Book a Consultation</span>
       <h1 class="display reveal" data-d="1" style="font-size:clamp(2.6rem,5.4vw,4.6rem)">Let us read the<br />market together.</h1>
       <p class="lead reveal" data-d="2">Tell us where you're headed. We'll come back within two business days with a candid first view — and the shape of an engagement if it's a fit.</p>
       <div class="contact-meta reveal" data-d="3">

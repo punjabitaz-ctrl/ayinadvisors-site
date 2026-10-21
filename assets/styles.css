@@ -462,6 +462,9 @@ main:focus { outline: none; }
   .ripples-r { right: -250px; top: -300px; }
   .ripples-l { left: -250px; top: -340px; }
 }
+/* Bands whose first row is text: the centre sits above the band so only the outer rings reach in */
+.ripples-up { top: -420px; }
+@media (max-width: 640px) { .ripples-r.ripples-up { right: -250px; top: -470px; } .ripples-l.ripples-up { left: -250px; top: -470px; } }
 .ripples circle { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .ripples circle:nth-child(1) { stroke-opacity: 0.55; }
 .ripples circle:nth-child(2) { stroke-opacity: 0.42; }
@@ -514,11 +517,11 @@ main:focus { outline: none; }
   .tilt3d { transform-style: preserve-3d; will-change: transform; transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); }
   /* Depth is transient: the lift exists only while the pointer tilts the card or the band, so nothing
      is displaced by the shared perspective at rest (icon and title share one left edge, glyph and caption one centre) */
-  .tilt3d :is(.iris-ico, h3, p) { transition: transform var(--dur-tilt) var(--ease-out); }
+  .tilt3d :is(.iris-ico, h2, h3, p) { transition: transform var(--dur-tilt) var(--ease-out); }
   .tilt3d.is-tilting .iris-ico { transform: translateZ(46px); }
-  .tilt3d.is-tilting :is(h3, p) { transform: translateZ(18px); }
+  .tilt3d.is-tilting :is(h2, h3, p) { transform: translateZ(18px); }
   .letters .lt.is-tilting .glyph { transform: translateZ(40px); }
-  .tilt3d.is-tilting { transition: transform 0.08s linear, box-shadow 0.3s; transition-delay: 0s; box-shadow: 0 30px 50px -28px color-mix(in srgb, var(--ink) 35%, transparent); }
+  .tilt3d.is-tilting { z-index: 2; transition: transform 0.08s linear, box-shadow 0.3s; transition-delay: 0s; box-shadow: 0 30px 50px -28px color-mix(in srgb, var(--ink) 35%, transparent); }
 
   /* Transitions that run when a section assembles */
   .asm-scatter { transition: transform var(--dur-assemble) var(--ease-out), opacity 1s var(--ease-out); transition-delay: calc(var(--i, 0) * 0.12s); }

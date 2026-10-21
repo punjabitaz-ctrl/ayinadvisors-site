@@ -103,6 +103,10 @@ def _axe(page):
     from axe_playwright_python.sync_playwright import Axe
 
     page.add_style_tag(content=REVEAL_CSS)
+    # sections already assembling (in view at load) must finish first: axe cannot judge text mid-transition
+    page.wait_for_function(
+        "[...document.querySelectorAll('[data-assemble]')].every(r => r.dataset.assemble !== 'in' || r.hasAttribute('data-assemble-done'))",
+        timeout=8000)
     page.evaluate("document.querySelectorAll('.reveal,.line-reveal').forEach(e=>e.classList.add('in'))")
     return Axe().run(page, options=AXE_OPTIONS).response
 

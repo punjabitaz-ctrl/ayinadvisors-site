@@ -17,10 +17,11 @@
 
 <!-- SERVICES DETAIL -->
 <main id="main" tabindex="-1">
-<section class="section surface-page" style="padding-top:clamp(40px,6vw,80px)">
+<section class="section surface-page has-ripples" style="padding-top:clamp(40px,6vw,80px)">
+  <svg class="ripples ripples-r ripples-up" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
   <div class="wrap">
 
-    <article class="svc-detail reveal" id="research">
+    <article class="svc-detail reveal assemble" id="research" data-assemble>
       <div class="sd-left">
         <div class="sd-num" aria-hidden="true" data-n="01"></div>
         <h2 class="h2">US Market Entry Research</h2>
@@ -28,18 +29,18 @@
       </div>
       <div class="sd-body">
         <p>Before commitment comes clarity. We map the real shape of US demand for your category — where it concentrates, who already owns it, and the regulatory and pricing realities you'll meet on arrival. You get an honest read on whether, where and how to enter.</p>
-        <ul class="deliverables">
-          <li>Market sizing &amp; segmentation</li>
-          <li>Competitive &amp; pricing landscape</li>
-          <li>Regulatory &amp; compliance scan</li>
-          <li>Beachhead market recommendation</li>
-          <li>Demand &amp; buyer-persona mapping</li>
-          <li>Go / no-go entry thesis</li>
+        <ul class="deliverables asm-stage">
+          <li class="asm-card tilt3d" data-tilt>Market sizing &amp; segmentation</li>
+          <li class="asm-card tilt3d" data-tilt>Competitive &amp; pricing landscape</li>
+          <li class="asm-card tilt3d" data-tilt>Regulatory &amp; compliance scan</li>
+          <li class="asm-card tilt3d" data-tilt>Beachhead market recommendation</li>
+          <li class="asm-card tilt3d" data-tilt>Demand &amp; buyer-persona mapping</li>
+          <li class="asm-card tilt3d" data-tilt>Go / no-go entry thesis</li>
         </ul>
       </div>
     </article>
 
-    <article class="svc-detail reveal" id="channel">
+    <article class="svc-detail reveal assemble" id="channel" data-assemble>
       <div class="sd-left">
         <div class="sd-num" aria-hidden="true" data-n="02"></div>
         <h2 class="h2">Channel Strategy &amp; Enablement</h2>
@@ -47,18 +48,18 @@
       </div>
       <div class="sd-body">
         <p>The route to market is the strategy. We design the channel architecture suited to your product and margins — distributors, resellers, agents or hybrid — then build the commercial terms, materials and training that turn a partner signature into actual sales.</p>
-        <ul class="deliverables">
-          <li>Channel model &amp; coverage design</li>
-          <li>Partner economics &amp; incentives</li>
-          <li>Sales enablement toolkit</li>
-          <li>Onboarding &amp; training program</li>
-          <li>Pricing &amp; margin structure</li>
-          <li>Performance &amp; KPI framework</li>
+        <ul class="deliverables asm-stage">
+          <li class="asm-card tilt3d" data-tilt>Channel model &amp; coverage design</li>
+          <li class="asm-card tilt3d" data-tilt>Partner economics &amp; incentives</li>
+          <li class="asm-card tilt3d" data-tilt>Sales enablement toolkit</li>
+          <li class="asm-card tilt3d" data-tilt>Onboarding &amp; training program</li>
+          <li class="asm-card tilt3d" data-tilt>Pricing &amp; margin structure</li>
+          <li class="asm-card tilt3d" data-tilt>Performance &amp; KPI framework</li>
         </ul>
       </div>
     </article>
 
-    <article class="svc-detail reveal" id="introductions">
+    <article class="svc-detail reveal assemble" id="introductions" data-assemble>
       <div class="sd-left">
         <div class="sd-num" aria-hidden="true" data-n="03"></div>
         <h2 class="h2">B2B Partner Introductions</h2>
@@ -66,18 +67,18 @@
       </div>
       <div class="sd-body">
         <p>Relationships open the US market — and we have them. We make warm, qualified introductions to the buyers, channel partners and decision-makers who actually move your category, then support the first conversations so they convert into agreements.</p>
-        <ul class="deliverables">
-          <li>Target partner long-list &amp; vetting</li>
-          <li>Warm, personally-made introductions</li>
-          <li>Meeting facilitation &amp; prep</li>
-          <li>Deal &amp; term negotiation support</li>
-          <li>Buyer &amp; distributor outreach</li>
-          <li>Relationship handover</li>
+        <ul class="deliverables asm-stage">
+          <li class="asm-card tilt3d" data-tilt>Target partner long-list &amp; vetting</li>
+          <li class="asm-card tilt3d" data-tilt>Warm, personally-made introductions</li>
+          <li class="asm-card tilt3d" data-tilt>Meeting facilitation &amp; prep</li>
+          <li class="asm-card tilt3d" data-tilt>Deal &amp; term negotiation support</li>
+          <li class="asm-card tilt3d" data-tilt>Buyer &amp; distributor outreach</li>
+          <li class="asm-card tilt3d" data-tilt>Relationship handover</li>
         </ul>
       </div>
     </article>
 
-    <article class="svc-detail reveal" id="expansion">
+    <article class="svc-detail reveal assemble" id="expansion" data-assemble>
       <div class="sd-left">
         <div class="sd-num" aria-hidden="true" data-n="04"></div>
         <h2 class="h2">Regional Expansion · Canada &amp; LATAM</h2>
@@ -85,13 +86,13 @@
       </div>
       <div class="sd-body">
         <p>Once the US engine runs, the continent opens up. We extend your proven playbook into Canada and Latin America — adapting channel models, partner profiles and commercial terms to each market's language, regulation and buying culture.</p>
-        <ul class="deliverables">
-          <li>Canada market &amp; channel entry</li>
-          <li>LATAM prioritization &amp; sequencing</li>
-          <li>Localized partner sourcing</li>
-          <li>Cross-border commercial terms</li>
-          <li>Regulatory &amp; tax navigation</li>
-          <li>Multi-market governance</li>
+        <ul class="deliverables asm-stage">
+          <li class="asm-card tilt3d" data-tilt>Canada market &amp; channel entry</li>
+          <li class="asm-card tilt3d" data-tilt>LATAM prioritization &amp; sequencing</li>
+          <li class="asm-card tilt3d" data-tilt>Localized partner sourcing</li>
+          <li class="asm-card tilt3d" data-tilt>Cross-border commercial terms</li>
+          <li class="asm-card tilt3d" data-tilt>Regulatory &amp; tax navigation</li>
+          <li class="asm-card tilt3d" data-tilt>Multi-market governance</li>
         </ul>
       </div>
     </article>
