@@ -68,7 +68,7 @@
 
 <!-- ===================== THE PANEL ===================== -->
 <section class="section surface-alt has-ripples" id="panel">
-  <svg class="ripples ripples-l ripples-up" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
+  <svg class="ripples ripples-top" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
   <div class="wrap">
     <div class="bc-head">
       <div class="left">

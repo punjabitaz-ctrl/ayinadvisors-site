@@ -80,12 +80,19 @@ def test_ripples_are_decorative_and_stay_off_hero_and_forms(soups):
         placed[stem] = len(rs)
         for r in rs:
             assert r.get("aria-hidden") == "true" and r.get("focusable") == "false"
-            assert r.get("data-drift")
+            # Home's rings drift with scroll; the section-head rings (ripples-top) stay put so their box never leaves the section
+            assert r.get("data-drift") or "ripples-top" in r.get("class", [])
             host = r.parent
             assert "has-ripples" in host.get("class", []), (stem, host.name, host.get("class"))
             assert host.name == "section"
             assert not host.select("form, canvas, [data-turnstile], .cf-turnstile")
             assert not r.find_parent(["header", "form"])
             assert host.get("id") != "submit"
+    # ripples only where a section heading has room around it: About (approach) and BizCheck (panel), plus Home's two
     assert placed["Contact"] == 0 and placed["404"] == 0
-    assert placed["About"] == 1 and placed["BizCheck"] == 1 and placed["Services"] == 1
+    assert placed["Services"] == 0 and placed["Projects"] == 0
+    assert placed["About"] == 1 and placed["BizCheck"] == 1 and placed["index"] == 2
+    for stem in ("About", "BizCheck"):
+        r = soups[stem].select_one("svg.ripples")
+        assert "ripples-top" in r.get("class", []), stem
+        assert r.find_next("div", class_="bc-head") or r.find_next("div", class_="sec-head")

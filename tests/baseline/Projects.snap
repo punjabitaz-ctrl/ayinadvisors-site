@@ -219,8 +219,7 @@
 
 <!-- PROJECTS -->
 <main id="main" tabindex="-1">
-<section class="section surface-page has-ripples" style="padding-top:clamp(40px,5vw,72px)">
-  <svg class="ripples ripples-r ripples-up" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
+<section class="section surface-page clip-x" style="padding-top:clamp(40px,5vw,72px)">
   <div class="wrap">
 
     <div class="status-legend reveal">
