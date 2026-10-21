@@ -430,6 +430,40 @@ main:focus { outline: none; }
 }
 .skip-link:focus-visible { outline-color: var(--on-accent); box-shadow: 0 0 0 2px var(--accent-fill); }
 
+/* ---------- Theme toggle ---------- */
+/* Hidden until the inline head script has set html[data-theme]: without JavaScript the switch cannot work,
+   so it is not offered (the page still follows the system theme through theme.css). */
+.theme-toggle { display: none; }
+html[data-theme] .theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  min-width: 44px; min-height: 44px; padding: 0;
+  background: none; border: 0; border-radius: 50%;
+  color: var(--ink); cursor: pointer;
+}
+.theme-toggle:hover { color: var(--accent-ink); }
+.theme-ico { display: block; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .ico-sun { display: none; }
+.theme-toggle[aria-pressed="true"] .ico-moon { display: none; }
+.theme-toggle[aria-pressed="true"] .ico-sun { display: inline; }
+.nav-links { margin-left: auto; }
+.nav .theme-toggle { margin-left: 10px; }
+/* The drawer now holds one more row: on short screens keep it clear of the fixed nav bar and let it scroll. */
+html[data-theme] .mobile-drawer { justify-content: safe center; overflow-y: auto; padding-top: var(--nav-h); }
+html[data-theme] .mobile-drawer > * { flex-shrink: 0; }
+html[data-theme] .mobile-drawer .theme-toggle-row {
+  align-self: flex-start; gap: 14px; margin-top: 22px; padding: 6px 4px 6px 0;
+  border-radius: 2px; font-family: var(--sans); font-size: 1rem; letter-spacing: 0.04em;
+}
+@media (max-width: 880px) {
+  .nav .theme-toggle { margin-left: auto; }
+}
+/* Colour-only cross-fade while the theme flips; site.js sets the class for 200 ms and never under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-switching, html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after {
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, fill 0.18s ease, stroke 0.18s ease !important;
+  }
+}
+
 /* Target size (WCAG 2.2 SC 2.5.8): controls are at least 24x24 CSS px. */
 .nav-toggle { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
 .chip { min-height: 24px; }

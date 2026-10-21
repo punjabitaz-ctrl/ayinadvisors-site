@@ -14,6 +14,47 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /* ---------- Theme switch ----------
+     Contract: html[data-theme="light"|"dark"], set before first paint by the inline script in <head>;
+     the visitor's choice lives in localStorage["ayin-theme"] (every access guarded: storage may be
+     blocked). With no stored choice the page follows the system preference live. */
+  const THEME_KEY = "ayin-theme";
+  const themeToggles = document.querySelectorAll(".theme-toggle");
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  /* theme-color follows the active theme. Today navy in both themes, so both entries hold the value the page
+     shipped with; change an entry here (or Task 2's palette work) to diverge them. */
+  const THEME_COLOR = themeMeta ? { light: themeMeta.content, dark: themeMeta.content } : null;
+  const readTheme = () => { try { const v = localStorage.getItem(THEME_KEY); return v === "light" || v === "dark" ? v : null; } catch (e) { return null; } };
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  const applyTheme = (theme, animate) => {
+    const root = document.documentElement;
+    if (root.dataset.theme === theme) return;
+    if (animate && !reduce) {
+      root.classList.add("theme-switching");
+      clearTimeout(applyTheme.t);
+      applyTheme.t = setTimeout(() => root.classList.remove("theme-switching"), 200);
+    }
+    root.dataset.theme = theme;
+    themeToggles.forEach((b) => b.setAttribute("aria-pressed", theme === "dark" ? "true" : "false"));
+    if (themeMeta && THEME_COLOR) themeMeta.setAttribute("content", THEME_COLOR[theme]);
+    window.dispatchEvent(new CustomEvent("themechange", { detail: { theme } }));
+  };
+  if (themeToggles.length) {
+    const current = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    themeToggles.forEach((b) => b.setAttribute("aria-pressed", current === "dark" ? "true" : "false"));
+    if (themeMeta && THEME_COLOR) themeMeta.setAttribute("content", THEME_COLOR[current]);
+    themeToggles.forEach((b) =>
+      b.addEventListener("click", () => {
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* choice lasts for this visit only */ }
+        applyTheme(next, true);
+      })
+    );
+    const onSystem = (e) => { if (!readTheme()) applyTheme(e.matches ? "dark" : "light", true); };
+    if (systemDark.addEventListener) systemDark.addEventListener("change", onSystem);
+    else if (systemDark.addListener) systemDark.addListener(onSystem);
+  }
+
   /* ---------- Mobile menu ---------- */
   const toggle = document.querySelector(".nav-toggle");
   const drawer = document.querySelector(".mobile-drawer");
