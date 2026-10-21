@@ -38,7 +38,7 @@ def test_registry_requires_alt_or_decorative(tmp_path):
 def test_registry_sources_are_bare_file_names():
     for slug, e in _registry().items():
         assert Path(e["source"]).name == e["source"], slug
-    assert set(_registry()) == {"us-night", "skyscrapers", "globe", "lightbulb"}
+    assert set(_registry()) == {"us-night", "skyscrapers", "lightbulb"}
 
 
 def test_every_registry_slug_has_all_three_files():
@@ -73,7 +73,7 @@ def test_render_picture_has_srcset_sizes_dimensions_and_alt():
 
 
 def test_render_picture_class_and_decorative(tmp_path):
-    assert 'class="photo-img"' in images.render_picture("globe", "100vw", cls="photo-img")
+    assert 'class="photo-img"' in images.render_picture("lightbulb", "100vw", cls="photo-img")
     reg = _write_registry(tmp_path / "r.json", [{
         "slug": "d", "source": "d.jpg", "focal": [0.5, 0.5], "pillar": "p", "crop": "3:2",
         "decorative": True, "reason": "purely ornamental"}])
@@ -82,9 +82,9 @@ def test_render_picture_class_and_decorative(tmp_path):
 
 
 def test_above_the_fold_images_are_not_lazy():
-    assert 'loading="eager"' in images.render_picture("globe", "100vw", loading="eager")
-    assert "lazy" not in images.render_picture("globe", "100vw", loading="eager")
-    html = build.expand_image_slots('<image-slot slug="globe" sizes="100vw" loading="eager"></image-slot>')
+    assert 'loading="eager"' in images.render_picture("lightbulb", "100vw", loading="eager")
+    assert "lazy" not in images.render_picture("lightbulb", "100vw", loading="eager")
+    html = build.expand_image_slots('<image-slot slug="lightbulb" sizes="100vw" loading="eager"></image-slot>')
     assert 'loading="eager"' in html
 
 
@@ -97,7 +97,7 @@ def test_unknown_image_slot_fails_the_build():
 
 def test_slot_without_sizes_is_rejected():
     with pytest.raises(ValueError, match="sizes"):
-        build.expand_image_slots('<image-slot slug="globe"></image-slot>')
+        build.expand_image_slots('<image-slot slug="lightbulb"></image-slot>')
 
 
 def test_expand_leaves_other_html_untouched():
@@ -105,7 +105,7 @@ def test_expand_leaves_other_html_untouched():
     assert build.expand_image_slots(src) == src
 
 
-PLACEMENTS = {"index": "us-night", "About": "skyscrapers", "Contact": "globe", "BizCheck": "lightbulb"}
+PLACEMENTS = {"index": "us-night", "About": "skyscrapers", "BizCheck": "lightbulb"}
 
 
 @pytest.mark.parametrize("stem,slug", PLACEMENTS.items())

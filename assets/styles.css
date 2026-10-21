@@ -403,7 +403,6 @@ html.js .line-reveal.in > span { transform: none; }
 .why-visual .photo-card, .meaning .photo-card { max-width: 460px; margin: 28px auto 0; }
 /* The wireframe globe is drawn inside a 200-unit box with 20-unit margins; trim that empty frame so the photo card sits close beneath it. */
 .why-visual .globe-stage { margin-block: -6% -9%; }
-.contact-intro .photo-card { max-width: min(440px, calc(100vw - 2 * var(--gutter))); margin-top: 36px; }
 .photo-card-wide { max-width: 720px; margin: 0 auto clamp(40px, 6vw, 64px); }
 .photo-card-wide img { aspect-ratio: 16 / 8; object-fit: cover; object-position: 50% 42%; }
 

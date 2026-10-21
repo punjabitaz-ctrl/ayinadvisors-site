@@ -12,9 +12,6 @@
         <div class="cmeta"><span class="k">Offices</span><span class="v">New York<small>By appointment</small></span></div>
         <div class="cmeta"><span class="k">Response</span><span class="v">Within 2 business days</span></div>
       </div>
-      <figure class="photo-card surface-card reveal" data-d="4">
-        <image-slot slug="globe" sizes="(min-width: 900px) 440px, calc(100vw - 40px)" loading="lazy"></image-slot>
-      </figure>
     </div>
 
     <div class="form-card reveal" data-d="2" id="book">

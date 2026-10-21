@@ -17,14 +17,6 @@
       "crop": "3:2"
     },
     {
-      "slug": "globe",
-      "source": "kyle-glenn-nXt5HtLmlgE-unsplash.jpg",
-      "alt": "A desk globe turned to Africa, the Middle East and Asia, in a warmly lit interior.",
-      "focal": [0.68, 0.5],
-      "pillar": "contact",
-      "crop": "3:2"
-    },
-    {
       "slug": "lightbulb",
       "source": "diego-ph-fIq0tET6llw-unsplash.jpg",
       "alt": "A hand reaching up and holding a clear light bulb against a pastel sky that fades from teal to coral.",
