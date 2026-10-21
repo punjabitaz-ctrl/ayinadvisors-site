@@ -3,10 +3,12 @@
 The components are served from an in-memory fixture page (a Playwright route),
 so nothing is written to the working tree.
 """
+import re
+
 import pytest
 
 from a11y_browser.conftest import new_context
-from a11y_browser.motion_fixture import FIXTURE_HTML, FIXTURE_PATH
+from a11y_browser.motion_fixture import FIXTURE_HTML, FIXTURE_LONG_HTML, FIXTURE_LONG_PATH, FIXTURE_PATH
 
 pytestmark = pytest.mark.browser
 
@@ -36,16 +38,21 @@ FINAL_JS = """([strict, scope]) => {
 }"""
 
 
-def _open(ctx, site_url, block_site_js=False):
+def _open(ctx, site_url, block_site_js=False, init_script=None, long=False):
     page = ctx.new_page()
-    page.route(
-        f"**{FIXTURE_PATH}",
-        lambda r: r.fulfill(status=200, content_type="text/html", body=FIXTURE_HTML),
-    )
+    path, html = (FIXTURE_LONG_PATH, FIXTURE_LONG_HTML) if long else (FIXTURE_PATH, FIXTURE_HTML)
+    page.route(f"**{path}", lambda r: r.fulfill(status=200, content_type="text/html", body=html))
     if block_site_js:
         page.route("**/assets/site.js", lambda r: r.abort())
-    page.goto(f"{site_url}{FIXTURE_PATH}", wait_until="load")
+    if init_script:
+        page.add_init_script(init_script)
+    page.goto(f"{site_url}{path}", wait_until="load")
     return page
+
+
+def _settled(page, sel, timeout=8000):
+    """Poll until the section has finished assembling (data-assemble-done)."""
+    page.wait_for_function(f"document.querySelector('{sel}').hasAttribute('data-assemble-done')", timeout=timeout)
 
 
 def _scroll_to(page, sel):
@@ -104,7 +111,7 @@ def test_hidden_state_is_js_driven_and_resolves(mo_page):
     assert mo_page.evaluate("getComputedStyle(document.querySelector('#services .asm-card')).opacity") == "0"
     # ...and resolves to the final look once it has entered view.
     _scroll_to(mo_page, "#services")
-    mo_page.wait_for_timeout(3800)
+    _settled(mo_page, "#services")
     assert mo_page.evaluate("document.querySelector('#services').dataset.assemble") == "in"
     assert mo_page.evaluate(FINAL_JS, [False, '#services > .wrap']) == []
 
@@ -127,7 +134,7 @@ def test_tilt_and_parallax_inert_under_reduced_motion(rm_page):
 
 def test_tilt_and_drift_work_with_motion(mo_page):
     _scroll_to(mo_page, "#services")
-    mo_page.wait_for_timeout(3800)  # assembly finished
+    _settled(mo_page, "#services")
     box = mo_page.locator("#services .tilt3d").first.bounding_box()
     mo_page.mouse.move(box["x"] + box["width"] * 0.85, box["y"] + box["height"] * 0.15)
     mo_page.mouse.move(box["x"] + box["width"] * 0.9, box["y"] + box["height"] * 0.1)
@@ -149,7 +156,7 @@ def test_assemble_runs_once(mo_page):
           ).observe(r, {attributes: true, attributeFilter: ['data-assemble']})); }"""
     )
     _scroll_to(mo_page, "#services")
-    mo_page.wait_for_timeout(3800)
+    _settled(mo_page, "#services")
     assert mo_page.evaluate("document.querySelector('#services').dataset.assemble") == "in"
     assert mo_page.evaluate("document.querySelector('#services').hasAttribute('data-assemble-done')")
     mo_page.evaluate("window.scrollTo(0, 0)")
@@ -163,12 +170,13 @@ def test_assemble_runs_once(mo_page):
 
 def test_ripples_emit_then_rest_within_five_seconds(mo_page):
     _scroll_to(mo_page, "#services")
-    mo_page.wait_for_timeout(600)
-    assert mo_page.evaluate("document.querySelectorAll('#services .ripples.is-emitting').length") == 1
-    assert mo_page.evaluate("document.getAnimations().filter(a => a.animationName === 'ripple-once').length") > 0
-    mo_page.wait_for_timeout(5500)
-    assert mo_page.evaluate("document.getAnimations().filter(a => a.animationName === 'ripple-once').length") == 0
-    assert mo_page.evaluate("document.querySelectorAll('.ripples.is-emitting').length") == 0
+    mo_page.wait_for_function("document.querySelector('#services .ripples.is-emitting')", timeout=3000)
+    ripple_anims = "document.getAnimations().filter(a => a.animationName === 'ripple-once').length"
+    assert mo_page.evaluate(ripple_anims) > 0
+    # the emission itself must be over within 5 s of starting (poll, do not sleep)
+    mo_page.wait_for_function(f"{ripple_anims} === 0", timeout=5200)
+    # and the class is dropped right after
+    mo_page.wait_for_function("!document.querySelector('.ripples.is-emitting')", timeout=3000)
     # at rest the rings are plain static circles
     assert mo_page.evaluate("[...document.querySelectorAll('#services .ripples circle')].every(c => getComputedStyle(c).opacity === '1')")
 
@@ -182,9 +190,81 @@ def test_no_horizontal_scroll_at_320(browser, site_url, reduced):
         assert page.evaluate(fits)
         for sel in ("#letters", "#services", "#process"):
             _scroll_to(page, sel)
-            page.wait_for_timeout(600)
+            page.wait_for_timeout(300)
             assert page.evaluate(fits), sel
-        page.wait_for_timeout(3500)
+        if reduced == "no-preference":
+            _settled(page, "#process")
         assert page.evaluate(fits)
     finally:
         ctx.close()
+
+
+def test_drift_is_bounded_on_a_long_page(browser, site_url):
+    ctx = new_context(browser, 1280, 800, reduced_motion="no-preference")
+    try:
+        page = _open(ctx, site_url, long=True)
+        assert page.evaluate("document.documentElement.scrollHeight") >= 6000
+        assert page.evaluate("document.querySelector('#services .ripples').getBoundingClientRect().top + scrollY") > 3500
+        sel = "#services .ripples"
+        for offset in (0, 300, -400):
+            page.evaluate(
+                "(o) => { const h = document.querySelector('#services'); window.scrollTo(0, h.offsetTop + h.offsetHeight / 2 - innerHeight / 2 + o); }",
+                offset,
+            )
+            page.wait_for_function(f"document.querySelector('{sel}').style.transform !== ''", timeout=3000)
+            page.wait_for_timeout(150)
+            m = re.match(
+                r"translate3d\(0(?:px)?, (-?[\d.]+)px, 0(?:px)?\) rotate\((-?[\d.]+)deg\)",
+                page.evaluate(f"document.querySelector('{sel}').style.transform"),
+            )
+            assert m, "no drift transform"
+            ty, rot = float(m.group(1)), float(m.group(2))
+            assert abs(ty) <= 120 and abs(rot) <= 6, (offset, ty, rot)
+            hit = page.evaluate(
+                """() => { const r = document.querySelector('#services .ripples').getBoundingClientRect();
+                  const h = document.querySelector('#services').getBoundingClientRect();
+                  return r.top < h.bottom && r.bottom > h.top && r.left < h.right && r.right > h.left; }"""
+            )
+            assert hit, "ripple left its host"
+    finally:
+        ctx.close()
+
+
+NOOP_IO = "window.IntersectionObserver = class { constructor() {} observe() {} unobserve() {} disconnect() {} takeRecords() { return []; } };"
+
+
+def test_sections_still_assemble_when_the_observer_never_fires(browser, site_url):
+    ctx = new_context(browser, 1280, 800, reduced_motion="no-preference")
+    try:
+        page = _open(ctx, site_url, init_script=NOOP_IO)
+        assert page.evaluate("document.querySelector('#letters').dataset.assemble") == "pre"
+        _scroll_to(page, "#letters")
+        page.wait_for_function("document.querySelector('#letters').dataset.assemble === 'in'", timeout=3000)
+        _settled(page, "#letters")
+        assert page.evaluate(FINAL_JS, [False, "#letters"]) == []
+        _scroll_to(page, "#services")
+        _settled(page, "#services")
+        assert page.evaluate(FINAL_JS, [False, "#services > .wrap"]) == []
+    finally:
+        ctx.close()
+
+
+def test_anchor_jump_past_sections_leaves_nothing_hidden(mo_page):
+    mo_page.evaluate("location.hash = '#process'")
+    mo_page.wait_for_function("document.querySelector('#process').dataset.assemble === 'in'", timeout=3000)
+    _settled(mo_page, "#process")
+    assert mo_page.evaluate(FINAL_JS, [False, "#process > .wrap"]) == []
+    # sections jumped over are revealed as soon as they are scrolled to
+    for sel, scope in (("#services", "#services > .wrap"), ("#letters", "#letters")):
+        _scroll_to(mo_page, sel)
+        _settled(mo_page, sel)
+        assert mo_page.evaluate(FINAL_JS, [False, scope]) == []
+
+
+def test_settled_icons_are_solid_strokes(mo_page):
+    _scroll_to(mo_page, "#services")
+    _settled(mo_page, "#services")
+    dashes = mo_page.evaluate(
+        "[...document.querySelectorAll('.iris-ico :is(circle, path)')].map(e => getComputedStyle(e).strokeDasharray)"
+    )
+    assert dashes and all(d == "none" for d in dashes), dashes

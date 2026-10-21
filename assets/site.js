@@ -196,21 +196,32 @@
     );
     document.querySelectorAll(".ripples").forEach((el) => rio.observe(el));
 
-    /* ---- drift: [data-drift=speed] ripples drift on scroll, with slight rotation ---- */
+    /* ---- drift: [data-drift=factor] ripples drift against their host's distance from the
+       viewport centre, so the offset stays bounded (+-120px, +-6deg) wherever the host sits ---- */
+    const DRIFT_MAX = 120, ROT_MAX = 6;
+    const clamp = (v, m) => Math.max(-m, Math.min(m, v));
     const drifters = [];
     const dio = new IntersectionObserver((entries) =>
       entries.forEach((e) => { e.target._drifting = e.isIntersecting; })
     );
-    document.querySelectorAll("[data-drift]").forEach((el) => { drifters.push(el); dio.observe(el); });
+    document.querySelectorAll("[data-drift]").forEach((el) => {
+      el._host = el.offsetParent || el.parentElement; // untransformed, so no feedback loop
+      drifters.push(el);
+      dio.observe(el);
+    });
     if (drifters.length) {
       let ticking = false;
       const drift = () => {
         ticking = false;
-        const y = window.scrollY;
+        const vc = window.innerHeight / 2;
         drifters.forEach((el) => {
           if (!el._drifting) return;
           const s = parseFloat(el.dataset.drift) || 0.12;
-          el.style.transform = `translate3d(0, ${(-y * s).toFixed(1)}px, 0) rotate(${(y * 0.02).toFixed(2)}deg)`;
+          const h = el._host.getBoundingClientRect();
+          const d = h.top + h.height / 2 - vc;
+          const ty = clamp(d * s, DRIFT_MAX);
+          const rot = clamp(d * 0.01, ROT_MAX);
+          el.style.transform = `translate3d(0, ${ty.toFixed(1)}px, 0) rotate(${rot.toFixed(2)}deg)`;
         });
       };
       window.addEventListener("scroll", () => {

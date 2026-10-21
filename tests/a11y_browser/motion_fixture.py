@@ -73,3 +73,7 @@ FIXTURE_HTML = f"""<!doctype html>
 <script src="assets/site.js"></script>
 </body></html>
 """
+
+# Same page on a long document: services (and its ripple) sit about 4000px down.
+FIXTURE_LONG_PATH = "/__motion_fixture_long.html"
+FIXTURE_LONG_HTML = FIXTURE_HTML.replace("height:900px", "height:4000px").replace("height:1400px", "height:3000px")

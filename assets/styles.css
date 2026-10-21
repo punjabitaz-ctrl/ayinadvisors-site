@@ -524,7 +524,9 @@ main:focus { outline: none; }
   .asm-fade { transition: opacity 1s var(--ease-out) 0.6s, transform 1s var(--ease-out) 0.6s; }
   .asm-rise { transition: transform 1s var(--ease-out), opacity 0.9s var(--ease-out); transition-delay: calc(0.35s * var(--i, 0)); }
   .asm-grow { transform-origin: left center; transition: transform 2.2s var(--ease-out) 0.3s; }
-  .assemble .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { stroke-dasharray: 200; stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-draw) var(--ease-out) 0.4s; }
+  .assemble .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-draw) var(--ease-out) 0.4s; }
+  /* The dash only exists while drawing (JS states); a settled or script-less icon is a solid stroke */
+  html.js .assemble[data-assemble="in"]:not([data-assemble-done]) .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { stroke-dasharray: 200; }
   .assemble .iris-ico .fillgold, .assemble .step-iris circle { transform-origin: center; transform-box: fill-box; transition: transform 0.8s var(--ease-out) 1.2s; }
   .assemble .step-iris circle { transition-duration: 1s; transition-delay: calc(0.5s + 0.4s * var(--i, 0)); }
 
@@ -546,7 +548,7 @@ main:focus { outline: none; }
   html.js [data-assemble="pre"] .asm-fade { transition: none; opacity: 0; transform: translateY(14px); }
   html.js [data-assemble="pre"] .asm-rise { transition: none; opacity: 0; transform: translateY(50px) rotateX(-40deg); }
   html.js [data-assemble="pre"] .asm-grow { transition: none; transform: scaleX(0); }
-  html.js [data-assemble="pre"] .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { transition: none; stroke-dashoffset: 200; }
+  html.js [data-assemble="pre"] .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { transition: none; stroke-dasharray: 200; stroke-dashoffset: 200; }
   html.js [data-assemble="pre"] :is(.iris-ico .fillgold, .step-iris circle) { transition: none; transform: scale(0); }
 
   /* Ripples emit for under 5 s once (JS adds .is-emitting), then rest as static rings */
