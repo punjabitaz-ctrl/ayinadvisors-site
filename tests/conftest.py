@@ -36,6 +36,10 @@ def sandbox(tmp_path, monkeypatch):
     import build
     shutil.copytree(ROOT / "content", tmp_path / "content")
     shutil.copytree(ROOT / "templates" / "pages", tmp_path / "templates" / "pages")
+    # template-rendered pages (hub, pillars) read their bodies from templates/*.j2 and content/services.json
+    for j2 in (ROOT / "templates").glob("*.j2"):
+        shutil.copy(j2, tmp_path / "templates" / j2.name)
+    shutil.copy(ROOT / "sitemap.xml", tmp_path / "sitemap.xml")
     (tmp_path / "assets").mkdir()
     shutil.copy(ROOT / "assets" / "theme.css", tmp_path / "assets" / "theme.css")
     for s in PAGES:

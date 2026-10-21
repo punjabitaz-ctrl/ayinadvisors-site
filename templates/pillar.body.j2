@@ -1,0 +1,51 @@
+{#- Pillar page (shell): page head, the pillar's services listed (not linked), the gold CTA band. Final copy and design: Sprint 2 Task 2. -#}
+<!-- PAGE HEADER -->
+<header class="pagehead surface-inverse">
+  <svg class="ph-motif" viewBox="0 0 460 460" aria-hidden="true">
+    <g class="spin">
+      <circle cx="230" cy="230" r="228"></circle>
+      <circle cx="230" cy="230" r="170"></circle>
+      <circle cx="230" cy="230" r="110"></circle>
+    </g>
+    <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow on-navy reveal">{{ pillar.buyer|e }}</span>
+    <h1 class="display reveal" data-d="1">{{ pillar.name|e }}</h1>
+    <p class="lead reveal" data-d="2">{{ pillar.summary|e }}</p>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+<!-- SERVICES IN THIS PRACTICE -->
+<section class="section {{ "surface-alt" if pillar.slug == "partnerships" else "surface-page" }} clip-x" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <h2 class="h2">{{ pillar.tagline|e }}</h2>
+    <ul class="ps-list" style="margin-top:clamp(28px,4vw,48px)">
+      {%- for s in pillar.services %}
+      <li>
+        <h3 class="h3">{{ s.name|e }}</h3>
+        <p>{{ s.summary|e }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+{% if pillar.slug == "partnerships" -%}
+{% include "_partnerships_detail.j2" %}
+
+{% endif -%}
+<!-- CTA -->
+<section class="section cta surface-accent">
+  <div class="cta-glow"></div>
+  <div class="wrap">
+    <div class="cta-inner">
+      <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with clarity</span>
+      <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Not sure where to begin?</h2>
+      <p class="lead reveal" data-d="2" style="margin-inline:auto">Most engagements start with a market read. Book a consultation and we'll tell you — candidly — where the opening is.</p>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+    </div>
+  </div>
+</section>
+</main>

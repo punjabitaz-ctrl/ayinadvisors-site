@@ -132,13 +132,13 @@ def test_no_background_image_under_text():
 
     The only allowed `url(` in a background is the inline SVG chevron on <select>.
     """
-    sources = [ROOT / "assets" / "styles.css", ROOT / "assets" / "theme.css"]
-    sources += [ROOT / "templates" / "pages" / f"{s}.json" for s in PAGES]
-    sources += [ROOT / "templates" / "pages" / f"{s}.body.frag" for s in PAGES]
-    for p in sources:
-        text = p.read_text(encoding="utf-8")
+    texts = {n: (ROOT / "assets" / n).read_text(encoding="utf-8") for n in ("styles.css", "theme.css")}
+    for s in PAGES:
+        body, head_extra, body_scripts = build.page_parts(s)
+        texts[s] = head_extra + body + body_scripts
+    for name, text in texts.items():
         for m in re.finditer(r"""url\(\s*\\?["']?([^)"'\\]{0,40})""", text):
-            assert m.group(1).startswith("data:image/svg+xml"), f"{p.name}: url({m.group(1)}"
+            assert m.group(1).startswith("data:image/svg+xml"), f"{name}: url({m.group(1)}"
 
 
 # ---- optimiser ---------------------------------------------------------

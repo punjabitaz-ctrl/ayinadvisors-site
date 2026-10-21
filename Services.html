@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Services — AYiN Advisors" />
-<meta property="og:description" content="Market entry research, channel strategy & enablement, B2B partner introductions, and regional expansion to Canada and LATAM." />
+<meta property="og:description" content="Market entry research, channel strategy &amp; enablement, B2B partner introductions, and regional expansion to Canada and LATAM." />
 <meta property="og:url" content="https://ayinadvisors.com/Services.html" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Services — AYiN Advisors" />
-<meta name="twitter:description" content="Market entry research, channel strategy & enablement, B2B partner introductions, and regional expansion to Canada and LATAM." />
+<meta name="twitter:description" content="Market entry research, channel strategy &amp; enablement, B2B partner introductions, and regional expansion to Canada and LATAM." />
 <meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,27 +41,21 @@
   .ph-motif .spin { transform-origin: 230px 230px; animation: spin 60s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .svc-detail { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px, 6vw, 90px); padding-block: clamp(56px, 7vw, 96px); border-top: 1px solid var(--line); align-items: start; }
-  .svc-detail:first-of-type { border-top: 0; }
-  .svc-detail .sd-left { position: sticky; top: 110px; }
-  .svc-detail .sd-num { font-family: var(--serif); font-size: clamp(3.4rem, 7vw, 6rem); color: var(--line); line-height: 0.8; }
-.sd-num::before { content: attr(data-n); }
-  .js .svc-detail:hover .sd-num, .svc-detail.in .sd-num { color: var(--accent-ink); transition: color 0.8s var(--ease); }
-  .svc-detail h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 18px 0 0; }
-  .svc-detail .tag { display: inline-block; margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--line-gold); padding: 6px 12px; border-radius: 2px; }
-  .svc-detail .sd-body p { font-size: 1.12rem; color: var(--ink); max-width: 54ch; margin-bottom: 30px; }
-  .deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-  .deliverables li { list-style: none; background: var(--surface); padding: 18px 20px; font-size: 0.98rem; display: flex; gap: 12px; align-items: flex-start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.4s var(--ease), transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: 0s, calc(var(--i, 0) * 0.1s), 0s, calc(var(--i, 0) * 0.1s); }
-  .deliverables li:hover { background: color-mix(in srgb, var(--ink) 4%, var(--surface)); }
-  .deliverables li::before { content: "→"; color: var(--accent-ink); font-size: 0.9rem; margin-top: 2px; }
-
+  .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .svc { display: block; position: relative; padding: clamp(34px, 4vw, 56px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.6s var(--ease); }
+  .svc::before { content: ""; position: absolute; left: 0; top: 0; height: 2px; width: 0; background: var(--accent-fill); transition: width 0.6s var(--ease); }
+  .svc:hover { background: var(--ink); }
+  .svc:hover::before { width: 100%; }
+  .svc h3 { margin: 0 0 16px; transition: color 0.5s var(--ease); }
+  .svc:hover h3 { color: var(--surface); }
+  .svc p { color: var(--ink-muted); max-width: 42ch; transition: color 0.5s var(--ease); }
+  .svc:hover p { color: var(--surface); }
   @media (max-width: 820px) {
-    .svc-detail { grid-template-columns: 1fr; gap: 24px; }
-    .svc-detail .sd-left { position: static; }
-    .deliverables { grid-template-columns: 1fr; }
+    .svc-grid { grid-template-columns: 1fr; }
     .ph-motif { opacity: 0.3; right: -200px; }
   }
 </style>
+
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -114,92 +108,30 @@
   </svg>
   <div class="wrap">
     <span class="eyebrow on-navy reveal">Our Practice</span>
-    <h1 class="display reveal" data-d="1">Four disciplines. One foothold.</h1>
-    <p class="lead reveal" data-d="2">Every engagement is built to move you from market curiosity to commercial traction — through the channel, not around it.</p>
+    <h1 class="display reveal" data-d="1">Three practices. One firm.</h1>
+    <p class="lead reveal" data-d="2">Business Solutions for a Digital World.</p>
   </div>
 </header>
 
-<!-- SERVICES DETAIL -->
 <main id="main" tabindex="-1">
+<!-- PILLARS -->
 <section class="section surface-page clip-x" style="padding-top:clamp(40px,6vw,80px)">
   <div class="wrap">
-
-    <article class="svc-detail reveal assemble" id="research" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="01"></div>
-        <h2 class="h2">US Market Entry Research</h2>
-        <span class="tag">Discovery</span>
-      </div>
-      <div class="sd-body">
-        <p>Before commitment comes clarity. We map the real shape of US demand for your category — where it concentrates, who already owns it, and the regulatory and pricing realities you'll meet on arrival. You get an honest read on whether, where and how to enter.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card tilt3d" data-tilt>Market sizing &amp; segmentation</li>
-          <li class="asm-card tilt3d" data-tilt>Competitive &amp; pricing landscape</li>
-          <li class="asm-card tilt3d" data-tilt>Regulatory &amp; compliance scan</li>
-          <li class="asm-card tilt3d" data-tilt>Beachhead market recommendation</li>
-          <li class="asm-card tilt3d" data-tilt>Demand &amp; buyer-persona mapping</li>
-          <li class="asm-card tilt3d" data-tilt>Go / no-go entry thesis</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="svc-detail reveal assemble" id="channel" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="02"></div>
-        <h2 class="h2">Channel Strategy &amp; Enablement</h2>
-        <span class="tag">Architecture</span>
-      </div>
-      <div class="sd-body">
-        <p>The route to market is the strategy. We design the channel architecture suited to your product and margins — distributors, resellers, agents or hybrid — then build the commercial terms, materials and training that turn a partner signature into actual sales.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card tilt3d" data-tilt>Channel model &amp; coverage design</li>
-          <li class="asm-card tilt3d" data-tilt>Partner economics &amp; incentives</li>
-          <li class="asm-card tilt3d" data-tilt>Sales enablement toolkit</li>
-          <li class="asm-card tilt3d" data-tilt>Onboarding &amp; training program</li>
-          <li class="asm-card tilt3d" data-tilt>Pricing &amp; margin structure</li>
-          <li class="asm-card tilt3d" data-tilt>Performance &amp; KPI framework</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="svc-detail reveal assemble" id="introductions" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="03"></div>
-        <h2 class="h2">B2B Partner Introductions</h2>
-        <span class="tag">Access</span>
-      </div>
-      <div class="sd-body">
-        <p>Relationships open the US market — and we have them. We make warm, qualified introductions to the buyers, channel partners and decision-makers who actually move your category, then support the first conversations so they convert into agreements.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card tilt3d" data-tilt>Target partner long-list &amp; vetting</li>
-          <li class="asm-card tilt3d" data-tilt>Warm, personally-made introductions</li>
-          <li class="asm-card tilt3d" data-tilt>Meeting facilitation &amp; prep</li>
-          <li class="asm-card tilt3d" data-tilt>Deal &amp; term negotiation support</li>
-          <li class="asm-card tilt3d" data-tilt>Buyer &amp; distributor outreach</li>
-          <li class="asm-card tilt3d" data-tilt>Relationship handover</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="svc-detail reveal assemble" id="expansion" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="04"></div>
-        <h2 class="h2">Regional Expansion · Canada &amp; LATAM</h2>
-        <span class="tag">Scale</span>
-      </div>
-      <div class="sd-body">
-        <p>Once the US engine runs, the continent opens up. We extend your proven playbook into Canada and Latin America — adapting channel models, partner profiles and commercial terms to each market's language, regulation and buying culture.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card tilt3d" data-tilt>Canada market &amp; channel entry</li>
-          <li class="asm-card tilt3d" data-tilt>LATAM prioritization &amp; sequencing</li>
-          <li class="asm-card tilt3d" data-tilt>Localized partner sourcing</li>
-          <li class="asm-card tilt3d" data-tilt>Cross-border commercial terms</li>
-          <li class="asm-card tilt3d" data-tilt>Regulatory &amp; tax navigation</li>
-          <li class="asm-card tilt3d" data-tilt>Multi-market governance</li>
-        </ul>
-      </div>
-    </article>
-
+    <h2 class="h2">Choose a practice</h2>
+    <div class="svc-grid" style="margin-top:clamp(28px,4vw,48px)">
+      <a class="svc" href="partnerships.html">
+        <h3 class="h3">B2B Partnerships</h3>
+        <p>Market entry research, channel strategy and enablement, partner introductions and regional expansion for international companies entering the United States.</p>
+      </a>
+      <a class="svc" href="ai-solutions.html">
+        <h3 class="h3">AI Solutions Development</h3>
+        <p>We solve business problems with AI: custom applications, workflow automation and operational efficiency.</p>
+      </a>
+      <a class="svc" href="digital-presence.html">
+        <h3 class="h3">Digital Presence</h3>
+        <p>Websites, digital marketing, and community and content, so your business is seen, understood and connected online.</p>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -242,10 +174,10 @@
         <a href="Contact.html">Contact</a>
         </div>
       <div class="footer-col"><h2>Practice</h2>
-        <a href="Services.html#research">Market Entry Research</a>
-        <a href="Services.html#channel">Channel Strategy</a>
-        <a href="Services.html#introductions">Partner Introductions</a>
-        <a href="Services.html#expansion">Regional Expansion</a>
+        <a href="partnerships.html#research">Market Entry Research</a>
+        <a href="partnerships.html#channel">Channel Strategy</a>
+        <a href="partnerships.html#introductions">Partner Introductions</a>
+        <a href="partnerships.html#expansion">Regional Expansion</a>
         </div>
       <div class="footer-col"><h2>Get in touch</h2>
         <a href="Contact.html">Book a consultation</a>

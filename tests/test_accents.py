@@ -36,7 +36,7 @@ def test_every_section_head_has_the_iris_marker(soups, stem):
 
 def test_no_orphan_section_numbers(soups):
     # numbers survive only where no iris replaced them (none left on About/BizCheck/Contact)
-    for stem in ("About", "BizCheck", "Contact", "Services", "Projects"):
+    for stem in ("About", "BizCheck", "Contact", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects"):
         assert not soups[stem].select(".sec-index"), stem
 
 
@@ -46,8 +46,9 @@ def _hooks(el):
 
 
 def test_card_grids_assemble_and_tilt_hooks_present(soups):
-    # Services: every deliverables grid is an assemble stage inside its own assemble root
-    arts = soups["Services"].select("article.svc-detail")
+    # Partnerships (the four market-entry blocks moved here from Services): every deliverables grid is an
+    # assemble stage inside its own assemble root
+    arts = soups["partnerships"].select("article.svc-detail")
     assert len(arts) == 4
     for art in arts:
         assert "assemble" in art.get("class", []) and art.has_attr("data-assemble")

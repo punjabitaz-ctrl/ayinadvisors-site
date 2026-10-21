@@ -37,3 +37,10 @@ def test_snapshot_overwrites_only_the_snapshot_files(tree):
     assert {s: (tree / f"{s}.html").read_bytes() for s in PAGES} == pages_before
     assert sorted(x.name for x in (tree / "tests" / "baseline").iterdir()) == sorted(f"{s}.snap" for s in PAGES)
     assert (ROOT / "tests" / "baseline" / "About.snap").read_bytes() == real_before
+
+
+def test_diff_reports_a_page_with_no_snapshot_instead_of_crashing(tree):
+    (tree / "tests" / "baseline" / "About.snap").unlink()
+    assert baseline.diff(tree) == {"About": ["(new page: no snapshot)"]}
+    baseline.snapshot(tree)
+    assert baseline.diff(tree) == {}

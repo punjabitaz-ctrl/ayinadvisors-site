@@ -25,7 +25,7 @@
     "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
   },
   {
-    "path": "templates/pages/Services.json",
+    "path": "templates/_head_template_page.j2",
     "literal": "#061325",
     "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
   },

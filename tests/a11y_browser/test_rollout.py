@@ -10,7 +10,7 @@ from a11y_browser.test_motion import FINAL_JS, _centre
 
 pytestmark = pytest.mark.browser
 
-ROLLOUT = ("About", "Services", "Projects", "BizCheck")
+ROLLOUT = ("About", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects", "BizCheck")
 
 
 def _page(browser, site_url, stem, width=1280, height=800, theme=None, **kw):
@@ -70,7 +70,7 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
 def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, width, theme):
     """Settled, pointer away: no resting transform on any card or its contents, and the number/title edges align."""
     checks = {
-        "Services": ("article.svc-detail .deliverables li", None, None),
+        "partnerships": ("article.svc-detail .deliverables li", None, None),
         "Projects": (".project-card", ".project-index", "h2"),
         "BizCheck": (".bc-step", ".n", ".h3"),
     }
@@ -114,8 +114,8 @@ def test_rollout_depth_appears_while_tilting(browser, site_url):
             ctx.close()
 
 
-def test_services_cells_tilt_and_return(browser, site_url):
-    ctx, page = _page(browser, site_url, "Services", reduced_motion="no-preference")
+def test_partnerships_cells_tilt_and_return(browser, site_url):
+    ctx, page = _page(browser, site_url, "partnerships", reduced_motion="no-preference")
     try:
         _settle_all(page)
         sel = "#research .deliverables li"
@@ -141,7 +141,7 @@ def test_rollout_ripple_centre_and_inner_rings_are_clear_of_text(browser, site_u
         ctx, page = _page(browser, site_url, stem, width=width, height=800, reduced_motion="no-preference")
         try:
             if page.locator(".ripples").count() == 0:
-                assert stem in ("Services", "Projects"), f"{stem} lost its ripples"
+                assert stem not in ("About", "BizCheck"), f"{stem} lost its ripples"
                 continue
             seen += 1
             _settle_all(page)
@@ -210,7 +210,7 @@ def test_ripples_box_stays_inside_its_own_section(browser, site_url, width):
 GRIDS = {
     "Projects": ".project-card",
     "BizCheck": ".bc-step",
-    "Services": "article.svc-detail .deliverables li",
+    "partnerships": "article.svc-detail .deliverables li",
 }
 
 
@@ -295,7 +295,7 @@ def test_home_process_stacked_markers_sit_beside_their_text_at_375(browser, site
 
 def test_print_shows_everything_settled(browser, site_url):
     """Content still in its hidden 'pre' state prints visible; rings and tilt do nothing in print."""
-    for stem in ("index", "Services", "Projects", "BizCheck"):
+    for stem in ("index", "Services", "partnerships", "Projects", "BizCheck"):
         ctx, page = _page(browser, site_url, stem, width=1280, reduced_motion="no-preference")
         try:
             page.wait_for_timeout(600)       # below-the-fold sections are still in the hidden state here

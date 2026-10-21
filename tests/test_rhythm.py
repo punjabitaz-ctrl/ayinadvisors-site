@@ -12,6 +12,10 @@ BAND_MAP = {
     "index": ["inverse", "alt", "page", "alt", "page", "alt", "accent", "inverse"],
     "About": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
     "Services": ["inverse", "page", "accent", "inverse"],
+    # Partnerships lists its services on alt, then carries the four market-entry detail blocks on page
+    "partnerships": ["inverse", "alt", "page", "accent", "inverse"],
+    "ai-solutions": ["inverse", "page", "accent", "inverse"],
+    "digital-presence": ["inverse", "page", "accent", "inverse"],
     "Projects": ["inverse", "page", "accent", "inverse"],
     "BizCheck": ["inverse", "page", "alt", "page", "alt", "inverse"],
     "Contact": ["inverse", "inverse"],
@@ -79,7 +83,7 @@ def test_final_band_is_the_gold_cta(soups):
             assert content_bands[-1] is ctas[-1], f"{stem}: the CTA is not the last band before the footer"
         for el in soup.select(".surface-accent"):
             assert "cta" in el.get("class", []), f"{stem}: surface-accent used outside the CTA band"
-    assert seen == 4, "Home, About, Services and Projects close with a CTA"
+    assert seen == 7, "Home, About, Services, the three pillars and Projects close with a CTA"
 
 
 def test_cards_use_the_card_surface(soups):

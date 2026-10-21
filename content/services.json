@@ -1,0 +1,97 @@
+{
+  "pillars": [
+    {
+      "slug": "partnerships",
+      "stem": "partnerships",
+      "name": "B2B Partnerships",
+      "tagline": "Enter new markets through the right partners.",
+      "buyer": "International firms entering the US",
+      "summary": "Market entry research, channel strategy and enablement, partner introductions and regional expansion for international companies entering the United States.",
+      "icon": "overlap",
+      "services": [
+        {
+          "slug": "market-entry-research",
+          "name": "US Market Entry Research",
+          "summary": "Sizing, segmentation and competitive intelligence that tells you where to play — and where not to — before you spend a dollar on the ground.",
+          "status": "planned"
+        },
+        {
+          "slug": "channel-strategy",
+          "name": "Channel Strategy & Enablement",
+          "summary": "Designing the route to market — distributors, resellers, agents — and equipping them with the tools, terms and training to actually sell.",
+          "status": "planned"
+        },
+        {
+          "slug": "partner-introductions",
+          "name": "B2B Partner Introductions",
+          "summary": "Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.",
+          "status": "planned"
+        },
+        {
+          "slug": "regional-expansion",
+          "name": "Regional Expansion · Canada & LATAM",
+          "summary": "Extending the playbook north and south — adapting channel models for Canada and Latin America once the US engine is running.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "slug": "ai-solutions",
+      "stem": "ai-solutions",
+      "name": "AI Solutions Development",
+      "tagline": "AI built around the problem in front of you.",
+      "buyer": "Anyone needing AI built",
+      "summary": "We solve business problems with AI: custom applications, workflow automation and operational efficiency.",
+      "icon": "network",
+      "services": [
+        {
+          "slug": "custom-applications",
+          "name": "Custom Applications",
+          "summary": "Software built around how your business works, with AI where it helps and plain code where it does not.",
+          "status": "planned"
+        },
+        {
+          "slug": "workflow-automation",
+          "name": "Workflow Automation",
+          "summary": "Repetitive, manual steps handed to automation, so people spend their time on the work that needs judgment.",
+          "status": "planned"
+        },
+        {
+          "slug": "operational-efficiency",
+          "name": "Operational Efficiency",
+          "summary": "A close look at where time and effort are lost in your operations, and practical fixes for the biggest gaps.",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "slug": "digital-presence",
+      "stem": "digital-presence",
+      "name": "Digital Presence",
+      "tagline": "Be found, be clear, be connected online.",
+      "buyer": "Businesses needing web, marketing and community",
+      "summary": "Websites, digital marketing, and community and content, so your business is seen, understood and connected online.",
+      "icon": "ripple",
+      "services": [
+        {
+          "slug": "websites",
+          "name": "Websites",
+          "summary": "Brand presence: a clear, fast, accessible website that says who you are and what you do.",
+          "status": "planned"
+        },
+        {
+          "slug": "digital-marketing",
+          "name": "Digital Marketing",
+          "summary": "Brand online: reaching the right people through search, email and social, and learning from what works.",
+          "status": "planned"
+        },
+        {
+          "slug": "community-content",
+          "name": "Community & Content",
+          "summary": "Brand connect: useful content and an active community that keep your audience engaged with you over time.",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

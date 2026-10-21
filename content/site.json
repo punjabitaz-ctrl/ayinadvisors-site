@@ -68,19 +68,19 @@
         "links": [
           {
             "label": "Market Entry Research",
-            "href": "Services.html#research"
+            "href": "partnerships.html#research"
           },
           {
             "label": "Channel Strategy",
-            "href": "Services.html#channel"
+            "href": "partnerships.html#channel"
           },
           {
             "label": "Partner Introductions",
-            "href": "Services.html#introductions"
+            "href": "partnerships.html#introductions"
           },
           {
             "label": "Regional Expansion",
-            "href": "Services.html#expansion"
+            "href": "partnerships.html#expansion"
           }
         ]
       },
@@ -116,7 +116,10 @@
         "label": "Book a Consultation",
         "class": "btn btn-white"
       },
-      "footer": true
+      "footer": true,
+      "sitemap": {
+        "priority": "1.0"
+      }
     },
     "About": {
       "title": "About — AYiN Advisors",
@@ -128,7 +131,10 @@
         "label": "Book a Consultation",
         "class": "btn btn-white"
       },
-      "footer": true
+      "footer": true,
+      "sitemap": {
+        "priority": "0.7"
+      }
     },
     "Services": {
       "title": "Services — AYiN Advisors",
@@ -140,7 +146,62 @@
         "label": "Book a Consultation",
         "class": "btn btn-white"
       },
-      "footer": true
+      "footer": true,
+      "sitemap": {
+        "priority": "0.8"
+      },
+      "template": "hub"
+    },
+    "partnerships": {
+      "title": "Partnerships — AYiN Advisors",
+      "description": "B2B partnerships for international companies entering the US: market entry research, channel strategy and enablement, partner introductions and regional expansion.",
+      "canonical": "https://ayinadvisors.com/partnerships.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "pillar",
+      "pillar": "partnerships",
+      "sitemap": {
+        "priority": "0.8"
+      }
+    },
+    "ai-solutions": {
+      "title": "AI Solutions — AYiN Advisors",
+      "description": "AI solutions development: custom applications, workflow automation and operational efficiency, built around the problem in front of you.",
+      "canonical": "https://ayinadvisors.com/ai-solutions.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "pillar",
+      "pillar": "ai-solutions",
+      "sitemap": {
+        "priority": "0.8"
+      }
+    },
+    "digital-presence": {
+      "title": "Digital Presence — AYiN Advisors",
+      "description": "Digital presence for your business: websites, digital marketing, and community and content.",
+      "canonical": "https://ayinadvisors.com/digital-presence.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "pillar",
+      "pillar": "digital-presence",
+      "sitemap": {
+        "priority": "0.8"
+      }
     },
     "Projects": {
       "title": "Projects — AYiN Advisors",
@@ -152,7 +213,10 @@
         "label": "Book a Consultation",
         "class": "btn btn-white"
       },
-      "footer": true
+      "footer": true,
+      "sitemap": {
+        "priority": "0.7"
+      }
     },
     "BizCheck": {
       "title": "BizCheck — Business Idea Evaluation · AYiN Advisors",
@@ -164,7 +228,10 @@
         "label": "Submit Your Idea",
         "class": "btn"
       },
-      "footer": true
+      "footer": true,
+      "sitemap": {
+        "priority": "0.9"
+      }
     },
     "Contact": {
       "title": "Book a Consultation — AYiN Advisors",
@@ -176,7 +243,10 @@
         "label": "Book a Consultation",
         "class": "btn btn-white"
       },
-      "footer": true
+      "footer": true,
+      "sitemap": {
+        "priority": "0.9"
+      }
     },
     "404": {
       "title": "Page not found — AYiN Advisors",

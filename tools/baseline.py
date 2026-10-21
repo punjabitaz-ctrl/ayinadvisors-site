@@ -24,6 +24,9 @@ def diff(root: Path = ROOT) -> dict[str, list[str]]:
     out: dict[str, list[str]] = {}
     for stem in PAGES:
         built = page_facts((root / f"{stem}.html").read_text(encoding="utf-8"))
+        if not _snap(root, stem).exists():
+            out[stem] = ["(new page: no snapshot)"]
+            continue
         base = page_facts(_snap(root, stem).read_text(encoding="utf-8"))
         keys = [k for k in built if built[k] != base.get(k)]
         if keys:

@@ -57,7 +57,11 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
             continue
         assert len(current) == 1 and current[0]["aria-current"] == "page", f"{stem} {selector}: {current}"
         targets[stem] = current[0]["href"]
-    assert len(set(targets.values())) == len(targets), "each page must mark a different link"
+    # Each page marks a different link, except the three pillar pages, which sit under Services in the nav.
+    pillars = {s for s, p in build.load_site()["pages"].items() if p.get("template") == "pillar"}
+    assert pillars and all(targets[s] == targets["Services"] for s in pillars)
+    rest = {s: t for s, t in targets.items() if s not in pillars}
+    assert len(set(rest.values())) == len(rest), "each page must mark a different link"
     other = "nav.nav" if selector == ".mobile-drawer" else ".mobile-drawer"
     for stem, s in soups.items():
         if stem != "404":

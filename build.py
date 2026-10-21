@@ -3,6 +3,7 @@
 import json
 import re
 from pathlib import Path
+from xml.sax.saxutils import escape
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from tools import images as image_tools
@@ -23,6 +24,14 @@ env = Environment(
 
 def load_site() -> dict:
     return json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))
+
+
+def load_services() -> dict:
+    """content/services.json: the three pillars and their sub-services (feeds the hub and pillar pages)."""
+    return json.loads((ROOT / "content" / "services.json").read_text(encoding="utf-8"))
+
+
+SITE_URL = "https://ayinadvisors.com"
 
 
 _SLOT = re.compile(r"<image-slot(?=[\s>])([^>]*)></image-slot>")
@@ -65,19 +74,67 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
     )
 
 
+def template_kind(stem: str) -> str | None:
+    """"hub" or "pillar" for a template-rendered page, None for a page made of a .frag and a .json."""
+    kind = load_site()["pages"][stem].get("template")
+    if kind not in (None, "hub", "pillar"):
+        raise ValueError(f"{stem}: unknown template {kind!r}")
+    return kind
+
+
+def page_parts(stem: str) -> tuple[str, str, str]:
+    """(body, head_extra, body_scripts) for a page, before image slots are expanded.
+
+    Hand-authored pages read templates/pages/<stem>.body.frag and <stem>.json. Template pages (site.json
+    "template": "hub" | "pillar") render templates/<kind>.body.j2 with the services data, and take their head
+    from templates/_head_template_page.j2; they have no .frag or .json and no body scripts.
+    """
+    kind = template_kind(stem)
+    if kind is None:
+        parts = json.loads((ROOT / "templates" / "pages" / f"{stem}.json").read_text(encoding="utf-8"))
+        body = (ROOT / "templates" / "pages" / f"{stem}.body.frag").read_text(encoding="utf-8")
+        return body, parts.get("head_extra", ""), parts.get("body_scripts", "")
+    site = load_site()
+    page = site["pages"][stem]
+    pillars = load_services()["pillars"]
+    ctx = {"site": site, "page": page, "stem": stem, "kind": kind, "pillars": pillars, "pillar": None}
+    if kind == "pillar":
+        ctx["pillar"] = next((p for p in pillars if p["slug"] == page.get("pillar")), None)
+        if ctx["pillar"] is None:
+            raise KeyError(f"{stem}: no pillar {page.get('pillar')!r} in content/services.json")
+    return (
+        env.get_template(f"{kind}.body.j2").render(**ctx),
+        env.get_template("_head_template_page.j2").render(**ctx),
+        "",
+    )
+
+
 def render_all() -> dict[str, str]:
     out = {}
     for stem in PAGES:
-        parts = json.loads((ROOT / "templates" / "pages" / f"{stem}.json").read_text(encoding="utf-8"))
-        out[stem] = render_page(
-            stem,
-            expand_image_slots(
-                (ROOT / "templates" / "pages" / f"{stem}.body.frag").read_text(encoding="utf-8")
-            ),
-            parts.get("head_extra", ""),
-            parts.get("body_scripts", ""),
-        )
+        body, head_extra, body_scripts = page_parts(stem)
+        out[stem] = render_page(stem, expand_image_slots(body), head_extra, body_scripts)
     return out
+
+
+def render_sitemap() -> str:
+    """sitemap.xml: every page of site.json that carries a "sitemap" entry, in site.json order."""
+    rows = []
+    for stem, page in load_site()["pages"].items():
+        if "sitemap" not in page:
+            continue
+        loc = page["canonical"]
+        rows.append(
+            f"  <url><loc>{escape(loc)}</loc><changefreq>monthly</changefreq>"
+            f"<priority>{escape(str(page['sitemap']['priority']))}</priority></url>"
+        )
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        *rows,
+        "</urlset>",
+    ]
+    return "\n".join(lines) + "\n"
 
 
 def render_theme() -> str:
@@ -97,6 +154,8 @@ def main() -> None:
     for stem, html in render_all().items():
         (ROOT / f"{stem}.html").write_text(html, encoding="utf-8")
         print(f"  wrote {stem}.html")
+    (ROOT / "sitemap.xml").write_text(render_sitemap(), encoding="utf-8", newline="\n")
+    print("  wrote sitemap.xml")
 
 
 def check() -> list[str]:
@@ -106,6 +165,9 @@ def check() -> list[str]:
         path = ROOT / f"{stem}.html"
         if not path.exists() or path.read_text(encoding="utf-8") != fresh:
             stale.append(f"{stem}.html")
+    sitemap = ROOT / "sitemap.xml"
+    if not sitemap.exists() or sitemap.read_text(encoding="utf-8") != render_sitemap():
+        stale.append("sitemap.xml")
     css = ROOT / "assets" / "theme.css"
     if not css.exists() or css.read_text(encoding="utf-8") != render_theme():
         stale.append("assets/theme.css")
