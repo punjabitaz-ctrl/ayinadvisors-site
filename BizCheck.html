@@ -179,6 +179,7 @@
   background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
 }
 .field select option { background: var(--field-bg); color: var(--field-ink); }
+@media (forced-colors: active) { .field select { appearance: auto; background-image: none; } }
 .field textarea { resize: vertical; min-height: 104px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }

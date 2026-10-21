@@ -72,7 +72,6 @@
   }
   .field input::placeholder, .field textarea::placeholder { color: var(--field-placeholder); }
   .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent-fill); box-shadow: 0 0 0 3px var(--gold-glow); }
-  .field select { appearance: none; }
   .field textarea { resize: vertical; min-height: 96px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }

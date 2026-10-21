@@ -109,3 +109,16 @@ def test_print_light_look_without_a_theme_attribute(browser, site_url):
         assert page.evaluate("getComputedStyle(document.documentElement).getPropertyValue('--surface').trim().toLowerCase()") == "#faf7f0"
     finally:
         ctx.close()
+
+
+@pytest.mark.parametrize("theme", THEMES)
+def test_bizcheck_select_keeps_a_dropdown_cue_in_forced_colours(browser, site_url, theme):
+    """Forced colours drops non-url background images, so the gradient arrow vanishes; the native arrow must take over."""
+    ctx = new_context(browser, 1280, 900, theme=theme, forced_colors="active")
+    try:
+        page = open_page(ctx, site_url, "BizCheck")
+        t = page.evaluate("""() => { const c = getComputedStyle(document.querySelector('.field select'));
+          return {appearance: c.appearance, bg: c.backgroundImage}; }""")
+        assert t["appearance"] in ("auto", "menulist"), t
+    finally:
+        ctx.close()
