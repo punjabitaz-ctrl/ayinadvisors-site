@@ -7,7 +7,7 @@ import re
 
 import pytest
 
-from a11y_browser.conftest import new_context
+from a11y_browser.conftest import THEMES, new_context, open_page
 from a11y_browser.motion_fixture import FIXTURE_HTML, FIXTURE_LONG_HTML, FIXTURE_LONG_PATH, FIXTURE_PATH
 
 pytestmark = pytest.mark.browser
@@ -274,9 +274,7 @@ def test_settled_icons_are_solid_strokes(mo_page):
 
 def _home(browser, site_url, **kw):
     ctx = new_context(browser, kw.pop("width", 1280), kw.pop("height", 800), **kw)
-    page = ctx.new_page()
-    page.goto(f"{site_url}/index.html", wait_until="load")
-    return ctx, page
+    return ctx, open_page(ctx, site_url, "index")
 
 
 def test_letters_band_has_text_label(browser, site_url):
@@ -353,8 +351,9 @@ def test_no_long_running_animation_after_load(browser, site_url):
         ctx.close()
 
 
-def test_home_no_horizontal_scroll_at_320_after_assemble(browser, site_url):
-    ctx, page = _home(browser, site_url, width=320, height=700, reduced_motion="no-preference")
+@pytest.mark.parametrize("theme", THEMES)
+def test_home_no_horizontal_scroll_at_320_after_assemble(browser, site_url, theme):
+    ctx, page = _home(browser, site_url, width=320, height=700, theme=theme, reduced_motion="no-preference")
     try:
         for sel in ("#letters", "#services", "#process"):
             page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
@@ -386,10 +385,11 @@ def _settle_home(page):
     page.wait_for_timeout(700)
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("width", (1280, 768))
-def test_home_depth_does_not_displace_anything_at_rest(browser, site_url, width):
+def test_home_depth_does_not_displace_anything_at_rest(browser, site_url, width, theme):
     """Settled and no pointer: icon and title share a left edge, glyph and caption a centre (within 2px)."""
-    ctx, page = _home(browser, site_url, width=width, reduced_motion="no-preference")
+    ctx, page = _home(browser, site_url, width=width, theme=theme, reduced_motion="no-preference")
     try:
         _settle_home(page)
         res = page.evaluate(

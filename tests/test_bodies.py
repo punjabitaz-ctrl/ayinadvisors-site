@@ -23,7 +23,9 @@ def test_inline_blocks_are_preserved_exactly():
         base = page_facts(baseline_html(stem))
         parts = json.loads((BODIES / f"{stem}.json").read_text(encoding="utf-8"))
         body = (BODIES / f"{stem}.body.frag").read_text(encoding="utf-8")
-        haystack = parts["head_extra"] + "\n" + parts["body_scripts"] + "\n" + body
+        # the theme head script (Phase 2c) lives in the shared base template, not in a page file
+        shared = (ROOT / "templates" / "base.j2").read_text(encoding="utf-8")
+        haystack = parts["head_extra"] + "\n" + parts["body_scripts"] + "\n" + body + "\n" + shared
         for block in base["inline_styles"] + base["inline_scripts"]:
             if block.strip():
                 assert block.strip() in haystack, f"{stem} lost an inline block"

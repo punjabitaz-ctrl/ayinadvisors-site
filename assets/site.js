@@ -319,8 +319,22 @@
   if (canvas && !reduce) {
     const ctx = canvas.getContext("2d");
     let W, H, cx, cy, R, dpr;
-    const GOLD = "198,161,92";
     let nodes = [];
+
+    /* Colours come from the CSS roles of the surface the canvas sits on (--accent-fill for the strokes,
+       --surface for the pupil), read again whenever the theme changes. A canvas needs literal colour
+       strings, so the role is resolved to #rrggbb through a throwaway 2D context and alpha is appended. */
+    const probe = document.createElement("canvas").getContext("2d");
+    const role = (name) => {
+      const v = getComputedStyle(canvas).getPropertyValue(name).trim();
+      if (v) probe.fillStyle = v;
+      return probe.fillStyle;
+    };
+    let GOLD = "", PUPIL = "";
+    const readColours = () => { GOLD = role("--accent-fill"); PUPIL = role("--surface"); };
+    const tint = (a) => GOLD + Math.round(Math.max(0, Math.min(1, a)) * 255).toString(16).padStart(2, "0");
+    readColours();
+    window.addEventListener("themechange", readColours);
 
     function resize() {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -368,7 +382,7 @@
         const alpha = 0.09 + (i / rings) * 0.16;
         ctx.beginPath();
         ctx.arc(ax, ay, rr, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${GOLD},${alpha})`;
+        ctx.strokeStyle = tint(alpha);
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -380,7 +394,7 @@
       ctx.beginPath();
       ctx.arc(0, 0, R * 0.74, 0, Math.PI * 2);
       ctx.setLineDash([2, 14]);
-      ctx.strokeStyle = `rgba(${GOLD},0.55)`;
+      ctx.strokeStyle = tint(0.55);
       ctx.lineWidth = 1.4;
       ctx.stroke();
       ctx.setLineDash([]);
@@ -390,10 +404,10 @@
       const sweep = t * 0.012;
       const grad = ctx.createConicGradient ? ctx.createConicGradient(sweep, ax, ay) : null;
       if (grad) {
-        grad.addColorStop(0, `rgba(${GOLD},0.0)`);
-        grad.addColorStop(0.07, `rgba(${GOLD},0.26)`);
-        grad.addColorStop(0.12, `rgba(${GOLD},0.0)`);
-        grad.addColorStop(1, `rgba(${GOLD},0.0)`);
+        grad.addColorStop(0, tint(0.0));
+        grad.addColorStop(0.07, tint(0.26));
+        grad.addColorStop(0.12, tint(0.0));
+        grad.addColorStop(1, tint(0.0));
         ctx.beginPath();
         ctx.arc(ax, ay, R, 0, Math.PI * 2);
         ctx.fillStyle = grad;
@@ -404,8 +418,8 @@
       ctx.translate(ax, ay);
       ctx.rotate(sweep);
       const lg = ctx.createLinearGradient(0, 0, R, 0);
-      lg.addColorStop(0, `rgba(${GOLD},0.0)`);
-      lg.addColorStop(1, `rgba(${GOLD},0.5)`);
+      lg.addColorStop(0, tint(0.0));
+      lg.addColorStop(1, tint(0.5));
       ctx.beginPath();
       ctx.moveTo(0, 0);
       ctx.lineTo(R, 0);
@@ -417,9 +431,9 @@
       // iris core
       const coreR = R * 0.26;
       const rg = ctx.createRadialGradient(ax, ay, 2, ax, ay, coreR);
-      rg.addColorStop(0, `rgba(${GOLD},0.95)`);
-      rg.addColorStop(0.4, `rgba(${GOLD},0.42)`);
-      rg.addColorStop(1, `rgba(${GOLD},0.0)`);
+      rg.addColorStop(0, tint(0.95));
+      rg.addColorStop(0.4, tint(0.42));
+      rg.addColorStop(1, tint(0.0));
       ctx.beginPath();
       ctx.arc(ax, ay, coreR, 0, Math.PI * 2);
       ctx.fillStyle = rg;
@@ -427,10 +441,10 @@
       // pupil
       ctx.beginPath();
       ctx.arc(ax, ay, coreR * 0.34 + Math.sin(t * 0.03) * 2, 0, Math.PI * 2);
-      ctx.fillStyle = "#061325";
+      ctx.fillStyle = PUPIL;
       ctx.fill();
       ctx.lineWidth = 1.3;
-      ctx.strokeStyle = `rgba(${GOLD},0.8)`;
+      ctx.strokeStyle = tint(0.8);
       ctx.stroke();
 
       // orbiting nodes + spokes
@@ -442,13 +456,13 @@
         ctx.beginPath();
         ctx.moveTo(ax, ay);
         ctx.lineTo(x, y);
-        ctx.strokeStyle = `rgba(${GOLD},0.08)`;
+        ctx.strokeStyle = tint(0.08);
         ctx.lineWidth = 1;
         ctx.stroke();
         const p = 0.4 + (Math.sin(n.pulse) + 1) / 2 * 0.6;
         ctx.beginPath();
         ctx.arc(x, y, n.sz, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${GOLD},${p})`;
+        ctx.fillStyle = tint(p);
         ctx.fill();
       });
 

@@ -1,7 +1,7 @@
 """Keyboard, focus, reflow and reduced-motion behaviour, checked in real Chromium."""
 import pytest
 
-from a11y_browser.conftest import PAGES, REVEAL_CSS, new_context, open_page
+from a11y_browser.conftest import PAGES, REVEAL_CSS, THEMES, new_context, open_page
 
 pytestmark = pytest.mark.browser
 
@@ -110,13 +110,14 @@ def test_focus_is_not_obscured_by_the_sticky_nav(home):
     assert not res["bad"], f"focused controls hidden behind the sticky nav (tag, text, top, nav bottom): {res['bad']}"
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("stem", PAGES)
-def test_no_horizontal_scroll_at_320(browser, site_url, stem):
-    ctx = new_context(browser, 320, 800)
+def test_no_horizontal_scroll_at_320(browser, site_url, stem, theme):
+    ctx = new_context(browser, 320, 800, theme=theme)
     try:
         page = open_page(ctx, site_url, stem)
         sw, cw = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
-        assert sw <= cw, f"{stem}: page scrolls horizontally at 320px (scrollWidth {sw} > clientWidth {cw})"
+        assert sw <= cw, f"{stem} [{theme}]: page scrolls horizontally at 320px (scrollWidth {sw} > clientWidth {cw})"
     finally:
         ctx.close()
 
@@ -135,10 +136,11 @@ CLIPPED_JS = """() => {
 }"""
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("stem", PAGES)
-def test_no_text_is_clipped_at_320(browser, site_url, stem):
+def test_no_text_is_clipped_at_320(browser, site_url, stem, theme):
     """Reflow at 400% zoom: scrollWidth can look fine while an overflow:hidden ancestor hides text."""
-    ctx = new_context(browser, 320, 800)
+    ctx = new_context(browser, 320, 800, theme=theme)
     try:
         page = open_page(ctx, site_url, stem)
         page.add_style_tag(content=""".reveal,.line-reveal>span{opacity:1!important;transform:none!important;transition:none!important}""")
@@ -242,8 +244,9 @@ def _ratio(a, b):
     return (max(x, y) + 0.05) / (min(x, y) + 0.05)
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("stem", PAGES)
-def test_form_controls_have_a_3_to_1_boundary_against_their_surroundings(browser, site_url, stem):
+def test_form_controls_have_a_3_to_1_boundary_against_their_surroundings(browser, site_url, stem, theme):
     """WCAG 1.4.11: a text field's edge must be distinguishable from the card or band it sits on.
 
     Measured from rendered pixels (gradients and translucent layers included): the control's
@@ -253,7 +256,7 @@ def test_form_controls_have_a_3_to_1_boundary_against_their_surroundings(browser
 
     from PIL import Image
 
-    ctx = new_context(browser, 1280, 900, reduced_motion="reduce")
+    ctx = new_context(browser, 1280, 900, theme=theme, reduced_motion="reduce")
     weak, found = [], 0
     try:
         page = open_page(ctx, site_url, stem)
@@ -278,4 +281,4 @@ def test_form_controls_have_a_3_to_1_boundary_against_their_surroundings(browser
         ctx.close()
     if stem in ("Contact", "BizCheck"):
         assert found >= 4, f"{stem}: form controls not found ({found})"
-    assert not weak, f"{stem}: form controls with a boundary contrast below 3:1 (control, ratio): {weak}"
+    assert not weak, f"{stem} [{theme}]: form controls with a boundary contrast below 3:1 (control, ratio): {weak}"

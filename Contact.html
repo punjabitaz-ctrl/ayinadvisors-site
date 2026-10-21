@@ -72,7 +72,7 @@
   }
   .field input::placeholder, .field textarea::placeholder { color: var(--field-placeholder); }
   .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent-fill); box-shadow: 0 0 0 3px var(--gold-glow); }
-  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c6a15c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
+  .field select { appearance: none; }
   .field textarea { resize: vertical; min-height: 96px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -108,10 +108,10 @@
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
-        <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
-        <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
-        <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+        <circle class="lm-ring" cx="20" cy="20" r="18.5" stroke-width="1"></circle>
+        <circle class="lm-ring" cx="20" cy="20" r="11.5" stroke-width="1" opacity="0.45"></circle>
+        <circle class="lm-dot" cx="20" cy="20" r="5.4"></circle>
+        <circle class="lm-pupil" cx="20" cy="20" r="2"></circle>
       </svg>
       <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
     </a>
@@ -204,10 +204,10 @@
       <div class="footer-col">
         <a href="index.html" class="logo" style="margin-bottom:0">
           <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <circle cx="20" cy="20" r="18.5" stroke="#c6a15c" stroke-width="1"></circle>
-            <circle cx="20" cy="20" r="11.5" stroke="#c6a15c" stroke-width="1" opacity="0.45"></circle>
-            <circle cx="20" cy="20" r="5.4" fill="#c6a15c"></circle>
-            <circle cx="20" cy="20" r="2" fill="#061325"></circle>
+            <circle class="lm-ring" cx="20" cy="20" r="18.5" stroke-width="1"></circle>
+            <circle class="lm-ring" cx="20" cy="20" r="11.5" stroke-width="1" opacity="0.45"></circle>
+            <circle class="lm-dot" cx="20" cy="20" r="5.4"></circle>
+            <circle class="lm-pupil" cx="20" cy="20" r="2"></circle>
           </svg>
           <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
         </a>
@@ -255,12 +255,13 @@
     /* Rendered explicitly so we keep the widget id: the page stays on screen
        after a failed submit and Turnstile tokens are single use, so without a
        reset the visitor could never retry. */
+    /* The widget cannot follow our toggle itself (its "auto" follows the operating system), so it takes the theme of the surface it sits on. */ function tsTheme(el) { var p = document.createElement("i"); p.style.color = getComputedStyle(el).getPropertyValue("--surface"); el.appendChild(p); var m = getComputedStyle(p).color.match(/[\d.]+/g); el.removeChild(p); return (0.2126 * m[0] + 0.7152 * m[1] + 0.0722 * m[2]) / 255 < 0.4 ? "dark" : "light"; }
     window.__ctRenderTurnstile = function () {
       if (widgetId !== null) return;
       widgetId = window.turnstile.render("#ct-turnstile", {
         sitekey: TURNSTILE_SITEKEY,
         action: "contact",
-        theme: "dark"
+        theme: tsTheme(document.getElementById("ct-turnstile"))
       });
     };
     if (window.__ctTurnstileReady) window.__ctRenderTurnstile();

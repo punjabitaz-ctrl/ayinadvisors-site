@@ -14,6 +14,7 @@ import pytest
 from conftest import ROOT, PAGES  # noqa: F401  (re-exported for the browser tests)
 
 WIDTHS = (320, 768, 1280)
+THEMES = ("light", "dark")
 AXE_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"]
 AXE_OPTIONS = {
     "runOnly": {"type": "tag", "values": AXE_TAGS},
@@ -37,6 +38,9 @@ class Violation(NamedTuple):
 class NeedsReview(NamedTuple):
     rule: str
     selectors: tuple
+    # axe's own selector for a node -> the entry selectors of tests/a11y_review.json that match that element
+    # (`element.matches`), so an entry can name its element by a stable selector instead of axe's generated one.
+    matched: dict = {}
 
 
 class _QuietHandler(http.server.SimpleHTTPRequestHandler):
@@ -78,9 +82,19 @@ def browser():
         pw.stop()
 
 
-def new_context(browser, width=1280, height=900, **kw):
-    """A context that only talks to the local server (no web fonts, no Turnstile)."""
+def new_context(browser, width=1280, height=900, theme=None, **kw):
+    """A context that only talks to the local server (no web fonts, no Turnstile).
+
+    `theme` ("light" | "dark") renders the page in that theme the way a visitor gets it: the system colour scheme
+    is emulated AND the choice is stored under `ayin-theme`; `open_page` then asserts `html[data-theme]`.
+    """
+    if theme:
+        assert theme in THEMES, theme
+        kw["color_scheme"] = theme
     ctx = browser.new_context(viewport={"width": width, "height": height}, **kw)
+    ctx._ayin_theme = theme
+    if theme:
+        ctx.add_init_script(f"try {{ localStorage.setItem('ayin-theme', '{theme}'); }} catch (e) {{}}")
     ctx.route(
         "**/*",
         lambda route: route.continue_() if route.request.url.startswith(("http://127.0.0.1", "data:"))
@@ -89,9 +103,16 @@ def new_context(browser, width=1280, height=900, **kw):
     return ctx
 
 
+def assert_theme(page, theme):
+    got = page.evaluate("document.documentElement.dataset.theme")
+    assert got == theme, f"expected html[data-theme]={theme!r}, page has {got!r}"
+
+
 def open_page(ctx, site_url, stem):
     page = ctx.new_page()
     page.goto(f"{site_url}/{stem}.html", wait_until="load")
+    if getattr(ctx, "_ayin_theme", None):
+        assert_theme(page, ctx._ayin_theme)
     return page
 
 
@@ -117,25 +138,42 @@ def run_axe(page, width) -> list[Violation]:
     ]
 
 
-def run_axe_full(page, width) -> tuple[list[Violation], list[NeedsReview]]:
+MATCH_JS = """([targets, entries]) => Object.fromEntries(targets.map(t => {
+  let el = null; try { el = document.querySelector(t); } catch (e) {}
+  return [t, entries.filter(s => { try { return !!el && el.matches(s); } catch (e) { return false; } })];
+}))"""
+
+
+def _entry_selectors() -> list:
+    import json
+    return sorted({e["selector"] for e in json.loads((ROOT / "tests" / "a11y_review.json").read_text(encoding="utf-8"))["items"]
+                   if e["selector"] != "*"})
+
+
+def run_axe_full(page, width, with_entries=False) -> tuple[list[Violation], list[NeedsReview]]:
     page.set_viewport_size({"width": width, "height": 900})
     res = _axe(page)
     viol = [
         Violation(v["id"], len(v["nodes"]), v.get("impact") or "", tuple(sorted(_selector(n) for n in v["nodes"])))
         for v in res["violations"]
     ]
-    review = [NeedsReview(i["id"], tuple(sorted(_selector(n) for n in i["nodes"]))) for i in res["incomplete"]]
+    entries = _entry_selectors() if with_entries else []
+    review = []
+    for i in res["incomplete"]:
+        sels = tuple(sorted(_selector(n) for n in i["nodes"]))
+        matched = page.evaluate(MATCH_JS, [list(sels), entries]) if entries else {}
+        review.append(NeedsReview(i["id"], sels, matched))
     return viol, review
 
 
-def collect_axe(browser, site_url, stem, width):
-    """Fresh context/page per (page, width); returns (violations, needs_review)."""
+def collect_axe(browser, site_url, stem, width, theme="light"):
+    """Fresh context/page per (page, width, theme); returns (violations, needs_review)."""
     # Reduced motion renders every assemble/tilt item in its settled state. With default motion, items still in
     # their hidden "pre" state are opacity 0 and axe skips them as hidden, leaving real text unchecked.
-    ctx = new_context(browser, width, reduced_motion="reduce")
+    ctx = new_context(browser, width, theme=theme, reduced_motion="reduce")
     try:
         page = open_page(ctx, site_url, stem)
-        return run_axe_full(page, width)
+        return run_axe_full(page, width, with_entries=True)
     finally:
         ctx.close()
 
@@ -144,9 +182,9 @@ def collect_axe(browser, site_url, stem, width):
 def axe_cache(browser, site_url):
     cache: dict = {}
 
-    def get(stem, width):
-        if (stem, width) not in cache:
-            cache[(stem, width)] = collect_axe(browser, site_url, stem, width)
-        return cache[(stem, width)]
+    def get(stem, width, theme="light"):
+        if (stem, width, theme) not in cache:
+            cache[(stem, width, theme)] = collect_axe(browser, site_url, stem, width, theme)
+        return cache[(stem, width, theme)]
 
     return get

@@ -5,7 +5,7 @@ pointer tilts, ripple centres in empty space, no sideways scroll while assemblin
 """
 import pytest
 
-from a11y_browser.conftest import new_context
+from a11y_browser.conftest import THEMES, new_context, open_page
 from a11y_browser.test_motion import FINAL_JS, _centre
 
 pytestmark = pytest.mark.browser
@@ -13,11 +13,9 @@ pytestmark = pytest.mark.browser
 ROLLOUT = ("About", "Services", "Projects", "BizCheck")
 
 
-def _page(browser, site_url, stem, width=1280, height=800, **kw):
-    ctx = new_context(browser, width, height, **kw)
-    page = ctx.new_page()
-    page.goto(f"{site_url}/{stem}.html", wait_until="load")
-    return ctx, page
+def _page(browser, site_url, stem, width=1280, height=800, theme=None, **kw):
+    ctx = new_context(browser, width, height, theme=theme, **kw)
+    return ctx, open_page(ctx, site_url, stem)
 
 
 def _settle_all(page):
@@ -32,9 +30,10 @@ def _settle_all(page):
     page.wait_for_timeout(700)
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("stem", ROLLOUT + ("Contact",))
-def test_rollout_no_horizontal_scroll_at_320_while_assembling(browser, site_url, stem):
-    ctx, page = _page(browser, site_url, stem, width=320, height=700, reduced_motion="no-preference")
+def test_rollout_no_horizontal_scroll_at_320_while_assembling(browser, site_url, stem, theme):
+    ctx, page = _page(browser, site_url, stem, width=320, height=700, theme=theme, reduced_motion="no-preference")
     try:
         total = page.evaluate("document.documentElement.scrollHeight")
         y = 0
@@ -66,8 +65,9 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
         ctx.close()
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("width", (1280, 768))
-def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, width):
+def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, width, theme):
     """Settled, pointer away: no resting transform on any card or its contents, and the number/title edges align."""
     checks = {
         "Services": ("article.svc-detail .deliverables li", None, None),
@@ -75,7 +75,7 @@ def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, wid
         "BizCheck": (".bc-step", ".n", ".h3"),
     }
     for stem, (card, a, b) in checks.items():
-        ctx, page = _page(browser, site_url, stem, width=width, reduced_motion="no-preference")
+        ctx, page = _page(browser, site_url, stem, width=width, theme=theme, reduced_motion="no-preference")
         try:
             _settle_all(page)
             res = page.evaluate(
@@ -214,13 +214,14 @@ GRIDS = {
 }
 
 
+@pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("width", (1280, 768))
-def test_grid_lines_are_continuous(browser, site_url, width):
+def test_grid_lines_are_continuous(browser, site_url, width, theme):
     """Every card/cell keeps its right and bottom border as a visible line (rendered pixels, motion on, settled)."""
     import io
     from PIL import Image
     for stem, sel in GRIDS.items():
-        ctx, page = _page(browser, site_url, stem, width=width, height=900, reduced_motion="no-preference")
+        ctx, page = _page(browser, site_url, stem, width=width, height=900, theme=theme, reduced_motion="no-preference")
         try:
             _settle_all(page)
             page.evaluate("window.scrollTo(0, 0)")
