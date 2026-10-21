@@ -1379,6 +1379,54 @@
     {
       "page": "index",
       "rule": "color-contrast",
+      "selector": "#lt-latin > .cap[aria-hidden=\"true\"]",
+      "reason": "axe could not decide for the letters-band caption \"Greek & Latin\": no ripple rings are drawn behind it (the Services section's ripples SVG starts directly below the letters band, clear of the text); axe's coarse overlap grid still pairs it with that positioned SVG. Removing the SVG makes the item disappear. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#process > .wrap > .sec-head > .left > .h2",
+      "reason": "axe could not decide for the heading \"From outside looking in, to inside the channel.\": the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour, and the rings partially overlap the heading box. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#process > .wrap > .sec-head > .muted.asm-fade",
+      "reason": "axe could not decide for the intro paragraph \"A clear, sequenced engagement...\" beside that heading: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour, and the rings partially overlap the paragraph box. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#services > .wrap > .sec-head > .left > .eyebrow.asm-fade",
+      "reason": "axe could not decide for the \"What we do\" eyebrow: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour; the SVG counts as an image-bearing element in the stacking order. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#services > .wrap > .sec-head > .left > .h2",
+      "reason": "axe could not decide for the heading \"A focused practice for crossing the border.\": the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour, and the rings partially overlap the heading box. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#services > .wrap > .sec-head > .muted.asm-fade",
+      "reason": "axe could not decide for the intro paragraph \"Four disciplines, one objective...\" beside that heading: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour, and the rings partially overlap the paragraph box. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
       "selector": ".active",
       "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
@@ -1423,6 +1471,14 @@
       "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".eyebrow.on-navy.asm-fade",
+      "reason": "axe could not decide for the \"How it works\" eyebrow: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour; the SVG counts as an image-bearing element in the stacking order. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "index",
@@ -1479,6 +1535,30 @@
       "reason": "axe could not decide because the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".letters-line",
+      "reason": "axe could not decide for the letters-band sentence \"One letter, three thousand years...\": no ripple rings are drawn behind it (the Services section's ripples SVG starts directly below the letters band, clear of the text); axe's coarse overlap grid still pairs it with that positioned SVG. Removing the SVG makes the item disappear. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".letters-line > b",
+      "reason": "axe could not decide for the bold \"to see.\" in the letters-band sentence: no ripple rings are drawn behind it (the Services section's ripples SVG starts directly below the letters band, clear of the text); axe's coarse overlap grid still pairs it with that positioned SVG. Removing the SVG makes the item disappear. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".muted.asm-fade > b",
+      "reason": "axe could not decide for the bold \"No\" inside the process intro paragraph: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) is drawn behind the section head and axe cannot attribute one background colour; the SVG counts as an image-bearing element in the stacking order. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px meets 4.5:1, or 3:1 for large text, measured over the rendered rings.",
+      "status": "justified",
+      "cause": "imgNode"
     },
     {
       "page": "index",

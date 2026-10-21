@@ -308,7 +308,7 @@ def test_marquee_is_replaced(browser, site_url):
         )
         assert "letters" in first_band and "surface-alt" in first_band, first_band
         # Home still carries the services/process placements
-        assert page.locator("#services.has-ripples .ripples-r, #process.has-ripples .ripples-l").count() == 2
+        assert page.locator("#services.has-ripples .ripples-top, #process.has-ripples .ripples-top-l").count() == 2
         assert page.locator("#services .iris-ico").count() == 4
         assert page.locator(".svc-num").count() == 0 and page.locator(".sec-index").count() == 2
         assert page.locator("#services .iris-mark, #process .iris-mark").count() == 2
@@ -452,7 +452,7 @@ def test_ripple_centre_and_inner_rings_are_clear_of_text(browser, site_url, widt
                   const s = document.querySelector(sec), d = s.querySelector('.ripples .drop').getBoundingClientRect();
                   const cx = d.left + d.width / 2, cy = d.top + d.height / 2;
                   const svg = s.querySelector('.ripples').getBoundingClientRect();
-                  const k = svg.width / 400, inner = 78 * k;   // centre dot plus the first two rings
+                  const inner = s.querySelectorAll('.ripples circle')[1].getBoundingClientRect().width / 2;   // centre dot plus the first two rings
                   const hits = [];
                   s.querySelectorAll('.sec-head .eyebrow, .sec-head h2, .sec-head p').forEach(e => {
                     const r = document.createRange(); r.selectNodeContents(e);

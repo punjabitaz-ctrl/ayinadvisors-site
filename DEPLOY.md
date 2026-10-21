@@ -180,8 +180,11 @@ separately.
 - With the visitor's reduced-motion preference on, every element is in its
   final state: no assemble, no tilt, no parallax drift, no ripple emission.
 - Nothing animates on its own for more than 5 seconds after entering view
-  (ripples emit once, then rest). The hero canvases, the hero scroll hint and
-  the pulse on the Home "Why" globe predate this and are tracked for Phase 3.
+  (ripples emit once, then rest). These loops predate the accents and are
+  tracked for Phase 3, which must give them a pause control: the hero canvases
+  (Home, BizCheck, Contact), the Home hero scroll hint, the Home "Why" globe
+  pulse, the Services and Projects header motif rotation, the About eye scan
+  line and the Projects "In Testing" status-dot pulse.
 - Home loads one extra Google Fonts stylesheet, limited with `text=` to the four
   letter glyphs. The existing CSP already allows it; if the font fails, the
   band's text label still carries the meaning.

@@ -34,7 +34,7 @@
       <span class="lt-sep asm-fade" aria-hidden="true"></span>
       <div class="lt asm-scatter"><span class="glyph ph" aria-hidden="true">𐤏</span><span class="sub" aria-hidden="true">ʿayin</span><span class="cap" aria-hidden="true">Phoenician</span></div>
       <span class="lt-sep asm-fade" aria-hidden="true"></span>
-      <div class="lt asm-scatter"><span class="glyph la" aria-hidden="true">O</span><span class="sub" aria-hidden="true">omicron · O</span><span class="cap" aria-hidden="true">Greek &amp; Latin</span></div>
+      <div class="lt asm-scatter" id="lt-latin"><span class="glyph la" aria-hidden="true">O</span><span class="sub" aria-hidden="true">omicron · O</span><span class="cap" aria-hidden="true">Greek &amp; Latin</span></div>
     </div>
     <p class="letters-line asm-fade">One letter, three thousand years, and every language that kept it kept its meaning: <b>to see.</b></p>
   </div>
@@ -42,7 +42,7 @@
 
 <!-- ===================== SERVICES ===================== -->
 <section class="section surface-page has-ripples assemble" id="services" data-assemble>
-  <svg class="ripples ripples-r" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
+  <svg class="ripples ripples-top" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -83,7 +83,7 @@
 
 <!-- ===================== PROCESS ===================== -->
 <section class="section surface-alt has-ripples assemble" id="process" data-assemble>
-  <svg class="ripples ripples-l" viewBox="0 0 400 400" aria-hidden="true" focusable="false" data-drift="0.12"><circle cx="200" cy="200" r="40"/><circle cx="200" cy="200" r="78"/><circle cx="200" cy="200" r="118"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/><circle cx="200" cy="200" r="239"/><circle class="drop" cx="200" cy="200" r="3.5"/></svg>
+  <svg class="ripples ripples-top ripples-top-l" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -96,10 +96,10 @@
     <div class="proc-wrap asm-stage">
       <div class="proc-line"><div class="fill asm-grow"></div></div>
       <div class="proc-grid">
-        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Diagnose</h3><p>We assess fit, readiness and the realistic shape of US demand for your offer.</p></div>
-        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Map</h3><p>We design the channel architecture and identify the partners worth pursuing.</p></div>
-        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Connect</h3><p>We open doors with structured introductions to vetted partners and buyers.</p></div>
-        <div class="proc-step asm-rise"><div class="dot"></div><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Enable</h3><p>We equip the channel to sell and hand you a running commercial engine.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Diagnose</h3><p>We assess fit, readiness and the realistic shape of US demand for your offer.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Map</h3><p>We design the channel architecture and identify the partners worth pursuing.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Connect</h3><p>We open doors with structured introductions to vetted partners and buyers.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Enable</h3><p>We equip the channel to sell and hand you a running commercial engine.</p></div>
       </div>
     </div>
   </div>

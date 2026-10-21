@@ -73,3 +73,22 @@ def test_no_stale_review_entries(axe_cache):
         if not any(_covers(e, p, ru, sel) for p, ru, sel in seen)
     ]
     assert not stale, f"stale tests/a11y_review.json entries (delete them): {stale}"
+
+
+def test_gate_evaluates_assembled_content_on_home(browser, site_url):
+    """The gate must see text that sits in hidden 'pre' states under default motion: the letters-band captions and
+    the Home card paragraphs (axe skips opacity-0 nodes, so this proves they are evaluated in the gate's context)."""
+    from axe_playwright_python.sync_playwright import Axe
+    from a11y_browser.conftest import AXE_OPTIONS, new_context, open_page
+    ctx = new_context(browser, 1280, reduced_motion="reduce")
+    try:
+        page = open_page(ctx, site_url, "index")
+        opts = dict(AXE_OPTIONS, runOnly={"type": "rule", "values": ["color-contrast"]},
+                    resultTypes=["violations", "incomplete", "passes"])
+        res = Axe().run(page, options=opts).response
+        seen = [" ".join(n["target"]) for k in ("violations", "incomplete", "passes") for r in res[k] for n in r["nodes"]]
+        assert any(t.startswith("#lt-latin >") and "cap" in t for t in seen), "letters-band caption not evaluated"
+        assert any("#letters" in t or ".letters-line" in t for t in seen), "letters line not evaluated"
+        assert sum(1 for t in seen if ".svc" in t and t.endswith("> p")) >= 3, "Home card paragraphs not evaluated"
+    finally:
+        ctx.close()

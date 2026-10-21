@@ -472,7 +472,8 @@ main:focus { outline: none; }
 /* Section-head bands: the SVG box stays inside its own section (centre at the top edge, rings fan downward);
    only its right edge may run past the page on narrow screens, where the host clips it */
 .ripples-top { top: 0; right: 4%; width: 540px; height: 300px; }
-@media (max-width: 640px) { .ripples-top { right: -165px; } }
+.ripples-top-l { right: auto; left: 4%; }
+@media (max-width: 640px) { .ripples-top { right: -165px; } .ripples-top-l { right: auto; left: -165px; } }
 .ripples circle { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .ripples circle:nth-child(1) { stroke-opacity: 0.55; }
 .ripples circle:nth-child(2) { stroke-opacity: 0.42; }
@@ -579,4 +580,14 @@ main:focus { outline: none; }
     20% { opacity: 1; }
     100% { transform: scale(1); opacity: 1; }
   }
+}
+
+/* ---------- Print: show everything settled, no decoration ---------- */
+@media print {
+  .asm-scatter, .asm-card, .asm-fade, .asm-rise, .asm-grow, .tilt3d, .tilt3d * {
+    opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
+  }
+  .iris-ico :is(circle, path) { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+  .iris-ico .fillgold, .step-iris circle { transform: none !important; }
+  .ripples { display: none !important; }
 }

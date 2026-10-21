@@ -195,14 +195,14 @@ def test_rollout_no_long_running_animation(browser, site_url):
 @pytest.mark.parametrize("width", (1280, 768, 375))
 def test_ripples_box_stays_inside_its_own_section(browser, site_url, width):
     """The SVG box must not reach into neighbouring sections (axe reads geometry, not the clip)."""
-    for stem in ("About", "BizCheck"):
+    for stem in ("About", "BizCheck", "index"):
         ctx, page = _page(browser, site_url, stem, width=width, height=800, reduced_motion="no-preference")
         try:
             r = page.evaluate(
-                """() => { const s = document.querySelector('.has-ripples'), v = s.querySelector('.ripples');
+                """() => [...document.querySelectorAll('.has-ripples')].map(s => { const v = s.querySelector('.ripples');
                   const a = s.getBoundingClientRect(), b = v.getBoundingClientRect();
-                  return {top: b.top - a.top, bottom: a.bottom - b.bottom}; }""")
-            assert r["top"] >= -1 and r["bottom"] >= -1, f"{stem}@{width}: ripples box leaves its section {r}"
+                  return {top: b.top - a.top, bottom: a.bottom - b.bottom}; })""")
+            assert r and all(x["top"] >= -1 and x["bottom"] >= -1 for x in r), f"{stem}@{width}: ripples box leaves its section {r}"
         finally:
             ctx.close()
 
@@ -249,5 +249,67 @@ def test_grid_lines_are_continuous(browser, site_url, width):
                 if not any(abs(lum(full.getpixel((x, ym))) - inside) > 12 for x in cols if 0 <= x < full.width):
                     missing.append((i, "right"))
             assert missing == [], f"{stem}@{width}: grid lines missing at {missing}"
+        finally:
+            ctx.close()
+
+
+# ---------------------------------------------------------------- final wave: process markers and print
+
+def _settle_home(page):
+    for sel in ("#letters", "#services", "#process"):
+        page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
+        page.wait_for_function(f"document.querySelector('{sel}').hasAttribute('data-assemble-done')", timeout=9000)
+    page.mouse.move(2, 2)
+    page.wait_for_timeout(700)
+
+
+def test_home_process_has_one_marker_row_on_the_line(browser, site_url):
+    ctx, page = _page(browser, site_url, "index", width=1280, reduced_motion="no-preference")
+    try:
+        _settle_home(page)
+        r = page.evaluate(
+            """() => { const mid = (e, a) => { const b = e.getBoundingClientRect(); return a === 'y' ? b.top + b.height / 2 : b.left + b.width / 2; };
+              const line = document.querySelector('.proc-line'), irises = [...document.querySelectorAll('.proc-step .step-iris')];
+              return {dots: document.querySelectorAll('.proc-step .dot').length, n: irises.length,
+                      dy: irises.map(i => mid(i, 'y') - mid(line, 'y')), dx: line.getBoundingClientRect().left - mid(irises[0], 'x')}; }""")
+        assert r["dots"] == 0 and r["n"] == 4
+        assert all(abs(d) <= 2 for d in r["dy"]), r      # every marker centred on the line
+        assert abs(r["dx"]) <= 2, r                      # the line grows from the first marker
+    finally:
+        ctx.close()
+
+
+def test_home_process_stacked_markers_sit_beside_their_text_at_375(browser, site_url):
+    ctx, page = _page(browser, site_url, "index", width=375, reduced_motion="no-preference")
+    try:
+        _settle_home(page)
+        r = page.evaluate(
+            """() => [...document.querySelectorAll('.proc-step')].map(s => { const i = s.querySelector('.step-iris').getBoundingClientRect(), t = s.querySelector('h3').getBoundingClientRect();
+              return [i.right <= t.left + 1, i.top >= s.getBoundingClientRect().top - 1]; })""")
+        assert all(a and b for a, b in r), r
+        assert page.evaluate("getComputedStyle(document.querySelector('.proc-line')).display") == "none"
+    finally:
+        ctx.close()
+
+
+def test_print_shows_everything_settled(browser, site_url):
+    """Content still in its hidden 'pre' state prints visible; rings and tilt do nothing in print."""
+    for stem in ("index", "Services", "Projects", "BizCheck"):
+        ctx, page = _page(browser, site_url, stem, width=1280, reduced_motion="no-preference")
+        try:
+            page.wait_for_timeout(600)       # below-the-fold sections are still in the hidden state here
+            if stem == "index":
+                assert page.evaluate("document.querySelectorAll('[data-assemble=\"pre\"]').length") >= 1
+            page.emulate_media(media="print")
+            bad = page.evaluate(
+                """() => [...document.querySelectorAll('.asm-scatter, .asm-card, .asm-fade, .asm-rise, .asm-grow, .iris-ico, .step-iris')]
+                  .map(e => { const c = getComputedStyle(e); return [String(e.className.baseVal ?? e.className), c.opacity, c.transform]; })
+                  .filter(([n, o, t]) => parseFloat(o) < 1 || (t !== 'none' && t !== 'matrix(1, 0, 0, 1, 0, 0)'))""")
+            assert bad == [], f"{stem}: not settled in print {bad[:3]}"
+            circles = page.evaluate(
+                """() => [...document.querySelectorAll('.step-iris circle, .iris-ico .fillgold')].filter(e => getComputedStyle(e).transform !== 'none').length""")
+            assert circles == 0, stem
+            rings = page.evaluate("[...document.querySelectorAll('.ripples')].map(e => getComputedStyle(e).display)")
+            assert all(d == "none" for d in rings), (stem, rings)
         finally:
             ctx.close()

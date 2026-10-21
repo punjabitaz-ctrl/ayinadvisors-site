@@ -103,10 +103,6 @@ def _axe(page):
     from axe_playwright_python.sync_playwright import Axe
 
     page.add_style_tag(content=REVEAL_CSS)
-    # sections already assembling (in view at load) must finish first: axe cannot judge text mid-transition
-    page.wait_for_function(
-        "[...document.querySelectorAll('[data-assemble]')].every(r => r.dataset.assemble !== 'in' || r.hasAttribute('data-assemble-done'))",
-        timeout=8000)
     page.evaluate("document.querySelectorAll('.reveal,.line-reveal').forEach(e=>e.classList.add('in'))")
     return Axe().run(page, options=AXE_OPTIONS).response
 
@@ -134,7 +130,9 @@ def run_axe_full(page, width) -> tuple[list[Violation], list[NeedsReview]]:
 
 def collect_axe(browser, site_url, stem, width):
     """Fresh context/page per (page, width); returns (violations, needs_review)."""
-    ctx = new_context(browser, width)
+    # Reduced motion renders every assemble/tilt item in its settled state. With default motion, items still in
+    # their hidden "pre" state are opacity 0 and axe skips them as hidden, leaving real text unchecked.
+    ctx = new_context(browser, width, reduced_motion="reduce")
     try:
         page = open_page(ctx, site_url, stem)
         return run_axe_full(page, width)
