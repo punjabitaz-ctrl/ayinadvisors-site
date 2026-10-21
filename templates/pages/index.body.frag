@@ -4,9 +4,9 @@
   <div class="hero-vignette"></div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="eyebrow on-navy reveal">US Market Entry · Channel Strategy</span>
-      <h1 class="display reveal" data-d="1">See the American<br />Business market <span class="italic-accent">clearly.</span></h1>
-      <p class="hero-lead lead reveal" data-d="2">AYiN Advisors guides international companies into the United States through disciplined channel activity, turning ambition into distribution, partners and revenue.</p>
+      <span class="eyebrow on-navy reveal">AYiN Advisors</span>
+      <h1 class="display reveal" data-d="1">Business solutions for a <span class="italic-accent">digital world.</span></h1>
+      <p class="hero-lead lead reveal" data-d="2">We work in three practices: B2B partnerships for international firms entering the US, AI solutions development, and digital presence.</p>
       <div class="hero-actions reveal" data-d="3">
         <a href="Contact.html" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a>
         <a href="Services.html" class="btn-ghost btn on-navy" data-magnetic><span class="btn-label">Our Services</span></a>
@@ -16,9 +16,9 @@
   <div class="scroll-hint"><span>Scroll</span><span class="bar"></span></div>
   <div class="hero-stats">
     <div class="wrap">
-      <div class="hstat reveal"><div class="n"><span data-count="3" data-suffix="+"></span></div><div class="l">Markets · US · Canada · LATAM</div></div>
-      <div class="hstat reveal" data-d="1"><div class="n"><span data-count="90" data-suffix=" Days"></span></div><div class="l">To first qualified partner</div></div>
-      <div class="hstat reveal" data-d="2"><div class="n"><span data-count="100" data-suffix="%"></span></div><div class="l">Channel-led, founder-aligned</div></div>
+      <div class="hstat reveal"><div class="n"><span data-count="3"></span></div><div class="l">Practices · Partnerships · AI · Digital</div></div>
+      <div class="hstat reveal" data-d="1"><div class="n"><span data-count="90" data-suffix=" Days"></span></div><div class="l">Partnerships · to first qualified partner</div></div>
+      <div class="hstat reveal" data-d="2"><div class="n">Founder-led</div><div class="l">Operators, not observers</div></div>
     </div>
   </div>
 </header>
@@ -40,113 +40,78 @@
   </div>
 </div>
 
-<!-- ===================== SERVICES ===================== -->
+<!-- ===================== WHAT WE DO ===================== -->
 <section class="section surface-page has-ripples assemble" id="services" data-assemble>
   <svg class="ripples ripples-top" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
         <span class="eyebrow asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>What we do</span>
-        <h2 class="h2 asm-fade">A focused practice for<br />crossing the border.</h2>
+        <h2 class="h2 asm-fade">Choose the practice that fits your problem.</h2>
       </div>
-      <p class="muted asm-fade" style="max-width:34ch">Four disciplines, one objective — a commercial foothold in North America built on real channel relationships.</p>
+      <p class="muted asm-fade" style="max-width:34ch">Three practices, each for a different kind of buyer. Start with the one that matches what you need.</p>
     </div>
 
     <div class="svc-grid asm-stage">
-      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
-        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="22" pathLength="200"/><circle cx="27" cy="27" r="12" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/><path d="M27 2v8M27 44v8M2 27h8M44 27h8" stroke-linecap="round" pathLength="200"/></svg>
-        <h3 class="h3">US Market Entry Research</h3>
-        <p>Sizing, segmentation and competitive intelligence that tells you where to play — and where not to — before you spend a dollar on the ground.</p>
-        <span class="svc-arrow">Explore →</span>
-      </a>
-      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
-        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="19" cy="27" r="15" pathLength="200"/><circle cx="35" cy="27" r="15" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/></svg>
-        <h3 class="h3">Channel Strategy &amp; Enablement</h3>
-        <p>Designing the route to market — distributors, resellers, agents — and equipping them with the tools, terms and training to actually sell.</p>
-        <span class="svc-arrow">Explore →</span>
-      </a>
-      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
+      <a class="svc asm-card tilt3d" data-tilt href="partnerships.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="14" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="14" cy="27" r="3" stroke="none"/><circle cx="40" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="40" cy="27" r="3" stroke="none"/><path d="M24 27h6" stroke-linecap="round" pathLength="200"/></svg>
-        <h3 class="h3">B2B Partner Introductions</h3>
-        <p>Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.</p>
-        <span class="svc-arrow">Explore →</span>
+        <h3 class="h3">B2B Partnerships</h3>
+        <p>For international firms entering the US. Channel strategy and partner introductions for companies new to the American market.</p>
+        <span class="svc-arrow">Explore<span aria-hidden="true">→</span></span>
       </a>
-      <a class="svc asm-card tilt3d" data-tilt href="Services.html">
+      <a class="svc asm-card tilt3d" data-tilt href="ai-solutions.html">
+        <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="22" pathLength="200"/><circle cx="27" cy="27" r="12" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/><path d="M27 2v8M27 44v8M2 27h8M44 27h8" stroke-linecap="round" pathLength="200"/></svg>
+        <h3 class="h3">AI Solutions Development</h3>
+        <p>For teams that need AI built. Custom applications, workflow automation and operational efficiency.</p>
+        <span class="svc-arrow">Explore<span aria-hidden="true">→</span></span>
+      </a>
+      <a class="svc asm-card tilt3d" data-tilt href="digital-presence.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle class="fillgold" cx="16" cy="27" r="3.6" stroke="none"/><circle cx="16" cy="27" r="9" pathLength="200"/><path d="M30 14a19 19 0 0 1 0 26M38 9a27 27 0 0 1 0 36M46 5a35 35 0 0 1 0 44" stroke-linecap="round" pathLength="200"/></svg>
-        <h3 class="h3">Regional Expansion · Canada &amp; LATAM</h3>
-        <p>Extending the playbook north and south — adapting channel models for Canada and Latin America once the US engine is running.</p>
-        <span class="svc-arrow">Explore →</span>
+        <h3 class="h3">Digital Presence</h3>
+        <p>For businesses building their presence online. Websites, digital marketing, and community and content.</p>
+        <span class="svc-arrow">Explore<span aria-hidden="true">→</span></span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ===================== PROCESS ===================== -->
-<section class="section surface-alt has-ripples assemble" id="process" data-assemble>
+<!-- ===================== WHO WE WORK WITH ===================== -->
+<section class="section surface-alt" id="who">
+  <div class="wrap">
+    <div class="who-grid">
+      <div>
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Who we work with</span>
+        <h2 class="h2 who-title reveal" data-d="1">Three kinds of business, one firm.</h2>
+        <p class="lead reveal" data-d="2">Each practice stands on its own. You can start with one and add another later.</p>
+      </div>
+      <div class="principle-list reveal" data-d="2">
+        <div class="principle"><span class="pk" aria-hidden="true">i.</span><div><h3>International firms entering the US</h3><p>Our work suits international firms with a product and a decision to make about North America.</p></div></div>
+        <div class="principle"><span class="pk" aria-hidden="true">ii.</span><div><h3>Teams that need AI built</h3><p>You do not need to know what the technology should be. You need to know where the work is slow, repetitive or stuck.</p></div></div>
+        <div class="principle"><span class="pk" aria-hidden="true">iii.</span><div><h3>Businesses building their presence online</h3><p>Whether you are starting out or already online, we begin with what your business needs.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOW WE WORK ===================== -->
+<section class="section surface-page has-ripples assemble" id="process" data-assemble>
   <svg class="ripples ripples-top ripples-top-l" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow on-navy asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How it works</span>
-        <h2 class="h2 asm-fade">From outside looking in, to inside the channel.</h2>
+        <span class="eyebrow asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How we work</span>
+        <h2 class="h2 asm-fade">From first call to handover.</h2>
       </div>
-      <p class="muted asm-fade" style="max-width:34ch">A clear, sequenced engagement.<br /><b>No</b> open-ended retainers, no theory without traction.</p>
+      <p class="muted asm-fade" style="max-width:34ch">A clear, sequenced engagement. No theory without traction.</p>
     </div>
 
     <div class="proc-wrap asm-stage">
       <div class="proc-line"><div class="fill asm-grow"></div></div>
       <div class="proc-grid">
-        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Diagnose</h3><p>We assess fit, readiness and the realistic shape of US demand for your offer.</p></div>
-        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Map</h3><p>We design the channel architecture and identify the partners worth pursuing.</p></div>
-        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Connect</h3><p>We open doors with structured introductions to vetted partners and buyers.</p></div>
-        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Enable</h3><p>We equip the channel to sell and hand you a running commercial engine.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== WHY US ===================== -->
-<section class="section surface-page" id="why">
-  <div class="wrap">
-    <div class="why-grid reveal">
-      <div class="why-visual">
-      <div class="globe-stage" data-parallax="0.02">
-        <svg viewBox="0 0 200 200" role="img" aria-label="Global routes converging on the United States">
-          <circle class="globe-outer" cx="100" cy="100" r="80"></circle>
-          <ellipse class="meridian" cx="100" cy="100" rx="80" ry="80"></ellipse>
-          <ellipse class="meridian" cx="100" cy="100" rx="60" ry="80"></ellipse>
-          <ellipse class="meridian" cx="100" cy="100" rx="38" ry="80"></ellipse>
-          <ellipse class="meridian" cx="100" cy="100" rx="14" ry="80"></ellipse>
-          <line class="latitude" x1="20" y1="100" x2="180" y2="100"></line>
-          <ellipse class="latitude" cx="100" cy="100" rx="80" ry="58"></ellipse>
-          <ellipse class="latitude" cx="100" cy="100" rx="80" ry="30"></ellipse>
-          <!-- flight arcs -->
-          <path class="arc a1" d="M40,150 Q70,70 96,104"></path>
-          <path class="arc a2" d="M60,40 Q110,60 96,104"></path>
-          <path class="arc a3" d="M160,150 Q120,120 96,104"></path>
-          <!-- origin nodes -->
-          <circle class="node" cx="40" cy="150" r="2.4"></circle>
-          <circle class="node" cx="60" cy="40" r="2.4"></circle>
-          <circle class="node" cx="160" cy="150" r="2.4"></circle>
-          <!-- destination (US) -->
-          <circle class="node-pulse" cx="96" cy="104" r="4"></circle>
-          <circle class="dest" cx="96" cy="104" r="4"></circle>
-        </svg>
-      </div>
-        <figure class="photo-card surface-card reveal" data-d="1">
-          <image-slot slug="us-night" sizes="(min-width: 900px) 460px, calc(100vw - 80px)" loading="lazy"></image-slot>
-        </figure>
-      </div>
-      <div>
-        <span class="eyebrow reveal"><span class="sec-index">03</span> &nbsp;Why the US market</span>
-        <h2 class="h2 why-title reveal" data-d="1">The largest opportunity<br />is also the hardest to read.</h2>
-        <p class="lead reveal" data-d="2" style="margin-bottom:8px">The United States is a continent of distinct regional markets, regulatory regimes and buying cultures. Winning it is rarely about the product - it's all about the channels.</p>
-        <div class="why-stats reveal" data-d="3">
-          <div class="why-stat"><div class="n"><span data-count="24" data-prefix="$" data-suffix="T"></span></div><div class="l">US consumer + B2B economy</div></div>
-          <div class="why-stat"><div class="n"><span data-count="50"></span></div><div class="l">State markets, one entry strategy</div></div>
-          <div class="why-stat"><div class="n"><span data-count="70" data-suffix="%"></span></div><div class="l">Of B2B revenue flows through partners</div></div>
-          <div class="why-stat"><div class="n"><span data-count="3" data-suffix="x"></span></div><div class="l">Faster scale with the right channel</div></div>
-        </div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Understand</h3><p>We start with your goals, your constraints and what you have already tried.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Plan</h3><p>We agree what will be done, in what order, and what a good result looks like.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Deliver</h3><p>We do the work and keep you informed as it happens.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Hand over</h3><p>We hand over what we built and agree what happens next.</p></div>
       </div>
     </div>
   </div>
@@ -157,14 +122,14 @@
   <div class="wrap">
     <div class="about-teaser">
       <div>
-        <span class="eyebrow on-navy reveal"><span class="sec-index">04</span> &nbsp;Who we are</span>
-        <p class="quote reveal" data-d="1" style="margin-top:24px">We are operators, not<br />observers.<br />Advisors who <span class="hl">open doors</span> and stay until the channel is selling.</p>
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Who we are</span>
+        <p class="quote reveal" data-d="1" style="margin-top:24px">We are operators, not<br />observers.<br />Advisors who <span class="hl">open doors.</span></p>
         <div class="reveal" data-d="2" style="margin-top:36px"><a href="About.html" class="tlink on-navy">More about AYiN <span class="btn-arrow">→</span></a></div>
       </div>
       <div class="principle-list reveal" data-d="2">
-        <div class="principle"><span class="pk">i.</span><div><h3>Channel first</h3><p>Distribution is the strategy. We build the route to market, not just the deck.</p></div></div>
-        <div class="principle"><span class="pk">ii.</span><div><h3>Founder aligned</h3><p>Senior attention, candid counsel and incentives tied to traction with results, not hours.</p></div></div>
-        <div class="principle"><span class="pk">iii.</span><div><h3>On the ground</h3><p>A live North American network of partners, buyers and operators you can work with.</p></div></div>
+        <div class="principle"><span class="pk">i.</span><div><h3>Evidence over theory</h3><p>Recommendations are grounded in evidence, not assumption.</p></div></div>
+        <div class="principle"><span class="pk">ii.</span><div><h3>Candid counsel</h3><p>Plain advice and clear steps from the first call to the handover.</p></div></div>
+        <div class="principle"><span class="pk">iii.</span><div><h3>Sequenced, not open-ended</h3><p>Clear phases with defined outcomes. You always know what comes next.</p></div></div>
       </div>
     </div>
   </div>
@@ -176,8 +141,8 @@
   <div class="wrap">
     <div class="cta-inner">
       <span class="eyebrow on-navy center reveal" style="justify-content:center">Begin the engagement</span>
-      <h2 class="h2 reveal" data-d="1">Let us read the market<br />together.</h2>
-      <p class="lead reveal" data-d="2">A focused, candid conversation about your US ambitions and the channel that gets you there. No obligation, just clarity.</p>
+      <h2 class="h2 reveal" data-d="1">Tell us what you are trying to do.</h2>
+      <p class="lead reveal" data-d="2">A focused, candid conversation about your goals and the practice that fits them. No obligation, just clarity.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>

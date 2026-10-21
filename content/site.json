@@ -32,7 +32,7 @@
     }
   ],
   "footer": {
-    "tagline": "Channel-led US market entry for international companies.<br />New York.",
+    "tagline": "B2B partnerships, AI solutions and digital presence.<br />New York.",
     "columns": [
       {
         "heading": "Navigate",
@@ -67,20 +67,16 @@
         "heading": "Practice",
         "links": [
           {
-            "label": "Market Entry Research",
-            "href": "partnerships.html#research"
+            "label": "B2B Partnerships",
+            "href": "partnerships.html"
           },
           {
-            "label": "Channel Strategy",
-            "href": "partnerships.html#channel"
+            "label": "AI Solutions Development",
+            "href": "ai-solutions.html"
           },
           {
-            "label": "Partner Introductions",
-            "href": "partnerships.html#introductions"
-          },
-          {
-            "label": "Regional Expansion",
-            "href": "partnerships.html#expansion"
+            "label": "Digital Presence",
+            "href": "digital-presence.html"
           }
         ]
       },
@@ -103,12 +99,12 @@
       }
     ],
     "legal": "AYiN Advisors. All rights reserved.",
-    "strapline": "Entering the US market, clearly."
+    "strapline": "Business solutions for a digital world."
   },
   "pages": {
     "index": {
-      "title": "AYiN Advisors — US Market Entry & Channel Strategy",
-      "description": "AYiN Advisors helps international companies enter the US market through channel activities, partner introductions and regional expansion.",
+      "title": "AYiN Advisors — Business Solutions for a Digital World",
+      "description": "Business solutions for a digital world. B2B partnerships for international firms entering the US, AI solutions development, and digital presence.",
       "canonical": "https://ayinadvisors.com/",
       "active": "Home",
       "cta": {
@@ -123,7 +119,7 @@
     },
     "About": {
       "title": "About — AYiN Advisors",
-      "description": "AYiN Advisors are operators, not observers — a channel-first advisory opening the US market for international companies.",
+      "description": "AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence.",
       "canonical": "https://ayinadvisors.com/About.html",
       "active": "About",
       "cta": {

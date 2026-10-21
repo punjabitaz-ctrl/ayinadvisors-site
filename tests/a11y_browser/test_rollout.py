@@ -388,11 +388,10 @@ def test_hub_card_lists_and_links_line_up_across_the_row_at_1280(browser, site_u
         ctx.close()
 
 
-@pytest.mark.parametrize("width", (1280, 768))
-def test_home_pillar_cards_line_up_across_the_row(browser, site_url, width):
+def test_home_pillar_cards_line_up_across_the_row_at_1280(browser, site_url):
     """Icon, title, line and Explore link share their top edges across Home's three cards, however long a title runs,
     and nothing is displaced at rest (depth only while the pointer tilts)."""
-    ctx, page = _page(browser, site_url, "index", width=width, reduced_motion="no-preference")
+    ctx, page = _page(browser, site_url, "index", width=1280, reduced_motion="no-preference")
     try:
         _settle_all(page)
         tops = page.evaluate(
@@ -411,8 +410,9 @@ def test_home_pillar_cards_line_up_across_the_row(browser, site_url, width):
         ctx.close()
 
 
-def test_home_pillar_cards_stack_at_375_without_sideways_scroll(browser, site_url):
-    ctx, page = _page(browser, site_url, "index", width=375, reduced_motion="no-preference")
+@pytest.mark.parametrize("width", (768, 375))
+def test_home_pillar_cards_stack_without_sideways_scroll(browser, site_url, width):
+    ctx, page = _page(browser, site_url, "index", width=width, reduced_motion="no-preference")
     try:
         _settle_all(page)
         r = page.evaluate("[...document.querySelectorAll('#services a.svc')].map(a => { const b = a.getBoundingClientRect(); return [b.left, b.width]; })")

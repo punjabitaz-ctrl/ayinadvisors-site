@@ -1259,14 +1259,6 @@
     {
       "page": "index",
       "rule": "color-contrast",
-      "selector": ".eyebrow.on-navy.asm-fade",
-      "reason": "An eyebrow label (`.eyebrow.on-navy.asm-fade` on the index page): axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
-      "status": "justified",
-      "cause": "imgNode"
-    },
-    {
-      "page": "index",
-      "rule": "color-contrast",
       "selector": ".hero-actions > .btn-white.btn[data-magnetic=\"\"] > .btn-label",
       "reason": "The label of a button (`.hero-actions > .btn-white.btn[data-magnetic=\"\"] > .btn-label` on the index page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
@@ -1319,14 +1311,6 @@
       "reason": "Text in the letters band (`.letters-line > b` on the index page): axe could not decide because another positioned element overlaps the text box, so axe cannot attribute a background. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgOverlap"
-    },
-    {
-      "page": "index",
-      "rule": "color-contrast",
-      "selector": ".muted.asm-fade > b",
-      "reason": "A section intro paragraph (`.muted.asm-fade > b` on the index page): axe could not decide because an image or image-bearing element (page photography, or the photograph beneath the translucent fixed header) lies in the stacking order, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
-      "status": "justified",
-      "cause": "imgNode"
     },
     {
       "page": "index",
@@ -1451,24 +1435,8 @@
     {
       "page": "index",
       "rule": "color-contrast",
-      "selector": "span[data-count=\"100\"]",
-      "reason": "A counter value in the hero statistics strip (`span[data-count=\"100\"]` on the index page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
-      "status": "justified",
-      "cause": "bgGradient"
-    },
-    {
-      "page": "index",
-      "rule": "color-contrast",
       "selector": "span[data-count=\"90\"]",
       "reason": "A counter value in the hero statistics strip (`span[data-count=\"90\"]` on the index page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
-      "status": "justified",
-      "cause": "bgGradient"
-    },
-    {
-      "page": "index",
-      "rule": "color-contrast",
-      "selector": "span[data-suffix=\"+\"]",
-      "reason": "A counter value in the hero statistics strip (`span[data-suffix=\"+\"]` on the index page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
       "status": "justified",
       "cause": "bgGradient"
     },
@@ -2053,6 +2021,62 @@
       "rule": "color-contrast",
       "selector": "#what .ps-list li:nth-child(3) > p",
       "reason": "The description in the third service card (`#what .ps-list li:nth-child(3) > p` on the Digital Presence page, in the 768px layout): axe reports the paragraph as overlapped by another element (bgOverlap) and so cannot read its background, which is the plain page surface of the card with no image, gradient or graphic behind it. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#process .sec-head .eyebrow",
+      "reason": "A section-head eyebrow (`#process .sec-head .eyebrow` on the index page): axe could not decide because an image-bearing element lies in the stacking order: the decorative ripples graphic (an aria-hidden SVG of thin rings at 8-55% stroke opacity, no text, not focusable) drawn in this band, which axe cannot sample. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "imgNode"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".hero-stats .hstat:nth-child(3) > .n",
+      "reason": "The third statistic in the hero statistics strip (`.hero-stats .hstat:nth-child(3) > .n` on the index page, plain text \"Founder-led\"): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "span[data-count=\"3\"]",
+      "reason": "The first counter in the hero statistics strip (`span[data-count=\"3\"]` on the index page, the number of practices): axe could not decide because the text is a single character, below axe's minimum length for a reliable check; the strip also sits on a translucent gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "shortTextContent"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": ".svc-arrow > span[aria-hidden=\"true\"]",
+      "reason": "The arrow glyph after \"Explore\" on a practice card (`.svc-arrow > span[aria-hidden=\"true\"]` on the index page): axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "nonBmp"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#who .principle:nth-child(3) > .pk",
+      "reason": "The numeral of the third \"Who we work with\" entry (`#who .principle:nth-child(3) > .pk` on the index page, at 768 and 1280px): axe reports it as overlapped by another element (bgOverlap): the bounding boxes of the next band's decorative ripples circles reach up past that band's top edge, where the band clips them, and axe reads geometry, not the clip. The background is the plain alt surface with no image, gradient or graphic behind the text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#who .principle:nth-child(3) > div > h3",
+      "reason": "The heading of the third \"Who we work with\" entry (`#who .principle:nth-child(3) > div > h3` on the index page, at 768 and 1280px): axe reports it as overlapped by another element (bgOverlap): the bounding boxes of the next band's decorative ripples circles reach up past that band's top edge, where the band clips them, and axe reads geometry, not the clip. The background is the plain alt surface with no image, gradient or graphic behind the text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "index",
+      "rule": "color-contrast",
+      "selector": "#who .principle:nth-child(3) > div > p",
+      "reason": "The text of the third \"Who we work with\" entry (`#who .principle:nth-child(3) > div > p` on the index page, at 768 and 1280px): axe reports it as overlapped by another element (bgOverlap): the bounding boxes of the next band's decorative ripples circles reach up past that band's top edge, where the band clips them, and axe reads geometry, not the clip. The background is the plain alt surface with no image, gradient or graphic behind the text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgOverlap"
     }

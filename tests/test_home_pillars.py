@@ -131,7 +131,6 @@ def test_home_has_three_pillar_cards_linking_to_pillar_pages(home, pillars):
         assert svg.get("aria-hidden") == "true" and svg.get("focusable") == "false"
     assert len({str(c.select_one("svg.iris-ico")) for c in cards}) == 3
     assert "Services.html" not in {a["href"] for a in sec.select("a")}
-    assert "sec-head" in " ".join(sec.select_one(".sec-head")["class"]) and sec.select_one(".sec-head svg.iris-mark") is None
     assert sec.select_one(".sec-head .eyebrow svg.iris-mark") and _text(sec.select_one(".sec-head .eyebrow")) == "What we do"
     hub = build.load_services()["hub"]["choose"]
     assert _text(sec.select_one(".sec-head h2")) == hub["heading"]
@@ -284,8 +283,8 @@ def test_footer_practice_column(soups, pillars, site):
             continue
         col = next(c for c in footer.select(".footer-col") if c.h2 and _text(c.h2) == "Practice")
         assert [(a["href"], _text(a)) for a in col.select("a")] == [(f"{p['stem']}.html", p["name"]) for p in pillars], stem
-        assert _text(footer.select_one(".footer-bottom span:last-child")) == "Business solutions for a digital world."
-        assert "Business solutions for a digital world." in _text(footer.select_one(".footer-tag")) or "AI solutions" in _text(footer.select_one(".footer-tag"))
+        assert _text(footer.select_one(".footer-bottom > span:last-child")) == "Business solutions for a digital world."
+        assert _text(footer.select_one(".footer-tag")) == "B2B partnerships, AI solutions and digital presence. New York."
         text = _text(footer)
         for o in old:
             assert o not in text, (stem, o)
