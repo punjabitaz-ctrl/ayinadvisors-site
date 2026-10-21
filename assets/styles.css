@@ -440,3 +440,126 @@ main:focus { outline: none; }
 .footer-col a { min-height: 24px; }
 .nav-link, .mobile-drawer a, .tlink { min-height: 24px; }
 .contact-meta a { display: inline-block; min-height: 24px; }
+
+/* ============================================================
+   Accent + motion components (Phase 2b, T1)
+   Not placed on pages yet. Static look first; every hidden
+   "pre" state is gated on html.js AND a data-assemble="pre"
+   attribute that only assets/site.js sets, so content is always
+   visible without JS, with a failed script, or under reduced motion.
+   Colour: theme roles only. Animation: transform/opacity (plus the
+   icon stroke draw), one expo-out easing (--ease-out).
+   ============================================================ */
+:root {
+  --dur-assemble: 1.5s;
+  --dur-card: 0.9s;
+  --dur-draw: 1.6s;
+  --dur-tilt: 0.5s;
+}
+
+/* Hosts that hold ripples clip the oversized rings: no sideways scroll */
+.clip { overflow: hidden; overflow: clip; }
+.has-ripples { position: relative; overflow: hidden; overflow: clip; }
+.has-ripples > .wrap { position: relative; z-index: 1; }
+
+/* ---------- Ripples (decorative SVG rings) ---------- */
+.ripples { position: absolute; pointer-events: none; color: var(--accent-fill); }
+.ripples-r { right: -140px; top: -60px; width: 620px; height: 620px; }
+.ripples-l { left: -180px; top: -90px; width: 620px; height: 620px; }
+.ripples circle { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ripples circle:nth-child(1) { stroke-opacity: 0.55; }
+.ripples circle:nth-child(2) { stroke-opacity: 0.42; }
+.ripples circle:nth-child(3) { stroke-opacity: 0.32; }
+.ripples circle:nth-child(4) { stroke-opacity: 0.22; }
+.ripples circle:nth-child(5) { stroke-opacity: 0.14; }
+.ripples circle:nth-child(6) { stroke-opacity: 0.08; }
+.ripples .drop { fill: currentColor; stroke: none; fill-opacity: 0.7; }
+
+/* ---------- Iris marks and icons (currentColor / roles only) ---------- */
+.iris-mark { width: 22px; height: 22px; vertical-align: -6px; margin-right: 4px; color: var(--accent-ink); }
+.iris-ico { width: 54px; height: 54px; color: var(--accent-ink); margin-bottom: 18px; display: block; }
+.iris-ico .fillgold { fill: var(--accent-fill); }
+.step-iris { width: 34px; height: 34px; color: var(--accent-ink); margin-bottom: 10px; display: block; }
+
+/* ---------- Letters band: one letter and its descendants ---------- */
+.letters { position: relative; overflow: hidden; overflow: clip; padding-block: clamp(48px, 6vw, 84px); border-block: 1px solid var(--line-gold); background-color: var(--surface); }
+.letters-row { display: flex; justify-content: center; align-items: flex-end; gap: clamp(24px, 6vw, 92px); flex-wrap: wrap; }
+.letters .lt { text-align: center; min-width: 120px; }
+.letters .glyph { display: block; font-size: clamp(3.4rem, 7vw, 5.6rem); line-height: 1.1; color: var(--accent-ink); }
+.letters .glyph.ar { font-family: "Noto Naskh Arabic", "Segoe UI", serif; }
+.letters .glyph.he { font-family: "Frank Ruhl Libre", "Segoe UI", serif; }
+.letters .glyph.ph { font-family: "Noto Sans Phoenician", "Segoe UI Historic", serif; }
+.letters .glyph.la { font-family: var(--serif); font-weight: 500; }
+.letters .cap { display: block; margin-top: 10px; font: 600 0.68rem var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); }
+.letters .sub { display: block; font: italic 1.05rem var(--serif); color: var(--ink); }
+.letters .lt-sep { align-self: center; color: var(--accent-fill); font-size: 0.8rem; margin-bottom: 28px; }
+.letters-line { margin: 34px auto 0; text-align: center; font: italic clamp(1.25rem, 2.2vw, 1.7rem) / 1.4 var(--serif); color: var(--ink); max-width: 46ch; }
+.letters-line b { font-style: normal; font-weight: 600; color: var(--accent-ink); }
+
+/* ---------- Motion (only when the visitor has not asked for less) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* 3D stages */
+  .asm-stage { perspective: 1000px; }
+  .letters .letters-row { perspective: 900px; }
+
+  /* Depth for the glyphs and the tilting card contents */
+  .letters .lt { transform-style: preserve-3d; }
+  .letters .glyph {
+    transform: translateZ(40px);
+    text-shadow:
+      0 1px 0 color-mix(in srgb, var(--accent-fill) 60%, transparent),
+      0 2px 0 color-mix(in srgb, var(--accent-fill) 45%, transparent),
+      0 3px 0 color-mix(in srgb, var(--accent-fill) 32%, transparent),
+      0 4px 0 color-mix(in srgb, var(--accent-fill) 22%, transparent),
+      0 14px 22px color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+  .tilt3d { transform-style: preserve-3d; will-change: transform; transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); }
+  .tilt3d .iris-ico { transform: translateZ(46px); }
+  .tilt3d :is(h3, p) { transform: translateZ(18px); }
+  .tilt3d.is-tilting { transition: transform 0.08s linear, box-shadow 0.3s; transition-delay: 0s; box-shadow: 0 30px 50px -28px color-mix(in srgb, var(--ink) 35%, transparent); }
+
+  /* Transitions that run when a section assembles */
+  .asm-scatter { transition: transform var(--dur-assemble) var(--ease-out), opacity 1s var(--ease-out); transition-delay: calc(var(--i, 0) * 0.12s); }
+  .asm-card { transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
+  .asm-fade { transition: opacity 1s var(--ease-out) 0.6s, transform 1s var(--ease-out) 0.6s; }
+  .asm-rise { transition: transform 1s var(--ease-out), opacity 0.9s var(--ease-out); transition-delay: calc(0.35s * var(--i, 0)); }
+  .asm-grow { transform-origin: left center; transition: transform 2.2s var(--ease-out) 0.3s; }
+  .assemble .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { stroke-dasharray: 200; stroke-dashoffset: 0; transition: stroke-dashoffset var(--dur-draw) var(--ease-out) 0.4s; }
+  .assemble .iris-ico .fillgold, .assemble .step-iris circle { transform-origin: center; transform-box: fill-box; transition: transform 0.8s var(--ease-out) 1.2s; }
+  .assemble .step-iris circle { transition-duration: 1s; transition-delay: calc(0.5s + 0.4s * var(--i, 0)); }
+
+  /* Once assembled, interaction (tilt) must not wait on the stagger delays */
+  .assemble[data-assemble-done] :is(.asm-scatter, .asm-card, .asm-rise, .asm-fade, .asm-grow) { transition-delay: 0s; }
+  .asm-scatter.is-tilting { transition: transform 0.4s var(--ease-out); transition-delay: 0s; }
+
+  /* Hidden starting state: JS only (html.js + data-assemble="pre" set by site.js) */
+  html.js [data-assemble="pre"] .asm-scatter {
+    transition: none;
+    opacity: 0;
+    transform: translate3d(calc((var(--i, 0) - 1.5) * -180px), calc(var(--dir, 1) * -130px), -340px) rotateY(calc(var(--dir, 1) * -80deg)) rotateZ(calc(var(--dir, 1) * -22deg));
+  }
+  html.js [data-assemble="pre"] .asm-card {
+    transition: none;
+    opacity: 0;
+    transform: translate3d(calc(var(--dir, 1) * 80px), calc(40px + var(--i, 0) * 20px), -240px) rotateY(calc(var(--dir, 1) * -32deg)) rotateX(calc(var(--dir, 1) * 12deg));
+  }
+  html.js [data-assemble="pre"] .asm-fade { transition: none; opacity: 0; transform: translateY(14px); }
+  html.js [data-assemble="pre"] .asm-rise { transition: none; opacity: 0; transform: translateY(50px) rotateX(-40deg); }
+  html.js [data-assemble="pre"] .asm-grow { transition: none; transform: scaleX(0); }
+  html.js [data-assemble="pre"] .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { transition: none; stroke-dashoffset: 200; }
+  html.js [data-assemble="pre"] :is(.iris-ico .fillgold, .step-iris circle) { transition: none; transform: scale(0); }
+
+  /* Ripples emit for under 5 s once (JS adds .is-emitting), then rest as static rings */
+  .ripples { will-change: transform; }
+  .ripples.is-emitting circle:not(.drop) { transform-origin: 200px 200px; animation: ripple-once 2s var(--ease-out) 2 backwards; }
+  .ripples.is-emitting circle:nth-child(2) { animation-delay: 0.17s; }
+  .ripples.is-emitting circle:nth-child(3) { animation-delay: 0.34s; }
+  .ripples.is-emitting circle:nth-child(4) { animation-delay: 0.51s; }
+  .ripples.is-emitting circle:nth-child(5) { animation-delay: 0.68s; }
+  .ripples.is-emitting circle:nth-child(6) { animation-delay: 0.85s; }
+  @keyframes ripple-once {
+    0% { transform: scale(0.25); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}

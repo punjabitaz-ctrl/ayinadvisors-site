@@ -138,6 +138,125 @@
     requestAnimationFrame(loop);
   }
 
+  /* ============================================================
+     Motion components: assemble / ripples / tilt / drift
+     Reduced motion (or no IntersectionObserver): do nothing at all, so
+     every component stays in its static, final state. The hidden "pre"
+     state exists only because this block sets data-assemble="pre".
+     ============================================================ */
+  if (!reduce && "IntersectionObserver" in window) {
+    const ASM = ["asm-scatter", "asm-card", "asm-rise", "asm-fade", "asm-grow"];
+    const pending = new Set();
+
+    /* ---- assemble: [data-assemble] -> "pre" -> "in" (once) ---- */
+    const startAssemble = (root) => {
+      if (root.getAttribute("data-assemble") !== "pre") return; // runs once
+      pending.delete(root);
+      aio.unobserve(root);
+      root.setAttribute("data-assemble", "in");
+      setTimeout(() => root.setAttribute("data-assemble-done", ""), 3400);
+    };
+    const aio = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) startAssemble(e.target); }),
+      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
+    );
+    document.querySelectorAll("[data-assemble]").forEach((root) => {
+      ASM.forEach((cls) =>
+        root.querySelectorAll("." + cls).forEach((el, i) => {
+          el.style.setProperty("--i", i);
+          el.style.setProperty("--dir", i % 2 ? 1 : -1);
+        })
+      );
+      root.setAttribute("data-assemble", "pre");
+      pending.add(root);
+      aio.observe(root);
+    });
+    // Fallback: never leave a section hidden if the observer is slow to fire.
+    const sweep = () => {
+      const vh = window.innerHeight;
+      pending.forEach((root) => {
+        const r = root.getBoundingClientRect();
+        if (r.top < vh * 0.9 && r.bottom > 0) startAssemble(root);
+      });
+    };
+    window.addEventListener("load", sweep);
+    setTimeout(sweep, 400);
+    window.addEventListener("scroll", () => { if (pending.size) sweep(); }, { passive: true });
+
+    /* ---- ripples: emit once for under 5 s after entering view, then rest ---- */
+    const rio = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          rio.unobserve(e.target);
+          e.target.classList.add("is-emitting");
+          setTimeout(() => e.target.classList.remove("is-emitting"), 5000);
+        }),
+      { threshold: 0.05 }
+    );
+    document.querySelectorAll(".ripples").forEach((el) => rio.observe(el));
+
+    /* ---- drift: [data-drift=speed] ripples drift on scroll, with slight rotation ---- */
+    const drifters = [];
+    const dio = new IntersectionObserver((entries) =>
+      entries.forEach((e) => { e.target._drifting = e.isIntersecting; })
+    );
+    document.querySelectorAll("[data-drift]").forEach((el) => { drifters.push(el); dio.observe(el); });
+    if (drifters.length) {
+      let ticking = false;
+      const drift = () => {
+        ticking = false;
+        const y = window.scrollY;
+        drifters.forEach((el) => {
+          if (!el._drifting) return;
+          const s = parseFloat(el.dataset.drift) || 0.12;
+          el.style.transform = `translate3d(0, ${(-y * s).toFixed(1)}px, 0) rotate(${(y * 0.02).toFixed(2)}deg)`;
+        });
+      };
+      window.addEventListener("scroll", () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(drift); }
+      }, { passive: true });
+    }
+
+    /* ---- tilt: [data-tilt] cards follow the pointer; data-tilt="group" tilts its .asm-scatter glyphs ---- */
+    const settled = (el) => {
+      const root = el.closest("[data-assemble]");
+      return !root || root.hasAttribute("data-assemble-done");
+    };
+    const mouseLike = (e) => e.pointerType !== "touch";
+    document.querySelectorAll("[data-tilt]").forEach((el) => {
+      if (el.dataset.tilt === "group") {
+        const items = el.querySelectorAll(".asm-scatter");
+        el.addEventListener("pointermove", (e) => {
+          if (!mouseLike(e) || !settled(el)) return;
+          const b = el.getBoundingClientRect();
+          const x = (e.clientX - b.left) / b.width - 0.5;
+          const y = (e.clientY - b.top) / b.height - 0.5;
+          items.forEach((g, i) => {
+            g.classList.add("is-tilting");
+            g.style.transform = `rotateY(${x * 26}deg) rotateX(${-y * 18}deg) translate3d(${x * (8 + i * 3)}px, ${y * (6 + i * 2)}px, 0)`;
+          });
+        });
+        el.addEventListener("pointerleave", () =>
+          items.forEach((g) => { g.classList.remove("is-tilting"); g.style.transform = ""; })
+        );
+        return;
+      }
+      el.addEventListener("pointermove", (e) => {
+        if (!mouseLike(e) || !settled(el)) return;
+        const b = el.getBoundingClientRect();
+        const x = (e.clientX - b.left) / b.width - 0.5;
+        const y = (e.clientY - b.top) / b.height - 0.5;
+        el.classList.add("is-tilting");
+        el.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 10}deg) translateZ(14px)`;
+      });
+      el.addEventListener("pointerleave", () => {
+        el.classList.remove("is-tilting");
+        el.style.transform = "";
+      });
+    });
+  }
+
   /* ---------- Year ---------- */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 
