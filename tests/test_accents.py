@@ -40,6 +40,26 @@ def test_no_orphan_section_numbers(soups):
         assert not soups[stem].select(".sec-index"), stem
 
 
+TEMPLATE_HEADS = {
+    "Services": "#practices .sec-head .eyebrow, #fit .eyebrow",
+    "ai-solutions": "#what .sec-head .eyebrow, #process .sec-head .eyebrow, #who .eyebrow",
+    "digital-presence": "#what .sec-head .eyebrow, #process .sec-head .eyebrow, #who .eyebrow",
+    "partnerships": "#what .sec-head .eyebrow, #why .eyebrow, #process .sec-head .eyebrow, #who .eyebrow",
+}
+
+
+@pytest.mark.parametrize("stem", sorted(TEMPLATE_HEADS))
+def test_template_page_section_heads_have_the_iris_marker(soups, stem):
+    heads = soups[stem].select(TEMPLATE_HEADS[stem])
+    assert len(heads) == {"Services": 2, "partnerships": 4}.get(stem, 3)
+    for eb in heads:
+        marks = eb.select("svg.iris-mark")
+        assert len(marks) == 1, (stem, eb.get_text(" ", strip=True))
+        m = marks[0]
+        assert m.get("aria-hidden") == "true" and m.get("focusable") == "false" and not m.get("tabindex")
+        assert m.get_text(strip=True) == "" and not m.select("title, desc")
+
+
 def _hooks(el):
     c = el.get("class", [])
     return "asm-card" in c and "tilt3d" in c and el.has_attr("data-tilt") and "reveal" not in c
@@ -89,11 +109,12 @@ def test_ripples_are_decorative_and_stay_off_hero_and_forms(soups):
             assert not host.select("form, canvas, [data-turnstile], .cf-turnstile")
             assert not r.find_parent(["header", "form"])
             assert host.get("id") != "submit"
-    # ripples only where a section heading has room around it: About (approach) and BizCheck (panel), plus Home's two
-    assert placed["Contact"] == 0 and placed["404"] == 0
-    assert placed["Services"] == 0 and placed["Projects"] == 0
+    # ripples only where a section heading has room around it: About (approach) and BizCheck (panel), Home's two,
+    # the hub's practice-cards heading and the "How we work" heading on each pillar page
+    assert placed["Contact"] == 0 and placed["404"] == 0 and placed["Projects"] == 0
     assert placed["About"] == 1 and placed["BizCheck"] == 1 and placed["index"] == 2
-    for stem in ("About", "BizCheck", "index"):
+    assert placed["Services"] == 1 and all(placed[s] == 1 for s in ("partnerships", "ai-solutions", "digital-presence"))
+    for stem in ("About", "BizCheck", "index", "Services", "partnerships", "ai-solutions", "digital-presence"):
         r = soups[stem].select_one("svg.ripples")
         assert "ripples-top" in r.get("class", []), stem
         assert r.find_next("div", class_="bc-head") or r.find_next("div", class_="sec-head")

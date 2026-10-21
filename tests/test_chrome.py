@@ -48,21 +48,45 @@ def test_footer_identical_across_pages_that_have_one(soups):
 
 @pytest.mark.parametrize("selector", ["nav.nav", ".mobile-drawer"])
 def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, selector):
-    """The normaliser above ignores aria-current, so pin it here: one link, value "page", same target in both navs."""
+    """The normaliser above ignores aria-current, so pin it here.
+
+    A page that has its own entry in the navigation has exactly one aria-current="page" link (itself) and no other
+    aria-current link. A pillar page has no entry of its own: it sits under Services, so the navigation carries no
+    "page" link at all and exactly one aria-current="true" link, Services (the section the visitor is in).
+    """
+    pillars = {s for s, p in build.load_site()["pages"].items() if p.get("template") == "pillar"}
+    assert len(pillars) == 3
+    nav_hrefs = [n["href"] for n in build.load_site()["nav"]]
     targets = {}
     for stem, s in soups.items():
-        current = s.select(f"{selector} a[aria-current]")
+        page_links = s.select(f"{selector} a[aria-current='page']")
+        true_links = s.select(f"{selector} a[aria-current='true']")
+        assert len(s.select(f"{selector} a[aria-current]")) == len(page_links) + len(true_links), f"{stem}: unknown aria-current value"
         if stem == "404":
-            assert not current, "404 has no current page"
+            assert not page_links and not true_links, "404 has no current page"
             continue
-        assert len(current) == 1 and current[0]["aria-current"] == "page", f"{stem} {selector}: {current}"
-        targets[stem] = current[0]["href"]
-    # Each page marks a different link, except the three pillar pages, which sit under Services in the nav.
-    pillars = {s for s, p in build.load_site()["pages"].items() if p.get("template") == "pillar"}
-    assert pillars and all(targets[s] == targets["Services"] for s in pillars)
+        if stem in pillars:
+            assert not page_links, f"{stem} {selector}: a pillar page is not itself a navigation entry"
+            assert len(true_links) == 1 and true_links[0]["href"] == "Services.html", f"{stem} {selector}: {true_links}"
+        else:
+            assert f"{stem}.html" in nav_hrefs
+            assert len(page_links) == 1 and not true_links, f"{stem} {selector}: {page_links} {true_links}"
+            assert page_links[0]["href"] == f"{stem}.html"
+        targets[stem] = (page_links or true_links)[0]["href"]
+    # Each page that has its own entry marks a different link.
     rest = {s: t for s, t in targets.items() if s not in pillars}
     assert len(set(rest.values())) == len(rest), "each page must mark a different link"
     other = "nav.nav" if selector == ".mobile-drawer" else ".mobile-drawer"
     for stem, s in soups.items():
         if stem != "404":
             assert s.select_one(f"{other} a[aria-current]")["href"] == targets[stem]
+
+
+def test_the_section_link_keeps_its_active_styling_on_pillar_pages(soups):
+    """aria-current="true" changes what is announced, not what is drawn: the Services link stays .active on every pillar page."""
+    for stem in ("partnerships", "ai-solutions", "digital-presence"):
+        active = soups[stem].select("nav.nav a.nav-link.active")
+        assert len(active) == 1 and active[0]["href"] == "Services.html" and active[0]["aria-current"] == "true", stem
+    for stem in ("Services", "index", "About"):
+        active = soups[stem].select("nav.nav a.nav-link.active")
+        assert len(active) == 1 and active[0]["aria-current"] == "page", stem

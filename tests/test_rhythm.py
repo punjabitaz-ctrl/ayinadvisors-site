@@ -11,11 +11,14 @@ HEROES = ("header.hero", "header.pagehead", "header.bc-hero", "header.contact-he
 BAND_MAP = {
     "index": ["inverse", "alt", "page", "alt", "page", "alt", "accent", "inverse"],
     "About": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
-    "Services": ["inverse", "page", "accent", "inverse"],
-    # Partnerships lists its services on alt, then carries the four market-entry detail blocks on page
-    "partnerships": ["inverse", "alt", "page", "accent", "inverse"],
-    "ai-solutions": ["inverse", "page", "accent", "inverse"],
-    "digital-presence": ["inverse", "page", "accent", "inverse"],
+    # hub: the three practice cards (page), how they fit together (alt), the gold CTA
+    "Services": ["inverse", "page", "alt", "accent", "inverse"],
+    # Partnerships: what we do (alt), the four verbatim detail blocks (page), the moved US proof band (alt),
+    # how we work (page), who it is for (alt), the gold CTA
+    "partnerships": ["inverse", "alt", "page", "alt", "page", "alt", "accent", "inverse"],
+    # AI Solutions and Digital Presence: what we do (page), how we work (alt), who it is for (page), the gold CTA
+    "ai-solutions": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "digital-presence": ["inverse", "page", "alt", "page", "accent", "inverse"],
     "Projects": ["inverse", "page", "accent", "inverse"],
     "BizCheck": ["inverse", "page", "alt", "page", "alt", "inverse"],
     "Contact": ["inverse", "inverse"],

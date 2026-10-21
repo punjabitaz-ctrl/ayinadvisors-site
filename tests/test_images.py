@@ -105,13 +105,14 @@ def test_expand_leaves_other_html_untouched():
     assert build.expand_image_slots(src) == src
 
 
-PLACEMENTS = {"index": "us-night", "About": "skyscrapers", "BizCheck": "lightbulb"}
+# Home keeps its US photograph until Sprint 2 Task 3; the same card also sits in the Partnerships proof band.
+PLACEMENTS = {"index": "us-night", "partnerships": "us-night", "About": "skyscrapers", "BizCheck": "lightbulb"}
 
 
 @pytest.mark.parametrize("stem,slug", PLACEMENTS.items())
 def test_each_placement_renders_one_picture(stem, slug):
-    frag = (ROOT / "templates" / "pages" / f"{stem}.body.frag").read_text(encoding="utf-8")
-    assert f'slug="{slug}"' in frag
+    frag = build.page_parts(stem)[0]   # the body before image slots are expanded (a .frag, or a template with a partial)
+    assert frag.count("<image-slot") == 1 and f'slug="{slug}"' in frag
     html = (ROOT / f"{stem}.html").read_text(encoding="utf-8")
     assert html.count("<picture>") == 1 and f"assets/img/{slug}-1600.webp" in html
     assert "image-slot" not in html

@@ -11,6 +11,9 @@ from a11y_browser.test_motion import FINAL_JS, _centre
 pytestmark = pytest.mark.browser
 
 ROLLOUT = ("About", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects", "BizCheck")
+# Pages in ROLLOUT that carry a ripples graphic: About (approach), BizCheck (panel), the hub (practice cards heading)
+# and each pillar page ("How we work" heading).
+RIPPLE_PAGES = ("About", "Services", "partnerships", "ai-solutions", "digital-presence", "BizCheck")
 
 
 def _page(browser, site_url, stem, width=1280, height=800, theme=None, **kw):
@@ -58,6 +61,9 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
         bad = page.evaluate(FINAL_JS, [True, "main"])
         # two pre-existing static decorations carry a fixed design opacity (the About eye ring, the CTA glow); they never animate
         bad = [b for b in bad if not (b[0] == "opacity" and b[1] in ("ring", "cta-glow"))]
+        # and the outer ring of the fourth "How we work" step marker (the process band on the pillar pages), whose
+        # opacity="0.5" is a fixed design attribute on a static circle inside the .step-iris
+        bad = [b for b in bad if not (b == ["opacity", "circle", "0.5"])]
         assert bad == [], bad
         assert page.evaluate("document.querySelectorAll('.is-emitting, .is-tilting').length") == 0
         assert page.evaluate("document.querySelectorAll('[data-assemble=\"pre\"]').length") == 0
@@ -69,12 +75,17 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
 @pytest.mark.parametrize("width", (1280, 768))
 def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, width, theme):
     """Settled, pointer away: no resting transform on any card or its contents, and the number/title edges align."""
-    checks = {
-        "partnerships": ("article.svc-detail .deliverables li", None, None),
-        "Projects": (".project-card", ".project-index", "h2"),
-        "BizCheck": (".bc-step", ".n", ".h3"),
-    }
-    for stem, (card, a, b) in checks.items():
+    checks = [
+        ("partnerships", "article.svc-detail .deliverables li", None, None),
+        ("Projects", ".project-card", ".project-index", "h2"),
+        ("BizCheck", ".bc-step", ".n", ".h3"),
+        # the hub's practice cards: icon and title share a left edge; the pillar pages' unlinked service cards rest flat
+        ("Services", "a.svc", ".iris-ico", "h3"),
+        ("partnerships", "#what .ps-list li", "h3", "p"),
+        ("ai-solutions", "#what .ps-list li", "h3", "p"),
+        ("digital-presence", "#what .ps-list li", "h3", "p"),
+    ]
+    for stem, card, a, b in checks:
         ctx, page = _page(browser, site_url, stem, width=width, theme=theme, reduced_motion="no-preference")
         try:
             _settle_all(page)
@@ -94,7 +105,9 @@ def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, wid
 
 
 def test_rollout_depth_appears_while_tilting(browser, site_url):
-    for stem, card, inner in (("Projects", ".project-card.navy-card", "h2"), ("BizCheck", ".bc-step", ".h3")):
+    for stem, card, inner in (("Projects", ".project-card.navy-card", "h2"), ("BizCheck", ".bc-step", ".h3"),
+                              ("Services", "a.svc", ".iris-ico"), ("ai-solutions", "#what .ps-list li", "h3"),
+                              ("digital-presence", "#what .ps-list li", "h3")):
         ctx, page = _page(browser, site_url, stem, reduced_motion="no-preference")
         try:
             _settle_all(page)
@@ -141,7 +154,7 @@ def test_rollout_ripple_centre_and_inner_rings_are_clear_of_text(browser, site_u
         ctx, page = _page(browser, site_url, stem, width=width, height=800, reduced_motion="no-preference")
         try:
             if page.locator(".ripples").count() == 0:
-                assert stem not in ("About", "BizCheck"), f"{stem} lost its ripples"
+                assert stem not in RIPPLE_PAGES, f"{stem} lost its ripples"
                 continue
             seen += 1
             _settle_all(page)
@@ -167,7 +180,7 @@ def test_rollout_ripple_centre_and_inner_rings_are_clear_of_text(browser, site_u
             assert hit == [], f"{stem}@{width}: ripple centre/inner rings run under text {hit}"
         finally:
             ctx.close()
-    assert seen == 2   # About and BizCheck; Services and Projects carry no ripples
+    assert seen == len(RIPPLE_PAGES)   # only Projects, of the pages in ROLLOUT, carries none
 
 
 def test_rollout_no_long_running_animation(browser, site_url):
@@ -195,7 +208,7 @@ def test_rollout_no_long_running_animation(browser, site_url):
 @pytest.mark.parametrize("width", (1280, 768, 375))
 def test_ripples_box_stays_inside_its_own_section(browser, site_url, width):
     """The SVG box must not reach into neighbouring sections (axe reads geometry, not the clip)."""
-    for stem in ("About", "BizCheck", "index"):
+    for stem in ("About", "BizCheck", "index", "Services", "partnerships", "ai-solutions", "digital-presence"):
         ctx, page = _page(browser, site_url, stem, width=width, height=800, reduced_motion="no-preference")
         try:
             r = page.evaluate(
@@ -211,6 +224,9 @@ GRIDS = {
     "Projects": ".project-card",
     "BizCheck": ".bc-step",
     "partnerships": "article.svc-detail .deliverables li",
+    "Services": "a.svc",
+    "ai-solutions": "#what .ps-list li",
+    "digital-presence": "#what .ps-list li",
 }
 
 
@@ -293,9 +309,79 @@ def test_home_process_stacked_markers_sit_beside_their_text_at_375(browser, site
         ctx.close()
 
 
+PILLARS = ("partnerships", "ai-solutions", "digital-presence")
+
+
+@pytest.mark.parametrize("stem", PILLARS)
+def test_pillar_process_has_one_marker_row_on_the_line(browser, site_url, stem):
+    """The Home process markers, reused on every pillar page: one row of four, centred on the line, line grows from the first."""
+    ctx, page = _page(browser, site_url, stem, width=1280, reduced_motion="no-preference")
+    try:
+        _settle_all(page)
+        r = page.evaluate(
+            """() => { const mid = (e, a) => { const b = e.getBoundingClientRect(); return a === 'y' ? b.top + b.height / 2 : b.left + b.width / 2; };
+              const root = document.querySelector('#process');
+              const line = root.querySelector('.proc-line'), irises = [...root.querySelectorAll('.proc-step .step-iris')];
+              return {dots: root.querySelectorAll('.proc-step .dot').length, n: irises.length,
+                      dy: irises.map(i => mid(i, 'y') - mid(line, 'y')), dx: line.getBoundingClientRect().left - mid(irises[0], 'x'),
+                      tr: [...root.querySelectorAll('.proc-step, .proc-line .fill')].map(e => getComputedStyle(e).transform).filter(v => v !== 'none')}; }""")
+        assert r["dots"] == 0 and r["n"] == 4
+        assert all(abs(d) <= 2 for d in r["dy"]), r
+        assert abs(r["dx"]) <= 2, r
+        assert r["tr"] == [], f"resting transform on a process step: {r['tr']}"
+    finally:
+        ctx.close()
+
+
+@pytest.mark.parametrize("stem", PILLARS)
+def test_pillar_process_stacked_markers_sit_beside_their_text_at_375(browser, site_url, stem):
+    ctx, page = _page(browser, site_url, stem, width=375, reduced_motion="no-preference")
+    try:
+        _settle_all(page)
+        r = page.evaluate(
+            """() => [...document.querySelectorAll('#process .proc-step')].map(s => { const i = s.querySelector('.step-iris').getBoundingClientRect(), t = s.querySelector('h3').getBoundingClientRect();
+              return [i.right <= t.left + 1, i.top >= s.getBoundingClientRect().top - 1]; })""")
+        assert len(r) == 4 and all(a and b for a, b in r), r
+        assert page.evaluate("getComputedStyle(document.querySelector('#process .proc-line')).display") == "none"
+    finally:
+        ctx.close()
+
+
+@pytest.mark.parametrize("theme", THEMES)
+@pytest.mark.parametrize("stem", ("Services",) + PILLARS)
+def test_template_pages_do_not_scroll_sideways_at_375_and_320(browser, site_url, stem, theme):
+    for width in (375, 320):
+        ctx, page = _page(browser, site_url, stem, width=width, height=800, theme=theme, reduced_motion="no-preference")
+        try:
+            _settle_all(page)
+            sw, cw = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
+            assert sw <= cw, f"{stem}@{width} [{theme}]: {sw} > {cw}"
+        finally:
+            ctx.close()
+
+
+def test_hub_cards_are_whole_card_links_and_pillar_cards_are_not(browser, site_url):
+    ctx, page = _page(browser, site_url, "Services", reduced_motion="no-preference")
+    try:
+        _settle_all(page)
+        cards = page.evaluate("[...document.querySelectorAll('a.svc')].map(a => [a.getAttribute('href'), a.getBoundingClientRect().height > 200])")
+        assert [c[0] for c in cards] == ["partnerships.html", "ai-solutions.html", "digital-presence.html"] and all(c[1] for c in cards)
+        # the three cards of one row have the same height and top edge
+        tops = page.evaluate("[...document.querySelectorAll('a.svc')].map(a => [Math.round(a.getBoundingClientRect().top), Math.round(a.getBoundingClientRect().height)])")
+        assert len({t for t, _ in tops}) == 1 and len({h for _, h in tops}) == 1, tops
+    finally:
+        ctx.close()
+    ctx, page = _page(browser, site_url, "ai-solutions", reduced_motion="no-preference")
+    try:
+        assert page.evaluate("document.querySelectorAll('#what a, #what button').length") == 0
+        assert page.evaluate("getComputedStyle(document.querySelector('#what .ps-list li')).cursor") != "pointer"
+    finally:
+        ctx.close()
+
+
 def test_print_shows_everything_settled(browser, site_url):
     """Content still in its hidden 'pre' state prints visible; rings and tilt do nothing in print."""
-    for stem in ("index", "Services", "partnerships", "Projects", "BizCheck"):
+    for stem in ("index", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects", "BizCheck"):
         ctx, page = _page(browser, site_url, stem, width=1280, reduced_motion="no-preference")
         try:
             page.wait_for_timeout(600)       # below-the-fold sections are still in the hidden state here

@@ -164,10 +164,15 @@ def test_navigation_landmarks_are_labelled_and_the_toggle_is_wired(stem):
 
 @pytest.mark.parametrize("stem", [s for s in PAGES if s != "404"])
 def test_current_page_link_is_exposed_to_assistive_tech(stem):
+    """aria-current="page" only on the link to this very page; a page without its own nav entry (a pillar page)
+    marks its section link (Services) aria-current="true" instead. Both navigations agree."""
     soup = BeautifulSoup((ROOT / f"{stem}.html").read_text(encoding="utf-8"), "html.parser")
     active = soup.select("nav.nav a.nav-link.active")
     assert len(active) == 1, f"{stem}: expected one active nav link, found {len(active)}"
-    assert active[0].get("aria-current") == "page"
+    own = active[0]["href"] == f"{stem}.html"
+    want = "page" if own else "true"
+    assert active[0].get("aria-current") == want
     assert len(soup.select("nav.nav a[aria-current]")) == 1
+    assert len(soup.select("nav.nav a[aria-current='page']")) == (1 if own else 0)
     drawer = soup.select(".mobile-drawer a[aria-current]")
-    assert len(drawer) == 1 and drawer[0]["aria-current"] == "page" and drawer[0]["href"] == active[0]["href"]
+    assert len(drawer) == 1 and drawer[0]["aria-current"] == want and drawer[0]["href"] == active[0]["href"]
