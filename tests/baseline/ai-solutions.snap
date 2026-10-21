@@ -164,7 +164,7 @@
     <ul class="ps-list ps-3 asm-stage">
       <li class="asm-card tilt3d" data-tilt>
         <h3 class="h3">Custom Applications</h3>
-        <p>Software built around how your business works, with AI where it helps and plain code where it does not.</p>
+        <p>Applications built around how your business works.</p>
       </li>
       <li class="asm-card tilt3d" data-tilt>
         <h3 class="h3">Workflow Automation</h3>
@@ -188,7 +188,7 @@
         <span class="eyebrow asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How we work</span>
         <h2 class="h2 asm-fade">From first call to handover.</h2>
       </div>
-      <p class="muted asm-fade" style="max-width:34ch">A clear, sequenced engagement. No open-ended retainers, no theory without traction.</p>
+      <p class="muted asm-fade" style="max-width:34ch">A clear, sequenced engagement. No theory without traction.</p>
     </div>
 
     <div class="proc-wrap asm-stage">
@@ -196,8 +196,8 @@
       <div class="proc-grid">
         <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/></svg><div class="pn">Step 01</div><h3>Understand</h3><p>We start with your goals, your constraints and what you have already tried.</p></div>
         <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/></svg><div class="pn">Step 02</div><h3>Plan</h3><p>We agree what will be done, in what order, and what a good result looks like.</p></div>
-        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Deliver</h3><p>We do the work, led by senior people, and keep you informed as it happens.</p></div>
-        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Hand over</h3><p>Success is your team running it without us. We transfer what we built and step back.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/></svg><div class="pn">Step 03</div><h3>Deliver</h3><p>We do the work and keep you informed as it happens.</p></div>
+        <div class="proc-step asm-rise"><svg class="step-iris" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><circle cx="17" cy="17" r="3" fill="currentColor" stroke="none"/><circle cx="17" cy="17" r="8"/><circle cx="17" cy="17" r="13"/><circle cx="17" cy="17" r="16.4" opacity=".5"/></svg><div class="pn">Step 04</div><h3>Hand over</h3><p>We document what we built and make sure your team can run it.</p></div>
       </div>
     </div>
   </div>
@@ -230,7 +230,7 @@
     <div class="cta-inner">
       <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with the problem</span>
       <h2 class="h2 reveal" data-d="1">Tell us what is slowing you down.</h2>
-      <p class="lead reveal" data-d="2">A short, candid conversation about the work you want off your plate. We will tell you what is worth building and what is not.</p>
+      <p class="lead reveal" data-d="2">A short, candid conversation about the work you want off your plate.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>

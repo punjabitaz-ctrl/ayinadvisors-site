@@ -62,8 +62,13 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
         # two pre-existing static decorations carry a fixed design opacity (the About eye ring, the CTA glow); they never animate
         bad = [b for b in bad if not (b[0] == "opacity" and b[1] in ("ring", "cta-glow"))]
         # and the outer ring of the fourth "How we work" step marker (the process band on the pillar pages), whose
-        # opacity="0.5" is a fixed design attribute on a static circle inside the .step-iris
-        bad = [b for b in bad if not (b == ["opacity", "circle", "0.5"])]
+        # opacity="0.5" is a fixed design attribute on a static circle: exempt only those rings, one entry each
+        rings = page.evaluate(
+            """() => [...document.querySelectorAll('main .step-iris')].filter(s => { const c = s.querySelectorAll('circle'); const last = c[c.length - 1];
+              return last && last.getAttribute('opacity') === '.5' && getComputedStyle(last).opacity === '0.5'; }).length""")
+        for _ in range(rings):
+            if ["opacity", "circle", "0.5"] in bad:
+                bad.remove(["opacity", "circle", "0.5"])
         assert bad == [], bad
         assert page.evaluate("document.querySelectorAll('.is-emitting, .is-tilting').length") == 0
         assert page.evaluate("document.querySelectorAll('[data-assemble=\"pre\"]').length") == 0
@@ -358,6 +363,28 @@ def test_template_pages_do_not_scroll_sideways_at_375_and_320(browser, site_url,
             assert sw <= cw, f"{stem}@{width} [{theme}]: {sw} > {cw}"
         finally:
             ctx.close()
+
+
+def test_hub_card_lists_and_links_line_up_across_the_row_at_1280(browser, site_url):
+    """Icon, title block, buyer line, service list and Explore link share their top edges across the three cards,
+    however long a title runs (the AI card's title wraps to two lines)."""
+    ctx, page = _page(browser, site_url, "Services", width=1280, reduced_motion="no-preference")
+    try:
+        _settle_all(page)
+        tops = page.evaluate(
+            """() => ['.iris-ico', 'h3', '.svc-buyer', '.svc-names', '.svc-arrow'].map(sel =>
+              [...document.querySelectorAll('a.svc')].map(a => a.querySelector(sel).getBoundingClientRect().top))""")
+        for sel, row in zip(("icon", "title", "buyer line", "list", "link"), tops):
+            assert max(row) - min(row) <= 2, f"{sel} top edges differ across the cards: {row}"
+        # the list items keep one pitch in every card (a short list must not stretch to fill the row)
+        pitch = page.evaluate(
+            """() => [...document.querySelectorAll('a.svc .svc-names')].map(ul => { const t = [...ul.children].map(li => li.getBoundingClientRect().top);
+              return t.slice(1).map((v, i) => v - t[i]); }).flat()""")
+        assert max(pitch) - min(pitch) <= 2, pitch
+        bottoms = page.evaluate("[...document.querySelectorAll('a.svc')].map(a => a.getBoundingClientRect().bottom)")
+        assert max(bottoms) - min(bottoms) <= 2, bottoms
+    finally:
+        ctx.close()
 
 
 def test_hub_cards_are_whole_card_links_and_pillar_cards_are_not(browser, site_url):

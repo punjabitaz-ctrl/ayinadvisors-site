@@ -44,7 +44,7 @@
   .svc:hover h3 { color: var(--surface); }
   .svc-buyer { color: var(--ink-muted); max-width: 42ch; transition: color 0.5s var(--ease); }
   .svc:hover .svc-buyer { color: var(--surface); }
-  .svc-names { list-style: none; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; transition: border-color 0.5s var(--ease); }
+  .svc-names { list-style: none; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; align-content: start; gap: 8px; transition: border-color 0.5s var(--ease); }
   .svc-names li { position: relative; padding-left: 20px; font-size: 0.98rem; line-height: 1.5; color: var(--ink); transition: color 0.5s var(--ease); }
   .svc-names li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 10px; height: 1px; background: var(--accent-fill); }
   .svc:hover .svc-names { border-color: var(--line-gold); }
@@ -52,6 +52,13 @@
   .svc-arrow { margin-top: auto; padding-top: 30px; display: inline-flex; align-items: center; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); transition: color 0.5s var(--ease); }
   .svc:hover .svc-arrow { color: var(--accent-fill-hover); }
   .svc-arrow > span { margin-left: 0.7em; }
+  /* The card is a five-row subgrid of the card grid (icon, title, line, names, link), so the title blocks, the lists and the
+     links line up across the row whatever the title length; browsers without subgrid keep the stacked flex layout. */
+  @supports (grid-template-rows: subgrid) {
+    .svc-grid { grid-template-rows: repeat(5, auto); }
+    .svc { display: grid; grid-template-rows: subgrid; grid-row: span 5; }
+    .svc-arrow { align-self: end; justify-self: start; }
+  }
 
   /* ---------- HOW THE PRACTICES FIT TOGETHER ---------- */
   .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }

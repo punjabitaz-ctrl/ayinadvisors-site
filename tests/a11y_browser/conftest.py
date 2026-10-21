@@ -44,6 +44,11 @@ class NeedsReview(NamedTuple):
 
 
 class _QuietHandler(http.server.SimpleHTTPRequestHandler):
+    # Keep-alive: every response from SimpleHTTPRequestHandler (files, redirects, errors) carries a Content-Length, so
+    # the browser reuses its connections instead of opening a socket per asset. Opening one per request exhausted
+    # Windows ephemeral ports in long runs (net::ERR_NO_BUFFER_SPACE).
+    protocol_version = "HTTP/1.1"
+
     def log_message(self, *args):  # silence request logging
         pass
 
@@ -110,7 +115,13 @@ def assert_theme(page, theme):
 
 def open_page(ctx, site_url, stem):
     page = ctx.new_page()
-    page.goto(f"{site_url}/{stem}.html", wait_until="load")
+    try:
+        page.goto(f"{site_url}/{stem}.html", wait_until="load")
+    except Exception as e:  # a transient Windows socket-buffer error on the local server: one retry, nothing else
+        if "ERR_NO_BUFFER_SPACE" not in str(e):
+            raise
+        page.wait_for_timeout(1500)
+        page.goto(f"{site_url}/{stem}.html", wait_until="load")
     if getattr(ctx, "_ayin_theme", None):
         assert_theme(page, ctx._ayin_theme)
     return page

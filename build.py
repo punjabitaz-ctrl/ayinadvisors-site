@@ -90,6 +90,21 @@ def template_kind(stem: str) -> str | None:
     return kind
 
 
+def process_for(pillar: dict | None, services: dict | None = None) -> dict:
+    """The "How we work" copy for a pillar: the shared process, with the pillar's optional overrides applied.
+
+    A pillar may carry "process": {"intro": ..., "final": {"name", "text"}}; "final" replaces the last step.
+    """
+    base = (services or load_services())["process"]
+    out = {**base, "steps": [dict(s) for s in base["steps"]]}
+    over = (pillar or {}).get("process") or {}
+    if "intro" in over:
+        out["intro"] = over["intro"]
+    if "final" in over:
+        out["steps"][-1] = dict(over["final"])
+    return out
+
+
 def page_parts(stem: str) -> tuple[str, str, str]:
     """(body, head_extra, body_scripts) for a page, before image slots are expanded.
 
@@ -112,6 +127,7 @@ def page_parts(stem: str) -> tuple[str, str, str]:
         ctx["pillar"] = next((p for p in pillars if p["slug"] == page.get("pillar")), None)
         if ctx["pillar"] is None:
             raise KeyError(f"{stem}: no pillar {page.get('pillar')!r} in content/services.json")
+        ctx["process"] = process_for(ctx["pillar"], services)
     return (
         env.get_template(f"{kind}.body.j2").render(**ctx),
         env.get_template("_head_template_page.j2").render(**ctx),

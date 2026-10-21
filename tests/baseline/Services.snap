@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Services — AYiN Advisors</title>
-<meta name="description" content="AYiN Advisors has three practices: B2B partnerships for international firms entering the US, AI solutions development, and digital presence, covering websites, digital marketing, and community and content." />
+<meta name="description" content="AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence." />
 <link rel="canonical" href="https://ayinadvisors.com/Services.html" />
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="assets/theme.css">
@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Services — AYiN Advisors" />
-<meta property="og:description" content="AYiN Advisors has three practices: B2B partnerships for international firms entering the US, AI solutions development, and digital presence, covering websites, digital marketing, and community and content." />
+<meta property="og:description" content="AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence." />
 <meta property="og:url" content="https://ayinadvisors.com/Services.html" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Services — AYiN Advisors" />
-<meta name="twitter:description" content="AYiN Advisors has three practices: B2B partnerships for international firms entering the US, AI solutions development, and digital presence, covering websites, digital marketing, and community and content." />
+<meta name="twitter:description" content="AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence." />
 <meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,7 +52,7 @@
   .svc:hover h3 { color: var(--surface); }
   .svc-buyer { color: var(--ink-muted); max-width: 42ch; transition: color 0.5s var(--ease); }
   .svc:hover .svc-buyer { color: var(--surface); }
-  .svc-names { list-style: none; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; transition: border-color 0.5s var(--ease); }
+  .svc-names { list-style: none; margin: 24px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); display: grid; align-content: start; gap: 8px; transition: border-color 0.5s var(--ease); }
   .svc-names li { position: relative; padding-left: 20px; font-size: 0.98rem; line-height: 1.5; color: var(--ink); transition: color 0.5s var(--ease); }
   .svc-names li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 10px; height: 1px; background: var(--accent-fill); }
   .svc:hover .svc-names { border-color: var(--line-gold); }
@@ -60,6 +60,13 @@
   .svc-arrow { margin-top: auto; padding-top: 30px; display: inline-flex; align-items: center; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); transition: color 0.5s var(--ease); }
   .svc:hover .svc-arrow { color: var(--accent-fill-hover); }
   .svc-arrow > span { margin-left: 0.7em; }
+  /* The card is a five-row subgrid of the card grid (icon, title, line, names, link), so the title blocks, the lists and the
+     links line up across the row whatever the title length; browsers without subgrid keep the stacked flex layout. */
+  @supports (grid-template-rows: subgrid) {
+    .svc-grid { grid-template-rows: repeat(5, auto); }
+    .svc { display: grid; grid-template-rows: subgrid; grid-row: span 5; }
+    .svc-arrow { align-self: end; justify-self: start; }
+  }
 
   /* ---------- HOW THE PRACTICES FIT TOGETHER ---------- */
   .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
@@ -132,9 +139,9 @@
     <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
   </svg>
   <div class="wrap">
-    <span class="eyebrow on-navy reveal">Our Practice</span>
+    <span class="eyebrow on-navy reveal">Our Practices</span>
     <h1 class="display reveal" data-d="1">Three practices. One firm.</h1>
-    <p class="lead reveal" data-d="2">Business Solutions for a Digital World. Partnerships for firms entering the US, AI built around real problems, and a digital presence that works.</p>
+    <p class="lead reveal" data-d="2">Business Solutions for a Digital World. B2B partnerships for firms entering the US, AI solutions development, and digital presence.</p>
   </div>
 </header>
 
@@ -155,7 +162,7 @@
       <a class="svc asm-card tilt3d" data-tilt href="partnerships.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="14" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="14" cy="27" r="3" stroke="none"/><circle cx="40" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="40" cy="27" r="3" stroke="none"/><path d="M24 27h6" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">B2B Partnerships</h3>
-        <p class="svc-buyer">For international firms entering the US. We find the partners and build the channel that gets you to market.</p>
+        <p class="svc-buyer">For international firms entering the US. Channel strategy and partner introductions for companies new to the American market.</p>
         <ul class="svc-names">
           <li>US Market Entry Research</li>
           <li>Channel Strategy &amp; Enablement</li>
@@ -167,7 +174,7 @@
       <a class="svc asm-card tilt3d" data-tilt href="ai-solutions.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="22" pathLength="200"/><circle cx="27" cy="27" r="12" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/><path d="M27 2v8M27 44v8M2 27h8M44 27h8" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">AI Solutions Development</h3>
-        <p class="svc-buyer">For teams that need AI built. We turn a business problem into a working application, an automated workflow or a leaner operation.</p>
+        <p class="svc-buyer">For teams that need AI built. Custom applications, workflow automation and operational efficiency.</p>
         <ul class="svc-names">
           <li>Custom Applications</li>
           <li>Workflow Automation</li>
@@ -178,7 +185,7 @@
       <a class="svc asm-card tilt3d" data-tilt href="digital-presence.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle class="fillgold" cx="16" cy="27" r="3.6" stroke="none"/><circle cx="16" cy="27" r="9" pathLength="200"/><path d="M30 14a19 19 0 0 1 0 26M38 9a27 27 0 0 1 0 36M46 5a35 35 0 0 1 0 44" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">Digital Presence</h3>
-        <p class="svc-buyer">For businesses building their presence online. A clear website, marketing that reaches the right people, and content that keeps them engaged.</p>
+        <p class="svc-buyer">For businesses building their presence online. Websites, digital marketing, and community and content.</p>
         <ul class="svc-names">
           <li>Websites</li>
           <li>Digital Marketing</li>
@@ -200,8 +207,8 @@
       </div>
       <div class="fit-copy reveal" data-d="2">
         <p class="lead">Each practice stands on its own. You can start with one and add another later.</p>
-        <p>They share the same way of working: senior attention, plain advice and clear steps from the first call to the handover.</p>
-        <p>Some problems cross the lines. A firm entering the US may also need a website that speaks to American buyers. A team building an application may need clear content to explain it. When that happens, the practices work from one brief.</p>
+        <p>They share the same way of working: plain advice and clear steps from the first call to the handover.</p>
+        <p>Some problems cross the lines. A firm entering the US may also need a website that speaks to American buyers. A team building an application may need clear content to explain it. Tell us about both and we will say how to sequence them.</p>
       </div>
     </div>
   </div>

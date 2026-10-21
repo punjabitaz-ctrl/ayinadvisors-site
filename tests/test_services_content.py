@@ -144,7 +144,7 @@ def test_no_invented_digits_in_new_pillar_copy():
     pillars = load()["pillars"]
     for p in pillars[1:]:
         assert not re.search(r"\d", _words(p)), f"{p['slug']}: digit in services.json copy"
-    assert not re.search(r"\d", _shared_copy()), "digit in the hub or process copy"
+    assert not re.search(r"\d", _shared_copy().replace("B2B", "")), "digit in the hub or process copy"  # B2B is a name
     pages = build.render_all()
     for stem in ("Services", "ai-solutions", "digital-presence"):
         text = _main_text(pages[stem])

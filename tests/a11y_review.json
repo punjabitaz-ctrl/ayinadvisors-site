@@ -2039,6 +2039,22 @@
       "reason": "The caption of the fourth proof-band statistic (`.why-stat:nth-child(4) > .l` on the Partnerships page, in the stacked layout at 320 and 768px): axe reports the label as overlapped by another element (bgOverlap) and so cannot read its background, which is the plain tile colour of `.why-stat` with no image, gradient or graphic behind it. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgOverlap"
+    },
+    {
+      "page": "ai-solutions",
+      "rule": "color-contrast",
+      "selector": "#what .ps-list li:nth-child(3) > p",
+      "reason": "The description in the third service card (`#what .ps-list li:nth-child(3) > p` on the AI Solutions page, in the 768px layout): axe reports the paragraph as overlapped by another element (bgOverlap) and so cannot read its background, which is the plain page surface of the card with no image, gradient or graphic behind it. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgOverlap"
+    },
+    {
+      "page": "digital-presence",
+      "rule": "color-contrast",
+      "selector": "#what .ps-list li:nth-child(3) > p",
+      "reason": "The description in the third service card (`#what .ps-list li:nth-child(3) > p` on the Digital Presence page, in the 768px layout): axe reports the paragraph as overlapped by another element (bgOverlap) and so cannot read its background, which is the plain page surface of the card with no image, gradient or graphic behind it. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgOverlap"
     }
   ]
 }

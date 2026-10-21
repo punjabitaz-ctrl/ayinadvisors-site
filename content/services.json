@@ -1,8 +1,8 @@
 {
   "hub": {
-    "eyebrow": "Our Practice",
+    "eyebrow": "Our Practices",
     "headline": "Three practices. One firm.",
-    "lead": "Business Solutions for a Digital World. Partnerships for firms entering the US, AI built around real problems, and a digital presence that works.",
+    "lead": "Business Solutions for a Digital World. B2B partnerships for firms entering the US, AI solutions development, and digital presence.",
     "choose": {
       "eyebrow": "What we do",
       "heading": "Choose the practice that fits your problem.",
@@ -13,8 +13,8 @@
       "heading": "Separate practices, one way of working.",
       "paragraphs": [
         "Each practice stands on its own. You can start with one and add another later.",
-        "They share the same way of working: senior attention, plain advice and clear steps from the first call to the handover.",
-        "Some problems cross the lines. A firm entering the US may also need a website that speaks to American buyers. A team building an application may need clear content to explain it. When that happens, the practices work from one brief."
+        "They share the same way of working: plain advice and clear steps from the first call to the handover.",
+        "Some problems cross the lines. A firm entering the US may also need a website that speaks to American buyers. A team building an application may need clear content to explain it. Tell us about both and we will say how to sequence them."
       ]
     },
     "cta": {
@@ -26,7 +26,7 @@
   "process": {
     "eyebrow": "How we work",
     "heading": "From first call to handover.",
-    "intro": "A clear, sequenced engagement. No open-ended retainers, no theory without traction.",
+    "intro": "A clear, sequenced engagement. No theory without traction.",
     "steps": [
       {
         "name": "Understand",
@@ -38,11 +38,11 @@
       },
       {
         "name": "Deliver",
-        "text": "We do the work, led by senior people, and keep you informed as it happens."
+        "text": "We do the work and keep you informed as it happens."
       },
       {
         "name": "Hand over",
-        "text": "Success is your team running it without us. We transfer what we built and step back."
+        "text": "We hand over what we built and agree what happens next."
       }
     ]
   },
@@ -55,13 +55,13 @@
       "buyer": "International firms entering the US",
       "summary": "Market entry research, channel strategy and enablement, partner introductions and regional expansion for international companies entering the United States.",
       "icon": "linked",
-      "hub_line": "For international firms entering the US. We find the partners and build the channel that gets you to market.",
+      "hub_line": "For international firms entering the US. Channel strategy and partner introductions for companies new to the American market.",
       "lead": "We guide international companies into the United States through disciplined channel activity, turning ambition into distribution, partners and revenue.",
       "do_heading": "A focused practice for crossing the border.",
       "intro": "Four disciplines, one objective: a commercial foothold in North America built on real channel relationships.",
       "who": {
         "heading": "Companies ready to sell in the United States.",
-        "intro": "Our work suits international firms with a product that already sells at home and a decision to make about North America.",
+        "intro": "Our work suits international firms with a product and a decision to make about North America.",
         "items": [
           {
             "title": "Firms deciding whether to enter",
@@ -80,7 +80,7 @@
       "cta": {
         "eyebrow": "Start with clarity",
         "heading": "Not sure where to begin?",
-        "text": "Most engagements start with a market read. Book a consultation and we'll tell you, candidly, where the opening is."
+        "text": "Most engagements start with a market read. Book a consultation and we will tell you, candidly, where the opening is."
       },
       "services": [
         {
@@ -107,7 +107,14 @@
           "summary": "Extending the playbook north and south — adapting channel models for Canada and Latin America once the US engine is running.",
           "status": "planned"
         }
-      ]
+      ],
+      "process": {
+        "intro": "A clear, sequenced engagement. No open-ended retainers, no theory without traction.",
+        "final": {
+          "name": "Hand over",
+          "text": "Success is your team running it without us. We transfer what we built and step back."
+        }
+      }
     },
     {
       "slug": "ai-solutions",
@@ -117,7 +124,7 @@
       "buyer": "Teams that need AI built",
       "summary": "We solve business problems with AI: custom applications, workflow automation and operational efficiency.",
       "icon": "focus",
-      "hub_line": "For teams that need AI built. We turn a business problem into a working application, an automated workflow or a leaner operation.",
+      "hub_line": "For teams that need AI built. Custom applications, workflow automation and operational efficiency.",
       "lead": "We solve business problems with AI: custom applications, workflow automation and operational efficiency.",
       "do_heading": "Three ways we put AI to work.",
       "intro": "We start with the problem, not the technology. Sometimes the answer is AI. Sometimes a simpler fix is better. We tell you which.",
@@ -142,13 +149,13 @@
       "cta": {
         "eyebrow": "Start with the problem",
         "heading": "Tell us what is slowing you down.",
-        "text": "A short, candid conversation about the work you want off your plate. We will tell you what is worth building and what is not."
+        "text": "A short, candid conversation about the work you want off your plate."
       },
       "services": [
         {
           "slug": "custom-applications",
           "name": "Custom Applications",
-          "summary": "Software built around how your business works, with AI where it helps and plain code where it does not.",
+          "summary": "Applications built around how your business works.",
           "status": "planned"
         },
         {
@@ -163,7 +170,13 @@
           "summary": "A close look at where time and effort are lost in your operations, and practical fixes for the biggest gaps.",
           "status": "planned"
         }
-      ]
+      ],
+      "process": {
+        "final": {
+          "name": "Hand over",
+          "text": "We document what we built and make sure your team can run it."
+        }
+      }
     },
     {
       "slug": "digital-presence",
@@ -173,17 +186,17 @@
       "buyer": "Businesses building their presence online",
       "summary": "Websites, digital marketing, and community and content, so your business is seen, understood and connected online.",
       "icon": "arcs",
-      "hub_line": "For businesses building their presence online. A clear website, marketing that reaches the right people, and content that keeps them engaged.",
+      "hub_line": "For businesses building their presence online. Websites, digital marketing, and community and content.",
       "lead": "Websites, digital marketing, and community and content, so your business is seen, understood and connected online.",
-      "do_heading": "Three parts of a strong presence.",
-      "intro": "A website says who you are. Marketing puts you in front of the right people. Content and community keep them engaged.",
+      "do_heading": "Three parts of a digital presence.",
+      "intro": "Websites give your brand a presence. Digital marketing takes it online. Community and content connect it with your audience.",
       "who": {
-        "heading": "Businesses that want to be found and trusted.",
-        "intro": "Whether you are starting out or your website no longer matches your business, we meet you where you are.",
+        "heading": "Businesses building their presence online.",
+        "intro": "Whether you are starting out or already online, we begin with what your business needs.",
         "items": [
           {
-            "title": "Businesses without a site that works",
-            "text": "You need a clear, fast website that says who you are and what you do."
+            "title": "Businesses without a website",
+            "text": "You need a website that says who you are and what you do."
           },
           {
             "title": "Businesses with a site and no audience",
@@ -191,7 +204,7 @@
           },
           {
             "title": "Businesses with an audience to look after",
-            "text": "You want useful content and an active community that keep people engaged over time."
+            "text": "You want content and community work that connects your brand with its audience."
           }
         ]
       },
@@ -204,19 +217,19 @@
         {
           "slug": "websites",
           "name": "Websites",
-          "summary": "Brand presence: a clear, fast, accessible website that says who you are and what you do.",
+          "summary": "Brand presence: a website that says who you are and what you do.",
           "status": "planned"
         },
         {
           "slug": "digital-marketing",
           "name": "Digital Marketing",
-          "summary": "Brand online: reaching the right people through search, email and social, and learning from what works.",
+          "summary": "Brand online: digital marketing that puts your brand in front of the right people.",
           "status": "planned"
         },
         {
           "slug": "community-content",
           "name": "Community & Content",
-          "summary": "Brand connect: useful content and an active community that keep your audience engaged with you over time.",
+          "summary": "Brand connect: content and community that connect your brand with its audience.",
           "status": "planned"
         }
       ]

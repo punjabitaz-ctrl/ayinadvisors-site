@@ -128,9 +128,9 @@ def test_the_three_pillar_ctas_differ(pillars):
 
 
 @pytest.mark.parametrize("stem", PILLAR_STEMS)
-def test_how_we_work_is_the_generic_process(soups, stem):
+def test_how_we_work_is_the_generic_process(soups, pillars, stem):
     proc = soups[stem].select_one("#process")
-    data = build.load_services()["process"]
+    data = build.process_for(next(x for x in pillars if x["stem"] == stem))
     assert "assemble" in proc["class"] and proc.has_attr("data-assemble")
     assert _text(proc.select_one(".eyebrow")) == data["eyebrow"] == "How we work"
     steps = proc.select(".proc-step")
@@ -168,7 +168,7 @@ def test_hub_headings(soups, pillars):
 def test_ai_and_digital_heading_outline(soups, pillars, stem):
     soup = soups[stem]
     p = next(x for x in pillars if x["stem"] == stem)
-    proc = build.load_services()["process"]
+    proc = build.process_for(p)
     got = [(h.name, _text(h)) for h in soup.select("main h2, main h3")]
     want = [("h2", p["do_heading"])] + [("h3", s["name"]) for s in p["services"]] \
         + [("h2", proc["heading"])] + [("h3", s["name"]) for s in proc["steps"]] \
@@ -178,7 +178,7 @@ def test_ai_and_digital_heading_outline(soups, pillars, stem):
 
 def test_partnerships_heading_outline(soups, pillars):
     p = pillars[0]
-    proc = build.load_services()["process"]
+    proc = build.process_for(p)
     got = [(h.name, _text(h)) for h in soups["partnerships"].select("main h2, main h3")]
     names = [s["name"] for s in p["services"]]
     assert got[0] == ("h2", p["do_heading"]) and [g for g in got[1:5]] == [("h3", n) for n in names]
@@ -279,3 +279,50 @@ def test_partnerships_head_keeps_the_detail_and_proof_css():
     css = _head_css("partnerships")
     for needed in ("svc-detail", "deliverables", "sd-num", "why-grid", "globe-stage", "proc-grid", "principle"):
         assert needed in css
+
+
+# ---------------------------------------------------------------- copy keeps to what the owner said or the site already says
+
+def test_retainer_and_step_back_promises_are_only_on_partnerships(soups):
+    """"No open-ended retainers" and the hand-over-and-step-back line come from the market-entry copy; AI and Digital work can be ongoing."""
+    for stem in ("ai-solutions", "digital-presence", "Services"):
+        text = _text(soups[stem].select_one("main")).lower()
+        assert "retainer" not in text and "step back" not in text and "without us" not in text, stem
+    part = _text(soups["partnerships"].select_one("#process")).lower()
+    assert "no open-ended retainers" in part and "step back" in part
+    ai = _text(soups["ai-solutions"].select_one("#process"))
+    assert "We document what we built and make sure your team can run it." in ai
+    dig = _text(soups["digital-presence"].select_one("#process"))
+    assert "We hand over what we built and agree what happens next." in dig
+
+
+UNPROMISED = (
+    "led by senior", "senior attention", "senior-led", "one brief", "search, email", "learning from what works",
+    "fast, accessible", "clear, fast", "plain code", "already sells at home", "gets you to market", "leaner operation",
+    "presence that works", "meet you where you are", "we'll", "what is worth building",
+)
+
+
+@pytest.mark.parametrize("stem", ("Services",) + PILLAR_STEMS)
+def test_no_promise_the_owner_never_gave(soups, pages, stem):
+    text = _text(soups[stem].select_one("main")).lower() + " " + pages[stem].lower().split("<title>")[1].split("</title>")[0]
+    for phrase in UNPROMISED:
+        assert phrase not in text, f"{stem}: {phrase!r}"
+
+
+def test_ai_page_states_its_stance_once(soups):
+    text = _text(soups["ai-solutions"].select_one("main"))
+    assert text.count("We tell you which") == 1
+    assert "worth building" not in text
+
+
+def test_hub_eyebrow_is_plural_and_the_fit_band_defers_sequencing(soups):
+    assert _text(soups["Services"].select_one("header.pagehead .eyebrow")) == "Our Practices"
+    assert "Tell us about both and we will say how to sequence them." in _text(soups["Services"].select_one("#fit"))
+
+
+def test_meta_descriptions_are_search_snippet_length():
+    pages = build.load_site()["pages"]
+    for stem in ("Services",) + PILLAR_STEMS:
+        n = len(pages[stem]["description"])
+        assert 120 <= n <= 160, f"{stem}: description is {n} characters"

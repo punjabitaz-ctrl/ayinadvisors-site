@@ -138,7 +138,7 @@
     },
     "Services": {
       "title": "Services — AYiN Advisors",
-      "description": "AYiN Advisors has three practices: B2B partnerships for international firms entering the US, AI solutions development, and digital presence, covering websites, digital marketing, and community and content.",
+      "description": "AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence.",
       "canonical": "https://ayinadvisors.com/Services.html",
       "active": "Services",
       "cta": {
@@ -154,7 +154,7 @@
     },
     "partnerships": {
       "title": "Partnerships — AYiN Advisors",
-      "description": "B2B partnerships and market entry for international companies entering the US: market entry research, channel strategy and enablement, partner introductions and regional expansion.",
+      "description": "B2B partnerships and market entry for international firms entering the US: research, channel strategy, partner introductions and regional expansion.",
       "canonical": "https://ayinadvisors.com/partnerships.html",
       "active": "Services",
       "cta": {
@@ -188,7 +188,7 @@
     },
     "digital-presence": {
       "title": "Digital Presence — AYiN Advisors",
-      "description": "Digital presence for your business: websites, digital marketing, and community and content.",
+      "description": "Digital presence for your business: websites for brand presence, digital marketing for brand online, and community and content for brand connect.",
       "canonical": "https://ayinadvisors.com/digital-presence.html",
       "active": "Services",
       "cta": {
