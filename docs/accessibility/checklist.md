@@ -32,6 +32,17 @@ an item pass that was not actually exercised.
 - [ ] Forced-colours mode: pages stay legible, controls keep a visible boundary, icons built from backgrounds (such as the menu bars) are still drawn.
 - [ ] Forced-colours mode as a real operating-system setting (Windows contrast themes), not only browser emulation.
 
+## 3b. Dark mode and the theme switch
+
+- [ ] The full gate (axe, pixel contrast, boundary contrast, behaviour) passes in both themes (automated).
+- [ ] With a stored choice and an opposite system theme, the page is in the chosen theme from the first paint, with no flash (automated).
+- [ ] The switch is named "Dark mode", reports `aria-pressed`, and the top bar and mobile menu copies stay in sync (automated). With a real screen reader, the name and the on/off state are announced in both places.
+- [ ] Blocked storage: the switch still works for the visit and nothing breaks (automated).
+- [ ] Real phone and tablet in dark mode: no glare or banding, nothing too faint, photographs look right.
+- [ ] Forced colours (Windows contrast themes): the switch has a visible boundary and its on/off state is clear without colour.
+- [ ] Print or Save as PDF from a dark browser prints the light look without the switch (automated in emulation).
+- [ ] Turnstile on the live Contact and BizCheck pages renders in the expected theme in both themes and a submission succeeds. A toggle after the widget has rendered applies on the next render or page load.
+
 ## 4. Screen reader spot check
 
 - [ ] With a real screen reader (for example NVDA with Firefox or Chrome, VoiceOver with Safari): landmarks are announced (banner, two labelled navigations, main, footer), headings form a sensible outline, the menu button announces its expanded or collapsed state, and the form error is read aloud.

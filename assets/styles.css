@@ -454,6 +454,13 @@ html[data-theme] .theme-toggle {
 .theme-toggle[aria-pressed="true"] .ico-sun { display: inline; }
 .nav-links { margin-left: auto; }
 .nav .theme-toggle { margin-left: 10px; }
+/* Forced colours: no colour is trusted, so the switch is drawn with a system-colour border (a thicker one while
+   dark mode is on, on top of the moon/sun shape change) and its icon in the system text colour. */
+@media (forced-colors: active) {
+  html[data-theme] .theme-toggle { border: 1px solid ButtonText; color: ButtonText; }
+  html[data-theme] .theme-toggle[aria-pressed="true"] { border-width: 3px; }
+  .theme-toggle .theme-ico { stroke: ButtonText; }
+}
 /* The drawer now holds one more row: on short screens keep it clear of the fixed nav bar and let it scroll. */
 html[data-theme] .mobile-drawer { justify-content: safe center; overflow-y: auto; padding-top: var(--nav-h); }
 html[data-theme] .mobile-drawer > * { flex-shrink: 0; }
@@ -628,6 +635,9 @@ html[data-theme] .mobile-drawer .theme-toggle-row {
   .asm-scatter, .asm-card, .asm-fade, .asm-rise, .asm-grow, .tilt3d, .tilt3d * {
     opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
   }
+  /* The light look always prints (theme.css re-declares the light roles for print); no dimmed photos, no switch. */
+  :root img, :root[data-theme] img { filter: none !important; }
+  .theme-toggle, html[data-theme] .theme-toggle { display: none !important; }
   .iris-ico :is(circle, path) { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
   .iris-ico .fillgold, .step-iris circle { transform: none !important; }
   .ripples { display: none !important; }

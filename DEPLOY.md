@@ -125,6 +125,24 @@ pairings. Colour literals are not allowed anywhere else (`tests/test_no_color_li
 To change a colour, edit `content/theme.json`, run `python build.py` and commit
 the regenerated `assets/theme.css` with the pages.
 
+### Light/dark switch
+
+Dark is a second token set in `content/theme.json`; `assets/theme.css` carries
+both (generated, never edited by hand). There is nothing to configure at deploy.
+
+- `html[data-theme="light"|"dark"]` is set by a small inline script in `<head>`,
+  before the stylesheet link, so the first paint is already in the right theme.
+  It reads `localStorage['ayin-theme']` (always in try/catch) and otherwise the
+  system preference. `assets/site.js` handles the toggle button, persistence,
+  `meta theme-color` and a `themechange` event.
+- Without JavaScript the page follows the system theme through a CSS media rule
+  scoped to `:root:not([data-theme])`, and the toggle is hidden.
+- `@media print` re-declares the light roles, so print is always the light look.
+- The gate runs both themes: browser tests are parametrised over light and dark
+  (system scheme emulated plus the stored choice), so a full
+  `PYTHONUTF8=1 python -m pytest tests` takes about 12 minutes.
+- Review notes and the manual checks: `docs/accessibility/2026-10-2c-review.md`.
+
 ## Images (pipeline)
 
 Photography is registered in `content/images.json` (slug, source file name,
@@ -148,7 +166,7 @@ The gate is part of the normal test run; it does not affect the deploy path.
 ```
 pip install -r dev-requirements.txt
 python -m playwright install chromium     # browser tests need Chromium
-PYTHONUTF8=1 python -m pytest tests                    # includes the gate (about 5 minutes)
+PYTHONUTF8=1 python -m pytest tests                    # includes the gate, both themes (about 12 minutes)
 PYTHONUTF8=1 python -m pytest tests -m "not browser"   # static checks only, no Chromium
 ```
 

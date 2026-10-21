@@ -155,4 +155,10 @@ def render_css(resolved: dict) -> str:
     parts.append("@media (prefers-color-scheme: dark) {\n" + "\n\n".join(_indent(b) for b in media) + "\n}")
     parts.append(_block(':root[data-theme="dark"]', {**dark["page"], **dark["global"]}, "dark"))
     parts += [_surface_block(f'[data-theme="dark"] .surface-{c}', dark[c]) for c in CONTEXTS]
+    # Print always prints the light look, whatever the screen theme: the light set again, last, with a selector at
+    # least as specific as every dark rule above (it covers both an explicit data-theme and none at all).
+    both = ':root[data-theme], :root:not([data-theme])'
+    pr = [_block(both, {**light["page"], **light["global"]}, "light")]
+    pr += [_surface_block(", ".join(f"{r} .surface-{c}" for r in (':root[data-theme]', ':root:not([data-theme])')), light[c]) for c in CONTEXTS]
+    parts.append("@media print {\n" + "\n\n".join(_indent(b) for b in pr) + "\n}")
     return "\n\n".join(parts) + "\n"
