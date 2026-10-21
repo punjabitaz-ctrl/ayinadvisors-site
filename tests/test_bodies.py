@@ -29,3 +29,16 @@ def test_inline_blocks_are_preserved_exactly():
         for block in base["inline_styles"] + base["inline_scripts"]:
             if block.strip():
                 assert block.strip() in haystack, f"{stem} lost an inline block"
+
+
+def test_home_why_stats_have_one_numeral_each():
+    import re
+    body = (BODIES / "index.body.frag").read_text(encoding="utf-8")
+    block = body.split('class="why-stats', 1)[1].split("</section>", 1)[0]
+    stats = re.findall(r'<div class="why-stat">(.*?)</div></div>', block, re.S)
+    assert len(stats) == 4
+    for s in stats:
+        assert s.count('class="n"') == 1, s
+    assert len(re.findall(r'class="n"', block)) == 4
+    for bad in ("27T", "50 States", "Trillion"):
+        assert bad not in block, bad
