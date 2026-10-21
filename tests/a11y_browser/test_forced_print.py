@@ -30,12 +30,12 @@ def test_toggle_is_visible_and_legible_in_forced_colours(browser, site_url, stem
               const vis = (s) => { const e = b.querySelector(s); return e ? getComputedStyle(e).display : null; };
               return {display: c.display, w: r.width, h: r.height, color: c.color, borderStyle: c.borderTopStyle,
                       borderWidth: parseFloat(c.borderTopWidth), borderColor: c.borderTopColor,
-                      bg: c.backgroundColor, moon: vis('.ico-moon'), sun: vis('.ico-sun'),
+                      moon: vis('.ico-moon'), sun: vis('.ico-sun'),
                       stroke: getComputedStyle(b.querySelector('.theme-ico')).stroke, pressed: b.getAttribute('aria-pressed')}; }""")
         assert t["display"] != "none" and t["w"] >= 44 and t["h"] >= 44, t
         # Visible shape: a real border in a system colour, icon stroked in the system text colour.
         assert t["borderStyle"] != "none" and t["borderWidth"] >= 1, t
-        assert t["borderColor"] == _sys_color(page, "ButtonText") or t["borderColor"] == t["color"], t
+        assert t["borderColor"] == _sys_color(page, "ButtonText"), t
         assert t["color"] == _sys_color(page, "ButtonText"), t
         assert t["stroke"] == t["color"], t
         # Pressed state by shape: moon while off, sun while on; exactly one is shown.

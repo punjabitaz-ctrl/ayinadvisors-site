@@ -35,7 +35,7 @@ an item pass that was not actually exercised.
 ## 3b. Dark mode and the theme switch
 
 - [ ] The full gate (axe, pixel contrast, boundary contrast, behaviour) passes in both themes (automated).
-- [ ] With a stored choice and an opposite system theme, the page is in the chosen theme from the first paint, with no flash (automated).
+- [ ] With a stored choice and an opposite system theme, the `data-theme` attribute is set before the stylesheet applies and the page's resolved surface after load is the chosen theme (automated: DOMContentLoaded recorder, head script placed before the stylesheet link). A real first-paint capture is not automated.
 - [ ] The switch is named "Dark mode", reports `aria-pressed`, and the top bar and mobile menu copies stay in sync (automated). With a real screen reader, the name and the on/off state are announced in both places.
 - [ ] Blocked storage: the switch still works for the visit and nothing breaks (automated).
 - [ ] Real phone and tablet in dark mode: no glare or banding, nothing too faint, photographs look right.
