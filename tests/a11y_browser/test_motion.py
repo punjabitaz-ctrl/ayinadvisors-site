@@ -307,8 +307,8 @@ def test_marquee_is_replaced(browser, site_url):
         assert "letters" in first_band and "surface-alt" in first_band, first_band
         # Home still carries the services/process placements
         assert page.locator("#services.has-ripples .ripples-top, #process.has-ripples .ripples-top-l").count() == 2
-        assert page.locator("#services .iris-ico").count() == 4
-        assert page.locator(".svc-num").count() == 0 and page.locator(".sec-index").count() == 2
+        assert page.locator("#services .iris-ico").count() == 3     # one per practice (Sprint 2 Task 3)
+        assert page.locator(".svc-num").count() == 0 and page.locator(".sec-index").count() == 0
         assert page.locator("#services .iris-mark, #process .iris-mark").count() == 2
         assert page.locator("#process .step-iris").count() == 4
     finally:
@@ -317,12 +317,10 @@ def test_marquee_is_replaced(browser, site_url):
 
 # Animations that existed before Phase 2b and are owned by Phase 3, named explicitly:
 #  - scrolldot: the hero scroll-hint dot (infinite, `.scroll-hint .bar::after`)
-#  - nodePulse: the Why-section globe destination pulse (infinite, `.why-grid.in .node-pulse`); it starts
-#    when the Why band, which sits directly under the process band, scrolls into view
-#  - drawArc: the same globe's flight arcs (finite, 2.4 s plus up to 1 s delay, same trigger); it can still be
-#    mid-run 6 s after the bands entered view when the Why band is revealed later than them
+# (The Why-the-US globe animations, nodePulse and drawArc, left Home with the band in Sprint 2 Task 3 and now live
+# on the Partnerships page, which test_rollout covers.)
 # The hero iris is a canvas driven by requestAnimationFrame, so it never appears in getAnimations().
-PRE_EXISTING_RUNNING = {"scrolldot", "nodePulse", "drawArc"}
+PRE_EXISTING_RUNNING = {"scrolldot"}
 
 
 def test_no_long_running_animation_after_load(browser, site_url):
@@ -405,7 +403,7 @@ def test_home_depth_does_not_displace_anything_at_rest(browser, site_url, width,
                 return [b.left + b.width / 2, mid(l.querySelector('.cap'))];
               })})"""
         )
-        assert len(res["cards"]) == 4 and len(res["glyphs"]) == 4
+        assert len(res["cards"]) == 3 and len(res["glyphs"]) == 4
         for icon, title in res["cards"]:
             assert abs(icon - title) <= 2, f"icon left {icon} vs title left {title}"
         for glyph, cap in res["glyphs"]:

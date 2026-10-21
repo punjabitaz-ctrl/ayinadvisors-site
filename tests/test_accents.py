@@ -35,8 +35,8 @@ def test_every_section_head_has_the_iris_marker(soups, stem):
 
 
 def test_no_orphan_section_numbers(soups):
-    # numbers survive only where no iris replaced them (none left on About/BizCheck/Contact)
-    for stem in ("About", "BizCheck", "Contact", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects"):
+    # no numbered eyebrows are left anywhere: the iris marker replaced them (Home's last two went with Sprint 2 Task 3)
+    for stem in ("index", "About", "BizCheck", "Contact", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects"):
         assert not soups[stem].select(".sec-index"), stem
 
 

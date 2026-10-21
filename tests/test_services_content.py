@@ -64,11 +64,8 @@ def test_no_service_is_live_before_its_page_exists():
 
 
 def test_the_four_market_entry_services_keep_their_existing_names_and_lines():
-    frag = (ROOT / "templates" / "pages" / "index.body.frag").read_text(encoding="utf-8")
-    soup = BeautifulSoup(frag, "html.parser")
-    existing = {}
-    for card in soup.select("a.svc"):
-        existing[card.h3.get_text(" ", strip=True)] = card.p.get_text(" ", strip=True)
+    """The four cards Home carried before Sprint 2 Task 3 (taken from that commit) are the names and lines in services.json."""
+    existing = json.loads((ROOT / "tests" / "fixtures" / "market_entry_card_copy.json").read_text(encoding="utf-8"))
     partnerships = load()["pillars"][0]["services"]
     assert len(partnerships) == 4
     for s in partnerships:
@@ -134,7 +131,7 @@ def test_no_pricing_words_on_hub_pillar_and_home_pages():
     pages = build.render_all()
     for stem in ("Services", "partnerships", "ai-solutions", "digital-presence", "index"):
         text = _main_text(pages[stem], drop=VERBATIM)
-        text = text.replace("$24T", "")  # the Home stat is a market size, not a price
+        text = text.replace("$24T", "")  # the Partnerships proof stat is a market size, not a price
         m = PRICE_OFFER.search(text)
         assert not m, f"{stem}: pricing word {m.group(0)!r}"
 

@@ -47,9 +47,11 @@ def test_template_pages_are_declared_in_site_json():
     assert set(_hand_authored()) == {"index", "About", "Projects", "BizCheck", "Contact", "404"}
 
 
-def test_home_why_stats_have_one_numeral_each():
+def test_why_stats_have_one_numeral_each():
+    """The four-numeral band moved from Home to the Partnerships proof partial (Sprint 2 Task 3)."""
     import re
-    body = (BODIES / "index.body.frag").read_text(encoding="utf-8")
+    assert "why-stats" not in (BODIES / "index.body.frag").read_text(encoding="utf-8")
+    body = (ROOT / "templates" / "partials" / "partnerships-proof.frag").read_text(encoding="utf-8")
     block = body.split('class="why-stats', 1)[1].split("</section>", 1)[0]
     stats = re.findall(r'<div class="why-stat">(.*?)</div></div>', block, re.S)
     assert len(stats) == 4

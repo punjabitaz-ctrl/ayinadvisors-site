@@ -227,16 +227,6 @@ def test_partnerships_has_the_us_proof_band(soups):
     assert eyebrow.select_one("svg.iris-mark") and not band.select(".sec-index")
 
 
-def test_proof_band_numbers_match_the_ones_still_on_home():
-    """The band is copied (Home keeps its own until Task 3 removes it); the figures must not drift apart."""
-    home = (ROOT / "templates" / "pages" / "index.body.frag").read_text(encoding="utf-8")
-    part = (ROOT / "templates" / "partials" / "partnerships-proof.frag").read_text(encoding="utf-8")
-    pat = re.compile(r'<div class="n"><span (data-count="[^"]*"(?: data-(?:prefix|suffix)="[^"]*")*)></span></div><div class="l">([^<]*)</div>')
-    got_home = [m.groups() for m in pat.finditer(home.split('class="why-stats', 1)[1])]
-    got_part = [m.groups() for m in pat.finditer(part.split('class="why-stats', 1)[1])]
-    assert got_part == got_home and len(got_part) == 4
-
-
 # ---------------------------------------------------------------- meta
 
 def test_services_and_partnerships_meta_match_their_roles():

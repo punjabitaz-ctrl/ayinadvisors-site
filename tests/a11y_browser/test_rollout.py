@@ -226,6 +226,7 @@ def test_ripples_box_stays_inside_its_own_section(browser, site_url, width):
 
 
 GRIDS = {
+    "index": "#services a.svc",
     "Projects": ".project-card",
     "BizCheck": ".bc-step",
     "partnerships": "article.svc-detail .deliverables li",
@@ -383,6 +384,41 @@ def test_hub_card_lists_and_links_line_up_across_the_row_at_1280(browser, site_u
         assert max(pitch) - min(pitch) <= 2, pitch
         bottoms = page.evaluate("[...document.querySelectorAll('a.svc')].map(a => a.getBoundingClientRect().bottom)")
         assert max(bottoms) - min(bottoms) <= 2, bottoms
+    finally:
+        ctx.close()
+
+
+@pytest.mark.parametrize("width", (1280, 768))
+def test_home_pillar_cards_line_up_across_the_row(browser, site_url, width):
+    """Icon, title, line and Explore link share their top edges across Home's three cards, however long a title runs,
+    and nothing is displaced at rest (depth only while the pointer tilts)."""
+    ctx, page = _page(browser, site_url, "index", width=width, reduced_motion="no-preference")
+    try:
+        _settle_all(page)
+        tops = page.evaluate(
+            """() => ['.iris-ico', 'h3', 'p', '.svc-arrow'].map(sel =>
+              [...document.querySelectorAll('#services a.svc')].map(a => a.querySelector(sel).getBoundingClientRect().top))""")
+        assert len(tops[0]) == 3
+        for sel, row in zip(("icon", "title", "line", "link"), tops):
+            assert max(row) - min(row) <= 2, f"{sel} top edges differ across Home's cards: {row}"
+        rects = page.evaluate("[...document.querySelectorAll('#services a.svc')].map(a => { const r = a.getBoundingClientRect(); return [r.top, r.bottom, r.width]; })")
+        assert max(r[0] for r in rects) - min(r[0] for r in rects) <= 2 and max(r[1] for r in rects) - min(r[1] for r in rects) <= 2, rects
+        assert max(r[2] for r in rects) - min(r[2] for r in rects) <= 2, rects      # three equal columns
+        # the arrow is visible at rest (touch devices have no hover), and each card is one whole-card link
+        assert page.evaluate("[...document.querySelectorAll('#services .svc-arrow')].every(e => getComputedStyle(e).opacity === '1')")
+        assert page.evaluate("document.querySelectorAll('#services a.svc a').length") == 0
+    finally:
+        ctx.close()
+
+
+def test_home_pillar_cards_stack_at_375_without_sideways_scroll(browser, site_url):
+    ctx, page = _page(browser, site_url, "index", width=375, reduced_motion="no-preference")
+    try:
+        _settle_all(page)
+        r = page.evaluate("[...document.querySelectorAll('#services a.svc')].map(a => { const b = a.getBoundingClientRect(); return [b.left, b.width]; })")
+        assert len(r) == 3 and len({round(x[0]) for x in r}) == 1 and len({round(x[1]) for x in r}) == 1, r
+        sw, cw = page.evaluate("[document.documentElement.scrollWidth, document.documentElement.clientWidth]")
+        assert sw <= cw
     finally:
         ctx.close()
 

@@ -105,8 +105,8 @@ def test_expand_leaves_other_html_untouched():
     assert build.expand_image_slots(src) == src
 
 
-# Home keeps its US photograph until Sprint 2 Task 3; the same card also sits in the Partnerships proof band.
-PLACEMENTS = {"index": "us-night", "partnerships": "us-night", "About": "skyscrapers", "BizCheck": "lightbulb"}
+# The US photograph sits in the Partnerships proof band only (it left Home in Sprint 2 Task 3).
+PLACEMENTS = {"partnerships": "us-night", "About": "skyscrapers", "BizCheck": "lightbulb"}
 
 
 @pytest.mark.parametrize("stem,slug", PLACEMENTS.items())
