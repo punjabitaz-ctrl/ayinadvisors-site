@@ -169,3 +169,5 @@ def test_current_page_link_is_exposed_to_assistive_tech(stem):
     assert len(active) == 1, f"{stem}: expected one active nav link, found {len(active)}"
     assert active[0].get("aria-current") == "page"
     assert len(soup.select("nav.nav a[aria-current]")) == 1
+    drawer = soup.select(".mobile-drawer a[aria-current]")
+    assert len(drawer) == 1 and drawer[0]["aria-current"] == "page" and drawer[0]["href"] == active[0]["href"]

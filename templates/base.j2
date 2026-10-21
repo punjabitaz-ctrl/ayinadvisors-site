@@ -27,7 +27,7 @@
 
 <nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   {% for n in site.nav -%}
-  <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}>{{ n.label|e }}</a>
+  <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}{% if n.label == page.active %} aria-current="page"{% endif %}>{{ n.label|e }}</a>
   {% endfor -%}
   <a href="{{ page.cta.href|e }}" class="md-cta">{{ page.cta.label|e }}</a>
 </nav>

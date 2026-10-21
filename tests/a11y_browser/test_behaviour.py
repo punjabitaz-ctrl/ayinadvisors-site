@@ -1,7 +1,7 @@
 """Keyboard, focus, reflow and reduced-motion behaviour, checked in real Chromium."""
 import pytest
 
-from a11y_browser.conftest import PAGES, new_context, open_page
+from a11y_browser.conftest import PAGES, REVEAL_CSS, new_context, open_page
 
 pytestmark = pytest.mark.browser
 
@@ -224,3 +224,58 @@ def test_escape_closes_the_drawer_and_returns_focus(phone):
     assert phone.evaluate("() => document.activeElement.classList.contains('nav-toggle')"), "focus did not return to the menu button"
     phone.wait_for_timeout(700)
     assert phone.evaluate(DRAWER_TABBABLE_JS) == 0
+
+
+CONTROLS_JS = """() => [...document.querySelectorAll(
+  'input:not([type=hidden]):not([type=checkbox]):not([type=radio]), select, textarea')]
+  .filter(e => e.getClientRects().length && !e.closest('.hp'))
+  .map((e, i) => { e.setAttribute('data-ctl', i); return [i, e.id || e.name || e.tagName]; })"""
+
+
+def _lum(px):
+    f = lambda v: (v / 255 / 12.92) if v / 255 <= 0.03928 else (((v / 255) + 0.055) / 1.055) ** 2.4
+    return 0.2126 * f(px[0]) + 0.7152 * f(px[1]) + 0.0722 * f(px[2])
+
+
+def _ratio(a, b):
+    x, y = _lum(a), _lum(b)
+    return (max(x, y) + 0.05) / (min(x, y) + 0.05)
+
+
+@pytest.mark.parametrize("stem", PAGES)
+def test_form_controls_have_a_3_to_1_boundary_against_their_surroundings(browser, site_url, stem):
+    """WCAG 1.4.11: a text field's edge must be distinguishable from the card or band it sits on.
+
+    Measured from rendered pixels (gradients and translucent layers included): the control's
+    border pixel, or failing that its fill, against the pixel just outside its edge.
+    """
+    import io
+
+    from PIL import Image
+
+    ctx = new_context(browser, 1280, 900, reduced_motion="reduce")
+    weak, found = [], 0
+    try:
+        page = open_page(ctx, site_url, stem)
+        page.add_style_tag(content=REVEAL_CSS)
+        page.evaluate("document.querySelectorAll('.reveal,.line-reveal').forEach(e => e.classList.add('in'))")
+        for idx, name in page.evaluate(CONTROLS_JS):
+            loc = page.locator(f"[data-ctl='{idx}']")
+            loc.evaluate("e => e.scrollIntoView({block: 'center'})")
+            box = loc.bounding_box()
+            img = Image.open(io.BytesIO(page.screenshot())).convert("RGB")
+            x, y, w, h = box["x"], box["y"], box["width"], box["height"]
+            mid = int(y + h / 2)
+            outside = img.getpixel((int(x) - 6, mid))
+            # The 1px border can straddle two device pixels when the control sits at a fractional x.
+            border_px = [img.getpixel((int(x) + d, mid)) for d in (-1, 0, 1)]
+            fill = img.getpixel((int(x) + 4, int(y) + 4))
+            found += 1
+            best = max(max(_ratio(b, outside) for b in border_px), _ratio(fill, outside))
+            if best < 3.0:
+                weak.append((name, round(best, 2)))
+    finally:
+        ctx.close()
+    if stem in ("Contact", "BizCheck"):
+        assert found >= 4, f"{stem}: form controls not found ({found})"
+    assert not weak, f"{stem}: form controls with a boundary contrast below 3:1 (control, ratio): {weak}"

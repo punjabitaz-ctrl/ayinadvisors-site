@@ -44,3 +44,21 @@ def test_footer_identical_across_pages_that_have_one(soups):
     first = next(iter(shapes))
     for stem, shape in shapes.items():
         assert shape == shapes[first], f"{stem} footer differs from {first}"
+
+
+@pytest.mark.parametrize("selector", ["nav.nav", ".mobile-drawer"])
+def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, selector):
+    """The normaliser above ignores aria-current, so pin it here: one link, value "page", same target in both navs."""
+    targets = {}
+    for stem, s in soups.items():
+        current = s.select(f"{selector} a[aria-current]")
+        if stem == "404":
+            assert not current, "404 has no current page"
+            continue
+        assert len(current) == 1 and current[0]["aria-current"] == "page", f"{stem} {selector}: {current}"
+        targets[stem] = current[0]["href"]
+    assert len(set(targets.values())) == len(targets), "each page must mark a different link"
+    other = "nav.nav" if selector == ".mobile-drawer" else ".mobile-drawer"
+    for stem, s in soups.items():
+        if stem != "404":
+            assert s.select_one(f"{other} a[aria-current]")["href"] == targets[stem]
