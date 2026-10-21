@@ -46,10 +46,10 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>What we do</span>
-        <h2 class="h2 reveal" data-d="1">A focused practice for<br />crossing the border.</h2>
+        <span class="eyebrow asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>What we do</span>
+        <h2 class="h2 asm-fade">A focused practice for<br />crossing the border.</h2>
       </div>
-      <p class="muted reveal" data-d="2" style="max-width:34ch">Four disciplines, one objective — a commercial foothold in North America built on real channel relationships.</p>
+      <p class="muted asm-fade" style="max-width:34ch">Four disciplines, one objective — a commercial foothold in North America built on real channel relationships.</p>
     </div>
 
     <div class="svc-grid asm-stage">
@@ -87,10 +87,10 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How it works</span>
-        <h2 class="h2 reveal" data-d="1">From outside looking in, to inside the channel.</h2>
+        <span class="eyebrow on-navy asm-fade"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>How it works</span>
+        <h2 class="h2 asm-fade">From outside looking in, to inside the channel.</h2>
       </div>
-      <p class="muted reveal" data-d="2" style="max-width:34ch">A clear, sequenced engagement.<br /><b>No</b> open-ended retainers, no theory without traction.</p>
+      <p class="muted asm-fade" style="max-width:34ch">A clear, sequenced engagement.<br /><b>No</b> open-ended retainers, no theory without traction.</p>
     </div>
 
     <div class="proc-wrap asm-stage">

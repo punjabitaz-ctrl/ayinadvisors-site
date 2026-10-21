@@ -455,8 +455,13 @@ main:focus { outline: none; }
 
 /* ---------- Ripples (decorative SVG rings) ---------- */
 .ripples { position: absolute; pointer-events: none; color: var(--accent-fill); }
-.ripples-r { right: -140px; top: -60px; width: 620px; height: 620px; }
-.ripples-l { left: -180px; top: -90px; width: 620px; height: 620px; }
+/* Centres sit in the empty top padding of the band, away from any text; inner rings stay clear of it */
+.ripples-r { right: -140px; top: -200px; width: 620px; height: 620px; }
+.ripples-l { left: -180px; top: -310px; width: 620px; height: 620px; }
+@media (max-width: 640px) {
+  .ripples-r { right: -250px; top: -300px; }
+  .ripples-l { left: -250px; top: -340px; }
+}
 .ripples circle { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .ripples circle:nth-child(1) { stroke-opacity: 0.55; }
 .ripples circle:nth-child(2) { stroke-opacity: 0.42; }
@@ -498,7 +503,7 @@ main:focus { outline: none; }
   /* Depth for the glyphs and the tilting card contents */
   .letters .lt { transform-style: preserve-3d; }
   .letters .glyph {
-    transform: translateZ(40px);
+    transition: transform var(--dur-tilt) var(--ease-out);
     text-shadow:
       0 1px 0 color-mix(in srgb, var(--accent-fill) 60%, transparent),
       0 2px 0 color-mix(in srgb, var(--accent-fill) 45%, transparent),
@@ -507,8 +512,12 @@ main:focus { outline: none; }
       0 14px 22px color-mix(in srgb, var(--ink) 18%, transparent);
   }
   .tilt3d { transform-style: preserve-3d; will-change: transform; transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); }
-  .tilt3d .iris-ico { transform: translateZ(46px); }
-  .tilt3d :is(h3, p) { transform: translateZ(18px); }
+  /* Depth is transient: the lift exists only while the pointer tilts the card or the band, so nothing
+     is displaced by the shared perspective at rest (icon and title share one left edge, glyph and caption one centre) */
+  .tilt3d :is(.iris-ico, h3, p) { transition: transform var(--dur-tilt) var(--ease-out); }
+  .tilt3d.is-tilting .iris-ico { transform: translateZ(46px); }
+  .tilt3d.is-tilting :is(h3, p) { transform: translateZ(18px); }
+  .letters .lt.is-tilting .glyph { transform: translateZ(40px); }
   .tilt3d.is-tilting { transition: transform 0.08s linear, box-shadow 0.3s; transition-delay: 0s; box-shadow: 0 30px 50px -28px color-mix(in srgb, var(--ink) 35%, transparent); }
 
   /* Transitions that run when a section assembles */

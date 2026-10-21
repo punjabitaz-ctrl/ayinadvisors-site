@@ -366,3 +366,103 @@ def test_home_no_horizontal_scroll_at_320_after_assemble(browser, site_url):
         assert sw <= cw
     finally:
         ctx.close()
+
+
+# ---------------------------------------------------------------- Home fix round 1
+
+def _centre(page, sel):
+    """Scroll a band to the middle of the viewport, plus one wheel tick so the ripple drift recomputes
+    (drift only updates on scroll events, so after an instant jump it can lag until the next one)."""
+    page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
+    page.mouse.wheel(0, 1)
+    page.wait_for_timeout(400)
+
+
+def _settle_home(page):
+    for sel in ("#letters", "#services", "#process"):
+        page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
+        page.wait_for_function(f"document.querySelector('{sel}').hasAttribute('data-assemble-done')", timeout=8000)
+    page.mouse.move(2, 2)
+    page.wait_for_timeout(700)
+
+
+@pytest.mark.parametrize("width", (1280, 768))
+def test_home_depth_does_not_displace_anything_at_rest(browser, site_url, width):
+    """Settled and no pointer: icon and title share a left edge, glyph and caption a centre (within 2px)."""
+    ctx, page = _home(browser, site_url, width=width, reduced_motion="no-preference")
+    try:
+        _settle_home(page)
+        res = page.evaluate(
+            """() => ({
+              cards: [...document.querySelectorAll('#services .svc')].map(c => [
+                c.querySelector('.iris-ico').getBoundingClientRect().left,
+                c.querySelector('h3').getBoundingClientRect().left]),
+              glyphs: [...document.querySelectorAll('.letters .lt')].map(l => {
+                const mid = (e) => { const r = e.getBoundingClientRect(); return r.left + r.width / 2; };
+                // glyph centre from its text range, so the glyph itself (not its box) is measured
+                const g = l.querySelector('.glyph'), rg = document.createRange(); rg.selectNodeContents(g);
+                const b = rg.getBoundingClientRect();
+                return [b.left + b.width / 2, mid(l.querySelector('.cap'))];
+              })})"""
+        )
+        assert len(res["cards"]) == 4 and len(res["glyphs"]) == 4
+        for icon, title in res["cards"]:
+            assert abs(icon - title) <= 2, f"icon left {icon} vs title left {title}"
+        for glyph, cap in res["glyphs"]:
+            assert abs(glyph - cap) <= 2, f"glyph centre {glyph} vs caption centre {cap}"
+    finally:
+        ctx.close()
+
+
+def test_home_depth_appears_while_tilting(browser, site_url):
+    ctx, page = _home(browser, site_url, reduced_motion="no-preference")
+    try:
+        _settle_home(page)
+        _centre(page, "#services")
+        z = "(sel) => new DOMMatrix(getComputedStyle(document.querySelector(sel)).transform).m43"
+        assert page.evaluate(z, "#services .svc .iris-ico") == 0
+        box = page.locator("#services .svc").first.bounding_box()
+        page.mouse.move(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.3)
+        page.mouse.move(box["x"] + box["width"] * 0.75, box["y"] + box["height"] * 0.35)
+        page.wait_for_timeout(700)
+        assert page.evaluate(z, "#services .svc .iris-ico") > 20
+        page.mouse.move(2, 2)
+        _centre(page, "#letters")
+        lb = page.locator(".letters").bounding_box()
+        page.mouse.move(lb["x"] + lb["width"] * 0.4, lb["y"] + lb["height"] * 0.5)
+        page.mouse.move(lb["x"] + lb["width"] * 0.45, lb["y"] + lb["height"] * 0.5)
+        page.wait_for_timeout(700)
+        assert page.evaluate(z, ".letters .glyph") > 20
+        page.mouse.move(2, 2)
+        page.wait_for_timeout(700)
+        assert page.evaluate(z, ".letters .glyph") == 0
+    finally:
+        ctx.close()
+
+
+@pytest.mark.parametrize("width", (1280, 375))
+def test_ripple_centre_and_inner_rings_are_clear_of_text(browser, site_url, width):
+    ctx, page = _home(browser, site_url, width=width, height=800, reduced_motion="no-preference")
+    try:
+        _settle_home(page)
+        for sec in ("#services", "#process"):
+            _centre(page, sec)
+            hit = page.evaluate(
+                """(sec) => {
+                  const s = document.querySelector(sec), d = s.querySelector('.ripples .drop').getBoundingClientRect();
+                  const cx = d.left + d.width / 2, cy = d.top + d.height / 2;
+                  const svg = s.querySelector('.ripples').getBoundingClientRect();
+                  const k = svg.width / 400, inner = 78 * k;   // centre dot plus the first two rings
+                  const hits = [];
+                  s.querySelectorAll('.sec-head .eyebrow, .sec-head h2, .sec-head p').forEach(e => {
+                    const r = document.createRange(); r.selectNodeContents(e);
+                    for (const b of r.getClientRects()) {
+                      const nx = Math.max(b.left, Math.min(cx, b.right)), ny = Math.max(b.top, Math.min(cy, b.bottom));
+                      if (Math.hypot(nx - cx, ny - cy) < inner) hits.push([e.tagName, Math.round(Math.hypot(nx - cx, ny - cy))]);
+                    }
+                  });
+                  return hits;
+                }""", sec)
+            assert hit == [], f"{sec}@{width}: ripple centre/inner rings run under text {hit}"
+    finally:
+        ctx.close()
