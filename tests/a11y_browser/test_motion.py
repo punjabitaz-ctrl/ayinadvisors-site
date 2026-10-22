@@ -424,7 +424,11 @@ def test_home_no_is_tilting_after_pointer_move(browser, site_url):
             page.mouse.move(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.3)
             page.wait_for_timeout(300)
             assert page.evaluate("document.querySelectorAll('.is-tilting').length") == 0
-            assert page.evaluate("document.querySelectorAll('[style*=\"rotate\"], [style*=\"translateZ\"]').length") == 0
+            # GSAP (the depth parallax) writes the neutral longhand `rotate: none` into inline styles, so match real
+            # rotations only: a rotate() function, a non-none rotate longhand, or a translateZ.
+            assert page.evaluate(
+                r"[...document.querySelectorAll('[style]')].filter(e => /rotate\(|translateZ|rotate:\s*(?!none)\S/.test("
+                r"e.getAttribute('style'))).length") == 0
     finally:
         ctx.close()
 

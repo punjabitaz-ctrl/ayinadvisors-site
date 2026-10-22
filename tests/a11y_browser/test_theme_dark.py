@@ -30,6 +30,10 @@ def alpha(css):
     return float(m.group(4)) if m and m.group(4) is not None else 1.0
 
 
+NO_WEBGL = """(() => { const g = HTMLCanvasElement.prototype.getContext;
+  HTMLCanvasElement.prototype.getContext = function (t, ...a) { return /webgl/i.test(String(t)) ? null : g.call(this, t, ...a); }; })();"""
+
+
 def _ctx_page(browser, site_url, stem, theme, width=1280, **kw):
     ctx = new_context(browser, width, 900, theme=theme, **kw)
     return ctx, open_page(ctx, site_url, stem)
@@ -74,10 +78,15 @@ def test_logo_and_canvas_follow_theme(browser, site_url):
 
     # ...which means the canvas test must prove the mechanism, not a light/dark difference: recolour the roles on the
     # canvas' own surface, announce a theme change, and the next frames must be painted in the new colour.
+    # The 2D canvas only repaints while the 2D engine is active (the WebGL iris, Phase 2d, parks it and has its own
+    # retint test in test_hero3d.py), so this test forces the 2D path by denying WebGL before the page loads.
     for theme in THEMES:
-        ctx, page = _ctx_page(browser, site_url, "index", theme, reduced_motion="no-preference")
+        ctx = new_context(browser, 1280, 900, theme=theme, reduced_motion="no-preference")
+        ctx.add_init_script(NO_WEBGL)
+        page = open_page(ctx, site_url, "index")
         try:
             page.wait_for_timeout(500)
+            assert page.evaluate("document.getElementById('iris').dataset.engine || '2d'") != "webgl"
             dom = "PIX"
             sample = """() => { const c = document.getElementById('iris'); const g = c.getContext('2d');
               const d = g.getImageData(0, 0, c.width, c.height).data; let r = 0, gr = 0, b = 0, n = 0;

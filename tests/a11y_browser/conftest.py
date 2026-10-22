@@ -70,21 +70,28 @@ def site_url():
 
 
 @pytest.fixture(scope="session")
-def browser():
+def playwright_instance():
+    """The ONE Playwright driver per session (a second sync_playwright().start() in the same process fails inside the
+    first one's event loop). Tests that need their own browser launch from this."""
     try:
         from playwright.sync_api import sync_playwright
     except ImportError:
         pytest.skip(f"playwright is not installed; {INSTALL_HINT}")
     pw = sync_playwright().start()
     try:
-        try:
-            b = pw.chromium.launch()
-        except Exception as e:  # missing browser binary, sandbox problems, ...
-            pytest.skip(f"Chromium unavailable ({type(e).__name__}); {INSTALL_HINT}")
-        yield b
-        b.close()
+        yield pw
     finally:
         pw.stop()
+
+
+@pytest.fixture(scope="session")
+def browser(playwright_instance):
+    try:
+        b = playwright_instance.chromium.launch()
+    except Exception as e:  # missing browser binary, sandbox problems, ...
+        pytest.skip(f"Chromium unavailable ({type(e).__name__}); {INSTALL_HINT}")
+    yield b
+    b.close()
 
 
 def new_context(browser, width=1280, height=900, theme=None, **kw):

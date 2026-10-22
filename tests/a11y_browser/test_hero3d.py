@@ -28,21 +28,13 @@ HERO_STATE = """() => ({ iris: document.querySelector('.hero').dataset.iris || n
 
 
 @pytest.fixture(scope="module")
-def gl_browser():
+def gl_browser(playwright_instance):
     try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        pytest.skip(f"playwright is not installed; {INSTALL_HINT}")
-    pw = sync_playwright().start()
-    try:
-        try:
-            b = pw.chromium.launch(args=GL_ARGS)
-        except Exception as e:
-            pytest.skip(f"Chromium unavailable ({type(e).__name__}); {INSTALL_HINT}")
-        yield b
-        b.close()
-    finally:
-        pw.stop()
+        b = playwright_instance.chromium.launch(args=GL_ARGS)
+    except Exception as e:
+        pytest.skip(f"Chromium unavailable ({type(e).__name__}); {INSTALL_HINT}")
+    yield b
+    b.close()
 
 
 @pytest.fixture(scope="module")

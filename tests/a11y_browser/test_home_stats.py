@@ -15,7 +15,7 @@ def test_hero_stats_read_cleanly(browser, site_url):
         texts = page.eval_on_selector_all(".hstat .n", "els => els.map(e => e.textContent.trim())")
         assert texts == ["3", "90 Days", "Founder-led"]
         labels = page.eval_on_selector_all(".hstat .l", "els => els.map(e => e.textContent.trim())")
-        assert labels[1].startswith("Partnerships") and labels[2] == "Operators, not observers"
+        assert labels[1] == "To first qualified partner" and labels[2] == "Operators, not observers"
         # the Why-the-US band and its four numerals moved to the Partnerships page
         assert page.locator(".why-stats, .why-stat, .globe-stage").count() == 0
     finally:
