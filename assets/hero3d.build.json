@@ -2,7 +2,7 @@
   "generated_by": "tools/hero3d/build.mjs",
   "three": "0.184.0",
   "esbuild": "0.25.10",
-  "source_sha256": "aa4690682d0d42a4d3715cbecad4e518847ca926d4ab4330fa9ac917f0333c76",
+  "source_sha256": "3ef4f0c29ee41dfb5b6c52a121f79dd1d875494bd98196787708fa883927e60b",
   "bundle_sha256": "0259e86db3dcf1e63b781e6acac46184120fcd2c94c5fd0324ca7baa5276f290",
   "bytes": 518662,
   "gzip_bytes": 132579

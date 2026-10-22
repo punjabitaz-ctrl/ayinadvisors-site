@@ -20,6 +20,11 @@ VENDOR_FILES = ("lenis.min.js", "gsap.min.js", "ScrollTrigger.min.js")
 SHARED_SCRIPTS = [f"assets/vendor/{n}" for n in VENDOR_FILES] + ["assets/motion.js"]
 
 
+def _lf(data: bytes) -> bytes:
+    """Hash text as git stores it (LF), so a CRLF checkout (autocrlf) does not break the recorded hashes."""
+    return data.replace(b"\r\n", b"\n")
+
+
 def _gz(path: Path) -> int:
     return len(gzip.compress(path.read_bytes(), 9))
 
@@ -36,7 +41,7 @@ def test_vendor_files_exist_and_match_the_manifest():
     assert set(manifest) == set(VENDOR_FILES)
     for name, meta in manifest.items():
         data = (VENDOR / name).read_bytes()
-        assert hashlib.sha256(data).hexdigest() == meta["sha256"], f"{name} differs from MANIFEST.json (re-run tools/hero3d vendor)"
+        assert hashlib.sha256(_lf(data)).hexdigest() == meta["sha256"], f"{name} differs from MANIFEST.json (re-run tools/hero3d vendor)"
         assert re.fullmatch(r"\d+\.\d+\.\d+", meta["version"]), name
         assert meta["licence"]
 
@@ -74,9 +79,9 @@ def test_hero_bundle_is_not_stale():
     Cheap on purpose: it compares recorded hashes, so it needs neither node nor esbuild."""
     meta = json.loads((ASSETS / "hero3d.build.json").read_text(encoding="utf-8"))
     src = ROOT / "tools" / "hero3d"
-    want = hashlib.sha256((src / "src" / "main.js").read_bytes() + (src / "package-lock.json").read_bytes()).hexdigest()
+    want = hashlib.sha256(_lf((src / "src" / "main.js").read_bytes()) + _lf((src / "package-lock.json").read_bytes())).hexdigest()
     assert meta["source_sha256"] == want, "tools/hero3d/src/main.js or package-lock.json changed: run `npm run build` in tools/hero3d and commit"
-    assert meta["bundle_sha256"] == hashlib.sha256((ASSETS / "hero3d.js").read_bytes()).hexdigest(), "assets/hero3d.js was edited by hand"
+    assert meta["bundle_sha256"] == hashlib.sha256(_lf((ASSETS / "hero3d.js").read_bytes())).hexdigest(), "assets/hero3d.js was edited by hand"
 
 
 def test_hero_bundle_has_no_network_and_no_eval():

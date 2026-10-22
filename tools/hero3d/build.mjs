@@ -25,16 +25,18 @@ await build({
   logLevel: "warning",
 });
 
+// Hash text as git stores it (LF) so CRLF checkouts (autocrlf) record the same hashes.
+const lf = (b) => Buffer.from(b.toString("latin1").replace(/\r\n/g, "\n"), "latin1");
 const buf = readFileSync(out);
 const meta = {
   generated_by: "tools/hero3d/build.mjs",
   three,
   esbuild: esb,
   source_sha256: createHash("sha256")
-    .update(readFileSync(join(here, "src", "main.js")))
-    .update(readFileSync(join(here, "package-lock.json")))
+    .update(lf(readFileSync(join(here, "src", "main.js"))))
+    .update(lf(readFileSync(join(here, "package-lock.json"))))
     .digest("hex"),
-  bundle_sha256: createHash("sha256").update(buf).digest("hex"),
+  bundle_sha256: createHash("sha256").update(lf(buf)).digest("hex"),
   bytes: buf.length,
   gzip_bytes: gzipSync(buf, { level: 9 }).length,
 };
