@@ -63,20 +63,24 @@
   .ap h3 { font-size: 1.5rem; margin: 16px 0 12px; }
   .ap p { color: var(--ink-muted); font-size: 0.98rem; }
 
-  .team-grid { display: grid; grid-template-columns: 360px; gap: clamp(24px, 3vw, 40px); }
-  .member { }
+  .founder { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(36px, 6vw, 96px); align-items: center; max-width: 1040px; }
+  .founder .avatar { width: 100%; max-width: 440px; }
+  .founder-body { text-align: left; }
   .avatar { aspect-ratio: 4/5; background: linear-gradient(160deg, var(--field-bg), var(--surface)); border: 1px solid var(--line); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
   .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   .avatar .mono { font-family: var(--serif); font-size: clamp(3rem, 6vw, 4.4rem); color: var(--accent-ink); opacity: 0.85; letter-spacing: 0.05em; }
   .avatar::after { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 60% at 50% 35%, color-mix(in srgb, var(--accent-fill) 8%, transparent), transparent 70%); pointer-events: none; }
   .avatar .ring-deco { position: absolute; width: 150%; height: 150%; border: 1px solid var(--line-gold); border-radius: 50%; left: -25%; bottom: -75%; }
-  .member h3 { font-size: 1.45rem; margin: 22px 0 4px; color: var(--ink); }
-  .member .role { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); }
-  .member p { color: var(--ink-muted); font-size: 0.95rem; margin-top: 14px; }
+  .founder-body .role { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-ink); }
+  .founder-body h3 { font-family: var(--serif); font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.1; margin: 16px 0 0; color: var(--ink); }
+  .founder-body p { color: var(--ink-muted); font-size: 1.05rem; margin-top: 22px; max-width: 46ch; }
+  .founder-body .founder-note { margin-top: 36px; max-width: none; font-size: 0.9rem; font-style: italic; font-family: var(--serif); }
+  .founder-body .founder-note a { font-family: var(--sans); font-style: normal; }
 
   @media (max-width: 880px) {
     .meaning, .approach-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; max-width: 360px; }
+    .founder { grid-template-columns: 1fr; gap: 36px; }
+    .founder .avatar { max-width: 360px; }
     .stat-band { grid-template-columns: 1fr 1fr; }
     .eye-mark { max-width: 260px; }
   }
@@ -199,25 +203,25 @@
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- FOUNDER -->
 <section class="section surface-alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The principals</span>
-        <h2 class="h2 reveal" data-d="1">Small team.<br />Senior hands.</h2>
+        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The founder</span>
+        <h2 class="h2 reveal" data-d="1">Founder-led, hands on.</h2>
       </div>
-      <p class="muted reveal" data-d="2" style="max-width:34ch">Operators who have built channels, signed distributors and carried foreign brands into North America - the experience behind our B2B Partnerships practice.</p>
     </div>
-    <div class="team-grid">
-      <div class="member reveal">
-        <div class="avatar"><img src="assets/taz-abbas.jpg" alt="Taz Abbas - Managing Partner, AYiN Advisors" /><span class="ring-deco"></span></div>
-        <h3>Taz Abbas</h3>
+    <div class="founder">
+      <div class="avatar reveal"><img src="assets/taz-abbas.jpg" alt="Taz Abbas - Managing Partner, AYiN Advisors" width="1080" height="1084" loading="lazy" decoding="async" /><span class="ring-deco"></span></div>
+      <div class="founder-body reveal" data-d="1">
         <div class="role">Managing Partner · Market Entry &amp; Strategy</div>
+        <h3>Taz Abbas</h3>
         <p>Two decades of B2B Partnerships work: guiding international firms from first market read to commercial foothold across the Americas.</p>
+        <p>An operator who has built channels, signed distributors and carried foreign brands into North America - the experience behind our B2B Partnerships practice.</p>
+        <p class="founder-note">Detailed bio available on request - <a href="Contact.html" class="tlink on-navy">get in touch <span class="btn-arrow">→</span></a></p>
       </div>
     </div>
-    <p class="muted reveal" style="margin-top:36px;font-size:0.9rem;font-style:italic;font-family:var(--serif)">Detailed partner bios available on request - <a href="Contact.html" class="tlink on-navy" style="font-family:var(--sans);font-style:normal">get in touch <span class="btn-arrow">→</span></a></p>
   </div>
 </section>
 

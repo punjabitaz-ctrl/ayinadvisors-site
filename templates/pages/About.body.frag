@@ -75,25 +75,25 @@
   </div>
 </section>
 
-<!-- TEAM -->
+<!-- FOUNDER -->
 <section class="section surface-alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
-        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The principals</span>
-        <h2 class="h2 reveal" data-d="1">Small team.<br />Senior hands.</h2>
+        <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The founder</span>
+        <h2 class="h2 reveal" data-d="1">Founder-led, hands on.</h2>
       </div>
-      <p class="muted reveal" data-d="2" style="max-width:34ch">Operators who have built channels, signed distributors and carried foreign brands into North America - the experience behind our B2B Partnerships practice.</p>
     </div>
-    <div class="team-grid">
-      <div class="member reveal">
-        <div class="avatar"><img src="assets/taz-abbas.jpg" alt="Taz Abbas - Managing Partner, AYiN Advisors" /><span class="ring-deco"></span></div>
-        <h3>Taz Abbas</h3>
+    <div class="founder">
+      <div class="avatar reveal"><img src="assets/taz-abbas.jpg" alt="Taz Abbas - Managing Partner, AYiN Advisors" width="1080" height="1084" loading="lazy" decoding="async" /><span class="ring-deco"></span></div>
+      <div class="founder-body reveal" data-d="1">
         <div class="role">Managing Partner · Market Entry &amp; Strategy</div>
+        <h3>Taz Abbas</h3>
         <p>Two decades of B2B Partnerships work: guiding international firms from first market read to commercial foothold across the Americas.</p>
+        <p>An operator who has built channels, signed distributors and carried foreign brands into North America - the experience behind our B2B Partnerships practice.</p>
+        <p class="founder-note">Detailed bio available on request - <a href="Contact.html" class="tlink on-navy">get in touch <span class="btn-arrow">→</span></a></p>
       </div>
     </div>
-    <p class="muted reveal" style="margin-top:36px;font-size:0.9rem;font-style:italic;font-family:var(--serif)">Detailed partner bios available on request - <a href="Contact.html" class="tlink on-navy" style="font-family:var(--sans);font-style:normal">get in touch <span class="btn-arrow">→</span></a></p>
   </div>
 </section>
 
