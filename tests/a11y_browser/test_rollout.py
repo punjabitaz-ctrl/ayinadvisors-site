@@ -1,7 +1,6 @@
 """Phase 2b rollout (T3): accents and motion on About, Services, Projects, BizCheck and Contact.
 
-Every placement gets the checks the Home placement needed: nothing displaced at rest, depth only while the
-pointer tilts, ripple centres in empty space, no sideways scroll while assembling, final state under reduced motion.
+Every placement gets the checks the Home placement needed: nothing displaced at rest, ripple centres in empty space, no sideways scroll while assembling, final state under reduced motion.
 """
 import pytest
 
@@ -78,7 +77,7 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
 
 @pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("width", (1280, 768))
-def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, width, theme):
+def test_rollout_alignment_at_rest(browser, site_url, width, theme):
     """Settled, pointer away: no resting transform on any card or its contents, and the number/title edges align."""
     checks = [
         ("partnerships", "article.svc-detail .deliverables li", None, None),
@@ -107,49 +106,6 @@ def test_rollout_depth_does_not_displace_anything_at_rest(browser, site_url, wid
                 assert abs(r["dl"]) <= 2, f"{stem}@{width}: number left edge vs title left edge {r['dl']}"
         finally:
             ctx.close()
-
-
-def test_rollout_depth_appears_while_tilting(browser, site_url):
-    for stem, card, inner in (("Projects", ".project-card.navy-card", "h2"), ("BizCheck", ".bc-step", ".h3"),
-                              ("Services", "a.svc", ".iris-ico"), ("ai-solutions", "#what .ps-list li", "h3"),
-                              ("digital-presence", "#what .ps-list li", "h3")):
-        ctx, page = _page(browser, site_url, stem, reduced_motion="no-preference")
-        try:
-            _settle_all(page)
-            page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", card)
-            page.wait_for_timeout(300)
-            z = "([c, i]) => new DOMMatrix(getComputedStyle(document.querySelector(c + ' ' + i)).transform).m43"
-            assert page.evaluate(z, [card, inner]) == 0
-            box = page.locator(card).first.bounding_box()
-            page.mouse.move(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.3)
-            page.mouse.move(box["x"] + box["width"] * 0.75, box["y"] + box["height"] * 0.35)
-            page.wait_for_timeout(700)
-            assert page.evaluate(z, [card, inner]) > 10, stem
-            page.mouse.move(2, 2)
-            page.wait_for_timeout(700)
-            assert page.evaluate(z, [card, inner]) == 0
-        finally:
-            ctx.close()
-
-
-def test_partnerships_cells_tilt_and_return(browser, site_url):
-    ctx, page = _page(browser, site_url, "partnerships", reduced_motion="no-preference")
-    try:
-        _settle_all(page)
-        sel = "#research .deliverables li"
-        page.evaluate("(s) => document.querySelector(s).scrollIntoView({block: 'center', behavior: 'instant'})", sel)
-        page.wait_for_timeout(300)
-        box = page.locator(sel).nth(1).bounding_box()
-        page.mouse.move(box["x"] + box["width"] * 0.8, box["y"] + box["height"] * 0.3)
-        page.mouse.move(box["x"] + box["width"] * 0.85, box["y"] + box["height"] * 0.35)
-        page.wait_for_timeout(500)
-        tr = "(s) => getComputedStyle(document.querySelectorAll(s)[1]).transform"
-        assert page.evaluate(tr, sel) != "none"
-        page.mouse.move(2, 2)
-        page.wait_for_timeout(700)
-        assert page.evaluate(tr, sel) == "none"
-    finally:
-        ctx.close()
 
 
 @pytest.mark.parametrize("width", (1280, 768, 375))
@@ -390,7 +346,7 @@ def test_hub_card_lists_and_links_line_up_across_the_row_at_1280(browser, site_u
 
 def test_home_pillar_cards_line_up_across_the_row_at_1280(browser, site_url):
     """Icon, title, line and Explore link share their top edges across Home's three cards, however long a title runs,
-    and nothing is displaced at rest (depth only while the pointer tilts)."""
+    and nothing is displaced at rest."""
     ctx, page = _page(browser, site_url, "index", width=1280, reduced_motion="no-preference")
     try:
         _settle_all(page)
@@ -443,7 +399,7 @@ def test_hub_cards_are_whole_card_links_and_pillar_cards_are_not(browser, site_u
 
 
 def test_print_shows_everything_settled(browser, site_url):
-    """Content still in its hidden 'pre' state prints visible; rings and tilt do nothing in print."""
+    """Content still in its hidden 'pre' state prints visible; rings do nothing in print."""
     for stem in ("index", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects", "BizCheck"):
         ctx, page = _page(browser, site_url, stem, width=1280, reduced_motion="no-preference")
         try:

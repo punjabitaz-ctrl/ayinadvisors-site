@@ -16,7 +16,7 @@
 
     <div class="svc-grid asm-stage">
       {%- for p in pillars %}
-      <a class="svc asm-card tilt3d" data-tilt href="{{ p.stem|e }}.html">
+      <a class="svc asm-card" href="{{ p.stem|e }}.html">
         {{ iris_ico(p.icon) }}
         <h3 class="h3">{{ p.name|e }}</h3>
         <p class="svc-buyer">{{ p.hub_line|e }}</p>

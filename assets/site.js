@@ -180,7 +180,7 @@
   }
 
   /* ============================================================
-     Motion components: assemble / ripples / tilt / drift
+     Motion components: assemble / ripples / drift
      Reduced motion (or no IntersectionObserver): do nothing at all, so
      every component stays in its static, final state. The hidden "pre"
      state exists only because this block sets data-assemble="pre".
@@ -205,7 +205,6 @@
       ASM.forEach((cls) =>
         root.querySelectorAll("." + cls).forEach((el, i) => {
           el.style.setProperty("--i", i);
-          el.style.setProperty("--dir", i % 2 ? 1 : -1);
         })
       );
       root.setAttribute("data-assemble", "pre");
@@ -269,44 +268,6 @@
         if (!ticking) { ticking = true; requestAnimationFrame(drift); }
       }, { passive: true });
     }
-
-    /* ---- tilt: [data-tilt] cards follow the pointer; data-tilt="group" tilts its .asm-scatter glyphs ---- */
-    const settled = (el) => {
-      const root = el.closest("[data-assemble]");
-      return !root || root.hasAttribute("data-assemble-done");
-    };
-    const mouseLike = (e) => e.pointerType !== "touch";
-    document.querySelectorAll("[data-tilt]").forEach((el) => {
-      if (el.dataset.tilt === "group") {
-        const items = el.querySelectorAll(".asm-scatter");
-        el.addEventListener("pointermove", (e) => {
-          if (!mouseLike(e) || !settled(el)) return;
-          const b = el.getBoundingClientRect();
-          const x = (e.clientX - b.left) / b.width - 0.5;
-          const y = (e.clientY - b.top) / b.height - 0.5;
-          items.forEach((g, i) => {
-            g.classList.add("is-tilting");
-            g.style.transform = `rotateY(${x * 26}deg) rotateX(${-y * 18}deg) translate3d(${x * (8 + i * 3)}px, ${y * (6 + i * 2)}px, 0)`;
-          });
-        });
-        el.addEventListener("pointerleave", () =>
-          items.forEach((g) => { g.classList.remove("is-tilting"); g.style.transform = ""; })
-        );
-        return;
-      }
-      el.addEventListener("pointermove", (e) => {
-        if (!mouseLike(e) || !settled(el)) return;
-        const b = el.getBoundingClientRect();
-        const x = (e.clientX - b.left) / b.width - 0.5;
-        const y = (e.clientY - b.top) / b.height - 0.5;
-        el.classList.add("is-tilting");
-        el.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 10}deg) translateZ(14px)`;
-      });
-      el.addEventListener("pointerleave", () => {
-        el.classList.remove("is-tilting");
-        el.style.transform = "";
-      });
-    });
   }
 
   /* ---------- Year ---------- */

@@ -23,7 +23,7 @@ def _ripples(side):
 
 def _card(n):
     return (
-        f'<a class="svc asm-card tilt3d" data-tilt href="#c{n}" style="display:block;padding:24px;border:1px solid currentColor">'
+        f'<a class="svc asm-card" href="#c{n}" style="display:block;padding:24px;border:1px solid currentColor">'
         f'{_IRIS}<h3>Card {n}</h3><p>Body text for card {n}.</p></a>'
     )
 
@@ -42,7 +42,7 @@ FIXTURE_HTML = f"""<!doctype html>
 <link rel="stylesheet" href="assets/theme.css"><link rel="stylesheet" href="assets/styles.css">
 </head><body>
 <div style="height:900px">top spacer</div>
-<div class="letters surface-alt assemble" id="letters" data-assemble data-tilt="group">
+<div class="letters surface-alt assemble" id="letters" data-assemble>
   <div class="wrap">
     <div class="letters-row asm-stage" role="img" aria-label="The letter ayin: the eye.">
       <div class="lt asm-scatter"><span class="glyph ar" aria-hidden="true">ع</span><span class="cap">Arabic</span></div>

@@ -53,7 +53,7 @@ def test_hub_cards_have_three_distinct_iris_icons(soups):
     for card in soups["Services"].select("main a.svc"):
         svg = card.select_one("svg.iris-ico")
         assert svg.get("aria-hidden") == "true" and svg.get("focusable") == "false" and not svg.select("title, desc")
-        assert "asm-card" in card["class"] and "tilt3d" in card["class"] and card.has_attr("data-tilt")
+        assert "asm-card" in card["class"]
 
 
 def test_hub_has_the_fit_together_band_and_one_gold_cta(soups):
@@ -76,7 +76,7 @@ def test_each_pillar_lists_its_services_unlinked(soups, pillars, stem):
     assert [_text(c.p) for c in cards] == [s["summary"] for s in p["services"]]
     for c in cards:
         assert not c.select("a, button, [href], .svc-arrow, .btn-arrow"), "informative cards: no links, no arrows"
-        assert "asm-card" in c["class"] and "tilt3d" in c["class"] and c.has_attr("data-tilt")
+        assert "asm-card" in c["class"]
     assert "coming soon" not in soup.get_text(" ").lower()
     # the only links in the body are the CTA and in-page chrome; none lead to a page that does not exist
     for a in soup.select("main a[href]"):

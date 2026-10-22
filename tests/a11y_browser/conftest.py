@@ -179,7 +179,7 @@ def run_axe_full(page, width, with_entries=False) -> tuple[list[Violation], list
 
 def collect_axe(browser, site_url, stem, width, theme="light"):
     """Fresh context/page per (page, width, theme); returns (violations, needs_review)."""
-    # Reduced motion renders every assemble/tilt item in its settled state. With default motion, items still in
+    # Reduced motion renders every assemble item in its settled state. With default motion, items still in
     # their hidden "pre" state are opacity 0 and axe skips them as hidden, leaving real text unchecked.
     ctx = new_context(browser, width, theme=theme, reduced_motion="reduce")
     try:

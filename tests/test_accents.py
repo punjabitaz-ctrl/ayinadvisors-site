@@ -1,4 +1,4 @@
-"""Phase 2b rollout (static): iris markers on section heads, assemble/tilt hooks on card grids, ripple placement."""
+"""Phase 2b rollout (static): iris markers on section heads, assemble hooks on card grids, ripple placement."""
 import pytest
 import build
 from bs4 import BeautifulSoup
@@ -62,10 +62,10 @@ def test_template_page_section_heads_have_the_iris_marker(soups, stem):
 
 def _hooks(el):
     c = el.get("class", [])
-    return "asm-card" in c and "tilt3d" in c and el.has_attr("data-tilt") and "reveal" not in c
+    return "asm-card" in c and "reveal" not in c
 
 
-def test_card_grids_assemble_and_tilt_hooks_present(soups):
+def test_card_grids_assemble_hooks_present(soups):
     # Partnerships (the four market-entry blocks moved here from Services): every deliverables grid is an
     # assemble stage inside its own assemble root
     arts = soups["partnerships"].select("article.svc-detail")
@@ -76,7 +76,7 @@ def test_card_grids_assemble_and_tilt_hooks_present(soups):
         assert "asm-stage" in grid.get("class", [])
         cells = grid.select("li")
         assert len(cells) == 6 and all(_hooks(li) for li in cells)
-    # Projects: the grid is root and stage, the five cards animate and tilt
+    # Projects: the grid is root and stage, the five cards animate
     grid = soups["Projects"].select_one(".projects-grid")
     assert {"assemble", "asm-stage"} <= set(grid.get("class", [])) and grid.has_attr("data-assemble")
     cards = grid.select(".project-card")
@@ -118,3 +118,9 @@ def test_ripples_are_decorative_and_stay_off_hero_and_forms(soups):
         r = soups[stem].select_one("svg.ripples")
         assert "ripples-top" in r.get("class", []), stem
         assert r.find_next("div", class_="bc-head") or r.find_next("div", class_="sec-head")
+
+
+def test_no_pointer_tilt_markup_in_any_generated_page():
+    """Pointer tilt was removed on owner request (2026-10-22): no page may carry the hooks again."""
+    for stem, html in build.render_all().items():
+        assert "data-tilt" not in html and "tilt3d" not in html, stem

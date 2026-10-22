@@ -189,7 +189,7 @@
 
 <main id="main" tabindex="-1">
 <!-- ===================== LETTERS BAND (replaces the marquee) ===================== -->
-<div class="letters surface-alt assemble" id="letters" data-assemble data-tilt="group">
+<div class="letters surface-alt assemble" id="letters" data-assemble>
   <div class="wrap">
     <div class="letters-row asm-stage" role="img" aria-label="The letter ayin in Arabic, Hebrew and Phoenician, and its descendant, the Latin letter O. In each it means the eye.">
       <div class="lt asm-scatter"><span class="glyph ar" aria-hidden="true">ع</span><span class="sub" aria-hidden="true">ʿayn</span><span class="cap" aria-hidden="true">Arabic</span></div>
@@ -217,19 +217,19 @@
     </div>
 
     <div class="svc-grid asm-stage">
-      <a class="svc asm-card tilt3d" data-tilt href="partnerships.html">
+      <a class="svc asm-card" href="partnerships.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="14" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="14" cy="27" r="3" stroke="none"/><circle cx="40" cy="27" r="9" pathLength="200"/><circle class="fillgold" cx="40" cy="27" r="3" stroke="none"/><path d="M24 27h6" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">B2B Partnerships</h3>
         <p>For international firms entering the US. Channel strategy and partner introductions for companies new to the American market.</p>
         <span class="svc-arrow">Explore<span aria-hidden="true">→</span></span>
       </a>
-      <a class="svc asm-card tilt3d" data-tilt href="ai-solutions.html">
+      <a class="svc asm-card" href="ai-solutions.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle cx="27" cy="27" r="22" pathLength="200"/><circle cx="27" cy="27" r="12" pathLength="200"/><circle class="fillgold" cx="27" cy="27" r="3.6" stroke="none"/><path d="M27 2v8M27 44v8M2 27h8M44 27h8" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">AI Solutions Development</h3>
         <p>For teams that need AI built. Custom applications, workflow automation and operational efficiency.</p>
         <span class="svc-arrow">Explore<span aria-hidden="true">→</span></span>
       </a>
-      <a class="svc asm-card tilt3d" data-tilt href="digital-presence.html">
+      <a class="svc asm-card" href="digital-presence.html">
         <svg class="iris-ico" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true" focusable="false"><circle class="fillgold" cx="16" cy="27" r="3.6" stroke="none"/><circle cx="16" cy="27" r="9" pathLength="200"/><path d="M30 14a19 19 0 0 1 0 26M38 9a27 27 0 0 1 0 36M46 5a35 35 0 0 1 0 44" stroke-linecap="round" pathLength="200"/></svg>
         <h3 class="h3">Digital Presence</h3>
         <p>For businesses building their presence online. Websites, digital marketing, and community and content.</p>

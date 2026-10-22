@@ -1,4 +1,4 @@
-"""Motion foundation (T1): assemble, ripples, tilt, drift.
+"""Motion foundation (T1): assemble, ripples, drift (pointer tilt was removed 2026-10-22).
 
 The components are served from an in-memory fixture page (a Playwright route),
 so nothing is written to the working tree.
@@ -17,7 +17,7 @@ STATE_JS = """(sel) => [...document.querySelectorAll(sel)].map(e => {
   return {cls: String(e.className.baseVal ?? e.className), opacity: cs.opacity, transform: cs.transform};
 })"""
 
-# Anything not in its final look (strict=false tolerates the resting translateZ depth): opacity < 1, a non-identity transform, an undrawn stroke.
+# Anything not in its final look: opacity < 1, a non-identity transform, an undrawn stroke.
 FINAL_JS = """([strict, scope]) => {
   const ident = (t) => {
     if (t === 'none') return true;
@@ -116,31 +116,32 @@ def test_hidden_state_is_js_driven_and_resolves(mo_page):
     assert mo_page.evaluate(FINAL_JS, [False, '#services > .wrap']) == []
 
 
-def test_tilt_and_parallax_inert_under_reduced_motion(rm_page):
+def test_pointer_and_parallax_inert_under_reduced_motion(rm_page):
     _scroll_to(rm_page, "#services")
     rm_page.wait_for_timeout(300)
-    before = rm_page.evaluate(STATE_JS, ".tilt3d, .ripples, .letters .lt")
-    box = rm_page.locator("#services .tilt3d").first.bounding_box()
+    before = rm_page.evaluate(STATE_JS, ".asm-card, .ripples, .letters .lt")
+    box = rm_page.locator("#services .asm-card").first.bounding_box()
     rm_page.mouse.move(box["x"] + box["width"] * 0.9, box["y"] + box["height"] * 0.1)
     rm_page.mouse.move(box["x"] + box["width"] * 0.8, box["y"] + box["height"] * 0.2)
     rm_page.mouse.wheel(0, 300)
     rm_page.wait_for_timeout(500)
     assert rm_page.evaluate("document.querySelectorAll('.is-tilting').length") == 0
-    assert rm_page.evaluate("[...document.querySelectorAll('.ripples, .tilt3d, .lt')].every(e => e.style.transform === '')")
+    assert rm_page.evaluate("[...document.querySelectorAll('.ripples, .asm-card, .lt')].every(e => e.style.transform === '')")
     # compare computed state of the same elements (scroll moved the page, not the transforms)
-    after = rm_page.evaluate(STATE_JS, ".tilt3d, .ripples, .letters .lt")
+    after = rm_page.evaluate(STATE_JS, ".asm-card, .ripples, .letters .lt")
     assert before == after
 
 
-def test_tilt_and_drift_work_with_motion(mo_page):
+def test_drift_works_and_pointer_never_tilts(mo_page):
     _scroll_to(mo_page, "#services")
     _settled(mo_page, "#services")
-    box = mo_page.locator("#services .tilt3d").first.bounding_box()
+    box = mo_page.locator("#services .asm-card").first.bounding_box()
     mo_page.mouse.move(box["x"] + box["width"] * 0.85, box["y"] + box["height"] * 0.15)
     mo_page.mouse.move(box["x"] + box["width"] * 0.9, box["y"] + box["height"] * 0.1)
-    assert mo_page.evaluate("document.querySelector('#services .tilt3d').style.transform").startswith("rotateY(")
+    mo_page.wait_for_timeout(200)
+    assert mo_page.evaluate("document.querySelectorAll('.is-tilting').length") == 0
+    assert mo_page.evaluate("document.querySelector('#services .asm-card').style.transform") == ""
     mo_page.mouse.move(2, 2)
-    assert mo_page.evaluate("document.querySelector('#services .tilt3d').style.transform") == ""
     t0 = mo_page.evaluate("document.querySelector('#services .ripples').style.transform")
     mo_page.mouse.wheel(0, 300)
     mo_page.wait_for_timeout(400)
@@ -385,7 +386,7 @@ def _settle_home(page):
 
 @pytest.mark.parametrize("theme", THEMES)
 @pytest.mark.parametrize("width", (1280, 768))
-def test_home_depth_does_not_displace_anything_at_rest(browser, site_url, width, theme):
+def test_home_alignment_at_rest(browser, site_url, width, theme):
     """Settled and no pointer: icon and title share a left edge, glyph and caption a centre (within 2px)."""
     ctx, page = _home(browser, site_url, width=width, theme=theme, reduced_motion="no-preference")
     try:
@@ -412,28 +413,18 @@ def test_home_depth_does_not_displace_anything_at_rest(browser, site_url, width,
         ctx.close()
 
 
-def test_home_depth_appears_while_tilting(browser, site_url):
+def test_home_no_is_tilting_after_pointer_move(browser, site_url):
     ctx, page = _home(browser, site_url, reduced_motion="no-preference")
     try:
         _settle_home(page)
-        _centre(page, "#services")
-        z = "(sel) => new DOMMatrix(getComputedStyle(document.querySelector(sel)).transform).m43"
-        assert page.evaluate(z, "#services .svc .iris-ico") == 0
-        box = page.locator("#services .svc").first.bounding_box()
-        page.mouse.move(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.3)
-        page.mouse.move(box["x"] + box["width"] * 0.75, box["y"] + box["height"] * 0.35)
-        page.wait_for_timeout(700)
-        assert page.evaluate(z, "#services .svc .iris-ico") > 20
-        page.mouse.move(2, 2)
-        _centre(page, "#letters")
-        lb = page.locator(".letters").bounding_box()
-        page.mouse.move(lb["x"] + lb["width"] * 0.4, lb["y"] + lb["height"] * 0.5)
-        page.mouse.move(lb["x"] + lb["width"] * 0.45, lb["y"] + lb["height"] * 0.5)
-        page.wait_for_timeout(700)
-        assert page.evaluate(z, ".letters .glyph") > 20
-        page.mouse.move(2, 2)
-        page.wait_for_timeout(700)
-        assert page.evaluate(z, ".letters .glyph") == 0
+        for sel in ("#services .svc", ".letters"):
+            _centre(page, sel.split()[0])
+            box = page.locator(sel).first.bounding_box()
+            page.mouse.move(box["x"] + box["width"] * 0.4, box["y"] + box["height"] * 0.5)
+            page.mouse.move(box["x"] + box["width"] * 0.7, box["y"] + box["height"] * 0.3)
+            page.wait_for_timeout(300)
+            assert page.evaluate("document.querySelectorAll('.is-tilting').length") == 0
+            assert page.evaluate("document.querySelectorAll('[style*=\"rotate\"], [style*=\"translateZ\"]').length") == 0
     finally:
         ctx.close()
 

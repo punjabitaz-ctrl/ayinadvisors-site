@@ -122,7 +122,7 @@ def test_home_has_three_pillar_cards_linking_to_pillar_pages(home, pillars):
         assert _text(card.select_one("p")) == p["hub_line"]
         assert "Explore" in _text(card.select_one(".svc-arrow"))
         assert not card.select("a"), "a card is one link; no link inside a link"
-        assert "asm-card" in card["class"] and "tilt3d" in card["class"] and card.has_attr("data-tilt")
+        assert "asm-card" in card["class"]
         # the same iris icon as the hub card
         svg = card.select_one("svg.iris-ico")
         want = BeautifulSoup(str(macro.iris_ico(p["icon"])), "html.parser").svg

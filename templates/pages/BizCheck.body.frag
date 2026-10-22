@@ -47,17 +47,17 @@
       <image-slot slug="lightbulb" sizes="(min-width: 900px) 720px, calc(100vw - 40px)" loading="lazy"></image-slot>
     </figure>
     <div class="bc-steps assemble asm-stage" data-assemble>
-      <div class="bc-step asm-card tilt3d" data-tilt>
+      <div class="bc-step asm-card">
         <div class="n" aria-hidden="true" data-n="01"></div>
         <h3 class="h3">Describe your idea</h3>
         <p>Fill out a focused brief: what your business does, who it serves, your stage and market. No deck required.</p>
       </div>
-      <div class="bc-step asm-card tilt3d" data-tilt>
+      <div class="bc-step asm-card">
         <div class="n" aria-hidden="true" data-n="02"></div>
         <h3 class="h3">Panel evaluates</h3>
         <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk - independently.</p>
       </div>
-      <div class="bc-step asm-card tilt3d" data-tilt>
+      <div class="bc-step asm-card">
         <div class="n" aria-hidden="true" data-n="03"></div>
         <h3 class="h3">Receive your verdict</h3>
         <p>A structured report with each panelist's score, their key concerns, and a single aggregate verdict with findings.</p>

@@ -16,7 +16,7 @@
 
     <ul class="ps-list ps-{{ pillar.services|length }} asm-stage">
       {%- for s in pillar.services %}
-      <li class="asm-card tilt3d" data-tilt>
+      <li class="asm-card">
         <h3 class="h3">{{ s.name|e }}</h3>
         <p>{{ s.summary|e }}</p>
       </li>

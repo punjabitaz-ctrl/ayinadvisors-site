@@ -556,14 +556,8 @@ html[data-theme] .mobile-drawer .theme-toggle-row {
 
 /* ---------- Motion (only when the visitor has not asked for less) ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  /* 3D stages */
-  .asm-stage { perspective: 1000px; }
-  .letters .letters-row { perspective: 900px; }
-
-  /* Depth for the glyphs and the tilting card contents */
-  .letters .lt { transform-style: preserve-3d; }
+  /* Glyph depth: a static text-shadow only (no 3D transform, no pointer response) */
   .letters .glyph {
-    transition: transform var(--dur-tilt) var(--ease-out);
     text-shadow:
       0 1px 0 color-mix(in srgb, var(--accent-fill) 60%, transparent),
       0 2px 0 color-mix(in srgb, var(--accent-fill) 45%, transparent),
@@ -571,19 +565,10 @@ html[data-theme] .mobile-drawer .theme-toggle-row {
       0 4px 0 color-mix(in srgb, var(--accent-fill) 22%, transparent),
       0 14px 22px color-mix(in srgb, var(--ink) 18%, transparent);
   }
-  .tilt3d { transform-style: preserve-3d; transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); }
-  /* Depth is transient: the lift exists only while the pointer tilts the card or the band, so nothing
-     is displaced by the shared perspective at rest (icon and title share one left edge, glyph and caption one centre) */
-  .tilt3d :is(.iris-ico, h2, h3, p) { transition: transform var(--dur-tilt) var(--ease-out); }
-  .tilt3d.is-tilting .iris-ico { transform: translateZ(46px); }
-  .tilt3d.is-tilting :is(h2, h3, p) { transform: translateZ(18px); }
-  .letters .lt.is-tilting .glyph { transform: translateZ(40px); }
-  /* A card is only promoted to its own layer while it tilts: a resting layer at a fractional offset clips the 1px grid borders */
-  .tilt3d.is-tilting { will-change: transform; z-index: 2; transition: transform 0.08s linear, box-shadow 0.3s; transition-delay: 0s; box-shadow: 0 30px 50px -28px color-mix(in srgb, var(--ink) 35%, transparent); }
 
   /* Transitions that run when a section assembles */
-  .asm-scatter { transition: transform var(--dur-assemble) var(--ease-out), opacity 1s var(--ease-out); transition-delay: calc(var(--i, 0) * 0.12s); }
-  .asm-card { transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
+  .asm-scatter { transition: transform var(--dur-card) var(--ease-out), opacity var(--dur-card) var(--ease-out); transition-delay: calc(var(--i, 0) * 0.12s); }
+  .asm-card { transition: transform var(--dur-card) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .asm-fade { transition: opacity 1s var(--ease-out) 0.6s, transform 1s var(--ease-out) 0.6s; }
   .asm-rise { transition: transform 1s var(--ease-out), opacity 0.9s var(--ease-out); transition-delay: calc(0.35s * var(--i, 0)); }
   .asm-grow { transform-origin: left center; transition: transform 2.2s var(--ease-out) 0.3s; }
@@ -593,23 +578,13 @@ html[data-theme] .mobile-drawer .theme-toggle-row {
   .assemble .iris-ico .fillgold, .assemble .step-iris circle { transform-origin: center; transform-box: fill-box; transition: transform 0.8s var(--ease-out) 1.2s; }
   .assemble .step-iris circle { transition-duration: 1s; transition-delay: calc(0.5s + 0.4s * var(--i, 0)); }
 
-  /* Once assembled, interaction (tilt) must not wait on the stagger delays */
+  /* Once assembled, nothing waits on the stagger delays */
   .assemble[data-assemble-done] :is(.asm-scatter, .asm-card, .asm-rise, .asm-fade, .asm-grow) { transition-delay: 0s; }
-  .asm-scatter.is-tilting { transition: transform 0.4s var(--ease-out); transition-delay: 0s; }
 
   /* Hidden starting state: JS only (html.js + data-assemble="pre" set by site.js) */
-  html.js [data-assemble="pre"] .asm-scatter {
-    transition: none;
-    opacity: 0;
-    transform: translate3d(calc((var(--i, 0) - 1.5) * -180px), calc(var(--dir, 1) * -130px), -340px) rotateY(calc(var(--dir, 1) * -80deg)) rotateZ(calc(var(--dir, 1) * -22deg));
-  }
-  html.js [data-assemble="pre"] .asm-card {
-    transition: none;
-    opacity: 0;
-    transform: translate3d(calc(var(--dir, 1) * 80px), calc(40px + var(--i, 0) * 20px), -240px) rotateY(calc(var(--dir, 1) * -32deg)) rotateX(calc(var(--dir, 1) * 12deg));
-  }
+  html.js [data-assemble="pre"] :is(.asm-scatter, .asm-card) { transition: none; opacity: 0; transform: translateY(24px); }
   html.js [data-assemble="pre"] .asm-fade { transition: none; opacity: 0; transform: translateY(14px); }
-  html.js [data-assemble="pre"] .asm-rise { transition: none; opacity: 0; transform: translateY(50px) rotateX(-40deg); }
+  html.js [data-assemble="pre"] .asm-rise { transition: none; opacity: 0; transform: translateY(24px); }
   html.js [data-assemble="pre"] .asm-grow { transition: none; transform: scaleX(0); }
   html.js [data-assemble="pre"] .iris-ico :is(circle, path):not(.fillgold):not([stroke-dasharray]) { transition: none; stroke-dasharray: 200; stroke-dashoffset: 200; }
   html.js [data-assemble="pre"] :is(.iris-ico .fillgold, .step-iris circle) { transition: none; transform: scale(0); }
@@ -632,13 +607,13 @@ html[data-theme] .mobile-drawer .theme-toggle-row {
 
 /* ---------- Print: show everything settled, no decoration ---------- */
 @media print {
-  .asm-scatter, .asm-card, .asm-fade, .asm-rise, .asm-grow, .tilt3d, .tilt3d * {
+  .asm-scatter, .asm-card, .asm-fade, .asm-rise, .asm-grow {
     opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important;
   }
   /* The light look always prints (theme.css re-declares the light roles for print); no dimmed photos, no switch. */
   :root img, :root[data-theme] img { filter: none !important; }
   .theme-toggle, html[data-theme] .theme-toggle { display: none !important; }
   .iris-ico :is(circle, path) { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
-  .iris-ico .fillgold, .step-iris circle { transform: none !important; }
+  .iris-ico .fillgold, .step-iris circle { transform: none !important; transition: none !important; }
   .ripples { display: none !important; }
 }

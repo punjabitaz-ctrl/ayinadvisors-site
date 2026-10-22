@@ -29,7 +29,7 @@
     <div class="projects-grid assemble asm-stage" data-assemble>
 
       <!-- COMPLETED: Thinkers Dilemma - featured full-width -->
-      <div class="project-card featured surface-card asm-card tilt3d" data-tilt>
+      <div class="project-card featured surface-card asm-card">
         <div class="card-left">
           <span class="status-badge badge-complete"><span class="badge-dot"></span>Completed</span>
           <div class="project-index" aria-hidden="true">01</div>
@@ -52,7 +52,7 @@
       </div>
 
       <!-- IN TESTING: BizCheck -->
-      <div class="project-card navy-card surface-card asm-card tilt3d" data-tilt>
+      <div class="project-card navy-card surface-card asm-card">
         <span class="status-badge badge-testing"><span class="badge-dot"></span>In Testing</span>
         <div class="project-index" aria-hidden="true">02</div>
         <h2>BizCheck</h2>
@@ -66,7 +66,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: Channel -->
-      <div class="project-card surface-card asm-card tilt3d" data-tilt>
+      <div class="project-card surface-card asm-card">
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">03</div>
         <h2>Channel</h2>
@@ -80,7 +80,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: Trust -->
-      <div class="project-card surface-card asm-card tilt3d" data-tilt>
+      <div class="project-card surface-card asm-card">
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">04</div>
         <h2>Trust</h2>
@@ -94,7 +94,7 @@
       </div>
 
       <!-- IN DEVELOPMENT: SceneCraft -->
-      <div class="project-card navy-card surface-card asm-card tilt3d" data-tilt>
+      <div class="project-card navy-card surface-card asm-card">
         <span class="status-badge badge-dev"><span class="badge-dot"></span>In Development</span>
         <div class="project-index" aria-hidden="true">05</div>
         <h2>SceneCraft</h2>
