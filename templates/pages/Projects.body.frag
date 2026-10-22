@@ -27,8 +27,7 @@
     </div>
     <div class="projects-grid assemble asm-stage" data-assemble>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">01</span><span class="status-badge badge-beta">In beta</span></div>
-        <p class="pc-meta">2025 to Present</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">01</span>2025 to Present</p><span class="status-badge badge-beta">In beta</span></div>
         <h3>ChanneliQ</h3>
         <p class="pc-tagline">AI partner-enablement platform</p>
         <p class="pc-desc">Codifies 15 years of partner training and GTM methodology into software. Vendors load verified product truth; resellers generate battlecards, talk tracks and outreach that stay grounded in it. In beta with a manufacturer, an ISV and a reseller.</p>
@@ -37,8 +36,7 @@
         </div>
       </article>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">02</span><span class="status-badge badge-live">Shipped</span></div>
-        <p class="pc-meta">2025 to Present</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">02</span>2025 to Present</p><span class="status-badge badge-live">Shipped</span></div>
         <h3>Memento</h3>
         <p class="pc-tagline">Privacy-first AI memory vault</p>
         <p class="pc-desc">A full-stack personal AI memory app built around a simple rule: your data stays yours. Local AI processing and AES-256-GCM encryption, packaged to self-host.</p>
@@ -47,19 +45,17 @@
         </div>
       </article>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">03</span><span class="status-badge badge-live">Live</span></div>
-        <p class="pc-meta">AYiN Advisors</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">03</span>AYiN Advisors</p><span class="status-badge badge-live">Live</span></div>
         <h3>BizCheck</h3>
         <p class="pc-tagline">A ten-seat panel for your business idea</p>
         <p class="pc-desc">Ten specialist agents (CFO, VC, Operator, Channel Strategist, Legal Advisor and more) stress-test an idea and return a clear verdict: GO, CONDITIONAL GO or NO GO.</p>
         <div class="project-footer">
           <div class="project-tags"><span class="ptag">Multi-agent</span><span class="ptag">Lead-gen engine</span><span class="ptag">Turnstile-gated</span></div>
-          <a class="tlink" href="BizCheck.html">Visit BizCheck<span class="btn-arrow" aria-hidden="true">→</span></a>
+          <p class="pc-link"><a class="tlink" href="BizCheck.html">Visit BizCheck<span class="btn-arrow" aria-hidden="true">→</span></a></p>
         </div>
       </article>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">04</span><span class="status-badge badge-built">Built</span></div>
-        <p class="pc-meta">Verification</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">04</span>Verification</p><span class="status-badge badge-built">Built</span></div>
         <h3>TrustLayer</h3>
         <p class="pc-tagline">Hallucination checks for AI output</p>
         <p class="pc-desc">Breaks an AI answer into individual claims and scores each against evidence, so what ships to a customer or a board deck has been checked first.</p>
@@ -83,46 +79,67 @@
     </div>
     <div class="projects-grid sites-grid assemble asm-stage" data-assemble>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">pardesiconnections.com</p>
-        <h3>Pardesi Connections</h3>
-        <p class="pc-desc">A video podcast about life between worlds.</p>
-        <div class="project-footer"><a class="tlink" href="https://pardesiconnections.com" rel="noopener noreferrer">Visit site<span class="vh">: Pardesi Connections</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-pardesi-connections" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">pardesiconnections.com</p>
+          <h3>Pardesi Connections</h3>
+          <p class="pc-desc">A video podcast about life between worlds.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://pardesiconnections.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Pardesi Connections (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">thinkersdilemma.com</p>
-        <h3>Thinkers Dilemma</h3>
-        <p class="pc-desc">Society through a critical lens: who benefits, who pays, who decides.</p>
-        <div class="project-footer"><a class="tlink" href="https://thinkersdilemma.com" rel="noopener noreferrer">Visit site<span class="vh">: Thinkers Dilemma</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-thinkers-dilemma" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">thinkersdilemma.com</p>
+          <h3>Thinkers Dilemma</h3>
+          <p class="pc-desc">Society through a critical lens: who benefits, who pays, who decides.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://thinkersdilemma.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Thinkers Dilemma (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">historicalphilly.com</p>
-        <h3>Historical Philly</h3>
-        <p class="pc-desc">Restored historic vacation homes in Society Hill and Queen Village, Philadelphia.</p>
-        <div class="project-footer"><a class="tlink" href="https://historicalphilly.com" rel="noopener noreferrer">Visit site<span class="vh">: Historical Philly</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-historical-philly" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">historicalphilly.com</p>
+          <h3>Historical Philly</h3>
+          <p class="pc-desc">Restored historic vacation homes in Society Hill and Queen Village, Philadelphia.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://historicalphilly.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Historical Philly (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">vehlijantamedia.com</p>
-        <h3>Vehli Janta Media</h3>
-        <p class="pc-desc">Media studio and advisory in Princeton, NJ.</p>
-        <div class="project-footer"><a class="tlink" href="https://vehlijantamedia.com" rel="noopener noreferrer">Visit site<span class="vh">: Vehli Janta Media</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-vehli-janta-media" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">vehlijantamedia.com</p>
+          <h3>Vehli Janta Media</h3>
+          <p class="pc-desc">Media studio and advisory in Princeton, NJ.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://vehlijantamedia.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Vehli Janta Media (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">alsaboot.com</p>
-        <h3>Al Saboot Builders</h3>
-        <p class="pc-desc">Concrete masonry and interior design contractor in Brooklyn, NY.</p>
-        <div class="project-footer"><a class="tlink" href="https://alsaboot.com" rel="noopener noreferrer">Visit site<span class="vh">: Al Saboot Builders</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-al-saboot-builders" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">alsaboot.com</p>
+          <h3>Al Saboot Builders</h3>
+          <p class="pc-desc">Concrete masonry and interior design contractor in Brooklyn, NY.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://alsaboot.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Al Saboot Builders (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">zohozatraders.com</p>
-        <h3>Zohoza</h3>
-        <p class="pc-desc">Online marketplace for home goods, furnishings and toys.</p>
-        <div class="project-footer"><a class="tlink" href="https://zohozatraders.com" rel="noopener noreferrer">Visit site<span class="vh">: Zohoza</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-zohoza" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">zohozatraders.com</p>
+          <h3>Zohoza</h3>
+          <p class="pc-desc">Online marketplace for home goods, furnishings and toys.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://zohozatraders.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Zohoza (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">qbitedgetechnologies.com</p>
-        <h3>Qbit Edge Technologies</h3>
-        <p class="pc-desc">Mobile device and IT liquidation in Central New Jersey.</p>
-        <div class="project-footer"><a class="tlink" href="https://qbitedgetechnologies.com" rel="noopener noreferrer">Visit site<span class="vh">: Qbit Edge Technologies</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><image-slot slug="site-qbit-edge-technologies" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
+        <div class="site-body">
+          <p class="pc-meta">qbitedgetechnologies.com</p>
+          <h3>Qbit Edge Technologies</h3>
+          <p class="pc-desc">Mobile device and IT liquidation in Central New Jersey.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://qbitedgetechnologies.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Qbit Edge Technologies (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
     </div>
   </div>

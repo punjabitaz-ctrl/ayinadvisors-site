@@ -45,40 +45,33 @@
   .pagehead .lead { max-width: 52ch; }
   .ph-motif { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 460px; height: 460px; z-index: 1; opacity: 0.55; pointer-events: none; }
   .ph-motif circle { fill: none; stroke: var(--line-gold); stroke-width: 0.8; }
-  .ph-motif .spin { transform-origin: 230px 230px; animation: spin 60s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* ── Project grids (AI projects, digital projects) ── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
-  }
+  /* ── Project cards: AI projects in two columns, sites in a four-up preview grid (the tazabbas.com arrangement, in the AYiN roles) ── */
+  .projects-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 28px); }
+  .sites-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 22px); }
   .project-card, .site-card {
-    padding: clamp(32px, 4vw, 52px);
     display: flex; flex-direction: column;
-    position: relative;
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    position: relative; min-width: 0;
+    border: 1px solid var(--line); border-radius: 6px;
   }
-  .sites-grid .site-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .project-card { padding: clamp(26px, 3vw, 40px); }
+  .site-card { overflow: hidden; }
+  .site-card:hover { border-color: var(--line-gold); }
+  .site-card:has(.site-link:focus-visible) { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 
-  .pc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
-  .project-index {
-    font-family: var(--serif); font-style: italic;
-    font-size: clamp(3.2rem, 5vw, 4.8rem); color: var(--accent-ink);
-    line-height: 0.85;
-  }
-  /* status badge: text only, no animation */
+  .pc-top { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; margin-bottom: 18px; }
+  .pc-top .pc-meta { margin: 0; }
+  .project-index { color: var(--accent-ink); font-weight: 600; }
+  .project-index::after { content: "\00b7"; margin-inline: 0.7em; color: var(--ink-muted); }
+  /* status badge: a static dot and text, no animation */
   .status-badge {
-    display: inline-flex; align-items: center;
+    display: inline-flex; align-items: center; gap: 8px;
     font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 5px 10px; border-radius: 2px;
+    padding: 5px 12px; border-radius: 999px;
     width: fit-content; flex-shrink: 0;
     font-family: var(--sans); font-weight: 600;
   }
+  .status-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
   .badge-live {
     background: color-mix(in srgb, var(--success-ink) 14%, transparent); color: color-mix(in srgb, var(--success-ink) 75%, var(--ink));
     border: 1px solid color-mix(in srgb, var(--success-ink) 30%, transparent);
@@ -92,26 +85,39 @@
     border: 1px solid var(--line);
   }
 
-  .pc-meta { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 12px; }
+  .pc-meta { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 10px; overflow-wrap: anywhere; }
   .project-card h3, .site-card h3 { font-size: clamp(1.6rem, 2.6vw, 2.2rem); margin: 0 0 10px; color: var(--ink); }
-  .pc-tagline { color: var(--ink); font-family: var(--serif); font-style: italic; font-size: 1.15rem; margin: 0 0 16px; }
+  .site-card h3 { font-size: clamp(1.3rem, 1.8vw, 1.55rem); }
+  .pc-tagline { color: var(--accent-ink); font-family: var(--serif); font-style: italic; font-size: 1.15rem; margin: 0 0 16px; }
   .pc-desc { color: var(--ink-muted); font-size: 0.98rem; line-height: 1.65; margin: 0; flex: 1; }
+  .site-card .pc-desc { font-size: 0.92rem; line-height: 1.6; }
 
-  .project-footer {
-    margin-top: 30px; padding-top: 20px;
-    border-top: 1px solid var(--line);
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 12px 20px; flex-wrap: wrap;
-  }
+  .project-footer { margin-top: 24px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
   .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
   .ptag {
     font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-muted); border: 1px solid var(--line); padding: 4px 9px; border-radius: 2px;
+    color: var(--ink-muted); border: 1px solid var(--line); padding: 4px 11px; border-radius: 999px;
   }
-  .vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+  .pc-link { margin: 0; }
 
+  /* site previews: the screenshot sits above the text on the card surface, never behind it */
+  .site-thumb { margin: 0; border-bottom: 1px solid var(--line); background-color: var(--field-bg); }
+  .site-thumb picture { display: block; }
+  .site-thumb img { display: block; width: 100%; height: auto; }
+  .site-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .site-body .pc-link { margin-top: 20px; }
+  /* one link per site: its hit area stretches over the whole card, preview included */
+  .site-link::before { content: ""; position: absolute; inset: 0; }
+  .vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: normal; border: 0; }
+
+  @media (max-width: 1099px) {
+    .sites-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 820px) {
-    .projects-grid { grid-template-columns: 1fr; }
+    .projects-grid:not(.sites-grid) { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 639px) {
+    .sites-grid { grid-template-columns: 1fr; }
   }
 </style>
 <script defer src="assets/vendor/lenis.min.js"></script>
@@ -187,8 +193,7 @@
     </div>
     <div class="projects-grid assemble asm-stage" data-assemble>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">01</span><span class="status-badge badge-beta">In beta</span></div>
-        <p class="pc-meta">2025 to Present</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">01</span>2025 to Present</p><span class="status-badge badge-beta">In beta</span></div>
         <h3>ChanneliQ</h3>
         <p class="pc-tagline">AI partner-enablement platform</p>
         <p class="pc-desc">Codifies 15 years of partner training and GTM methodology into software. Vendors load verified product truth; resellers generate battlecards, talk tracks and outreach that stay grounded in it. In beta with a manufacturer, an ISV and a reseller.</p>
@@ -197,8 +202,7 @@
         </div>
       </article>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">02</span><span class="status-badge badge-live">Shipped</span></div>
-        <p class="pc-meta">2025 to Present</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">02</span>2025 to Present</p><span class="status-badge badge-live">Shipped</span></div>
         <h3>Memento</h3>
         <p class="pc-tagline">Privacy-first AI memory vault</p>
         <p class="pc-desc">A full-stack personal AI memory app built around a simple rule: your data stays yours. Local AI processing and AES-256-GCM encryption, packaged to self-host.</p>
@@ -207,19 +211,17 @@
         </div>
       </article>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">03</span><span class="status-badge badge-live">Live</span></div>
-        <p class="pc-meta">AYiN Advisors</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">03</span>AYiN Advisors</p><span class="status-badge badge-live">Live</span></div>
         <h3>BizCheck</h3>
         <p class="pc-tagline">A ten-seat panel for your business idea</p>
         <p class="pc-desc">Ten specialist agents (CFO, VC, Operator, Channel Strategist, Legal Advisor and more) stress-test an idea and return a clear verdict: GO, CONDITIONAL GO or NO GO.</p>
         <div class="project-footer">
           <div class="project-tags"><span class="ptag">Multi-agent</span><span class="ptag">Lead-gen engine</span><span class="ptag">Turnstile-gated</span></div>
-          <a class="tlink" href="BizCheck.html">Visit BizCheck<span class="btn-arrow" aria-hidden="true">→</span></a>
+          <p class="pc-link"><a class="tlink" href="BizCheck.html">Visit BizCheck<span class="btn-arrow" aria-hidden="true">→</span></a></p>
         </div>
       </article>
       <article class="project-card surface-card asm-card">
-        <div class="pc-top"><span class="project-index" aria-hidden="true">04</span><span class="status-badge badge-built">Built</span></div>
-        <p class="pc-meta">Verification</p>
+        <div class="pc-top"><p class="pc-meta"><span class="project-index" aria-hidden="true">04</span>Verification</p><span class="status-badge badge-built">Built</span></div>
         <h3>TrustLayer</h3>
         <p class="pc-tagline">Hallucination checks for AI output</p>
         <p class="pc-desc">Breaks an AI answer into individual claims and scores each against evidence, so what ships to a customer or a board deck has been checked first.</p>
@@ -243,46 +245,67 @@
     </div>
     <div class="projects-grid sites-grid assemble asm-stage" data-assemble>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">pardesiconnections.com</p>
-        <h3>Pardesi Connections</h3>
-        <p class="pc-desc">A video podcast about life between worlds.</p>
-        <div class="project-footer"><a class="tlink" href="https://pardesiconnections.com" rel="noopener noreferrer">Visit site<span class="vh">: Pardesi Connections</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-pardesi-connections-480.webp 480w, assets/img/site-pardesi-connections-960.webp 960w, assets/img/site-pardesi-connections-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-pardesi-connections-960.webp" width="1600" height="1000" alt="Screenshot of the Pardesi Connections website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">pardesiconnections.com</p>
+          <h3>Pardesi Connections</h3>
+          <p class="pc-desc">A video podcast about life between worlds.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://pardesiconnections.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Pardesi Connections (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">thinkersdilemma.com</p>
-        <h3>Thinkers Dilemma</h3>
-        <p class="pc-desc">Society through a critical lens: who benefits, who pays, who decides.</p>
-        <div class="project-footer"><a class="tlink" href="https://thinkersdilemma.com" rel="noopener noreferrer">Visit site<span class="vh">: Thinkers Dilemma</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-thinkers-dilemma-480.webp 480w, assets/img/site-thinkers-dilemma-960.webp 960w, assets/img/site-thinkers-dilemma-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-thinkers-dilemma-960.webp" width="1600" height="1000" alt="Screenshot of the Thinkers Dilemma website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">thinkersdilemma.com</p>
+          <h3>Thinkers Dilemma</h3>
+          <p class="pc-desc">Society through a critical lens: who benefits, who pays, who decides.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://thinkersdilemma.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Thinkers Dilemma (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">historicalphilly.com</p>
-        <h3>Historical Philly</h3>
-        <p class="pc-desc">Restored historic vacation homes in Society Hill and Queen Village, Philadelphia.</p>
-        <div class="project-footer"><a class="tlink" href="https://historicalphilly.com" rel="noopener noreferrer">Visit site<span class="vh">: Historical Philly</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-historical-philly-480.webp 480w, assets/img/site-historical-philly-960.webp 960w, assets/img/site-historical-philly-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-historical-philly-960.webp" width="1600" height="1000" alt="Screenshot of the Historical Philly website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">historicalphilly.com</p>
+          <h3>Historical Philly</h3>
+          <p class="pc-desc">Restored historic vacation homes in Society Hill and Queen Village, Philadelphia.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://historicalphilly.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Historical Philly (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">vehlijantamedia.com</p>
-        <h3>Vehli Janta Media</h3>
-        <p class="pc-desc">Media studio and advisory in Princeton, NJ.</p>
-        <div class="project-footer"><a class="tlink" href="https://vehlijantamedia.com" rel="noopener noreferrer">Visit site<span class="vh">: Vehli Janta Media</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-vehli-janta-media-480.webp 480w, assets/img/site-vehli-janta-media-960.webp 960w, assets/img/site-vehli-janta-media-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-vehli-janta-media-960.webp" width="1600" height="1000" alt="Screenshot of the Vehli Janta Media website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">vehlijantamedia.com</p>
+          <h3>Vehli Janta Media</h3>
+          <p class="pc-desc">Media studio and advisory in Princeton, NJ.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://vehlijantamedia.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Vehli Janta Media (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">alsaboot.com</p>
-        <h3>Al Saboot Builders</h3>
-        <p class="pc-desc">Concrete masonry and interior design contractor in Brooklyn, NY.</p>
-        <div class="project-footer"><a class="tlink" href="https://alsaboot.com" rel="noopener noreferrer">Visit site<span class="vh">: Al Saboot Builders</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-al-saboot-builders-480.webp 480w, assets/img/site-al-saboot-builders-960.webp 960w, assets/img/site-al-saboot-builders-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-al-saboot-builders-960.webp" width="1600" height="1000" alt="Screenshot of the Al Saboot Builders website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">alsaboot.com</p>
+          <h3>Al Saboot Builders</h3>
+          <p class="pc-desc">Concrete masonry and interior design contractor in Brooklyn, NY.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://alsaboot.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Al Saboot Builders (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">zohozatraders.com</p>
-        <h3>Zohoza</h3>
-        <p class="pc-desc">Online marketplace for home goods, furnishings and toys.</p>
-        <div class="project-footer"><a class="tlink" href="https://zohozatraders.com" rel="noopener noreferrer">Visit site<span class="vh">: Zohoza</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-zohoza-480.webp 480w, assets/img/site-zohoza-960.webp 960w, assets/img/site-zohoza-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-zohoza-960.webp" width="1600" height="1000" alt="Screenshot of the Zohoza website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">zohozatraders.com</p>
+          <h3>Zohoza</h3>
+          <p class="pc-desc">Online marketplace for home goods, furnishings and toys.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://zohozatraders.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Zohoza (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <p class="pc-meta">qbitedgetechnologies.com</p>
-        <h3>Qbit Edge Technologies</h3>
-        <p class="pc-desc">Mobile device and IT liquidation in Central New Jersey.</p>
-        <div class="project-footer"><a class="tlink" href="https://qbitedgetechnologies.com" rel="noopener noreferrer">Visit site<span class="vh">: Qbit Edge Technologies</span><span class="btn-arrow" aria-hidden="true">→</span></a></div>
+        <figure class="site-thumb"><picture><source type="image/webp" srcset="assets/img/site-qbit-edge-technologies-480.webp 480w, assets/img/site-qbit-edge-technologies-960.webp 960w, assets/img/site-qbit-edge-technologies-1600.webp 1600w" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw"><img src="assets/img/site-qbit-edge-technologies-960.webp" width="1600" height="1000" alt="Screenshot of the Qbit Edge Technologies website home page." loading="lazy" decoding="async"></picture></figure>
+        <div class="site-body">
+          <p class="pc-meta">qbitedgetechnologies.com</p>
+          <h3>Qbit Edge Technologies</h3>
+          <p class="pc-desc">Mobile device and IT liquidation in Central New Jersey.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://qbitedgetechnologies.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Qbit Edge Technologies (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
       </article>
     </div>
   </div>

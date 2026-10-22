@@ -4,7 +4,10 @@
       "slug": "us-night",
       "source": "nasa-1lfI7wkGWZ4-unsplash.jpg",
       "alt": "Satellite view of the United States at night, with city lights tracing the major metropolitan areas and the highway corridors between them.",
-      "focal": [0.55, 0.5],
+      "focal": [
+        0.55,
+        0.5
+      ],
       "pillar": "market-entry",
       "crop": "3:2"
     },
@@ -12,7 +15,10 @@
       "slug": "skyscrapers",
       "source": "sean-pollock-PhYq704ffdA-unsplash.jpg",
       "alt": "Dark glass skyscrapers seen from street level, rising toward a pale, cloudy sky.",
-      "focal": [0.5, 0.5],
+      "focal": [
+        0.5,
+        0.5
+      ],
       "pillar": "about",
       "crop": "3:2"
     },
@@ -20,9 +26,89 @@
       "slug": "lightbulb",
       "source": "diego-ph-fIq0tET6llw-unsplash.jpg",
       "alt": "A hand reaching up and holding a clear light bulb against a pastel sky that fades from teal to coral.",
-      "focal": [0.5, 0.52],
+      "focal": [
+        0.5,
+        0.52
+      ],
       "pillar": "bizcheck",
       "crop": "4:3"
+    },
+    {
+      "slug": "site-pardesi-connections",
+      "source": "site-pardesi-connections.png",
+      "alt": "Screenshot of the Pardesi Connections website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
+    },
+    {
+      "slug": "site-thinkers-dilemma",
+      "source": "site-thinkers-dilemma.png",
+      "alt": "Screenshot of the Thinkers Dilemma website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
+    },
+    {
+      "slug": "site-historical-philly",
+      "source": "site-historical-philly.png",
+      "alt": "Screenshot of the Historical Philly website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
+    },
+    {
+      "slug": "site-vehli-janta-media",
+      "source": "site-vehli-janta-media.png",
+      "alt": "Screenshot of the Vehli Janta Media website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
+    },
+    {
+      "slug": "site-al-saboot-builders",
+      "source": "site-al-saboot-builders.png",
+      "alt": "Screenshot of the Al Saboot Builders website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
+    },
+    {
+      "slug": "site-zohoza",
+      "source": "site-zohoza.png",
+      "alt": "Screenshot of the Zohoza website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
+    },
+    {
+      "slug": "site-qbit-edge-technologies",
+      "source": "site-qbit-edge-technologies.png",
+      "alt": "Screenshot of the Qbit Edge Technologies website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
     }
   ]
 }

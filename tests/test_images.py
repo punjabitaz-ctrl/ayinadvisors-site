@@ -12,6 +12,8 @@ from tools import images
 from tools import optimize_images
 
 WIDTHS = (480, 960, 1600)
+SITE_SLUGS = ("site-pardesi-connections", "site-thinkers-dilemma", "site-historical-philly", "site-vehli-janta-media",
+              "site-al-saboot-builders", "site-zohoza", "site-qbit-edge-technologies")
 BUDGET = 160_000
 
 
@@ -38,7 +40,7 @@ def test_registry_requires_alt_or_decorative(tmp_path):
 def test_registry_sources_are_bare_file_names():
     for slug, e in _registry().items():
         assert Path(e["source"]).name == e["source"], slug
-    assert set(_registry()) == {"us-night", "skyscrapers", "lightbulb"}
+    assert set(_registry()) == {"us-night", "skyscrapers", "lightbulb", *SITE_SLUGS}
 
 
 def test_every_registry_slug_has_all_three_files():
@@ -118,9 +120,19 @@ def test_each_placement_renders_one_picture(stem, slug):
     assert "image-slot" not in html
 
 
-@pytest.mark.parametrize("stem", [s for s in PAGES if s not in PLACEMENTS])
+@pytest.mark.parametrize("stem", [s for s in PAGES if s not in PLACEMENTS and s != "Projects"])
 def test_other_pages_have_no_photos(stem):
     assert "<picture" not in (ROOT / f"{stem}.html").read_text(encoding="utf-8")
+
+
+def test_projects_page_carries_one_preview_per_site():
+    frag = build.page_parts("Projects")[0]
+    assert frag.count("<image-slot") == 7
+    html = (ROOT / "Projects.html").read_text(encoding="utf-8")
+    assert html.count("<picture>") == 7 and "image-slot" not in html
+    for slug in SITE_SLUGS:
+        assert f'slug="{slug}"' in frag and f"assets/img/{slug}-1600.webp" in html
+        assert _registry()[slug]["alt"].startswith("Screenshot of the ") and "website" in _registry()[slug]["alt"]
 
 
 def test_render_all_expands_slots():

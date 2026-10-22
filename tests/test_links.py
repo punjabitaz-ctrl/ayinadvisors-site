@@ -88,3 +88,40 @@ def test_sub_services_are_listed_but_not_linked():
         hrefs = {a["href"] for a in main.find_all("a", href=True)}
         for s in p["services"]:
             assert not any(s["slug"] in h for h in hrefs), f"{p['stem']} links to sub-service {s['slug']}"
+
+
+def _is_external(href: str) -> bool:
+    if not href.startswith(("http://", "https://", "//")):
+        return False
+    host = urlsplit(href if not href.startswith("//") else "https:" + href).hostname or ""
+    return host != "ayinadvisors.com" and not host.endswith(".ayinadvisors.com")
+
+
+def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
+    """Links leaving the site (project websites) never endorse the target: nofollow + noopener + noreferrer on every one, no exemptions."""
+    seen = 0
+    for stem, soup in soups.items():
+        for a in soup.select("a[href^='http'], a[href^='//']"):
+            if not _is_external(a["href"]):
+                continue
+            seen += 1
+            rel = set(a.get("rel") or [])
+            assert {"nofollow", "noopener", "noreferrer"} <= rel, f"{stem}: {a['href']} rel={sorted(rel)}"
+            assert a.get("target") == "_blank", f"{stem}: {a['href']} does not open in a new tab"
+    assert seen == 7, "the seven project websites on the Projects page are the only outbound links"
+
+
+def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
+    soup = soups["Projects"]
+    cards = soup.select(".site-card")
+    assert len(cards) == 7
+    for card in cards:
+        links = card.select("a")
+        assert len(links) == 1, "the preview and the text share one link (no adjacent duplicate links)"
+        a = links[0]
+        name = card.select_one("h3").get_text(strip=True)
+        assert a.get_text(strip=True).startswith("Visit site")
+        assert name in a.select_one(".vh").get_text()
+        assert a.select_one(".btn-arrow")["aria-hidden"] == "true"
+        img = card.select_one("picture img")
+        assert img and img.get("alt", "").strip() and img.get("width") and img.get("height") and img.get("loading") == "lazy"
