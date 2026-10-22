@@ -281,7 +281,7 @@ def test_retainer_and_step_back_promises_are_only_on_partnerships(soups):
     part = _text(soups["partnerships"].select_one("#process")).lower()
     assert "no open-ended retainers" in part and "step back" in part
     ai = _text(soups["ai-solutions"].select_one("#process"))
-    assert "We document what we built and make sure your team can run it." in ai
+    assert "document what we built" not in ai
     dig = _text(soups["digital-presence"].select_one("#process"))
     assert "We hand over what we built and agree what happens next." in dig
 

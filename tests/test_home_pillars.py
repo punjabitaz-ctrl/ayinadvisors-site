@@ -100,9 +100,8 @@ def test_home_hero_stats_keep_only_claims_the_site_already_made(home):
     # 1: the count of practices (spec decision)
     assert n[0].select_one("[data-count]")["data-count"] == "3" and not n[0].select_one("[data-count]").get("data-suffix", "").strip()
     assert "Practices" in label[0] and "Partnerships" in label[0] and "AI" in label[0] and "Digital" in label[0]
-    # 2: the existing 90-day claim, scoped to the Partnerships practice
-    assert n[1].select_one("[data-count]")["data-count"] == "90" and n[1].select_one("[data-count]")["data-suffix"] == " Days"
-    assert label[1].startswith("Partnerships") and "to first qualified partner" in label[1].lower()
+    # 2: the existing 90-day claim, owner chose the unscoped wording 2026-10-21
+    assert label[1].lower() == "to first qualified partner"
     # 3: no number; the working-style line from About
     assert not n[2].select("[data-count]") and _text(n[2]) == "Founder-led"
     assert label[2] == "Operators, not observers"

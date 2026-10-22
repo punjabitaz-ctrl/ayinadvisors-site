@@ -170,13 +170,7 @@
           "summary": "A close look at where time and effort are lost in your operations, and practical fixes for the biggest gaps.",
           "status": "planned"
         }
-      ],
-      "process": {
-        "final": {
-          "name": "Hand over",
-          "text": "We document what we built and make sure your team can run it."
-        }
-      }
+      ]
     },
     {
       "slug": "digital-presence",

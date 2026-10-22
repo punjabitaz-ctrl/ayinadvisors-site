@@ -17,7 +17,7 @@
   <div class="hero-stats">
     <div class="wrap">
       <div class="hstat reveal"><div class="n"><span data-count="3"></span></div><div class="l">Practices · Partnerships · AI · Digital</div></div>
-      <div class="hstat reveal" data-d="1"><div class="n"><span data-count="90" data-suffix=" Days"></span></div><div class="l">Partnerships · to first qualified partner</div></div>
+      <div class="hstat reveal" data-d="1"><div class="n"><span data-count="90" data-suffix=" Days"></span></div><div class="l">To first qualified partner</div></div>
       <div class="hstat reveal" data-d="2"><div class="n">Founder-led</div><div class="l">Operators, not observers</div></div>
     </div>
   </div>
