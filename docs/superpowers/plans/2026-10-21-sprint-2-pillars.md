@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - `python -m pytest tests -q` passes at the end of every task (about 12 minutes, growing with pages); zero known accessibility issues in both themes for EVERY page including new ones; no ratchet; stale review-entry tests stay honest; colour-literal test passes (no new literals).
-- New pages are root pages `partnerships`, `ai-solutions`, `digital-presence`; hub is the existing `Services` page. Canonicals follow the existing convention (`https://ayinadvisors.com/<Stem>.html` style used by current pages: use `https://ayinadvisors.com/partnerships.html` etc.). Page titles keep the em dash. Tagline: "Business Solutions for a Digital World"; Home title "AYiN Advisors - Business Solutions for a Digital World".
+- New pages are root pages `partnerships`, `ai-solutions`, `digital-presence`; hub is the existing `Services` page. Canonicals follow the existing convention (`https://ayinadvisors.com/<Stem>.html` style used by current pages: use `https://ayinadvisors.com/partnerships.html` etc.). No em dash anywhere; hyphen only, including titles. Tagline: "Business Solutions for a Digital World"; Home title "AYiN Advisors - Business Solutions for a Digital World".
 - Sub-services are listed but NOT linked (no `href` to non-existent pages); no dead links (a test crawls every internal href/anchor on every page).
 - No pricing anywhere; no invented statistics, clients, results or testimonials; copy is drafted from the owner's shorthand and the existing site text; the four existing market-entry services keep their existing copy verbatim.
 - Cloudflare serves the repo root: only real pages are tracked `.html`; templates stay `.j2`/`.frag`/`.json`; `tests/test_no_stray_html.py` follows `site.json`. Dev deps only in `dev-requirements.txt`.

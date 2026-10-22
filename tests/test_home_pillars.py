@@ -46,7 +46,7 @@ def _text(el) -> str:
 
 def test_home_title_and_description_use_the_tagline(site, soups):
     page = site["pages"]["index"]
-    assert page["title"] == f"AYiN Advisors - {TAGLINE}"          # page titles keep the em dash site-wide
+    assert page["title"] == f"AYiN Advisors - {TAGLINE}"          # no em dash anywhere, titles included
     assert page["title"].startswith("AYiN Advisors") and page["title"].endswith(TAGLINE)
     d = page["description"]
     assert d.lower().startswith(TAGLINE.lower()), d

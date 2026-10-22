@@ -35,4 +35,4 @@ Done when: nav routes correctly, no dead links, the homepage speaks to three buy
 - WCAG 2.2 AA in both themes at zero known issues; the gate covers every new page.
 - No copy change that asserts a fact not already on the site or given by the owner. Placeholders are phrased as capabilities, not results.
 - Cloudflare serves the repo root: new pages are generated root `.html` files and the "only real pages are tracked HTML" test is updated from `site.json`; templates stay `.j2` and `.frag`.
-- No pricing. No personal info in docs. Page titles keep the em dash.
+- No pricing. No personal info in docs. No em dashes anywhere; hyphen only, including page titles (owner rule 2026-10-21).

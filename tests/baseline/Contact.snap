@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Book a Consultation - AYiN Advisors</title>
-<meta name="description" content="Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy." />
+<meta name="description" content="Book a consultation with AYiN Advisors to talk through your goals and which practice fits." />
 <link rel="canonical" href="https://ayinadvisors.com/Contact.html" />
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="assets/theme.css">
@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Book a Consultation - AYiN Advisors" />
-<meta property="og:description" content="Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy." />
+<meta property="og:description" content="Book a consultation with AYiN Advisors to talk through your goals and which practice fits." />
 <meta property="og:url" content="https://ayinadvisors.com/Contact.html" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Book a Consultation - AYiN Advisors" />
-<meta name="twitter:description" content="Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy." />
+<meta name="twitter:description" content="Book a consultation with AYiN Advisors to talk through your goals and which practice fits." />
 <meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
