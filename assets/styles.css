@@ -617,3 +617,14 @@ html[data-theme] .mobile-drawer .theme-toggle-row {
   .iris-ico .fillgold, .step-iris circle { transform: none !important; transition: none !important; }
   .ripples { display: none !important; }
 }
+
+/* ---------- Phase 2d: smooth scroll + layered depth (assets/motion.js; only runs without reduced motion) ---------- */
+html.lenis, html.lenis body { height: auto; }
+html.lenis, html.lenis-smooth { scroll-behavior: auto !important; }   /* one scroller at a time: no native smooth scrolling underneath Lenis */
+html.lenis.lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.depth-frame { overflow: hidden; border-radius: 4px; }
+.depth-frame img { transform-origin: 50% 50%; }
+@media print {
+  .depth, .depth-frame img { transform: none !important; }
+}

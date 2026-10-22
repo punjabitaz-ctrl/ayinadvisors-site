@@ -208,3 +208,37 @@ separately.
   band's text label still carries the meaning.
 - Details and what has not been checked by a person are in
   `docs/accessibility/2026-10-2b-review.md`.
+
+## 3D hero, smooth scroll and depth (Phase 2d)
+
+Three pieces, all self-hosted (no CDN; the CSP is unchanged because `script-src 'self'` already covers them):
+
+- **Smooth scroll and depth parallax, every page.** `assets/vendor/lenis.min.js`, `gsap.min.js`, `ScrollTrigger.min.js`
+  and `assets/motion.js`, loaded with `defer` from `<head>` (`templates/base.j2`). Versions and hashes are pinned in
+  `assets/vendor/MANIFEST.json`; licences (Lenis MIT, GSAP standard "no charge" licence, three.js MIT) are in
+  `assets/vendor/LICENSES.md`. Reduced motion: none of it runs. Touch scrolling is native.
+- **WebGL hero iris, Home only.** `assets/hero3d.js` is built from `tools/hero3d/src/main.js` with esbuild (three.js,
+  tree-shaken) and **committed**, because Cloudflare serves the repo root with no build command. It starts only on
+  screens at least 720px wide with a hover-capable or fine pointer, no reduced motion and no data-saver; if WebGL is
+  missing, the context is lost or anything throws, it removes its canvas and the original 2D hero canvas (`#iris`,
+  `assets/site.js`) carries on. It renders on demand (no idle loop) and reads its colours from the page's CSS roles.
+- **Rebuilding** (only needed after editing `tools/hero3d/src/main.js` or changing a pin in `tools/hero3d/package.json`):
+
+  ```
+  cd tools/hero3d
+  npm ci
+  npm run build     # writes assets/hero3d.js and assets/hero3d.build.json
+  npm run vendor    # only after changing the lenis/gsap pins: refreshes assets/vendor/*.min.js and MANIFEST.json
+  ```
+
+  Commit the regenerated files. `node_modules/` is git-ignored and `/tools/` is disallowed in `robots.txt`.
+  `tests/test_hero3d_static.py` fails if the committed bundle no longer matches the source and lockfile hashes
+  (it compares recorded hashes, so it needs neither node nor esbuild).
+- **Budgets** (enforced by the same test): `hero3d.js` at most 200 KB gzipped, the three vendor files together at most
+  120 KB gzipped. Hero text never waits for the bundle (all scripts are deferred; the 2D canvas paints first and the
+  3D canvas fades in over it with no layout shift).
+- **ScrollTrigger housekeeping.** Two built-in ScrollTrigger timers would keep the page awake while idle (a per-frame
+  `_rafBugFix` loop and a 250 ms poll). `assets/motion.js` drops the first and replaces the second; the browser test
+  `test_render_loop_stops_when_input_stops` fails if an upgrade brings either back, so re-run it after bumping GSAP.
+- **Fallbacks, in order:** reduced motion, narrow screen, touch-only, data-saver, no WebGL, an exception, a lost
+  context, a missing script (a blocked CDN-free file): each leaves the 2D hero and the normal browser scrolling.

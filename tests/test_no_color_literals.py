@@ -17,6 +17,9 @@ def scanned_files() -> list[Path]:
     files += sorted((ROOT / "templates").glob("*.j2"))
     files += sorted(p for p in (ROOT / "templates" / "pages").iterdir() if p.is_file())
     files.append(ROOT / "assets" / "site.js")
+    files.append(ROOT / "assets" / "motion.js")
+    # the hero bundle is built from this source; the bundle itself carries three.js and is not scanned
+    files += sorted((ROOT / "tools" / "hero3d" / "src").glob("*.js"))
     return files
 
 

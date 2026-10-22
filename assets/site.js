@@ -330,7 +330,11 @@
       pmy = (e.clientY / window.innerHeight - 0.5);
     });
 
+    let drawing = false;
     function draw() {
+      // Phase 2d: while the WebGL iris (assets/hero3d.js) is active the 2D canvas rests; if the 3D path
+      // ever tears itself down it fires "iris3d:off" and the 2D loop resumes.
+      if (canvas.dataset.engine === "webgl") { drawing = false; return; }
       t += 1;
       ctx.clearRect(0, 0, W, H);
       const ox = pmx * 26, oy = pmy * 26;
@@ -430,9 +434,11 @@
       requestAnimationFrame(draw);
     }
 
+    const run = () => { if (!drawing) { drawing = true; requestAnimationFrame(draw); } };
+    window.addEventListener("iris3d:off", run);
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
     resize();
-    requestAnimationFrame(draw);
+    run();
   }
 })();

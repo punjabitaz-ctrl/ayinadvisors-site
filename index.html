@@ -35,7 +35,14 @@
 <style>
   /* ---------- HERO ---------- */
   .hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(120% 100% at 70% 20%, var(--field-bg) 0%, var(--surface) 45%, var(--surface) 100%); overflow: hidden; }
-  #iris { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+  #iris, #iris3d { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+  /* Phase 2d: the WebGL iris (assets/hero3d.js) fades in over the 2D canvas, which stays as the fallback. */
+  #iris { transition: opacity 0.9s var(--ease); }
+  #iris3d { opacity: 0; transition: opacity 0.9s var(--ease); }
+  #iris3d[data-ready] { opacity: 1; }
+  /* Narrow screens: the headline spans the whole canvas, so the lines are held back until their worst-case pixel under a glyph keeps WCAG contrast. */
+  @media (max-width: 1100px) { .hero[data-iris="webgl"] #iris3d[data-ready] { opacity: 0.4; } }
+  .hero[data-iris="webgl"] #iris { opacity: 0; }
   .hero-vignette { position: absolute; inset: 0; z-index: 2; background: radial-gradient(80% 80% at 28% 50%, color-mix(in srgb, var(--surface) 0%, transparent) 0%, color-mix(in srgb, var(--surface) 55%, transparent) 70%, color-mix(in srgb, var(--surface) 85%, transparent) 100%); pointer-events: none; }
   .hero > .wrap { position: relative; z-index: 3; width: 100%; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; padding-top: calc(var(--nav-h) + 28px); padding-bottom: 48px; }
   .hero-inner { max-width: 760px; }
@@ -122,6 +129,11 @@
     .hstat:first-child { border-top: 0; }
   }
 </style>
+<script defer src="assets/hero3d.js"></script>
+<script defer src="assets/vendor/lenis.min.js"></script>
+<script defer src="assets/vendor/gsap.min.js"></script>
+<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+<script defer src="assets/motion.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
