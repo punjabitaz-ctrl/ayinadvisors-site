@@ -11,7 +11,7 @@
   <div class="wrap">
     <span class="eyebrow on-navy reveal">Our Work</span>
     <h1 class="display reveal" data-d="1">Ventures in motion.</h1>
-    <p class="lead reveal" data-d="2">Products and projects we are building — from live in market to actively in development.</p>
+    <p class="lead reveal" data-d="2">Products and projects we are building - from live in market to actively in development.</p>
   </div>
 </header>
 
@@ -28,7 +28,7 @@
 
     <div class="projects-grid assemble asm-stage" data-assemble>
 
-      <!-- COMPLETED: Thinkers Dilemma — featured full-width -->
+      <!-- COMPLETED: Thinkers Dilemma - featured full-width -->
       <div class="project-card featured surface-card asm-card tilt3d" data-tilt>
         <div class="card-left">
           <span class="status-badge badge-complete"><span class="badge-dot"></span>Completed</span>

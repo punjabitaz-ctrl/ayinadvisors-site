@@ -1,4 +1,4 @@
-# Services restructure — design
+# Services restructure - design
 
 Date: 2026-10-15
 Branch: `restructure-services` (sprints branch off and merge back individually)
@@ -25,7 +25,7 @@ pillar needs its own entry point and its own call to action.
 Three levels. A card leads to a pillar page, which leads to a page per sub-service.
 
 ```
-/Services                                    hub — three cards
+/Services                                    hub - three cards
   /partnerships                              pillar
     /partnerships/market-entry-research
     /partnerships/channel-strategy
@@ -49,7 +49,7 @@ nothing inbound breaks. New paths are lowercase and hyphenated. This leaves `/Se
 sitting beside `/partnerships`; renaming it would break inbound links for a cosmetic
 gain, so it stays.
 
-Clean URLs already work at the edge — `partnerships/market-entry-research.html` serves
+Clean URLs already work at the edge - `partnerships/market-entry-research.html` serves
 at the extensionless path, the same way `/BizCheck.html` serves at `/BizCheck`.
 
 ## Why a build step
@@ -60,7 +60,7 @@ pages that was tolerable; at twenty it is the dominant maintenance cost.
 This is not speculative. Both failures already happened:
 
 - Adding BizCheck to the nav required a scripted sweep across seven files.
-- The footers had silently drifted — `index` and `BizCheck` said "Valencia" while the
+- The footers had silently drifted - `index` and `BizCheck` said "Valencia" while the
   other four said "Toronto", with the lead sentence hyphenated differently between the
   two variants. Nobody noticed until a grep found it.
 
@@ -69,9 +69,9 @@ That drift occurred at a third of the target scale.
 ## Build system
 
 ```
-content/services.json     the three-level tree — single source of truth
+content/services.json     the three-level tree - single source of truth
 templates/
-  base.html               head, nav, footer — the shell every page extends
+  base.html               head, nav, footer - the shell every page extends
   hub.html                Services hub          } each supplies only
   pillar.html             a pillar page         } a body block into
   service.html            a sub-service page    } base.html
@@ -86,7 +86,7 @@ body block into it. The six existing pages keep their current body markup in
 **Output is written in place at the repo root and committed.**
 
 Cloudflare keeps doing exactly what it does now: no build command, serve the root. The
-alternative — building on deploy — was rejected deliberately. `functions/api/*.js`,
+alternative - building on deploy - was rejected deliberately. `functions/api/*.js`,
 `_headers`, `assets/` and the Turnstile wiring all resolve from the root today, and a
 deploy-time build introduces a failure mode where a broken build takes the live site
 down. The deploy path does not change.
@@ -98,7 +98,7 @@ hand-edits one by mistake.
 ### Generation covers all 20 pages
 
 If only the 14 service pages generate, nav and footer still drift between them and the
-six hand-written pages — the exact failure this is meant to end. So `index`, `About`,
+six hand-written pages - the exact failure this is meant to end. So `index`, `About`,
 `Projects`, `BizCheck`, `Contact` and `404` also move into the template system.
 
 **Their body content is preserved verbatim.** Only their chrome is generated.
@@ -122,7 +122,7 @@ start of the next sprint, never edited to turn a red test green.
 
 ### Also generated
 
-`sitemap.xml`, from the same content tree — 20 URLs, no longer hand-maintained.
+`sitemap.xml`, from the same content tree - 20 URLs, no longer hand-maintained.
 
 ## What does not change
 
@@ -140,9 +140,9 @@ already written and good.
 The pillar pages and the seven new sub-service pages need copy. Source material is the
 owner's shorthand:
 
-- **AI Solutions Development** — solving problems through custom applications, workflow
+- **AI Solutions Development** - solving problems through custom applications, workflow
   automation and operational efficiency.
-- **Digital Presence** — websites (brand presence), digital marketing (brand online),
+- **Digital Presence** - websites (brand presence), digital marketing (brand online),
   community and content (brand connect).
 
 Copy for new pages is drafted from that for owner review and edit. Draft copy is a deliverable of each sprint,
@@ -154,16 +154,16 @@ oversight.
 ## Sprints
 
 Each sprint is a branch off `restructure-services`, merged when complete. **Every merge
-must leave the live site coherent** — no sprint may ship a state where the homepage
+must leave the live site coherent** - no sprint may ship a state where the homepage
 promises something the site cannot deliver.
 
-**Sprint 1 — Build system, zero visible change.**
+**Sprint 1 - Build system, zero visible change.**
 Content model, templates, `build.py`. Regenerate the six existing pages. No new pages,
 no copy, nothing a visitor can see.
 
 *Done when,* verified against live production rather than assumed:
 - Every generated page's **visible DOM is equivalent** to the page it replaces.
-  Byte-identical output is not the bar and not achievable — generated files carry a
+  Byte-identical output is not the bar and not achievable - generated files carry a
   header comment and normalised whitespace. The test is that nav links, footer text,
   headings, body copy and asset references all match.
 - Both forms still submit and deliver.
@@ -171,23 +171,23 @@ no copy, nothing a visitor can see.
 - `BizCheck.html` keeps its page `<style>`, Turnstile head latch and inline script
   intact.
 
-**Sprint 2 — Three pillars go live.**
+**Sprint 2 - Three pillars go live.**
 Services hub, three pillar pages, and the homepage repositioning, together. They must
 ship as one unit: a hub promising three pillars while the homepage still says "See the
 American Business market clearly" would be incoherent. Sub-services are listed on
 pillar pages but not yet linked.
 *Done when:* nav routes correctly, no dead links, homepage speaks to three buyers.
 
-**Sprint 3 — B2B Partnerships sub-pages.**
+**Sprint 3 - B2B Partnerships sub-pages.**
 Four pages from existing copy; pillar page links activate.
 
-**Sprint 4 — AI Solutions sub-pages.**
+**Sprint 4 - AI Solutions sub-pages.**
 Three pages, new copy.
 
-**Sprint 5 — Digital Presence sub-pages.**
+**Sprint 5 - Digital Presence sub-pages.**
 Three pages, new copy.
 
-**Sprint 6 — The 404 page.** Last, deliberately.
+**Sprint 6 - The 404 page.** Last, deliberately.
 A redesign in the AYiN visual language, led by the line *"You've found a page that's
 not ready for Primetime."* It goes last because a 404's job is to recover a lost
 visitor, and it cannot route them anywhere useful until the twenty pages it would route
@@ -222,6 +222,6 @@ output against current production before merge, rather than trusting the templat
 
 ## Resolved
 
-1. **Copy** — every pillar and sub-service page is drafted for owner review and edit.
+1. **Copy** - every pillar and sub-service page is drafted for owner review and edit.
    Not blocking Sprint 1.
-2. **`Projects`** — left as is. Not reorganised by pillar in this restructure.
+2. **`Projects`** - left as is. Not reorganised by pillar in this restructure.

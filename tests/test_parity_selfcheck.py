@@ -4,7 +4,7 @@ from parity import page_facts
 
 def test_facts_extract_nav_and_footer():
     facts = page_facts(baseline_html("About"))
-    assert facts["title"] == "About — AYiN Advisors"
+    assert facts["title"] == "About - AYiN Advisors"
     assert ("BizCheck.html", "BizCheck") in [(h, t) for h, t, _ in facts["nav"]]
     assert facts["has_footer"] is True
 

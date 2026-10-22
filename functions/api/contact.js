@@ -1,18 +1,18 @@
 /**
- * Consultation request — Cloudflare Pages Function.
+ * Consultation request - Cloudflare Pages Function.
  *
  * Mirrors functions/api/bizcheck.js: verifies the Turnstile token server-side
  * before forwarding to Formspree, so the form endpoint stays out of page source
  * and a caller cannot POST straight past the browser-side checks.
  *
- * Shares TURNSTILE_SECRET and TURNSTILE_HOSTNAMES with the BizCheck surface —
+ * Shares TURNSTILE_SECRET and TURNSTILE_HOSTNAMES with the BizCheck surface -
  * one widget, one hostname allowlist. The action differs so the two surfaces
  * stay distinguishable at siteverify, and each has its own Formspree form.
  *
  * Environment (Pages → Settings → Environment variables → Production):
- *   TURNSTILE_SECRET            secret — Turnstile widget secret
- *   TURNSTILE_HOSTNAMES         plain  — e.g. "ayinadvisors.com", never localhost
- *   CONTACT_FORMSPREE_ENDPOINT  secret — https://formspree.io/f/xxxxxxxx
+ *   TURNSTILE_SECRET            secret - Turnstile widget secret
+ *   TURNSTILE_HOSTNAMES         plain  - e.g. "ayinadvisors.com", never localhost
+ *   CONTACT_FORMSPREE_ENDPOINT  secret - https://formspree.io/f/xxxxxxxx
  */
 
 const EXPECTED_ACTION = 'contact';

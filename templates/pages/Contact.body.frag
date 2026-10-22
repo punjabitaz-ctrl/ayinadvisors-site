@@ -6,7 +6,7 @@
     <div class="contact-intro">
       <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Book a Consultation</span>
       <h1 class="display reveal" data-d="1" style="font-size:clamp(2.6rem,5.4vw,4.6rem)">Let us read the<br />market together.</h1>
-      <p class="lead reveal" data-d="2">Tell us where you're headed. We'll come back within two business days with a candid first view — and the shape of an engagement if it's a fit.</p>
+      <p class="lead reveal" data-d="2">Tell us where you're headed. We'll come back within two business days with a candid first view - and the shape of an engagement if it's a fit.</p>
       <div class="contact-meta reveal" data-d="3">
         <div class="cmeta"><span class="k">Email</span><span class="v"><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a></span></div>
         <div class="cmeta"><span class="k">Offices</span><span class="v">New York<small>By appointment</small></span></div>
@@ -17,11 +17,11 @@
     <div class="form-card reveal" data-d="2" id="book">
       <form id="consult-form" novalidate>
         <h2>Request a consultation</h2>
-        <p class="sub">No obligation — a focused conversation about your US ambitions.</p>
+        <p class="sub">No obligation - a focused conversation about your US ambitions.</p>
         <!-- honeypot: hidden from humans, catches bots -->
         <div class="hp" aria-hidden="true"><label for="company_url">Leave this blank</label><input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
         <input type="hidden" id="interests" name="interests" value="" />
-        <input type="hidden" name="_subject" value="New consultation request — AYiN Advisors" />
+        <input type="hidden" name="_subject" value="New consultation request - AYiN Advisors" />
         <div class="field-row">
           <div class="field"><label for="name">Full name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
           <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" placeholder="Company name" required /></div>
@@ -47,7 +47,7 @@
       <div class="form-success" id="success">
         <svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"></circle><path d="M25 41l11 11 20-22"></path></svg>
         <h2>Request received.</h2>
-        <p>Thank you — we'll be in touch within two business days to find a time.</p>
+        <p>Thank you - we'll be in touch within two business days to find a time.</p>
       </div>
     </div>
   </div>

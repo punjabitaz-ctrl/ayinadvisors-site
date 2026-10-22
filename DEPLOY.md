@@ -16,7 +16,7 @@ Static files, no build step. Hosted on **Cloudflare Pages** (project
 | Branch           | `master` |
 
 Cloudflare Pages serves clean URLs automatically: `/BizCheck.html` 308-redirects
-to `/BizCheck`. Keep the `.html` files named as they are — the redirect is
+to `/BizCheck`. Keep the `.html` files named as they are - the redirect is
 handled at the edge, and inbound links to either form work.
 
 ## DNS
@@ -34,12 +34,12 @@ proxies the hostname but no origin is bound to it and it returns a 522.
 
 ## BizCheck form
 
-`BizCheck.html` posts to `/api/bizcheck` — a Pages Function that verifies the
+`BizCheck.html` posts to `/api/bizcheck` - a Pages Function that verifies the
 Turnstile token server-side before relaying to Formspree. The Formspree URL is
 never in the page; it lives in the `FORMSPREE_ENDPOINT` variable.
 
 Required Pages environment variables (Settings → Environment variables →
-**Production**, then redeploy — Pages binds them at build time):
+**Production**, then redeploy - Pages binds them at build time):
 
 | Variable | Value | Type |
 |---|---|---|
@@ -56,7 +56,7 @@ Formspree rejects with *"In order to submit via AJAX, you need to set a custom
 key or reCAPTCHA must be disabled"*. Turnstile already covers it, and runs
 before Formspree is contacted at all.
 
-If the endpoint is ever committed to this public repo, rotate it — history
+If the endpoint is ever committed to this public repo, rotate it - history
 outlives the file.
 
 ## Contact form
@@ -79,7 +79,7 @@ rotate it rather than reusing it.
 python -m http.server 4173
 ```
 
-Note: the site must be served over HTTP, not opened as `file://` — relative
+Note: the site must be served over HTTP, not opened as `file://` - relative
 asset paths won't resolve otherwise.
 
 ## Building

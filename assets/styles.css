@@ -1,5 +1,5 @@
 /* ============================================================
-   AYiN Advisors — Shared Design System
+   AYiN Advisors - Shared Design System
    Premium institutional advisory · navy + gold · eye motif
 
    Colour comes from assets/theme.css (generated from content/theme.json).
@@ -324,7 +324,7 @@ html.js .line-reveal.in > span { transform: none; }
 
 /* ---------- BizCheck nav accent ----------
    A filled gold pill so it reads as a product rather than another page.
-   The underline sweep every other nav link gets is suppressed — it collides
+   The underline sweep every other nav link gets is suppressed - it collides
    with the filled background. Navy text on the gold fill (light text on the gold fill is
    only 2.43:1). */
 .nav-link.gold {

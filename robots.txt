@@ -9,14 +9,14 @@ Disallow: /tools/
 Sitemap: https://ayinadvisors.com/sitemap.xml
 
 # ---------------------------------------------------------------
-# AI training / scraping crawlers — disallowed.
+# AI training / scraping crawlers - disallowed.
 # Search crawlers (Googlebot, Bingbot, DuckDuckBot) are deliberately
 # NOT listed here; blocking those would remove the site from search
 # and cut off inbound leads. Google-Extended and Applebot-Extended
 # govern AI training only and do not affect search indexing.
 #
 # robots.txt is advisory. Crawlers that ignore it must be stopped at
-# the edge — see Cloudflare AI Crawl Control / Bot Fight Mode.
+# the edge - see Cloudflare AI Crawl Control / Bot Fight Mode.
 # ---------------------------------------------------------------
 
 User-agent: GPTBot

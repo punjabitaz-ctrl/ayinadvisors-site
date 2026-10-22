@@ -1,4 +1,4 @@
-# Visual refresh and accessibility — design
+# Visual refresh and accessibility - design
 
 Date: 2026-10-20
 Branch: `phase-2a-theme` (off `master` after Sprint 1)

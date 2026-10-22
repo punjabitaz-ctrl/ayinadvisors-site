@@ -103,7 +103,7 @@
   },
   "pages": {
     "index": {
-      "title": "AYiN Advisors — Business Solutions for a Digital World",
+      "title": "AYiN Advisors - Business Solutions for a Digital World",
       "description": "Business solutions for a digital world. B2B partnerships for international firms entering the US, AI solutions development, and digital presence.",
       "canonical": "https://ayinadvisors.com/",
       "active": "Home",
@@ -118,7 +118,7 @@
       }
     },
     "About": {
-      "title": "About — AYiN Advisors",
+      "title": "About - AYiN Advisors",
       "description": "AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence.",
       "canonical": "https://ayinadvisors.com/About.html",
       "active": "About",
@@ -133,7 +133,7 @@
       }
     },
     "Services": {
-      "title": "Services — AYiN Advisors",
+      "title": "Services - AYiN Advisors",
       "description": "AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence.",
       "canonical": "https://ayinadvisors.com/Services.html",
       "active": "Services",
@@ -149,7 +149,7 @@
       "template": "hub"
     },
     "partnerships": {
-      "title": "Partnerships — AYiN Advisors",
+      "title": "Partnerships - AYiN Advisors",
       "description": "B2B partnerships and market entry for international firms entering the US: research, channel strategy, partner introductions and regional expansion.",
       "canonical": "https://ayinadvisors.com/partnerships.html",
       "active": "Services",
@@ -166,7 +166,7 @@
       }
     },
     "ai-solutions": {
-      "title": "AI Solutions — AYiN Advisors",
+      "title": "AI Solutions - AYiN Advisors",
       "description": "AI solutions development: custom applications, workflow automation and operational efficiency, built around the problem in front of you.",
       "canonical": "https://ayinadvisors.com/ai-solutions.html",
       "active": "Services",
@@ -183,7 +183,7 @@
       }
     },
     "digital-presence": {
-      "title": "Digital Presence — AYiN Advisors",
+      "title": "Digital Presence - AYiN Advisors",
       "description": "Digital presence for your business: websites for brand presence, digital marketing for brand online, and community and content for brand connect.",
       "canonical": "https://ayinadvisors.com/digital-presence.html",
       "active": "Services",
@@ -200,8 +200,8 @@
       }
     },
     "Projects": {
-      "title": "Projects — AYiN Advisors",
-      "description": "Ventures and products built by AYiN Advisors — from completed launches to projects in development and testing.",
+      "title": "Projects - AYiN Advisors",
+      "description": "Ventures and products built by AYiN Advisors - from completed launches to projects in development and testing.",
       "canonical": "https://ayinadvisors.com/Projects.html",
       "active": "Projects",
       "cta": {
@@ -215,8 +215,8 @@
       }
     },
     "BizCheck": {
-      "title": "BizCheck — Business Idea Evaluation · AYiN Advisors",
-      "description": "A ten-agent expert panel evaluates your business idea the way a real advisory firm would — and returns a single verdict: GO, CONDITIONAL GO, or NO GO.",
+      "title": "BizCheck - Business Idea Evaluation · AYiN Advisors",
+      "description": "A ten-agent expert panel evaluates your business idea the way a real advisory firm would - and returns a single verdict: GO, CONDITIONAL GO, or NO GO.",
       "canonical": "https://ayinadvisors.com/BizCheck.html",
       "active": "BizCheck",
       "cta": {
@@ -230,7 +230,7 @@
       }
     },
     "Contact": {
-      "title": "Book a Consultation — AYiN Advisors",
+      "title": "Book a Consultation - AYiN Advisors",
       "description": "Book a consultation with AYiN Advisors to discuss your US market entry and channel strategy.",
       "canonical": "https://ayinadvisors.com/Contact.html",
       "active": "Contact",
@@ -245,7 +245,7 @@
       }
     },
     "404": {
-      "title": "Page not found — AYiN Advisors",
+      "title": "Page not found - AYiN Advisors",
       "description": "The page you're looking for can't be found. Return to AYiN Advisors.",
       "active": "",
       "cta": {

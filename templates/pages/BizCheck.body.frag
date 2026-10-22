@@ -6,7 +6,7 @@
       <span class="tag-pill reveal">An AYiN Advisors Evaluation System</span>
       <h1 class="display reveal" data-d="1">Your friends say it's a great idea.</h1>
       <div class="bc-tagline reveal" data-d="2">Let's find out if they're right.</div>
-      <p class="lead reveal" data-d="3">A ten-agent expert panel evaluates your business idea the way a real advisory firm would. They review capital, demand, operations and risk — and return a single verdict: <strong>GO, CONDITIONAL GO,</strong> or <strong>NO GO</strong>. Before you spend a year finding out the hard way.</p>
+      <p class="lead reveal" data-d="3">A ten-agent expert panel evaluates your business idea the way a real advisory firm would. They review capital, demand, operations and risk - and return a single verdict: <strong>GO, CONDITIONAL GO,</strong> or <strong>NO GO</strong>. Before you spend a year finding out the hard way.</p>
       <div class="bc-actions reveal" data-d="4">
         <a href="#submit" class="btn" data-magnetic="0.4"><span class="btn-label">Submit Your Idea</span><span class="btn-arrow">→</span></a>
         <a href="#how" class="btn-ghost btn on-navy" data-magnetic="0.3"><span class="btn-label">How It Works</span></a>
@@ -41,7 +41,7 @@
         <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The Process</span>
         <h2 class="h2 reveal" data-d="1">Submit once.<br />Ten experts evaluate.</h2>
       </div>
-      <p class="lead muted right reveal" data-d="2">Fast, honest and structured — the kind of pressure test that saves founders months of misdirected effort.</p>
+      <p class="lead muted right reveal" data-d="2">Fast, honest and structured - the kind of pressure test that saves founders months of misdirected effort.</p>
     </div>
     <figure class="photo-card photo-card-wide surface-card reveal">
       <image-slot slug="lightbulb" sizes="(min-width: 900px) 720px, calc(100vw - 40px)" loading="lazy"></image-slot>
@@ -55,7 +55,7 @@
       <div class="bc-step asm-card tilt3d" data-tilt>
         <div class="n" aria-hidden="true" data-n="02"></div>
         <h3 class="h3">Panel evaluates</h3>
-        <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk — independently.</p>
+        <p>Ten specialist agents review your submission across capital, demand, operations, channels and risk - independently.</p>
       </div>
       <div class="bc-step asm-card tilt3d" data-tilt>
         <div class="n" aria-hidden="true" data-n="03"></div>
@@ -75,7 +75,7 @@
         <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>The Evaluators</span>
         <h2 class="h2 reveal" data-d="1">Ten perspectives.<br />One verdict.</h2>
       </div>
-      <p class="lead right reveal" data-d="2" style="color:var(--ink-muted)">Each agent specialises in a distinct dimension of business viability — and none of them pull punches.</p>
+      <p class="lead right reveal" data-d="2" style="color:var(--ink-muted)">Each agent specialises in a distinct dimension of business viability - and none of them pull punches.</p>
     </div>
     <div class="panel-grid reveal" data-d="1">
       <div class="pm"><div class="pm-n">01</div><div class="pm-t">The Sales Director</div><div class="pm-f">Revenue potential, channel velocity &amp; sales-cycle realism</div></div>
@@ -100,7 +100,7 @@
         <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Sample Output</span>
         <h2 class="h2 reveal" data-d="1">What you receive.</h2>
       </div>
-      <p class="lead muted right reveal" data-d="2">A structured score from each panelist, their top concerns, and a clear aggregate verdict — not a list of platitudes.</p>
+      <p class="lead muted right reveal" data-d="2">A structured score from each panelist, their top concerns, and a clear aggregate verdict - not a list of platitudes.</p>
     </div>
     <div class="sample-grid">
       <div class="reveal">
@@ -113,13 +113,13 @@
           </div>
           <div class="outcome mid">
             <div class="ol">Conditional Go</div>
-            <div class="ot">Proceed — but fix these first.</div>
+            <div class="ot">Proceed - but fix these first.</div>
             <p>The idea has real merit, but specific gaps in model, channel or execution must be addressed before committing capital.</p>
           </div>
           <div class="outcome no">
             <div class="ol">No Go</div>
             <div class="ot">Don't proceed as defined.</div>
-            <p>The panel has identified structural obstacles — market, model or competition — that make the current approach unlikely to succeed.</p>
+            <p>The panel has identified structural obstacles - market, model or competition - that make the current approach unlikely to succeed.</p>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@
       <div class="intake-intro">
         <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Submit Your Idea</span>
         <h2 class="h2 reveal" data-d="1">Let the panel<br />read your idea.</h2>
-        <p class="lead reveal" data-d="2">Give us the brief. We'll return a candid panel evaluation — the kind of review most founders only get after they've already committed to the wrong path.</p>
+        <p class="lead reveal" data-d="2">Give us the brief. We'll return a candid panel evaluation - the kind of review most founders only get after they've already committed to the wrong path.</p>
         <div class="imeta-list reveal" data-d="3">
           <div class="imeta"><span class="k">Turnaround</span><span class="v">Within 48 hours<small>Business days</small></span></div>
           <div class="imeta"><span class="k">Format</span><span class="v">Structured report<small>Score and findings per panelist</small></span></div>
@@ -171,10 +171,10 @@
       <div class="form-card surface-card reveal" data-d="2">
         <form id="bizcheck-form" novalidate>
           <h2>Request a BizCheck</h2>
-          <p class="sub">The brief that powers the panel — takes about three minutes.</p>
+          <p class="sub">The brief that powers the panel - takes about three minutes.</p>
           <div class="hp" aria-hidden="true"><label for="website_url">Leave blank</label><input id="website_url" name="_gotcha" type="text" tabindex="-1" autocomplete="off" /></div>
           <input type="hidden" id="focus_areas" name="focus_areas" value="" />
-          <input type="hidden" name="_subject" value="BizCheck submission — AYiN Advisors" />
+          <input type="hidden" name="_subject" value="BizCheck submission - AYiN Advisors" />
           <div class="field-row">
             <div class="field"><label for="bc_name">Full name</label><input id="bc_name" name="name" type="text" placeholder="Your name" required /></div>
             <div class="field"><label for="bc_company">Company / startup</label><input id="bc_company" name="company" type="text" placeholder="Name or working title" required /></div>
@@ -198,7 +198,7 @@
           </div>
           <div class="field">
             <label for="bc_desc">Describe your business idea</label>
-            <textarea id="bc_desc" name="description" placeholder="What does it do, who does it serve, what problem does it solve — and why now?" required></textarea>
+            <textarea id="bc_desc" name="description" placeholder="What does it do, who does it serve, what problem does it solve - and why now?" required></textarea>
           </div>
           <div class="field">
             <label>Primary evaluation focus</label>

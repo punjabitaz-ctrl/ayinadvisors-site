@@ -1,5 +1,5 @@
 /* ============================================================
-   AYiN Advisors — Shared interactions
+   AYiN Advisors - Shared interactions
    ============================================================ */
 (function () {
   "use strict";
@@ -105,7 +105,7 @@
       setTimeout(checkInView, 250);
       window.addEventListener("scroll", checkInView, { passive: true });
 
-      // Fallback 2: hard safety — never leave content permanently hidden.
+      // Fallback 2: hard safety - never leave content permanently hidden.
       setTimeout(() => revealEls.forEach((el) => el.classList.add("in")), 2600);
     }
   }

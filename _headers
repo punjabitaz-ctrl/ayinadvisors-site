@@ -9,7 +9,7 @@
 /assets/*
   # Not "immutable" with a long max-age: these filenames carry no content hash,
   # so that would pin styles.css and site.js in caches for a year and make every
-  # future change invisible to returning visitors. Short TTL plus revalidation —
+  # future change invisible to returning visitors. Short TTL plus revalidation -
   # the ETag turns the recheck into a cheap 304.
   Cache-Control: public, max-age=600, must-revalidate
 

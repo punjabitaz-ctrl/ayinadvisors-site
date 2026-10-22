@@ -51,11 +51,11 @@ def test_head_values_are_escaped_and_cannot_break_out(monkeypatch):
 def test_ampersand_titles_render_as_entities(monkeypatch):
     """Plain-text head values are escaped: an & in a title or description renders as &amp; (no page's real copy is relied on)."""
     site = build.load_site()
-    site["pages"]["Services"]["title"] = "Strategy & Enablement — AYiN Advisors"
+    site["pages"]["Services"]["title"] = "Strategy & Enablement - AYiN Advisors"
     site["pages"]["Services"]["description"] = "Research, strategy & enablement."
     monkeypatch.setattr(build, "load_site", lambda: site)
     html = build.render_page("Services", "<main>x</main>")
-    assert "Strategy &amp; Enablement — AYiN Advisors</title>" in html
+    assert "Strategy &amp; Enablement - AYiN Advisors</title>" in html
     assert 'content="Research, strategy &amp; enablement."' in html
 
 

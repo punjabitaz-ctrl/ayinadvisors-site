@@ -1,15 +1,15 @@
 /**
- * BizCheck intake — Cloudflare Pages Function.
+ * BizCheck intake - Cloudflare Pages Function.
  *
  * Verifies the Turnstile token server-side before forwarding the brief to
  * Formspree. Verification cannot live in the browser: a client-side check is
  * forgeable, and the Formspree endpoint would still be public in page source.
  *
  * Environment (Pages → Settings → Environment variables):
- *   TURNSTILE_SECRET     secret  — Turnstile widget secret
- *   TURNSTILE_HOSTNAMES  plain   — comma-separated allowlist, e.g. "ayinadvisors.com"
+ *   TURNSTILE_SECRET     secret  - Turnstile widget secret
+ *   TURNSTILE_HOSTNAMES  plain   - comma-separated allowlist, e.g. "ayinadvisors.com"
  *                                  never include localhost/127.0.0.1 in production
- *   FORMSPREE_ENDPOINT   secret  — https://formspree.io/f/xxxxxxxx
+ *   FORMSPREE_ENDPOINT   secret  - https://formspree.io/f/xxxxxxxx
  */
 
 const EXPECTED_ACTION = 'bizcheck';
@@ -107,4 +107,4 @@ export async function onRequestPost(context) {
 }
 
 // Only POST is handled; Pages answers every other method with 405 on its own.
-// An onRequest catch-all must not be exported here — it would take the POST too.
+// An onRequest catch-all must not be exported here - it would take the POST too.
