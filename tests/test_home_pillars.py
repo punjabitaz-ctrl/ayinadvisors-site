@@ -302,8 +302,8 @@ def test_no_page_links_to_a_services_anchor_that_moved(soups):
 def test_nav_still_routes(site, soups):
     nav = site["nav"]
     assert [(n["label"], n["href"]) for n in nav] == [
-        ("Home", "index.html"), ("BizCheck", "BizCheck.html"), ("Services", "Services.html"),
-        ("About", "About.html"), ("Projects", "Projects.html"), ("Contact", "Contact.html")]
+        ("BizCheck", "BizCheck.html"), ("Home", "index.html"), ("About", "About.html"),
+        ("Services", "Services.html"), ("Projects", "Projects.html"), ("Contact", "Contact.html")]
     for n in nav:
         assert (ROOT / n["href"]).exists() and n["href"][:-5] in build.PAGES, n
     for stem, soup in soups.items():

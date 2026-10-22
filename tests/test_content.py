@@ -26,9 +26,9 @@ def test_404_opts_out_of_footer():
     assert load()["pages"]["About"]["footer"] is True
 
 
-def test_nav_order_matches_live_site():
+def test_nav_order_is_the_owner_chosen_order():
     nav = load()["nav"]
     assert [n["label"] for n in nav] == [
-        "Home", "BizCheck", "Services", "About", "Projects", "Contact"
+        "BizCheck", "Home", "About", "Services", "Projects", "Contact"
     ]
     assert next(n for n in nav if n["label"] == "BizCheck")["class"] == "gold"
