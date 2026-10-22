@@ -81,7 +81,7 @@ def test_rollout_alignment_at_rest(browser, site_url, width, theme):
     """Settled, pointer away: no resting transform on any card or its contents, and the number/title edges align."""
     checks = [
         ("partnerships", "article.svc-detail .deliverables li", None, None),
-        ("Projects", ".project-card", ".project-index", "h2"),
+        ("Projects", ".project-card", ".project-index", "h3"),
         ("BizCheck", ".bc-step", ".n", ".h3"),
         # the hub's practice cards: icon and title share a left edge; the pillar pages' unlinked service cards rest flat
         ("Services", "a.svc", ".iris-ico", "h3"),
@@ -147,7 +147,7 @@ def test_rollout_ripple_centre_and_inner_rings_are_clear_of_text(browser, site_u
 def test_rollout_no_long_running_animation(browser, site_url):
     """Six seconds after every assemble root and ripple host has been seen, nothing of ours still runs.
 
-    Excluded by name: the pulse on the "In Testing" status dot on Projects (pre-existing infinite loop, owned by Phase 3)."""
+    Nothing is excluded: the old Projects status-dot pulse no longer exists."""
     for stem in ROLLOUT:
         ctx, page = _page(browser, site_url, stem, reduced_motion="no-preference")
         try:
@@ -157,8 +157,7 @@ def test_rollout_no_long_running_animation(browser, site_url):
             page.wait_for_timeout(6000)
             running = page.evaluate(
                 """() => document.getAnimations().filter(a => a.playState === 'running'
-                  && a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('.assemble, .has-ripples')
-                  && !a.effect.target.closest('.badge-testing'))
+                  && a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('.assemble, .has-ripples'))
                   .map(a => a.animationName || a.transitionProperty || a.constructor.name)""")
             assert running == [], f"{stem}: still running 6 s after the placements were seen: {running}"
             assert page.evaluate("document.querySelectorAll('.is-emitting').length") == 0
@@ -183,7 +182,7 @@ def test_ripples_box_stays_inside_its_own_section(browser, site_url, width):
 
 GRIDS = {
     "index": "#services a.svc",
-    "Projects": ".project-card",
+    "Projects": ".project-card, .site-card",
     "BizCheck": ".bc-step",
     "partnerships": "article.svc-detail .deliverables li",
     "Services": "a.svc",

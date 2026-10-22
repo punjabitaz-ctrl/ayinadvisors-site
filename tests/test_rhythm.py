@@ -19,7 +19,7 @@ BAND_MAP = {
     # AI Solutions and Digital Presence: what we do (page), how we work (alt), who it is for (page), the gold CTA
     "ai-solutions": ["inverse", "page", "alt", "page", "accent", "inverse"],
     "digital-presence": ["inverse", "page", "alt", "page", "accent", "inverse"],
-    "Projects": ["inverse", "page", "accent", "inverse"],
+    "Projects": ["inverse", "page", "alt", "accent", "inverse"],
     "BizCheck": ["inverse", "page", "alt", "page", "alt", "inverse"],
     "Contact": ["inverse", "inverse"],
     "404": ["inverse"],
@@ -92,11 +92,11 @@ def test_final_band_is_the_gold_cta(soups):
 def test_cards_use_the_card_surface(soups):
     checked = 0
     for stem, soup in soups.items():
-        for el in soup.select(".project-card, .report-card, .sample-report, #submit .form-card"):
+        for el in soup.select(".project-card, .site-card, .report-card, .sample-report, #submit .form-card"):
             checked += 1
             assert "surface-card" in el.get("class", []), f"{stem}: <{el.name} class={el.get('class')}> is not surface-card"
             assert "surface-inverse" not in el.get("class", [])
-    assert checked == 8
+    assert checked == 14
 
 
 def test_bizcheck_intake_has_no_decorative_canvas(soups):
