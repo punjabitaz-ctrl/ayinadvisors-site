@@ -127,7 +127,8 @@ def test_select_arrow_follows_theme(browser, site_url, stem):
 IMG_JS = """() => [...document.querySelectorAll('img')].map(i => ({src: i.getAttribute('src'), filter: getComputedStyle(i).filter}))"""
 
 
-@pytest.mark.parametrize("stem", ("About", "BizCheck", "index"))
+# Home has no photograph since Sprint 2 Task 3 (the US photo moved to Partnerships)
+@pytest.mark.parametrize("stem", ("About", "BizCheck", "partnerships"))
 def test_images_dimmed_only_in_dark(browser, site_url, stem):
     results = {}
     for theme in THEMES:
