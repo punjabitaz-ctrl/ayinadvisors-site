@@ -12,6 +12,8 @@ pytestmark = pytest.mark.browser
 ROLLOUT = ("About", "Services", "partnerships", "ai-solutions", "digital-presence", "Projects", "BizCheck")
 # Pages in ROLLOUT that carry a ripples graphic: About (approach), BizCheck (panel), the hub (practice cards heading)
 # and each pillar page ("How we work" heading).
+# the four B2B Partnerships service pages: their deliverables grids moved here from the pillar page
+SERVICE_PAGES = tuple(f"partnerships/{s}" for s in ("market-entry-research", "channel-strategy", "partner-introductions", "regional-expansion"))
 RIPPLE_PAGES = ("About", "Services", "partnerships", "ai-solutions", "digital-presence", "BizCheck")
 
 
@@ -80,7 +82,7 @@ def test_rollout_reduced_motion_shows_final_state(browser, site_url, stem):
 def test_rollout_alignment_at_rest(browser, site_url, width, theme):
     """Settled, pointer away: no resting transform on any card or its contents, and the number/title edges align."""
     checks = [
-        ("partnerships", "article.svc-detail .deliverables li", None, None),
+        *[(s, "article.svc-detail .deliverables li", None, None) for s in SERVICE_PAGES],
         ("Projects", ".project-card", ".project-index", "h3"),
         ("BizCheck", ".bc-step", ".n", ".h3"),
         # the hub's practice cards: icon and title share a left edge; the pillar pages' unlinked service cards rest flat
@@ -184,7 +186,8 @@ GRIDS = {
     "index": "#services a.svc",
     "Projects": ".project-card, .site-card",
     "BizCheck": ".bc-step",
-    "partnerships": "article.svc-detail .deliverables li",
+    **{s: "article.svc-detail .deliverables li" for s in SERVICE_PAGES},
+    "partnerships": "#what .ps-list li",
     "Services": "a.svc",
     "ai-solutions": "#what .ps-list li",
     "digital-presence": "#what .ps-list li",
