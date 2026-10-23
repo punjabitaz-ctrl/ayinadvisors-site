@@ -22,8 +22,8 @@
 <svg class="ripples ripples-top{% if left %} ripples-top-l{% endif %}" viewBox="0 0 540 300" aria-hidden="true" focusable="false"><circle cx="270" cy="6" r="40"/><circle cx="270" cy="6" r="80"/><circle cx="270" cy="6" r="125"/><circle cx="270" cy="6" r="170"/><circle cx="270" cy="6" r="215"/><circle cx="270" cy="6" r="260"/><circle class="drop" cx="270" cy="6" r="3.5"/></svg>
 {%- endmacro -%}
 
-{#- The page head: ring motif, eyebrow, the one h1, lead. -#}
-{%- macro pagehead(eyebrow, headline, lead) %}
+{#- The page head: ring motif, eyebrow (a breadcrumb link when eyebrow_href is given), the one h1, lead. -#}
+{%- macro pagehead(eyebrow, headline, lead, eyebrow_href="", root="") %}
 <!-- PAGE HEADER -->
 <header class="pagehead surface-inverse">
   <svg class="ph-motif" viewBox="0 0 460 460" aria-hidden="true">
@@ -35,7 +35,7 @@
     <circle cx="230" cy="230" r="50" fill="currentColor" stroke="currentColor" stroke-width="0.8"></circle>
   </svg>
   <div class="wrap">
-    <span class="eyebrow on-navy reveal">{{ eyebrow|e }}</span>
+    <span class="eyebrow on-navy reveal">{% if eyebrow_href %}<a href="{{ eyebrow_href|ru(root)|e }}">{{ eyebrow|e }}</a>{% else %}{{ eyebrow|e }}{% endif %}</span>
     <h1 class="display reveal" data-d="1">{{ headline|e }}</h1>
     <p class="lead reveal" data-d="2">{{ lead|e }}</p>
   </div>
@@ -90,7 +90,7 @@
 {% endmacro -%}
 
 {#- The closing gold band; the copy is per page. -#}
-{%- macro cta_band(cta) %}
+{%- macro cta_band(cta, root="") %}
 <!-- CTA -->
 <section class="section cta surface-accent">
   <div class="cta-glow"></div>
@@ -99,7 +99,7 @@
       <span class="eyebrow on-navy center reveal" style="justify-content:center">{{ cta.eyebrow|e }}</span>
       <h2 class="h2 reveal" data-d="1">{{ cta.heading|e }}</h2>
       <p class="lead reveal" data-d="2">{{ cta.text|e }}</p>
-      <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="{{ "Contact.html"|ru(root) }}" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>
 </section>

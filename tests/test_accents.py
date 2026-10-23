@@ -66,10 +66,10 @@ def _hooks(el):
 
 
 def test_card_grids_assemble_hooks_present(soups):
-    # Partnerships (the four market-entry blocks moved here from Services): every deliverables grid is an
+    # the four B2B Partnerships service pages (the market-entry blocks moved there): every deliverables grid is an
     # assemble stage inside its own assemble root
-    arts = soups["partnerships"].select("article.svc-detail")
-    assert len(arts) == 4
+    arts = [a for stem, s in soups.items() if stem.startswith("partnerships/") for a in s.select("article.svc-detail")]
+    assert len(arts) == 4 and not soups["partnerships"].select("article.svc-detail")
     for art in arts:
         assert "assemble" in art.get("class", []) and art.has_attr("data-assemble")
         grid = art.select_one(".deliverables")

@@ -1,5 +1,6 @@
 """No dead internal links: every href/src on every generated page resolves to a page, an asset or an in-page id."""
 import json
+import posixpath
 from urllib.parse import urldefrag, urlsplit
 
 import pytest
@@ -40,10 +41,14 @@ def _resolve(from_stem, ref, soups):
     path = urlsplit(path).path
     if path == "":
         stem = from_stem
-    elif path in ("/", "/index.html", "index.html"):
+    elif path in ("/", "/index.html"):
         stem = "index"
     else:
-        name = path.lstrip("/")
+        # a root-absolute path starts at the site root; anything else resolves against the page's own folder
+        name = path.lstrip("/") if path.startswith("/") else posixpath.normpath(posixpath.join(posixpath.dirname(from_stem), path))
+        if name == "index.html":
+            stem = "index"
+            return f"no id #{frag} on index.html" if frag and soups[stem].find(id=frag) is None else None
         if name.endswith(".html"):
             if name[:-5] not in soups:
                 return f"no such page {name}"
@@ -76,18 +81,34 @@ def test_the_crawler_catches_a_dead_page_file_and_anchor(soups):
     assert _resolve("index", "mailto:hello@ayinadvisors.com", soups) is None
 
 
+def test_the_crawler_resolves_links_from_subfolder_pages_against_their_folder(soups):
+    sub = "partnerships/channel-strategy"
+    assert _resolve(sub, "../Services.html", soups) is None
+    assert _resolve(sub, "../index.html", soups) is None
+    assert _resolve(sub, "../assets/theme.css", soups) is None
+    assert _resolve(sub, "market-entry-research.html", soups) is None  # a sibling in the same folder
+    assert _resolve(sub, "../partnerships.html#what", soups) is None
+    assert _resolve(sub, "Services.html", soups), "a root-relative name from a subfolder page is dead"
+    assert _resolve(sub, "assets/theme.css", soups)
+    assert _resolve(sub, "../partnerships.html#research", soups), "the removed detail anchors stay dead"
+
+
 def test_the_crawl_covers_every_site_json_page(soups):
     assert list(soups) == list(build.load_site()["pages"])
     assert sum(1 for s in soups.values() for _ in _targets(s)) > 100
 
 
-def test_sub_services_are_listed_but_not_linked():
+def test_live_sub_services_are_linked_from_their_pillar_and_planned_ones_are_not():
     data = json.loads((ROOT / "content" / "services.json").read_text(encoding="utf-8"))
     for p in data["pillars"]:
         main = _soup(p["stem"]).find("main")
         hrefs = {a["href"] for a in main.find_all("a", href=True)}
         for s in p["services"]:
-            assert not any(s["slug"] in h for h in hrefs), f"{p['stem']} links to sub-service {s['slug']}"
+            if s["status"] == "live":
+                assert s["href"] in hrefs, f"{p['stem']} does not link live sub-service {s['slug']}"
+                assert s["href"][:-5] in build.load_site()["pages"], s["slug"]
+            else:
+                assert not any(s["slug"] in h for h in hrefs), f"{p['stem']} links to planned sub-service {s['slug']}"
 
 
 def _is_external(href: str) -> bool:

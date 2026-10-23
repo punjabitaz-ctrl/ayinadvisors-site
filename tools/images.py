@@ -56,16 +56,16 @@ def dimensions(slug: str, width: int, registry: dict | None = None) -> tuple[int
 
 
 def render_picture(slug: str, sizes: str, loading: str = "lazy", cls: str = "",
-                   registry: dict | None = None) -> str:
+                   registry: dict | None = None, prefix: str = "") -> str:
     entry = _lookup(slug, registry)
     if loading not in ("lazy", "eager"):
         raise ValueError(f"loading must be 'lazy' or 'eager', not {loading!r}")
-    srcset = ", ".join(f"{IMG_DIR}/{slug}-{w}.webp {w}w" for w in WIDTHS)
+    srcset = ", ".join(f"{prefix}{IMG_DIR}/{slug}-{w}.webp {w}w" for w in WIDTHS)
     w, h = dimensions(slug, max(WIDTHS), registry)
     alt = "" if entry.get("decorative") is True else escape(entry["alt"].strip(), quote=True)
     cls_attr = f' class="{escape(cls, quote=True)}"' if cls else ""
     return (
         f'<picture><source type="image/webp" srcset="{srcset}" sizes="{escape(sizes, quote=True)}">'
-        f'<img src="{IMG_DIR}/{slug}-{DEFAULT_WIDTH}.webp" width="{w}" height="{h}" alt="{alt}"'
+        f'<img src="{prefix}{IMG_DIR}/{slug}-{DEFAULT_WIDTH}.webp" width="{w}" height="{h}" alt="{alt}"'
         f'{cls_attr} loading="{loading}" decoding="async"></picture>'
     )

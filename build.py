@@ -29,6 +29,21 @@ def _fail(message: str):
 env.globals["fail"] = _fail
 
 
+def root_for(stem: str) -> str:
+    """URL prefix that reaches the site root from a page: "" for a root page, "../" per folder level."""
+    return "../" * stem.count("/")
+
+
+def _root_url(href: str, root: str) -> str:
+    """Prefix a site-relative href with `root`; absolute URLs, mailto:, in-page #fragments and /paths pass through."""
+    if not root or ":" in href or href.startswith(("#", "/")):
+        return href
+    return root + href
+
+
+env.filters["ru"] = _root_url
+
+
 def load_site() -> dict:
     return json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))
 
@@ -45,10 +60,11 @@ _SLOT = re.compile(r"<image-slot(?=[\s>])([^>]*)></image-slot>")
 _ATTR = re.compile(r'([\w-]+)="([^"]*)"')
 
 
-def expand_image_slots(html: str) -> str:
+def expand_image_slots(html: str, root: str = "") -> str:
     """Replace <image-slot slug sizes [loading] [class]> placeholders with <picture> markup.
 
-    An unknown slug raises KeyError naming it, so a typo can never ship.
+    An unknown slug raises KeyError naming it, so a typo can never ship. `root` prefixes the image paths for
+    a page in a subfolder.
     """
     registry = image_tools.load_registry(ROOT / "content" / "images.json")
 
@@ -60,7 +76,7 @@ def expand_image_slots(html: str) -> str:
             raise ValueError(f"image-slot {attrs['slug']!r} needs a sizes attribute")
         return image_tools.render_picture(
             attrs["slug"], attrs["sizes"], attrs.get("loading", "lazy"), attrs.get("class", ""),
-            registry=registry,
+            registry=registry, prefix=root,
         )
 
     return _SLOT.sub(one, html)
@@ -70,22 +86,24 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
     site = load_site()
     if stem not in site["pages"]:
         raise KeyError(f"unknown page {stem!r}; known pages: {', '.join(site['pages'])}")
+    root = root_for(stem)
     return env.get_template("base.j2").render(
         site=site,
         page=site["pages"][stem],
         stem=stem,
+        root=root,
         body=body,
         head_extra=head_extra,
         body_scripts=body_scripts,
-        logo=env.get_template("_logo.j2").render(),
-        footer=env.get_template("_footer.j2").render(site=site),
+        logo=env.get_template("_logo.j2").render(root=root),
+        footer=env.get_template("_footer.j2").render(site=site, root=root),
     )
 
 
 def template_kind(stem: str) -> str | None:
-    """"hub" or "pillar" for a template-rendered page, None for a page made of a .frag and a .json."""
+    """"hub", "pillar" or "service" for a template-rendered page, None for a page made of a .frag and a .json."""
     kind = load_site()["pages"][stem].get("template")
-    if kind not in (None, "hub", "pillar"):
+    if kind not in (None, "hub", "pillar", "service"):
         raise ValueError(f"{stem}: unknown template {kind!r}")
     return kind
 
@@ -109,7 +127,7 @@ def page_parts(stem: str) -> tuple[str, str, str]:
     """(body, head_extra, body_scripts) for a page, before image slots are expanded.
 
     Hand-authored pages read templates/pages/<stem>.body.frag and <stem>.json. Template pages (site.json
-    "template": "hub" | "pillar") render templates/<kind>.body.j2 with the services data, and take their head
+    "template": "hub" | "pillar" | "service") render templates/<kind>.body.j2 with the services data, and take their head
     from templates/_head_template_page.j2; they have no .frag or .json and no body scripts.
     """
     kind = template_kind(stem)
@@ -121,13 +139,17 @@ def page_parts(stem: str) -> tuple[str, str, str]:
     page = site["pages"][stem]
     services = load_services()
     pillars = services["pillars"]
-    ctx = {"site": site, "page": page, "stem": stem, "kind": kind, "pillars": pillars, "pillar": None,
-           "hub": services["hub"], "process": services["process"]}
-    if kind == "pillar":
+    ctx = {"site": site, "page": page, "stem": stem, "root": root_for(stem), "kind": kind, "pillars": pillars,
+           "pillar": None, "service": None, "hub": services["hub"], "process": services["process"]}
+    if kind in ("pillar", "service"):
         ctx["pillar"] = next((p for p in pillars if p["slug"] == page.get("pillar")), None)
         if ctx["pillar"] is None:
             raise KeyError(f"{stem}: no pillar {page.get('pillar')!r} in content/services.json")
         ctx["process"] = process_for(ctx["pillar"], services)
+    if kind == "service":
+        ctx["service"] = next((s for s in ctx["pillar"]["services"] if s["slug"] == page.get("service")), None)
+        if ctx["service"] is None or "detail" not in ctx["service"]:
+            raise KeyError(f"{stem}: no service {page.get('service')!r} with a detail in pillar {page.get('pillar')!r}")
     return (
         env.get_template(f"{kind}.body.j2").render(**ctx),
         env.get_template("_head_template_page.j2").render(**ctx),
@@ -139,7 +161,7 @@ def render_all() -> dict[str, str]:
     out = {}
     for stem in PAGES:
         body, head_extra, body_scripts = page_parts(stem)
-        out[stem] = render_page(stem, expand_image_slots(body), head_extra, body_scripts)
+        out[stem] = render_page(stem, expand_image_slots(body, root_for(stem)), head_extra, body_scripts)
     return out
 
 
@@ -178,6 +200,7 @@ def main() -> None:
     (ROOT / "assets" / "theme.css").write_text(render_theme(), encoding="utf-8", newline="\n")
     print("  wrote assets/theme.css")
     for stem, html in render_all().items():
+        (ROOT / f"{stem}.html").parent.mkdir(parents=True, exist_ok=True)
         (ROOT / f"{stem}.html").write_text(html, encoding="utf-8")
         print(f"  wrote {stem}.html")
     (ROOT / "sitemap.xml").write_text(render_sitemap(), encoding="utf-8", newline="\n")

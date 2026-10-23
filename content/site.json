@@ -165,6 +165,78 @@
         "priority": "0.8"
       }
     },
+    "partnerships/market-entry-research": {
+      "title": "US Market Entry Research - AYiN Advisors",
+      "description": "Market sizing, segmentation and competitive intelligence for international firms deciding whether, where and how to enter the US.",
+      "canonical": "https://ayinadvisors.com/partnerships/market-entry-research.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "partnerships",
+      "service": "market-entry-research",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "partnerships/channel-strategy": {
+      "title": "Channel Strategy & Enablement - AYiN Advisors",
+      "description": "Channel architecture for the US market: distributors, resellers or agents, with the commercial terms, materials and training that drive sales.",
+      "canonical": "https://ayinadvisors.com/partnerships/channel-strategy.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "partnerships",
+      "service": "channel-strategy",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "partnerships/partner-introductions": {
+      "title": "B2B Partner Introductions - AYiN Advisors",
+      "description": "Warm, qualified introductions to US buyers, channel partners and decision-makers, with support through the first conversations to agreement.",
+      "canonical": "https://ayinadvisors.com/partnerships/partner-introductions.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "partnerships",
+      "service": "partner-introductions",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "partnerships/regional-expansion": {
+      "title": "Regional Expansion · Canada & LATAM - AYiN Advisors",
+      "description": "Extending a proven US playbook into Canada and Latin America, adapting channel models, partner profiles and terms to each market.",
+      "canonical": "https://ayinadvisors.com/partnerships/regional-expansion.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "partnerships",
+      "service": "regional-expansion",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
     "ai-solutions": {
       "title": "AI Solutions - AYiN Advisors",
       "description": "AI solutions development: custom applications, workflow automation and operational efficiency, built around the problem in front of you.",

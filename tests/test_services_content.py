@@ -59,8 +59,17 @@ def test_the_ten_sub_services_are_the_ones_in_the_design():
     ]
 
 
-def test_no_service_is_live_before_its_page_exists():
-    assert all(s["status"] == "planned" for p in load()["pillars"] for s in p["services"])
+def test_a_service_is_live_only_when_its_page_exists():
+    """Live means an href to a built service page in site.json; the other six sub-services stay planned until their sprint."""
+    pages = build.load_site()["pages"]
+    live = [s for p in load()["pillars"] for s in p["services"] if s["status"] == "live"]
+    assert [s["slug"] for s in live] == ["market-entry-research", "channel-strategy", "partner-introductions", "regional-expansion"]
+    for s in live:
+        stem = s["href"][:-5]
+        assert s["href"] == f"partnerships/{s['slug']}.html" and stem in pages, s["slug"]
+        assert pages[stem]["template"] == "service" and pages[stem]["service"] == s["slug"] and "detail" in s
+        assert (ROOT / s["href"]).is_file()
+    assert sum(1 for p in load()["pillars"] for s in p["services"] if s["status"] == "planned") == 6
 
 
 def test_the_four_market_entry_services_keep_their_existing_names_and_lines():
@@ -73,7 +82,8 @@ def test_the_four_market_entry_services_keep_their_existing_names_and_lines():
 
 
 def _strings(node):
-    """Every piece of copy under a node (dict values, list items), skipping machine keys."""
+    """Every piece of copy under a node (dict values, list items), skipping machine keys and the owner's verbatim
+    service "detail" (paragraph and deliverables; tests/test_service_pages.py checks it against the fixture)."""
     if isinstance(node, str):
         yield node
     elif isinstance(node, list):
@@ -81,7 +91,7 @@ def _strings(node):
             yield from _strings(x)
     elif isinstance(node, dict):
         for k, v in node.items():
-            if k not in ("slug", "stem", "icon", "status", "href"):
+            if k not in ("slug", "stem", "icon", "status", "href", "detail"):
                 yield from _strings(v)
 
 
@@ -119,6 +129,7 @@ def _main_text(html: str, drop=()) -> str:
 # The four market-entry detail blocks are the owner's existing copy; they talk about a client's market pricing
 # landscape (a deliverable), not our fees. Everything else on these pages is new copy and is scanned.
 VERBATIM = ("article.svc-detail",)
+SERVICE_STEMS = tuple(f"partnerships/{s}" for s in ("market-entry-research", "channel-strategy", "partner-introductions", "regional-expansion"))
 PRICE_OFFER = re.compile(r"\$\s?\d|\bpric(?:e|es|ed|ing)\b|\bper month\b|/mo\b|\bsubscription\b", re.I)
 
 
@@ -129,7 +140,7 @@ def test_no_pricing_words_in_services_json():
 
 def test_no_pricing_words_on_hub_pillar_and_home_pages():
     pages = build.render_all()
-    for stem in ("Services", "partnerships", "ai-solutions", "digital-presence", "index"):
+    for stem in ("Services", "partnerships", "ai-solutions", "digital-presence", "index", *SERVICE_STEMS):
         text = _main_text(pages[stem], drop=VERBATIM)
         text = text.replace("$24T", "")  # the Partnerships proof stat is a market size, not a price
         m = PRICE_OFFER.search(text)

@@ -54,7 +54,7 @@ def test_head_script_runs_before_the_stylesheet_and_uses_the_contract():
     for stem, html in build.render_all().items():
         assert html.count("ayin-theme") == 1, stem
         i_script = html.index("ayin-theme")
-        assert i_script < html.index('href="assets/theme.css"'), stem
+        assert i_script < html.index(f'href="{build.root_for(stem)}assets/theme.css"'), stem
         assert html.rindex("<script", 0, i_script) > html.index("<head>"), stem
         script = html[html.rindex("<script", 0, i_script):html.index("</script>", i_script)]
         for needle in ("localStorage", "prefers-color-scheme: dark", "dataset.theme", "catch"):

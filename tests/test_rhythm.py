@@ -13,9 +13,13 @@ BAND_MAP = {
     "About": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
     # hub: the three practice cards (page), how they fit together (alt), the gold CTA
     "Services": ["inverse", "page", "alt", "accent", "inverse"],
-    # Partnerships: what we do (alt), the four verbatim detail blocks (page), the moved US proof band (alt),
-    # how we work (page), who it is for (alt), the gold CTA
-    "partnerships": ["inverse", "alt", "page", "alt", "page", "alt", "accent", "inverse"],
+    # Partnerships: what we do (page), the moved US proof band (alt), how we work (page), who it is for (alt), the gold CTA
+    "partnerships": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
+    # the four B2B Partnerships service pages: the detail (page), the other services (alt), the gold CTA
+    "partnerships/market-entry-research": ["inverse", "page", "alt", "accent", "inverse"],
+    "partnerships/channel-strategy": ["inverse", "page", "alt", "accent", "inverse"],
+    "partnerships/partner-introductions": ["inverse", "page", "alt", "accent", "inverse"],
+    "partnerships/regional-expansion": ["inverse", "page", "alt", "accent", "inverse"],
     # AI Solutions and Digital Presence: what we do (page), how we work (alt), who it is for (page), the gold CTA
     "ai-solutions": ["inverse", "page", "alt", "page", "accent", "inverse"],
     "digital-presence": ["inverse", "page", "alt", "page", "accent", "inverse"],
@@ -86,7 +90,7 @@ def test_final_band_is_the_gold_cta(soups):
             assert content_bands[-1] is ctas[-1], f"{stem}: the CTA is not the last band before the footer"
         for el in soup.select(".surface-accent"):
             assert "cta" in el.get("class", []), f"{stem}: surface-accent used outside the CTA band"
-    assert seen == 7, "Home, About, Services, the three pillars and Projects close with a CTA"
+    assert seen == 11, "Home, About, Services, the three pillars, the four service pages and Projects close with a CTA"
 
 
 def test_cards_use_the_card_surface(soups):

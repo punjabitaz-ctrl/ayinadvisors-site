@@ -20,7 +20,7 @@ def root() -> Path:
 
 
 def baseline_html(stem: str) -> str:
-    return (ROOT / "tests" / "baseline" / f"{stem}.snap").read_text(encoding="utf-8")
+    return (ROOT / "tests" / "baseline" / (stem.replace("/", "__") + ".snap")).read_text(encoding="utf-8")
 
 
 def built_html(stem: str) -> str:
@@ -43,6 +43,7 @@ def sandbox(tmp_path, monkeypatch):
     (tmp_path / "assets").mkdir()
     shutil.copy(ROOT / "assets" / "theme.css", tmp_path / "assets" / "theme.css")
     for s in PAGES:
+        (tmp_path / f"{s}.html").parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(ROOT / f"{s}.html", tmp_path / f"{s}.html")
     monkeypatch.setattr(build, "ROOT", tmp_path)
     return tmp_path

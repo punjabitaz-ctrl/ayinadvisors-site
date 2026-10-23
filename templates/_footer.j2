@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-col">
-        <a href="index.html" class="logo" style="margin-bottom:0">
+        <a href="{{ "index.html"|ru(root) }}" class="logo" style="margin-bottom:0">
           <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
             <circle class="lm-ring" cx="20" cy="20" r="18.5" stroke-width="1"></circle>
             <circle class="lm-ring" cx="20" cy="20" r="11.5" stroke-width="1" opacity="0.45"></circle>
@@ -16,7 +16,7 @@
       {% for col in site.footer.columns -%}
       <div class="footer-col"><h2>{{ col.heading|e }}</h2>
         {% for l in col.links -%}
-        <a href="{{ l.href|e }}">{{ l.label|e }}</a>
+        <a href="{{ l.href|ru(root)|e }}">{{ l.label|e }}</a>
         {% endfor -%}
       </div>
       {% endfor -%}

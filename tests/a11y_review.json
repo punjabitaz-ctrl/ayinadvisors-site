@@ -1993,14 +1993,6 @@
       "cause": "elmPartiallyObscuring"
     },
     {
-      "page": "partnerships",
-      "rule": "color-contrast",
-      "selector": ".why-stat:nth-child(4) > .l",
-      "reason": "The caption of the fourth proof-band statistic (`.why-stat:nth-child(4) > .l` on the Partnerships page, in the stacked layout at 320 and 768px): axe reports the label as overlapped by another element (bgOverlap) and so cannot read its background, which is the plain tile colour of `.why-stat` with no image, gradient or graphic behind it. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
-      "status": "justified",
-      "cause": "bgOverlap"
-    },
-    {
       "page": "ai-solutions",
       "rule": "color-contrast",
       "selector": "#what .ps-list li:nth-child(3) > p",
@@ -2071,6 +2063,582 @@
       "reason": "The text of the third \"Who we work with\" entry (`#who .principle:nth-child(3) > div > p` on the index page, at 768 and 1280px): axe reports it as overlapped by another element (bgOverlap): the bounding boxes of the next band's decorative ripples circles reach up past that band's top edge, where the band clips them, and axe reads geometry, not the clip. The background is the plain alt surface with no image, gradient or graphic behind the text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
       "status": "justified",
       "cause": "bgOverlap"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"About.html\"]` on the US Market Entry Research page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "The \"Advisors\" line of the logo wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv` on the US Market Entry Research page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "The page heading (h1) (`h1` on the US Market Entry Research page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "The italic \"i\" of the wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc` on the US Market Entry Research page): axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "The \"AYiN\" wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin` on the US Market Entry Research page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the US Market Entry Research page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"index.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"index.html\"]` on the US Market Entry Research page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"0.4\"] > .btn-label` on the US Market Entry Research page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Contact.html\"]` on the US Market Entry Research page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "The arrow glyph on a button or text link (`.btn-arrow` on the US Market Entry Research page): axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".pagehead .lead",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the US Market Entry Research page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"\"] > .btn-label` on the US Market Entry Research page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Projects.html\"]` on the US Market Entry Research page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".pagehead .eyebrow a",
+      "reason": "The breadcrumb link in the page head's eyebrow (`.pagehead .eyebrow a` on the US Market Entry Research page, back to B2B Partnerships): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the US Market Entry Research page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the US Market Entry Research page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/market-entry-research",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the US Market Entry Research page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"About.html\"]` on the Channel Strategy & Enablement page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "The \"Advisors\" line of the logo wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv` on the Channel Strategy & Enablement page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "The page heading (h1) (`h1` on the Channel Strategy & Enablement page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "The italic \"i\" of the wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc` on the Channel Strategy & Enablement page): axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "The \"AYiN\" wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin` on the Channel Strategy & Enablement page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the Channel Strategy & Enablement page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"index.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"index.html\"]` on the Channel Strategy & Enablement page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"0.4\"] > .btn-label` on the Channel Strategy & Enablement page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Contact.html\"]` on the Channel Strategy & Enablement page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "The arrow glyph on a button or text link (`.btn-arrow` on the Channel Strategy & Enablement page): axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".pagehead .lead",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the Channel Strategy & Enablement page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"\"] > .btn-label` on the Channel Strategy & Enablement page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Projects.html\"]` on the Channel Strategy & Enablement page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".pagehead .eyebrow a",
+      "reason": "The breadcrumb link in the page head's eyebrow (`.pagehead .eyebrow a` on the Channel Strategy & Enablement page, back to B2B Partnerships): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the Channel Strategy & Enablement page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the Channel Strategy & Enablement page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/channel-strategy",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the Channel Strategy & Enablement page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"About.html\"]` on the B2B Partner Introductions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "The \"Advisors\" line of the logo wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv` on the B2B Partner Introductions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "The page heading (h1) (`h1` on the B2B Partner Introductions page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "The italic \"i\" of the wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc` on the B2B Partner Introductions page): axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "The \"AYiN\" wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin` on the B2B Partner Introductions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the B2B Partner Introductions page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"index.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"index.html\"]` on the B2B Partner Introductions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"0.4\"] > .btn-label` on the B2B Partner Introductions page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Contact.html\"]` on the B2B Partner Introductions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "The arrow glyph on a button or text link (`.btn-arrow` on the B2B Partner Introductions page): axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".pagehead .lead",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the B2B Partner Introductions page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"\"] > .btn-label` on the B2B Partner Introductions page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Projects.html\"]` on the B2B Partner Introductions page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".pagehead .eyebrow a",
+      "reason": "The breadcrumb link in the page head's eyebrow (`.pagehead .eyebrow a` on the B2B Partner Introductions page, back to B2B Partnerships): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the B2B Partner Introductions page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the B2B Partner Introductions page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/partner-introductions",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the B2B Partner Introductions page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"About.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"About.html\"]` on the Regional Expansion · Canada & LATAM page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv",
+      "reason": "The \"Advisors\" line of the logo wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-adv` on the Regional Expansion · Canada & LATAM page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": "h1",
+      "reason": "The page heading (h1) (`h1` on the Regional Expansion · Canada & LATAM page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the heading and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc",
+      "reason": "The italic \"i\" of the wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin > .lc` on the Regional Expansion · Canada & LATAM page): axe could not decide because the text is a single character (the italic i of the wordmark), below axe's minimum length for a reliable check. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "shortTextContent",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": "a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin",
+      "reason": "The \"AYiN\" wordmark (`a[aria-label=\"AYiN Advisors home\"] > .logo-text > .logo-ayin` on the Regional Expansion · Canada & LATAM page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".nav-link.active",
+      "reason": "The Services link in the fixed header (`.nav-link.active`, aria-current=\"true\" because the Regional Expansion · Canada & LATAM page sits under Services): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"index.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"index.html\"]` on the Regional Expansion · Canada & LATAM page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"0.4\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"0.4\"] > .btn-label` on the Regional Expansion · Canada & LATAM page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Contact.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Contact.html\"]` on the Regional Expansion · Canada & LATAM page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".btn-arrow",
+      "reason": "The arrow glyph on a button or text link (`.btn-arrow` on the Regional Expansion · Canada & LATAM page): axe could not decide because the glyph is an arrow symbol that axe cannot classify as text. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "nonBmp"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".pagehead .lead",
+      "reason": "The lead paragraph in the page head (`.pagehead .lead` on the Regional Expansion · Canada & LATAM page): axe could not decide because the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable) is drawn behind or beside the paragraph and overlaps its text box, so axe cannot attribute one background colour; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": "a[data-magnetic=\"\"] > .btn-label",
+      "reason": "The label of a button (`a[data-magnetic=\"\"] > .btn-label` on the Regional Expansion · Canada & LATAM page): axe could not decide because a decorative ::before/::after layer (hover fill, underline or frame) overlaps the text, so axe cannot read a single background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "pseudoContent"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".nav-link[href$=\"Projects.html\"]",
+      "reason": "A primary-navigation link in the fixed header (`.nav-link[href$=\"Projects.html\"]` on the Regional Expansion · Canada & LATAM page): the text sits on a gradient or translucent-over-gradient background that axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in the light theme, meets 4.5:1, or 3:1 for large text; fixed-header text is swept over the full scroll range.",
+      "status": "justified",
+      "cause": "bgGradient",
+      "theme": "light"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".pagehead .eyebrow a",
+      "reason": "The breadcrumb link in the page head's eyebrow (`.pagehead .eyebrow a` on the Regional Expansion · Canada & LATAM page, back to B2B Partnerships): axe could not decide because an image-bearing element lies in the stacking order: the page head's `.ph-motif` ring motif (an aria-hidden SVG of thin gold rings at reduced opacity, no text, not focusable), which axe cannot sample; the page head also sits on a radial gradient. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient,imgNode"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".cta h2",
+      "reason": "The closing-band heading (`.cta h2` on the Regional Expansion · Canada & LATAM page): axe could not decide because the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text) is drawn behind the heading and overlaps its text box, so axe cannot attribute one background colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "elmPartiallyObscuring"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".cta .lead",
+      "reason": "The closing-band paragraph (`.cta .lead` on the Regional Expansion · Canada & LATAM page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
+    },
+    {
+      "page": "partnerships/regional-expansion",
+      "rule": "color-contrast",
+      "selector": ".cta .eyebrow.center",
+      "reason": "The closing-band eyebrow (`.cta .eyebrow.center` on the Regional Expansion · Canada & LATAM page): the text sits on the gold band under the closing band's `.cta-glow` (an empty aria-hidden div with a soft radial gold gradient, no text), a gradient axe cannot reduce to one colour. Verified from rendered pixels instead (tests/a11y_browser/test_review_contrast.py): worst glyph-on-background contrast at 320, 768 and 1280px, in both the light and the dark theme, meets 4.5:1, or 3:1 for large text.",
+      "status": "justified",
+      "cause": "bgGradient"
     }
   ]
 }

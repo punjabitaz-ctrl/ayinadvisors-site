@@ -1,10 +1,10 @@
-{#- Pillar page: page head (buyer, headline, lead), what we do (services listed, not linked), [Partnerships only: the four verbatim market-entry blocks and the moved US proof band], how we work, who it is for, the gold CTA band. Copy: content/services.json. -#}
+{#- Pillar page: page head (buyer, headline, lead), what we do (services linked once their page is live), [Partnerships only: the moved US proof band], how we work, who it is for, the gold CTA band. Copy: content/services.json. -#}
 {%- from "_components.j2" import iris_mark, ripples, pagehead, process_band, who_band, cta_band -%}
 {%- set partnerships = pillar.slug == "partnerships" -%}
 {{ pagehead(pillar.buyer, pillar.tagline, pillar.lead) }}
 <main id="main" tabindex="-1">
 <!-- WHAT WE DO -->
-<section class="section {{ "surface-alt" if partnerships else "surface-page" }} clip-x assemble" id="what" data-assemble>
+<section class="section surface-page clip-x assemble" id="what" data-assemble>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -17,7 +17,7 @@
     <ul class="ps-list ps-{{ pillar.services|length }} asm-stage">
       {%- for s in pillar.services %}
       <li class="asm-card">
-        <h3 class="h3">{{ s.name|e }}</h3>
+        <h3 class="h3">{% if s.href %}<a href="{{ s.href|ru(root)|e }}">{{ s.name|e }}</a>{% else %}{{ s.name|e }}{% endif %}</h3>
         <p>{{ s.summary|e }}</p>
       </li>
       {%- endfor %}
@@ -26,12 +26,10 @@
 </section>
 
 {% if partnerships -%}
-{% include "_partnerships_detail.j2" %}
-
 {% include "partials/partnerships-proof.frag" %}
 
 {% endif -%}
 {{ process_band(process, "surface-page" if partnerships else "surface-alt") }}
 {{ who_band(pillar.who, "surface-alt" if partnerships else "surface-page") }}
-{{ cta_band(pillar.cta) }}
+{{ cta_band(pillar.cta, root) }}
 </main>

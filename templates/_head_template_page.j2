@@ -1,8 +1,8 @@
-{#- Head for template-rendered pages (hub, pillar): the shared meta block, then the page's inline styles. Rules a page does not use are not emitted. -#}
+{#- Head for template-rendered pages (hub, pillar, service): the shared meta block, then the page's inline styles. Rules a page does not use are not emitted. -#}
 {%- set partnerships = kind == "pillar" and pillar.slug == "partnerships" -%}
 <meta name="theme-color" content="#061325" />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="{{ root }}favicon.svg" />
+<link rel="apple-touch-icon" href="{{ root }}favicon.svg" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="{{ root }}assets/styles.css" />
 <script>document.documentElement.classList.add('js');</script>
 <style>
   .pagehead { position: relative; padding-top: calc(var(--nav-h) + clamp(60px, 9vw, 120px)); padding-bottom: clamp(50px, 7vw, 96px); background: radial-gradient(120% 130% at 78% 0%, var(--field-bg) 0%, var(--surface) 50%, var(--surface) 100%); overflow: hidden; }
@@ -65,7 +65,7 @@
   .fit-title { margin: 20px 0 0; }
   .fit-copy p { color: var(--ink-muted); max-width: 54ch; }
   .fit-copy p + p { margin-top: 1.2em; }
-{%- else %}
+{%- elif kind == "pillar" %}
 
   /* ---------- WHAT WE DO ---------- */
   .ps-list { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
@@ -73,6 +73,10 @@
   .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .ps-list h3 { margin: 0 0 12px; }
   .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
+{%- if pillar.services|selectattr("href", "defined")|list %}
+  .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .ps-list h3 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+{%- endif %}
 
   /* ---------- HOW WE WORK ---------- */
   .proc-wrap { position: relative; }
@@ -97,21 +101,6 @@
   .principle p { color: var(--ink-muted); font-size: 0.95rem; }
 {%- if partnerships %}
 
-  /* ---------- THE FOUR MARKET-ENTRY SERVICES ---------- */
-  .svc-detail { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px, 6vw, 90px); padding-block: clamp(56px, 7vw, 96px); border-top: 1px solid var(--line); align-items: start; }
-  .svc-detail:first-of-type { border-top: 0; }
-  .svc-detail .sd-left { position: sticky; top: 110px; }
-  .svc-detail .sd-num { font-family: var(--serif); font-size: clamp(3.4rem, 7vw, 6rem); color: var(--line); line-height: 0.8; }
-.sd-num::before { content: attr(data-n); }
-  .js .svc-detail:hover .sd-num, .svc-detail.in .sd-num { color: var(--accent-ink); transition: color 0.8s var(--ease); }
-  .svc-detail h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 18px 0 0; }
-  .svc-detail .tag { display: inline-block; margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--line-gold); padding: 6px 12px; border-radius: 2px; }
-  .svc-detail .sd-body p { font-size: 1.12rem; color: var(--ink); max-width: 54ch; margin-bottom: 30px; }
-  .deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-  .deliverables li { list-style: none; background: var(--surface); padding: 18px 20px; font-size: 0.98rem; display: flex; gap: 12px; align-items: flex-start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.4s var(--ease), transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: 0s, calc(var(--i, 0) * 0.1s), 0s, calc(var(--i, 0) * 0.1s); }
-  .deliverables li:hover { background: color-mix(in srgb, var(--ink) 4%, var(--surface)); }
-  .deliverables li::before { content: "→"; color: var(--accent-ink); font-size: 0.9rem; margin-top: 2px; }
-
   /* ---------- WHY THE US MARKET (proof band) ---------- */
   .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
   .globe-stage { position: relative; aspect-ratio: 1; max-width: 520px; margin-inline: auto; width: 100%; }
@@ -135,6 +124,37 @@
   .why-stat .l { font-size: 0.82rem; color: var(--ink-muted); margin-top: 8px; line-height: 1.4; }
   .why-title { margin: 20px 0 22px; font-size: clamp(2.25rem, 5vw + 1rem, 3.75rem); overflow-wrap: break-word; }
 {%- endif %}
+{%- elif kind == "service" %}
+
+  /* ---------- THE SERVICE DETAIL ---------- */
+  .svc-detail { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px, 6vw, 90px); padding-block: clamp(56px, 7vw, 96px); border-top: 1px solid var(--line); align-items: start; }
+  .svc-detail:first-of-type { border-top: 0; }
+  .svc-detail .sd-left { position: sticky; top: 110px; }
+  .svc-detail .sd-num { font-family: var(--serif); font-size: clamp(3.4rem, 7vw, 6rem); color: var(--line); line-height: 0.8; }
+.sd-num::before { content: attr(data-n); }
+  .js .svc-detail:hover .sd-num, .svc-detail.in .sd-num { color: var(--accent-ink); transition: color 0.8s var(--ease); }
+  .svc-detail h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 18px 0 0; }
+  .svc-detail .tag { display: inline-block; margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--line-gold); padding: 6px 12px; border-radius: 2px; }
+  .svc-detail .sd-body p { font-size: 1.12rem; color: var(--ink); max-width: 54ch; margin-bottom: 30px; }
+  .deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .deliverables li { list-style: none; background: var(--surface); padding: 18px 20px; font-size: 0.98rem; display: flex; gap: 12px; align-items: flex-start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.4s var(--ease), transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: 0s, calc(var(--i, 0) * 0.1s), 0s, calc(var(--i, 0) * 0.1s); }
+  .deliverables li:hover { background: color-mix(in srgb, var(--ink) 4%, var(--surface)); }
+  .deliverables li::before { content: "→"; color: var(--accent-ink); font-size: 0.9rem; margin-top: 2px; }
+
+  /* ---------- BREADCRUMB EYEBROW ---------- */
+  .pagehead .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .pagehead .eyebrow a:hover { border-bottom-color: currentColor; }
+
+  /* ---------- ALSO IN THE PRACTICE ---------- */
+  .ps-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
+  .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
+  .ps-list h3 { margin: 0 0 12px; }
+  .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .ps-list h3 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+  .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
+  .back-link { margin-top: clamp(28px, 4vw, 44px); }
+  .back-link a { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); padding-bottom: 2px; }
+  .back-link a:hover { border-bottom-color: currentColor; }
 {%- endif %}
 
   /* ---------- CTA ---------- */
@@ -150,7 +170,7 @@
     .svc-grid, .fit-grid { grid-template-columns: 1fr; }
     .ph-motif { opacity: 0.3; right: -200px; }
   }
-{%- else %}
+{%- elif kind == "pillar" %}
 
   @media (max-width: 880px) {
     .ps-list.ps-3, .proc-grid, .who-grid{% if partnerships %}, .why-grid{% endif %} { grid-template-columns: 1fr; }
@@ -167,12 +187,16 @@
   @media (max-width: 640px) {
     .ps-list { grid-template-columns: 1fr; }
   }
-{%- if partnerships %}
+{%- elif kind == "service" %}
+
+  @media (max-width: 880px) {
+    .ps-list { grid-template-columns: 1fr; }
+    .ph-motif { opacity: 0.3; right: -200px; }
+  }
   @media (max-width: 820px) {
     .svc-detail { grid-template-columns: 1fr; gap: 24px; }
     .svc-detail .sd-left { position: static; }
     .deliverables { grid-template-columns: 1fr; }
   }
-{%- endif %}
 {%- endif %}
 </style>

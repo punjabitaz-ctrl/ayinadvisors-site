@@ -68,19 +68,25 @@ def test_hub_has_the_fit_together_band_and_one_gold_cta(soups):
 # ---------------------------------------------------------------- pillar pages
 
 @pytest.mark.parametrize("stem", PILLAR_STEMS)
-def test_each_pillar_lists_its_services_unlinked(soups, pillars, stem):
+def test_each_pillar_lists_its_services_linking_the_live_ones(soups, pillars, stem):
     soup = soups[stem]
     p = next(x for x in pillars if x["stem"] == stem)
     cards = soup.select("#what ul.ps-list > li")
     assert [_text(c.h3) for c in cards] == [s["name"] for s in p["services"]]
     assert [_text(c.p) for c in cards] == [s["summary"] for s in p["services"]]
-    for c in cards:
-        assert not c.select("a, button, [href], .svc-arrow, .btn-arrow"), "informative cards: no links, no arrows"
+    for c, s in zip(cards, p["services"]):
+        assert not c.select("button, .svc-arrow, .btn-arrow"), "informative cards: no buttons, no arrows"
+        links = c.select("a[href]")
+        if s["status"] == "live":
+            assert [(a["href"], _text(a)) for a in links] == [(s["href"], s["name"])] and links[0].parent.name == "h3"
+        else:
+            assert not links, "a planned service is listed, not linked"
         assert "asm-card" in c["class"]
     assert "coming soon" not in soup.get_text(" ").lower()
-    # the only links in the body are the CTA and in-page chrome; none lead to a page that does not exist
+    # the only links in the body are the CTA and the live services; none lead to a page that does not exist
+    live = {s["href"] for s in p["services"] if s["status"] == "live"}
     for a in soup.select("main a[href]"):
-        assert a["href"] in ("Contact.html",), a["href"]
+        assert a["href"] == "Contact.html" or a["href"] in live, a["href"]
 
 
 @pytest.mark.parametrize("stem", PILLAR_STEMS)
@@ -97,8 +103,8 @@ def test_pillar_page_bands_in_order(soups, pillars, stem):
     soup = soups[stem]
     p = next(x for x in pillars if x["stem"] == stem)
     got = [s.get("id") for s in soup.select("main > section")]
-    # the partnerships detail band is one section holding the four #research..#expansion articles
-    want = ["what", "detail", "why", "process", "who", None] if stem == "partnerships" else ["what", "process", "who", None]
+    # the four verbatim detail blocks moved to the service pages; the proof band stays on the pillar
+    want = ["what", "why", "process", "who", None] if stem == "partnerships" else ["what", "process", "who", None]
     assert got == want
     what = soup.select_one("#what")
     assert _text(what.select_one(".eyebrow")) == p["name"]
@@ -182,29 +188,22 @@ def test_partnerships_heading_outline(soups, pillars):
     got = [(h.name, _text(h)) for h in soups["partnerships"].select("main h2, main h3")]
     names = [s["name"] for s in p["services"]]
     assert got[0] == ("h2", p["do_heading"]) and [g for g in got[1:5]] == [("h3", n) for n in names]
-    # then the four verbatim blocks (h2 each), the moved proof band, the process, who it is for, the CTA
-    detail = [g for g in got if g[0] == "h2"]
-    titles = [t for _, t in detail]
-    assert titles[1:5] == ["US Market Entry Research", "Channel Strategy & Enablement", "B2B Partner Introductions", "Regional Expansion · Canada & LATAM"]
-    assert titles[5] == "The largest opportunity is also the hardest to read."
-    assert titles[6:] == [proc["heading"], p["who"]["heading"], p["cta"]["heading"]]
+    # then the moved proof band, the process, who it is for, the CTA; the four service blocks live on their own pages
+    titles = [t for h, t in got if h == "h2"]
+    assert titles == [p["do_heading"], "The largest opportunity is also the hardest to read.", proc["heading"],
+                      p["who"]["heading"], p["cta"]["heading"]]
+    assert not soups["partnerships"].select("article.svc-detail, .deliverables")
 
 
 # ---------------------------------------------------------------- Partnerships: verbatim services and the proof band
 
-def test_partnerships_keeps_the_four_services_verbatim(pages):
-    """Each of the four detail blocks is byte-identical to the one on the Services page at the base commit."""
+def test_partnerships_pillar_no_longer_carries_the_four_detail_blocks(pages):
+    """The four blocks moved to partnerships/<slug>.html (tests/test_service_pages.py checks they are verbatim there)."""
     base = json.loads((FIXTURES / "partnerships_four_services.json").read_text(encoding="utf-8"))
-    assert list(base) == ["research", "channel", "introductions", "expansion"]
-    html = pages["partnerships"]
-    positions = []
     for key, raw in base.items():
-        assert html.count(raw) == 1, f"{key}: block changed or missing"
-        positions.append(html.index(raw))
-    assert positions == sorted(positions), "the four blocks keep their order"
-    soup = BeautifulSoup(html, "html.parser")
-    for key, raw in base.items():
-        assert _text(soup.select_one(f"article#{key}")) == _text(BeautifulSoup(raw, "html.parser"))
+        assert raw not in pages["partnerships"], key
+    for old in ("#research", "#channel", "#introductions", "#expansion"):
+        assert f'href="partnerships.html{old}"' not in "".join(pages.values()), old
 
 
 def test_partnerships_has_the_us_proof_band(soups):
@@ -258,17 +257,22 @@ def _head_css(stem) -> str:
     return build.page_parts(stem)[1]
 
 
-@pytest.mark.parametrize("stem", ("Services", "ai-solutions", "digital-presence"))
-def test_no_dead_detail_css_outside_partnerships(stem):
+@pytest.mark.parametrize("stem", ("Services", "ai-solutions", "digital-presence", "partnerships"))
+def test_no_dead_detail_css_on_the_hub_and_pillars(stem):
     css = _head_css(stem)
-    for dead in ("svc-detail", "deliverables", "sd-num", "why-grid", "globe-stage"):
+    for dead in ("svc-detail", "deliverables", "sd-num") + (() if stem == "partnerships" else ("why-grid", "globe-stage")):
         assert dead not in css, f"{stem}: unused rule for .{dead}"
 
 
-def test_partnerships_head_keeps_the_detail_and_proof_css():
+def test_partnerships_head_keeps_the_proof_css_and_the_service_head_the_detail_css():
     css = _head_css("partnerships")
-    for needed in ("svc-detail", "deliverables", "sd-num", "why-grid", "globe-stage", "proc-grid", "principle"):
+    for needed in ("why-grid", "globe-stage", "proc-grid", "principle"):
         assert needed in css
+    svc = _head_css("partnerships/channel-strategy")
+    for needed in ("svc-detail", "deliverables", "sd-num", "ps-list"):
+        assert needed in svc
+    for dead in ("why-grid", "globe-stage", "proc-grid", "principle"):
+        assert dead not in svc
 
 
 # ---------------------------------------------------------------- copy keeps to what the owner said or the site already says

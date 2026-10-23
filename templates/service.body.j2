@@ -1,0 +1,48 @@
+{#- Service page (a sub-service of a pillar): page head (breadcrumb eyebrow back to the pillar, the service name, its summary), the service detail (paragraph and deliverables, content/services.json "detail"), the other services of the practice, the gold CTA band. -#}
+{%- from "_components.j2" import iris_mark, pagehead, cta_band -%}
+{%- set d = service.detail -%}
+{%- set back = pillar.stem ~ ".html" -%}
+{{ pagehead(pillar.name, service.name, service.summary, back, root) }}
+<main id="main" tabindex="-1">
+<!-- SERVICE DETAIL -->
+<section class="section surface-page clip-x" id="detail" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <article class="svc-detail reveal assemble" data-assemble>
+      <div class="sd-left">
+        <div class="sd-num" aria-hidden="true" data-n="{{ "%02d"|format(pillar.services.index(service) + 1) }}"></div>
+        <span class="tag">{{ d.tag|e }}</span>
+      </div>
+      <div class="sd-body">
+        <p>{{ d.text|e }}</p>
+        <ul class="deliverables asm-stage">
+          {%- for item in d.deliverables %}
+          <li class="asm-card">{{ item|e }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ALSO IN THE PRACTICE -->
+<section class="section surface-alt clip-x assemble" id="more" data-assemble>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <h2 class="h2 asm-fade">Also in {{ pillar.name|e }}</h2>
+      </div>
+    </div>
+    <ul class="ps-list asm-stage">
+      {%- for s in pillar.services if s.slug != service.slug %}
+      <li class="asm-card">
+        <h3 class="h3">{% if s.href %}<a href="{{ s.href|ru(root)|e }}">{{ s.name|e }}</a>{% else %}{{ s.name|e }}{% endif %}</h3>
+        <p>{{ s.summary|e }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="back-link"><a href="{{ back|ru(root)|e }}">Back to {{ pillar.name|e }}</a></p>
+  </div>
+</section>
+
+{{ cta_band(pillar.cta, root) }}
+</main>

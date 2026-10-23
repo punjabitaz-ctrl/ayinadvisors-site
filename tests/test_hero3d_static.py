@@ -10,6 +10,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+import build
 from conftest import PAGES, ROOT
 
 ASSETS = ROOT / "assets"
@@ -101,7 +102,8 @@ def test_node_modules_is_ignored_and_not_tracked():
 def test_every_page_loads_the_shared_scripts_deferred_in_order():
     for stem in PAGES:
         scripts = _head_scripts(stem)
-        srcs = [s["src"] for s in scripts]
+        root = build.root_for(stem)
+        srcs = [s["src"][len(root):] if s["src"].startswith(root) else s["src"] for s in scripts]
         shared = [s for s in srcs if s in SHARED_SCRIPTS]
         assert shared == SHARED_SCRIPTS, f"{stem}: {shared}"
         for s in scripts:
@@ -110,7 +112,7 @@ def test_every_page_loads_the_shared_scripts_deferred_in_order():
 
 def test_only_home_loads_the_hero_bundle():
     for stem in PAGES:
-        srcs = [s["src"] for s in _head_scripts(stem)]
+        srcs = [s["src"].removeprefix(build.root_for(stem)) for s in _head_scripts(stem)]
         assert ("assets/hero3d.js" in srcs) == (stem == "index"), stem
         html = (ROOT / f"{stem}.html").read_text(encoding="utf-8")
         assert ("hero3d" in html) == (stem == "index"), stem

@@ -47,6 +47,8 @@
   .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .ps-list h3 { margin: 0 0 12px; }
   .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
+  .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .ps-list h3 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
 
   /* ---------- HOW WE WORK ---------- */
   .proc-wrap { position: relative; }
@@ -69,21 +71,6 @@
   .principle .pk { font-family: var(--serif); color: var(--accent-ink); font-size: 1.1rem; flex: none; width: 34px; }
   .principle h3 { font-family: var(--sans); font-size: 1.05rem; font-weight: 600; line-height: 1.7; letter-spacing: normal; color: var(--ink); margin-bottom: 6px; }
   .principle p { color: var(--ink-muted); font-size: 0.95rem; }
-
-  /* ---------- THE FOUR MARKET-ENTRY SERVICES ---------- */
-  .svc-detail { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px, 6vw, 90px); padding-block: clamp(56px, 7vw, 96px); border-top: 1px solid var(--line); align-items: start; }
-  .svc-detail:first-of-type { border-top: 0; }
-  .svc-detail .sd-left { position: sticky; top: 110px; }
-  .svc-detail .sd-num { font-family: var(--serif); font-size: clamp(3.4rem, 7vw, 6rem); color: var(--line); line-height: 0.8; }
-.sd-num::before { content: attr(data-n); }
-  .js .svc-detail:hover .sd-num, .svc-detail.in .sd-num { color: var(--accent-ink); transition: color 0.8s var(--ease); }
-  .svc-detail h2 { font-size: clamp(1.9rem, 3.4vw, 2.9rem); margin: 18px 0 0; }
-  .svc-detail .tag { display: inline-block; margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--line-gold); padding: 6px 12px; border-radius: 2px; }
-  .svc-detail .sd-body p { font-size: 1.12rem; color: var(--ink); max-width: 54ch; margin-bottom: 30px; }
-  .deliverables { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-  .deliverables li { list-style: none; background: var(--surface); padding: 18px 20px; font-size: 0.98rem; display: flex; gap: 12px; align-items: flex-start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.4s var(--ease), transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: 0s, calc(var(--i, 0) * 0.1s), 0s, calc(var(--i, 0) * 0.1s); }
-  .deliverables li:hover { background: color-mix(in srgb, var(--ink) 4%, var(--surface)); }
-  .deliverables li::before { content: "→"; color: var(--accent-ink); font-size: 0.9rem; margin-top: 2px; }
 
   /* ---------- WHY THE US MARKET (proof band) ---------- */
   .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
@@ -127,11 +114,6 @@
   }
   @media (max-width: 640px) {
     .ps-list { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 820px) {
-    .svc-detail { grid-template-columns: 1fr; gap: 24px; }
-    .svc-detail .sd-left { position: static; }
-    .deliverables { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -199,7 +181,7 @@
 
 <main id="main" tabindex="-1">
 <!-- WHAT WE DO -->
-<section class="section surface-alt clip-x assemble" id="what" data-assemble>
+<section class="section surface-page clip-x assemble" id="what" data-assemble>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">
@@ -211,108 +193,24 @@
 
     <ul class="ps-list ps-4 asm-stage">
       <li class="asm-card">
-        <h3 class="h3">US Market Entry Research</h3>
+        <h3 class="h3"><a href="partnerships/market-entry-research.html">US Market Entry Research</a></h3>
         <p>Sizing, segmentation and competitive intelligence that tells you where to play - and where not to - before you spend a dollar on the ground.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">Channel Strategy &amp; Enablement</h3>
+        <h3 class="h3"><a href="partnerships/channel-strategy.html">Channel Strategy &amp; Enablement</a></h3>
         <p>Designing the route to market - distributors, resellers, agents - and equipping them with the tools, terms and training to actually sell.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">B2B Partner Introductions</h3>
+        <h3 class="h3"><a href="partnerships/partner-introductions.html">B2B Partner Introductions</a></h3>
         <p>Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">Regional Expansion · Canada &amp; LATAM</h3>
+        <h3 class="h3"><a href="partnerships/regional-expansion.html">Regional Expansion · Canada &amp; LATAM</a></h3>
         <p>Extending the playbook north and south - adapting channel models for Canada and Latin America once the US engine is running.</p>
       </li>
     </ul>
   </div>
 </section>
-
-<!-- MARKET ENTRY DETAIL -->
-<section class="section surface-page clip-x" id="detail" style="padding-top:clamp(40px,6vw,80px)">
-  <div class="wrap">
-
-    <article class="svc-detail reveal assemble" id="research" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="01"></div>
-        <h2 class="h2">US Market Entry Research</h2>
-        <span class="tag">Discovery</span>
-      </div>
-      <div class="sd-body">
-        <p>Before commitment comes clarity. We map the real shape of US demand for your category - where it concentrates, who already owns it, and the regulatory and pricing realities you'll meet on arrival. You get an honest read on whether, where and how to enter.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card">Market sizing &amp; segmentation</li>
-          <li class="asm-card">Competitive &amp; pricing landscape</li>
-          <li class="asm-card">Regulatory &amp; compliance scan</li>
-          <li class="asm-card">Beachhead market recommendation</li>
-          <li class="asm-card">Demand &amp; buyer-persona mapping</li>
-          <li class="asm-card">Go / no-go entry thesis</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="svc-detail reveal assemble" id="channel" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="02"></div>
-        <h2 class="h2">Channel Strategy &amp; Enablement</h2>
-        <span class="tag">Architecture</span>
-      </div>
-      <div class="sd-body">
-        <p>The route to market is the strategy. We design the channel architecture suited to your product and margins - distributors, resellers, agents or hybrid - then build the commercial terms, materials and training that turn a partner signature into actual sales.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card">Channel model &amp; coverage design</li>
-          <li class="asm-card">Partner economics &amp; incentives</li>
-          <li class="asm-card">Sales enablement toolkit</li>
-          <li class="asm-card">Onboarding &amp; training program</li>
-          <li class="asm-card">Pricing &amp; margin structure</li>
-          <li class="asm-card">Performance &amp; KPI framework</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="svc-detail reveal assemble" id="introductions" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="03"></div>
-        <h2 class="h2">B2B Partner Introductions</h2>
-        <span class="tag">Access</span>
-      </div>
-      <div class="sd-body">
-        <p>Relationships open the US market - and we have them. We make warm, qualified introductions to the buyers, channel partners and decision-makers who actually move your category, then support the first conversations so they convert into agreements.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card">Target partner long-list &amp; vetting</li>
-          <li class="asm-card">Warm, personally-made introductions</li>
-          <li class="asm-card">Meeting facilitation &amp; prep</li>
-          <li class="asm-card">Deal &amp; term negotiation support</li>
-          <li class="asm-card">Buyer &amp; distributor outreach</li>
-          <li class="asm-card">Relationship handover</li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="svc-detail reveal assemble" id="expansion" data-assemble>
-      <div class="sd-left">
-        <div class="sd-num" aria-hidden="true" data-n="04"></div>
-        <h2 class="h2">Regional Expansion · Canada &amp; LATAM</h2>
-        <span class="tag">Scale</span>
-      </div>
-      <div class="sd-body">
-        <p>Once the US engine runs, the continent opens up. We extend your proven playbook into Canada and Latin America - adapting channel models, partner profiles and commercial terms to each market's language, regulation and buying culture.</p>
-        <ul class="deliverables asm-stage">
-          <li class="asm-card">Canada market &amp; channel entry</li>
-          <li class="asm-card">LATAM prioritization &amp; sequencing</li>
-          <li class="asm-card">Localized partner sourcing</li>
-          <li class="asm-card">Cross-border commercial terms</li>
-          <li class="asm-card">Regulatory &amp; tax navigation</li>
-          <li class="asm-card">Multi-market governance</li>
-        </ul>
-      </div>
-    </article>
-
-  </div>
-</section>
-
 
 <!-- WHY THE US MARKET -->
 <section class="section surface-alt" id="why">

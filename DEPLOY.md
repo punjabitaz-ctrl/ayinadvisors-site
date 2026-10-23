@@ -96,6 +96,14 @@ from `content/site.json`, `templates/` and `templates/pages/`.
 - Templates are named `.j2` and page body fragments `.frag` because Cloudflare
   Pages serves the whole repo root: no `.html` other than the seven real pages
   may be committed (`tests/test_no_stray_html.py` enforces this).
+- **Adding a service page** (a sub-page in a folder, e.g. `partnerships/channel-strategy.html`): in
+  `content/services.json` give the service `"status": "live"`, an `"href"` (`<pillar>/<slug>.html`) and a
+  `"detail"` (`tag`, `text`, `deliverables`); in `content/site.json` add a page keyed by its stem
+  (`"partnerships/<slug>"`) with `"template": "service"`, `"pillar"`, `"service"`, canonical, title
+  `"<Name> - AYiN Advisors"`, a 120-160 character description and sitemap priority `0.7`. Rebuild; the build
+  creates the folder. Pages in a folder get a `root` prefix (`""` at the root, `"../"` one level down) that the
+  shared templates apply to every site-relative link and asset through the `|ru(root)` filter (use it on any new
+  href in a template). Baseline snapshots of folder pages are stored with `/` replaced by `__`.
 - The dev dependency file is deliberately **not** named `requirements.txt`:
   Cloudflare Pages may auto-run `pip install -r requirements.txt`, and a failure
   there would break the production deploy for a build the deploy does not use.

@@ -11,9 +11,16 @@ from tools import baseline
 def tree(tmp_path):
     """Isolated copy of the generated root pages and their snapshots."""
     for s in PAGES:
+        (tmp_path / f"{s}.html").parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(ROOT / f"{s}.html", tmp_path / f"{s}.html")
     shutil.copytree(ROOT / "tests" / "baseline", tmp_path / "tests" / "baseline")
     return tmp_path
+
+
+def test_subfolder_pages_have_flat_snapshot_names():
+    assert baseline.snap_name("About") == "About.snap"
+    assert baseline.snap_name("partnerships/channel-strategy") == "partnerships__channel-strategy.snap"
+    assert all("/" not in baseline.snap_name(s) for s in PAGES)
 
 
 def test_diff_is_empty_when_pages_equal_snapshots():
@@ -35,7 +42,7 @@ def test_snapshot_overwrites_only_the_snapshot_files(tree):
     assert baseline.diff(tree) == {}
     assert (tree / "tests" / "baseline" / "About.snap").read_bytes() == p.read_bytes()
     assert {s: (tree / f"{s}.html").read_bytes() for s in PAGES} == pages_before
-    assert sorted(x.name for x in (tree / "tests" / "baseline").iterdir()) == sorted(f"{s}.snap" for s in PAGES)
+    assert sorted(x.name for x in (tree / "tests" / "baseline").iterdir()) == sorted(baseline.snap_name(s) for s in PAGES)
     assert (ROOT / "tests" / "baseline" / "About.snap").read_bytes() == real_before
 
 

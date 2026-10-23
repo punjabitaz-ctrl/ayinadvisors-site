@@ -16,8 +16,13 @@ from build import PAGES  # noqa: E402
 from parity import page_facts  # noqa: E402
 
 
+def snap_name(stem: str) -> str:
+    """Snapshot file name for a page stem: a subfolder page "a/b" is stored as "a__b.snap"."""
+    return stem.replace("/", "__") + ".snap"
+
+
 def _snap(root: Path, stem: str) -> Path:
-    return root / "tests" / "baseline" / f"{stem}.snap"
+    return root / "tests" / "baseline" / snap_name(stem)
 
 
 def diff(root: Path = ROOT) -> dict[str, list[str]]:

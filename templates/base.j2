@@ -11,12 +11,12 @@
 <meta name="description" content="{{ page.description|e }}" />
 {% if page.canonical %}<link rel="canonical" href="{{ page.canonical|e }}" />{% endif %}
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="{{ root }}assets/theme.css">
 {{ head_extra }}
-<script defer src="assets/vendor/lenis.min.js"></script>
-<script defer src="assets/vendor/gsap.min.js"></script>
-<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
-<script defer src="assets/motion.js"></script>
+<script defer src="{{ root }}assets/vendor/lenis.min.js"></script>
+<script defer src="{{ root }}assets/vendor/gsap.min.js"></script>
+<script defer src="{{ root }}assets/vendor/ScrollTrigger.min.js"></script>
+<script defer src="{{ root }}assets/motion.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -25,9 +25,9 @@
     {{ logo }}
     <div class="nav-links">
       {% for n in site.nav -%}
-      <a href="{{ n.href|e }}" class="nav-link{% if n.class %} {{ n.class|e }}{% endif %}{% if n.label == page.active %} active{% endif %}"{% if n.label == page.active %} aria-current="{{ 'page' if n.href == stem ~ '.html' else 'true' }}"{% endif %}>{{ n.label|e }}</a>
+      <a href="{{ n.href|ru(root)|e }}" class="nav-link{% if n.class %} {{ n.class|e }}{% endif %}{% if n.label == page.active %} active{% endif %}"{% if n.label == page.active %} aria-current="{{ 'page' if n.href == stem ~ '.html' else 'true' }}"{% endif %}>{{ n.label|e }}</a>
       {% endfor -%}
-      <span class="nav-cta"><a href="{{ page.cta.href|e }}" class="{{ page.cta['class']|e }}" data-magnetic><span class="btn-label">{{ page.cta.label|e }}</span></a></span>
+      <span class="nav-cta"><a href="{{ page.cta.href|ru(root)|e }}" class="{{ page.cta['class']|e }}" data-magnetic><span class="btn-label">{{ page.cta.label|e }}</span></a></span>
     </div>
     {{ theme_toggle() }}
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
@@ -36,16 +36,16 @@
 
 <nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
   {% for n in site.nav -%}
-  <a href="{{ n.href|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}{% if n.label == page.active %} aria-current="{{ 'page' if n.href == stem ~ '.html' else 'true' }}"{% endif %}>{{ n.label|e }}</a>
+  <a href="{{ n.href|ru(root)|e }}"{% if n.class %} class="{{ n.class|e }}"{% endif %}{% if n.label == page.active %} aria-current="{{ 'page' if n.href == stem ~ '.html' else 'true' }}"{% endif %}>{{ n.label|e }}</a>
   {% endfor -%}
-  <a href="{{ page.cta.href|e }}" class="md-cta">{{ page.cta.label|e }}</a>
+  <a href="{{ page.cta.href|ru(root)|e }}" class="md-cta">{{ page.cta.label|e }}</a>
   {{ theme_toggle(true) }}
 </nav>
 
 {{ body }}
 
 {% if page.footer %}{{ footer }}{% endif %}
-<script src="assets/site.js"></script>
+<script src="{{ root }}assets/site.js"></script>
 {{ body_scripts }}
 </body>
 </html>

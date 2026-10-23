@@ -10,9 +10,16 @@ def soups():
     return {stem: BeautifulSoup(html, "html.parser") for stem, html in build.render_all().items()}
 
 
+def _unroot(soup, selector):
+    """Drop the "../" root prefix a subfolder page puts on site links, so its chrome compares equal to a root page's."""
+    for a in soup.select(f"{selector} a[href^='../']"):
+        a["href"] = a["href"][3:]
+
+
 def _normalised(soup, selector):
     """Canonical subtree minus the parts that legitimately vary per page."""
     soup = BeautifulSoup(str(soup), "html.parser")
+    _unroot(soup, selector)
     for a in soup.select(f"{selector} a"):
         a.attrs.pop("aria-current", None)
         classes = [c for c in a.get("class", []) if c != "active"]
@@ -38,7 +45,12 @@ def test_nav_and_drawer_identical_across_pages(soups, selector):
 
 
 def test_footer_identical_across_pages_that_have_one(soups):
-    shapes = {stem: canon_subtree(s, "footer.footer") for stem, s in soups.items() if s.select_one("footer.footer")}
+    shapes = {}
+    for stem, s in soups.items():
+        if s.select_one("footer.footer"):
+            s = BeautifulSoup(str(s), "html.parser")
+            _unroot(s, "footer.footer")
+            shapes[stem] = canon_subtree(s, "footer.footer")
     assert set(soups) - set(shapes) == {"404"}
     assert all(shapes.values())
     first = next(iter(shapes))
@@ -54,8 +66,8 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
     aria-current link. A pillar page has no entry of its own: it sits under Services, so the navigation carries no
     "page" link at all and exactly one aria-current="true" link, Services (the section the visitor is in).
     """
-    pillars = {s for s, p in build.load_site()["pages"].items() if p.get("template") == "pillar"}
-    assert len(pillars) == 3
+    pillars = {s for s, p in build.load_site()["pages"].items() if p.get("template") in ("pillar", "service")}
+    assert len(pillars) == 7  # three pillar pages and the four B2B Partnerships service pages
     nav_hrefs = [n["href"] for n in build.load_site()["nav"]]
     targets = {}
     for stem, s in soups.items():
@@ -67,7 +79,7 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
             continue
         if stem in pillars:
             assert not page_links, f"{stem} {selector}: a pillar page is not itself a navigation entry"
-            assert len(true_links) == 1 and true_links[0]["href"] == "Services.html", f"{stem} {selector}: {true_links}"
+            assert len(true_links) == 1 and true_links[0]["href"] == build.root_for(stem) + "Services.html", f"{stem} {selector}: {true_links}"
         else:
             assert f"{stem}.html" in nav_hrefs
             assert len(page_links) == 1 and not true_links, f"{stem} {selector}: {page_links} {true_links}"
@@ -84,9 +96,9 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
 
 def test_the_section_link_keeps_its_active_styling_on_pillar_pages(soups):
     """aria-current="true" changes what is announced, not what is drawn: the Services link stays .active on every pillar page."""
-    for stem in ("partnerships", "ai-solutions", "digital-presence"):
+    for stem in ("partnerships", "ai-solutions", "digital-presence", "partnerships/market-entry-research"):
         active = soups[stem].select("nav.nav a.nav-link.active")
-        assert len(active) == 1 and active[0]["href"] == "Services.html" and active[0]["aria-current"] == "true", stem
+        assert len(active) == 1 and active[0]["href"] == build.root_for(stem) + "Services.html" and active[0]["aria-current"] == "true", stem
     for stem in ("Services", "index", "About"):
         active = soups[stem].select("nav.nav a.nav-link.active")
         assert len(active) == 1 and active[0]["aria-current"] == "page", stem

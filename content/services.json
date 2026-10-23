@@ -87,25 +87,77 @@
           "slug": "market-entry-research",
           "name": "US Market Entry Research",
           "summary": "Sizing, segmentation and competitive intelligence that tells you where to play - and where not to - before you spend a dollar on the ground.",
-          "status": "planned"
+          "status": "live",
+          "href": "partnerships/market-entry-research.html",
+          "detail": {
+            "tag": "Discovery",
+            "text": "Before commitment comes clarity. We map the real shape of US demand for your category - where it concentrates, who already owns it, and the regulatory and pricing realities you'll meet on arrival. You get an honest read on whether, where and how to enter.",
+            "deliverables": [
+              "Market sizing & segmentation",
+              "Competitive & pricing landscape",
+              "Regulatory & compliance scan",
+              "Beachhead market recommendation",
+              "Demand & buyer-persona mapping",
+              "Go / no-go entry thesis"
+            ]
+          }
         },
         {
           "slug": "channel-strategy",
           "name": "Channel Strategy & Enablement",
           "summary": "Designing the route to market - distributors, resellers, agents - and equipping them with the tools, terms and training to actually sell.",
-          "status": "planned"
+          "status": "live",
+          "href": "partnerships/channel-strategy.html",
+          "detail": {
+            "tag": "Architecture",
+            "text": "The route to market is the strategy. We design the channel architecture suited to your product and margins - distributors, resellers, agents or hybrid - then build the commercial terms, materials and training that turn a partner signature into actual sales.",
+            "deliverables": [
+              "Channel model & coverage design",
+              "Partner economics & incentives",
+              "Sales enablement toolkit",
+              "Onboarding & training program",
+              "Pricing & margin structure",
+              "Performance & KPI framework"
+            ]
+          }
         },
         {
           "slug": "partner-introductions",
           "name": "B2B Partner Introductions",
           "summary": "Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.",
-          "status": "planned"
+          "status": "live",
+          "href": "partnerships/partner-introductions.html",
+          "detail": {
+            "tag": "Access",
+            "text": "Relationships open the US market - and we have them. We make warm, qualified introductions to the buyers, channel partners and decision-makers who actually move your category, then support the first conversations so they convert into agreements.",
+            "deliverables": [
+              "Target partner long-list & vetting",
+              "Warm, personally-made introductions",
+              "Meeting facilitation & prep",
+              "Deal & term negotiation support",
+              "Buyer & distributor outreach",
+              "Relationship handover"
+            ]
+          }
         },
         {
           "slug": "regional-expansion",
           "name": "Regional Expansion · Canada & LATAM",
           "summary": "Extending the playbook north and south - adapting channel models for Canada and Latin America once the US engine is running.",
-          "status": "planned"
+          "status": "live",
+          "href": "partnerships/regional-expansion.html",
+          "detail": {
+            "tag": "Scale",
+            "text": "Once the US engine runs, the continent opens up. We extend your proven playbook into Canada and Latin America - adapting channel models, partner profiles and commercial terms to each market's language, regulation and buying culture.",
+            "deliverables": [
+              "Canada market & channel entry",
+              "LATAM prioritization & sequencing",
+              "Localized partner sourcing",
+              "Cross-border commercial terms",
+              "Regulatory & tax navigation",
+              "Multi-market governance"
+            ]
+          }
         }
       ],
       "process": {
