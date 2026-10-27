@@ -147,6 +147,7 @@
 
   /* ---------- ALSO IN THE PRACTICE ---------- */
   .ps-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
+  .ps-list.ps-2 { grid-template-columns: repeat(2, 1fr); }
   .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .ps-list h3 { margin: 0 0 12px; }
   .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
@@ -190,7 +191,7 @@
 {%- elif kind == "service" %}
 
   @media (max-width: 880px) {
-    .ps-list { grid-template-columns: 1fr; }
+    .ps-list, .ps-list.ps-2 { grid-template-columns: 1fr; }
     .ph-motif { opacity: 0.3; right: -200px; }
   }
   @media (max-width: 820px) {

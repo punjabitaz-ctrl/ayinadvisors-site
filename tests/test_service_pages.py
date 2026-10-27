@@ -148,3 +148,16 @@ def test_build_check_sees_a_stale_subfolder_page(sandbox):
     p = sandbox / "partnerships" / "channel-strategy.html"
     p.write_text(p.read_text(encoding="utf-8") + "<!-- stale -->", encoding="utf-8")
     assert build.check() == ["partnerships/channel-strategy.html"]
+
+
+@pytest.mark.parametrize("stem", STEMS)
+def test_the_other_services_grid_has_one_column_per_card(soups, stem):
+    """A practice with three services leaves two cards under "Also in": the grid gets two columns, not an empty third
+    whose top border runs on past the cards (seen on the Sprint 4 and 5 preview), and folds to one column on a phone."""
+    ul = soups[stem].select_one("section#more ul.ps-list")
+    n = len(ul.find_all("li", recursive=False))
+    assert f"ps-{n}" in ul["class"], ul["class"]
+    if n == 2:
+        head = str(soups[stem].head)
+        assert ".ps-list.ps-2 { grid-template-columns: repeat(2, 1fr); }" in head
+        assert ".ps-list, .ps-list.ps-2 { grid-template-columns: 1fr; }" in head

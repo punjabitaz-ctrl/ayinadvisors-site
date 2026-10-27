@@ -32,8 +32,9 @@
         <h2 class="h2 asm-fade">Also in {{ pillar.name|e }}</h2>
       </div>
     </div>
-    <ul class="ps-list asm-stage">
-      {%- for s in pillar.services if s.slug != service.slug %}
+    {%- set others = pillar.services|rejectattr("slug", "equalto", service.slug)|list %}
+    <ul class="ps-list ps-{{ others|length }} asm-stage">
+      {%- for s in others %}
       <li class="asm-card">
         <h3 class="h3">{% if s.href %}<a href="{{ s.href|ru(root)|e }}">{{ s.name|e }}</a>{% else %}{{ s.name|e }}{% endif %}</h3>
         <p>{{ s.summary|e }}</p>
