@@ -3,8 +3,8 @@
 Date: 2026-10-27
 Branch: `sprints-4-6-finish-rebuild` (off master, with Sprints 1 to 3 live)
 Parent design: `2026-10-15-services-restructure-design.md`. This document covers Sprints 4, 5 and 6 together.
-Status: the owner asked to continue the rebuild until it is complete. Copy is **drafted by Claude for the owner to
-edit**; calls marked *my call* are open to change.
+Status: the owner asked to continue the rebuild until it is complete. Copy was drafted by Claude and **approved by the
+owner on 2026-10-27** after reviewing preview screenshots of all seven pages; calls marked *my call* stand as approved.
 
 ## What ships
 
