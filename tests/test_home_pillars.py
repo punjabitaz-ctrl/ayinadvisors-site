@@ -277,11 +277,8 @@ def test_footer_practice_column(soups, pillars, site):
     old = ("Channel-led US market entry", "Entering the US market, clearly")
     for stem, soup in soups.items():
         footer = soup.select_one("footer.footer")
-        if stem == "404":
-            assert footer is None
-            continue
         col = next(c for c in footer.select(".footer-col") if c.h2 and _text(c.h2) == "Practice")
-        root = build.root_for(stem)
+        root = build.page_root(stem)
         assert [(a["href"], _text(a)) for a in col.select("a")] == [(f"{root}{p['stem']}.html", p["name"]) for p in pillars], stem
         assert _text(footer.select_one(".footer-bottom > span:last-child")) == "Business solutions for a digital world."
         assert _text(footer.select_one(".footer-tag")) == "B2B partnerships, AI solutions and digital presence. New York."
@@ -308,6 +305,6 @@ def test_nav_still_routes(site, soups):
     for n in nav:
         assert (ROOT / n["href"]).exists() and n["href"][:-5] in build.PAGES, n
     for stem, soup in soups.items():
-        root = build.root_for(stem)
+        root = build.page_root(stem)
         assert [a["href"] for a in soup.select("nav.nav a.nav-link")] == [root + n["href"] for n in nav], stem
         assert [a["href"] for a in soup.select("nav.mobile-drawer a:not(.md-cta)")] == [root + n["href"] for n in nav], stem

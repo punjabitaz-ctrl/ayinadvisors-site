@@ -44,7 +44,9 @@ def test_template_pages_are_declared_in_site_json():
     kinds = {s: build.template_kind(s) for s in PAGES}
     assert {s for s, k in kinds.items() if k == "hub"} == {"Services"}
     assert {s for s, k in kinds.items() if k == "pillar"} == {"partnerships", "ai-solutions", "digital-presence"}
-    assert set(_hand_authored()) == {"index", "About", "Projects", "BizCheck", "Contact", "404"}
+    assert {s for s, k in kinds.items() if k == "service"} == {s for s in PAGES if "/" in s} and len(PAGES) == 20
+    assert {s for s, k in kinds.items() if k == "notfound"} == {"404"}  # Sprint 6: the 404 links each practice from services.json
+    assert set(_hand_authored()) == {"index", "About", "Projects", "BizCheck", "Contact"}
 
 
 def test_why_stats_have_one_numeral_each():

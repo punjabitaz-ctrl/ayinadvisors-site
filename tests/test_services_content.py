@@ -60,16 +60,17 @@ def test_the_ten_sub_services_are_the_ones_in_the_design():
 
 
 def test_a_service_is_live_only_when_its_page_exists():
-    """Live means an href to a built service page in site.json; the other six sub-services stay planned until their sprint."""
+    """Live means an href to a built service page in site.json. Since Sprint 5 every one of the ten sub-services is live."""
     pages = build.load_site()["pages"]
-    live = [s for p in load()["pillars"] for s in p["services"] if s["status"] == "live"]
-    assert [s["slug"] for s in live] == ["market-entry-research", "channel-strategy", "partner-introductions", "regional-expansion"]
-    for s in live:
-        stem = s["href"][:-5]
-        assert s["href"] == f"partnerships/{s['slug']}.html" and stem in pages, s["slug"]
-        assert pages[stem]["template"] == "service" and pages[stem]["service"] == s["slug"] and "detail" in s
-        assert (ROOT / s["href"]).is_file()
-    assert sum(1 for p in load()["pillars"] for s in p["services"] if s["status"] == "planned") == 6
+    for p in load()["pillars"]:
+        for s in p["services"]:
+            assert s["status"] == "live", s["slug"]
+            stem = s["href"][:-5]
+            assert s["href"] == f"{p['stem']}/{s['slug']}.html" and stem in pages, s["slug"]
+            assert pages[stem]["template"] == "service" and pages[stem]["pillar"] == p["slug"], s["slug"]
+            assert pages[stem]["service"] == s["slug"] and "detail" in s
+            assert (ROOT / s["href"]).is_file()
+    assert sum(1 for p in load()["pillars"] for s in p["services"]) == 10
 
 
 def test_the_four_market_entry_services_keep_their_existing_names_and_lines():
@@ -129,7 +130,8 @@ def _main_text(html: str, drop=()) -> str:
 # The four market-entry detail blocks are the owner's existing copy; they talk about a client's market pricing
 # landscape (a deliverable), not our fees. Everything else on these pages is new copy and is scanned.
 VERBATIM = ("article.svc-detail",)
-SERVICE_STEMS = tuple(f"partnerships/{s}" for s in ("market-entry-research", "channel-strategy", "partner-introductions", "regional-expansion"))
+SERVICE_STEMS = tuple(s["href"][:-5] for p in json.loads((ROOT / "content" / "services.json").read_text(encoding="utf-8"))["pillars"]
+                      for s in p["services"])
 PRICE_OFFER = re.compile(r"\$\s?\d|\bpric(?:e|es|ed|ing)\b|\bper month\b|/mo\b|\bsubscription\b", re.I)
 
 
@@ -174,6 +176,29 @@ def test_new_copy_has_no_em_dashes_hype_or_coming_soon():
     for text in new:
         assert "—" not in text and "–" not in text, text[:60]
         assert not HYPE.search(text), HYPE.search(text)
+
+
+def _new_details() -> list[str]:
+    """The service detail copy drafted in Sprints 4 and 5 (AI Solutions and Digital Presence), one string per service."""
+    return [" ".join([s["detail"]["tag"], s["detail"]["text"], *s["detail"]["deliverables"]])
+            for p in load()["pillars"][1:] for s in p["services"]]
+
+
+def test_new_service_details_follow_the_copy_rules():
+    """Six new detail blocks: a tag, a paragraph and six deliverables each, with no digits, pricing, em dashes or hype,
+    and no claim of past clients or results."""
+    details = _new_details()
+    assert len(details) == 6
+    for p in load()["pillars"][1:]:
+        for s in p["services"]:
+            d = s["detail"]
+            assert d["tag"].strip() and d["text"].strip() and len(d["deliverables"]) == 6, s["slug"]
+    for text in details:
+        assert not re.search(r"\d", text), text[:60]
+        assert not PRICE_OFFER.search(text), PRICE_OFFER.search(text)
+        assert "—" not in text and "–" not in text, text[:60]
+        assert not HYPE.search(text), HYPE.search(text)
+        assert not re.search(r"\b(?:clients? like|case stud|testimonial|trusted by|results? (?:of|from)|we have (?:built|delivered|helped)|years of)\b", text, re.I)
 
 
 def test_new_copy_names_no_clients_results_or_testimonials():

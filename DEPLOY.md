@@ -84,7 +84,7 @@ asset paths won't resolve otherwise.
 
 ## Building
 
-The site is generated: run `python build.py` to render the seven root pages
+The site is generated: run `python build.py` to render the twenty pages
 from `content/site.json`, `templates/` and `templates/pages/`.
 
 - **Never edit a root `.html` file.** Edit `content/site.json`, `templates/` or
@@ -94,7 +94,7 @@ from `content/site.json`, `templates/` and `templates/pages/`.
 - Install tooling with `pip install -r dev-requirements.txt`; run tests with
   `PYTHONUTF8=1 python -m pytest`.
 - Templates are named `.j2` and page body fragments `.frag` because Cloudflare
-  Pages serves the whole repo root: no `.html` other than the seven real pages
+  Pages serves the whole repo root: no `.html` other than the twenty real pages
   may be committed (`tests/test_no_stray_html.py` enforces this).
 - **Adding a service page** (a sub-page in a folder, e.g. `partnerships/channel-strategy.html`): in
   `content/services.json` give the service `"status": "live"`, an `"href"` (`<pillar>/<slug>.html`) and a

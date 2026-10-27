@@ -4,7 +4,7 @@ Every placement gets the checks the Home placement needed: nothing displaced at 
 """
 import pytest
 
-from a11y_browser.conftest import THEMES, new_context, open_page
+from a11y_browser.conftest import PAGES, THEMES, new_context, open_page
 from a11y_browser.test_motion import FINAL_JS, _centre
 
 pytestmark = pytest.mark.browser
@@ -13,7 +13,7 @@ ROLLOUT = ("About", "Services", "partnerships", "ai-solutions", "digital-presenc
 # Pages in ROLLOUT that carry a ripples graphic: About (approach), BizCheck (panel), the hub (practice cards heading)
 # and each pillar page ("How we work" heading).
 # the four B2B Partnerships service pages: their deliverables grids moved here from the pillar page
-SERVICE_PAGES = tuple(f"partnerships/{s}" for s in ("market-entry-research", "channel-strategy", "partner-introductions", "regional-expansion"))
+SERVICE_PAGES = tuple(s for s in PAGES if "/" in s)  # the ten service pages (Sprints 3 to 5)
 RIPPLE_PAGES = ("About", "Services", "partnerships", "ai-solutions", "digital-presence", "BizCheck")
 
 

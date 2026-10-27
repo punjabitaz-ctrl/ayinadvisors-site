@@ -1,6 +1,6 @@
 [
   {
-    "path": "templates/pages/404.json",
+    "path": "templates/_head_notfound.j2",
     "literal": "#061325",
     "reason": "meta theme-color: browser chrome colour, read before CSS exists, cannot use custom properties."
   },

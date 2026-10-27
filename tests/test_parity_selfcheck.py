@@ -9,8 +9,8 @@ def test_facts_extract_nav_and_footer():
     assert facts["has_footer"] is True
 
 
-def test_404_has_no_footer():
-    assert page_facts(baseline_html("404"))["has_footer"] is False
+def test_404_has_the_footer_since_sprint_6():
+    assert page_facts(baseline_html("404"))["has_footer"] is True
 
 
 def test_head_keeps_href_first_font_link():

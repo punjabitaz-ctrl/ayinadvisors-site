@@ -1,0 +1,31 @@
+{#- Head for the 404 ("notfound" template): no canonical, noindex, and every path from {{ root }} ("/", see build.page_root) so it works at any depth. -#}
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#061325" />
+<link rel="icon" type="image/svg+xml" href="{{ root }}favicon.svg" />
+<link rel="apple-touch-icon" href="{{ root }}favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="{{ root }}assets/styles.css" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  .nf {
+    position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; overflow: hidden;
+    background: radial-gradient(120% 100% at 50% 18%, var(--field-bg) 0%, var(--surface) 48%, var(--surface) 100%);
+  }
+  .nf-rings { position: absolute; left: 50%; top: 42%; transform: translate(-50%,-50%); width: min(120vmin,1100px); height: min(120vmin,1100px); z-index: 1; opacity: 0.55; pointer-events: none; }
+  .nf-rings circle { fill: none; stroke: var(--line-gold); stroke-width: 0.5; }
+  .nf-rings .spin { transform-origin: 550px 550px; animation: spin 90s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .nf-inner { position: relative; z-index: 2; padding: var(--gutter); max-width: 640px; }
+  .nf .code { font-family: var(--serif); font-weight: 500; font-style: italic; color: var(--accent-ink); font-size: clamp(5rem, 16vw, 11rem); line-height: 0.9; letter-spacing: -0.02em; }
+  .nf h1 { color: var(--ink); font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 18px 0 18px; }
+  .nf p { color: var(--ink-muted); max-width: 44ch; margin: 0 auto 38px; }
+  .nf-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .nf-routes { margin-top: clamp(40px, 6vw, 56px); padding-top: 28px; border-top: 1px solid var(--line-gold); }
+  .nf-routes h2 { font-family: var(--sans); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--ink-muted); margin: 0 0 16px; }
+  .nf-routes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; }
+  .nf-routes a { display: inline-block; padding: 10px 0; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); font-weight: 500; }
+  .nf-routes a:hover { border-bottom-color: currentColor; }
+</style>

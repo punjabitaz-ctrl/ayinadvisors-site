@@ -19,8 +19,8 @@ def test_bizcheck_keeps_its_gold_pill_and_own_cta():
     assert facts["nav_cta"] == ("#submit", "Submit Your Idea", "btn")
 
 
-def test_404_renders_without_a_footer():
-    assert page_facts(build.render_page("404", "<main>x</main>"))["has_footer"] is False
+def test_404_renders_with_the_footer():
+    assert page_facts(build.render_page("404", "<main>x</main>"))["has_footer"] is True
 
 
 def test_body_is_inserted_verbatim():

@@ -47,6 +47,8 @@
   .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .ps-list h3 { margin: 0 0 12px; }
   .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
+  .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .ps-list h3 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
 
   /* ---------- HOW WE WORK ---------- */
   .proc-wrap { position: relative; }
@@ -167,15 +169,15 @@
 
     <ul class="ps-list ps-3 asm-stage">
       <li class="asm-card">
-        <h3 class="h3">Websites</h3>
+        <h3 class="h3"><a href="digital-presence/websites.html">Websites</a></h3>
         <p>Brand presence: a website that says who you are and what you do.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">Digital Marketing</h3>
+        <h3 class="h3"><a href="digital-presence/digital-marketing.html">Digital Marketing</a></h3>
         <p>Brand online: digital marketing that puts your brand in front of the right people.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">Community &amp; Content</h3>
+        <h3 class="h3"><a href="digital-presence/community-content.html">Community &amp; Content</a></h3>
         <p>Brand connect: content and community that connect your brand with its audience.</p>
       </li>
     </ul>
