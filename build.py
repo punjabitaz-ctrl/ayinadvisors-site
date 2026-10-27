@@ -44,6 +44,15 @@ def _root_url(href: str, root: str) -> str:
 env.filters["ru"] = _root_url
 
 
+def page_root(stem: str) -> str:
+    """The root prefix a page renders with: its site.json "root" when set, else root_for(stem).
+
+    The 404 page sets "/": Cloudflare serves it for a missing URL at any depth (/partnerships/no-such-page), so its
+    links and assets must start at the site root rather than at the folder of whatever URL was asked for.
+    """
+    return load_site()["pages"][stem].get("root", root_for(stem))
+
+
 def load_site() -> dict:
     return json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))
 
@@ -86,7 +95,7 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
     site = load_site()
     if stem not in site["pages"]:
         raise KeyError(f"unknown page {stem!r}; known pages: {', '.join(site['pages'])}")
-    root = root_for(stem)
+    root = page_root(stem)
     return env.get_template("base.j2").render(
         site=site,
         page=site["pages"][stem],
@@ -101,9 +110,9 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
 
 
 def template_kind(stem: str) -> str | None:
-    """"hub", "pillar" or "service" for a template-rendered page, None for a page made of a .frag and a .json."""
+    """"hub", "pillar", "service" or "notfound" for a template-rendered page, None for a page made of a .frag and a .json."""
     kind = load_site()["pages"][stem].get("template")
-    if kind not in (None, "hub", "pillar", "service"):
+    if kind not in (None, "hub", "pillar", "service", "notfound"):
         raise ValueError(f"{stem}: unknown template {kind!r}")
     return kind
 
@@ -127,8 +136,9 @@ def page_parts(stem: str) -> tuple[str, str, str]:
     """(body, head_extra, body_scripts) for a page, before image slots are expanded.
 
     Hand-authored pages read templates/pages/<stem>.body.frag and <stem>.json. Template pages (site.json
-    "template": "hub" | "pillar" | "service") render templates/<kind>.body.j2 with the services data, and take their head
-    from templates/_head_template_page.j2; they have no .frag or .json and no body scripts.
+    "template": "hub" | "pillar" | "service" | "notfound") render templates/<kind>.body.j2 with the services data, and
+    take their head from templates/_head_template_page.j2 (the 404, "notfound", from templates/_head_notfound.j2); they
+    have no .frag or .json and no body scripts.
     """
     kind = template_kind(stem)
     if kind is None:
@@ -139,7 +149,7 @@ def page_parts(stem: str) -> tuple[str, str, str]:
     page = site["pages"][stem]
     services = load_services()
     pillars = services["pillars"]
-    ctx = {"site": site, "page": page, "stem": stem, "root": root_for(stem), "kind": kind, "pillars": pillars,
+    ctx = {"site": site, "page": page, "stem": stem, "root": page_root(stem), "kind": kind, "pillars": pillars,
            "pillar": None, "service": None, "hub": services["hub"], "process": services["process"]}
     if kind in ("pillar", "service"):
         ctx["pillar"] = next((p for p in pillars if p["slug"] == page.get("pillar")), None)
@@ -152,7 +162,7 @@ def page_parts(stem: str) -> tuple[str, str, str]:
             raise KeyError(f"{stem}: no service {page.get('service')!r} with a detail in pillar {page.get('pillar')!r}")
     return (
         env.get_template(f"{kind}.body.j2").render(**ctx),
-        env.get_template("_head_template_page.j2").render(**ctx),
+        env.get_template("_head_notfound.j2" if kind == "notfound" else "_head_template_page.j2").render(**ctx),
         "",
     )
 
@@ -161,7 +171,7 @@ def render_all() -> dict[str, str]:
     out = {}
     for stem in PAGES:
         body, head_extra, body_scripts = page_parts(stem)
-        out[stem] = render_page(stem, expand_image_slots(body, root_for(stem)), head_extra, body_scripts)
+        out[stem] = render_page(stem, expand_image_slots(body, page_root(stem)), head_extra, body_scripts)
     return out
 
 

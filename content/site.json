@@ -254,6 +254,60 @@
         "priority": "0.8"
       }
     },
+    "ai-solutions/custom-applications": {
+      "title": "Custom Applications - AYiN Advisors",
+      "description": "Custom applications built around how your business works, using AI where it helps and simpler software where it does not, from first design to handover.",
+      "canonical": "https://ayinadvisors.com/ai-solutions/custom-applications.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "ai-solutions",
+      "service": "custom-applications",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "ai-solutions/workflow-automation": {
+      "title": "Workflow Automation - AYiN Advisors",
+      "description": "Workflow automation that hands repetitive, manual steps to software, with people kept in the loop wherever a decision still needs a person.",
+      "canonical": "https://ayinadvisors.com/ai-solutions/workflow-automation.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "ai-solutions",
+      "service": "workflow-automation",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "ai-solutions/operational-efficiency": {
+      "title": "Operational Efficiency - AYiN Advisors",
+      "description": "A close look at where time and effort are lost in your operations, with a prioritized plan to fix the biggest gaps through AI, automation or process.",
+      "canonical": "https://ayinadvisors.com/ai-solutions/operational-efficiency.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "ai-solutions",
+      "service": "operational-efficiency",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
     "digital-presence": {
       "title": "Digital Presence - AYiN Advisors",
       "description": "Digital presence for your business: websites for brand presence, digital marketing for brand online, and community and content for brand connect.",
@@ -269,6 +323,60 @@
       "pillar": "digital-presence",
       "sitemap": {
         "priority": "0.8"
+      }
+    },
+    "digital-presence/websites": {
+      "title": "Websites - AYiN Advisors",
+      "description": "Websites that give your brand a presence: a clear, accessible site that says who you are, what you do and how to reach you, planned, written and built.",
+      "canonical": "https://ayinadvisors.com/digital-presence/websites.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "digital-presence",
+      "service": "websites",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "digital-presence/digital-marketing": {
+      "title": "Digital Marketing - AYiN Advisors",
+      "description": "Digital marketing that takes your brand online: an audience and channel plan, then the search, social and email work that puts you in front of the right people.",
+      "canonical": "https://ayinadvisors.com/digital-presence/digital-marketing.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "digital-presence",
+      "service": "digital-marketing",
+      "sitemap": {
+        "priority": "0.7"
+      }
+    },
+    "digital-presence/community-content": {
+      "title": "Community & Content - AYiN Advisors",
+      "description": "Community and content that connect your brand with its audience: a content strategy, regular publishing and a community people want to come back to.",
+      "canonical": "https://ayinadvisors.com/digital-presence/community-content.html",
+      "active": "Services",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "service",
+      "pillar": "digital-presence",
+      "service": "community-content",
+      "sitemap": {
+        "priority": "0.7"
       }
     },
     "Projects": {
@@ -325,7 +433,9 @@
         "label": "Book a Consultation",
         "class": "btn btn-white"
       },
-      "footer": false
+      "footer": true,
+      "template": "notfound",
+      "root": "/"
     }
   }
 }

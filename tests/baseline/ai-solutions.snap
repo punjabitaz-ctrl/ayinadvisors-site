@@ -47,6 +47,8 @@
   .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: transform var(--dur-tilt) var(--ease-out), box-shadow var(--dur-tilt), opacity var(--dur-card); transition-delay: calc(var(--i, 0) * 0.1s); }
   .ps-list h3 { margin: 0 0 12px; }
   .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
+  .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .ps-list h3 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
 
   /* ---------- HOW WE WORK ---------- */
   .proc-wrap { position: relative; }
@@ -167,15 +169,15 @@
 
     <ul class="ps-list ps-3 asm-stage">
       <li class="asm-card">
-        <h3 class="h3">Custom Applications</h3>
+        <h3 class="h3"><a href="ai-solutions/custom-applications.html">Custom Applications</a></h3>
         <p>Applications built around how your business works.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">Workflow Automation</h3>
+        <h3 class="h3"><a href="ai-solutions/workflow-automation.html">Workflow Automation</a></h3>
         <p>Repetitive, manual steps handed to automation, so people spend their time on the work that needs judgment.</p>
       </li>
       <li class="asm-card">
-        <h3 class="h3">Operational Efficiency</h3>
+        <h3 class="h3"><a href="ai-solutions/operational-efficiency.html">Operational Efficiency</a></h3>
         <p>A close look at where time and effort are lost in your operations, and practical fixes for the biggest gaps.</p>
       </li>
     </ul>

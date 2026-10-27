@@ -208,19 +208,58 @@
           "slug": "custom-applications",
           "name": "Custom Applications",
           "summary": "Applications built around how your business works.",
-          "status": "planned"
+          "status": "live",
+          "href": "ai-solutions/custom-applications.html",
+          "detail": {
+            "tag": "Build",
+            "text": "When off-the-shelf software does not fit the way you work, we build an application that does. We start with the problem and the people who will use it, then design, build and hand over a working tool, using AI where it helps and simpler software where it does not.",
+            "deliverables": [
+              "Problem & requirements definition",
+              "User & workflow mapping",
+              "Solution design & build plan",
+              "Working application, built in stages",
+              "Testing with your team",
+              "Handover & documentation"
+            ]
+          }
         },
         {
           "slug": "workflow-automation",
           "name": "Workflow Automation",
           "summary": "Repetitive, manual steps handed to automation, so people spend their time on the work that needs judgment.",
-          "status": "planned"
+          "status": "live",
+          "href": "ai-solutions/workflow-automation.html",
+          "detail": {
+            "tag": "Automation",
+            "text": "Re-keying data, chasing approvals and moving files by hand take hours your team could spend on work that needs judgment. We map the steps, find the ones a machine can do reliably, and automate them, keeping a person in the loop wherever a decision needs one.",
+            "deliverables": [
+              "Current workflow mapping",
+              "Automation shortlist",
+              "Tool & integration selection",
+              "Automated workflows, tested end to end",
+              "Human review & exception handling",
+              "Team training & runbook"
+            ]
+          }
         },
         {
           "slug": "operational-efficiency",
           "name": "Operational Efficiency",
           "summary": "A close look at where time and effort are lost in your operations, and practical fixes for the biggest gaps.",
-          "status": "planned"
+          "status": "live",
+          "href": "ai-solutions/operational-efficiency.html",
+          "detail": {
+            "tag": "Diagnosis",
+            "text": "We take a close look at how your operation runs: where time goes, where work waits and where effort is repeated. You get a clear picture of the biggest gaps and a practical plan to close them, whether the fix is AI, automation or a change in process.",
+            "deliverables": [
+              "Operations review & interviews",
+              "Process & handoff mapping",
+              "Bottleneck & rework analysis",
+              "Prioritized list of fixes",
+              "Implementation roadmap",
+              "Measures to track progress"
+            ]
+          }
         }
       ]
     },
@@ -264,19 +303,58 @@
           "slug": "websites",
           "name": "Websites",
           "summary": "Brand presence: a website that says who you are and what you do.",
-          "status": "planned"
+          "status": "live",
+          "href": "digital-presence/websites.html",
+          "detail": {
+            "tag": "Brand presence",
+            "text": "Your website is often the first place a buyer meets your business. We plan, write and build a site that says clearly who you are, what you do and how to reach you, built to work for every visitor and to be easy for you to keep up to date.",
+            "deliverables": [
+              "Site structure & page plan",
+              "Messaging & page copy",
+              "Visual design in your brand",
+              "Responsive, accessible build",
+              "Search essentials: titles, descriptions, sitemap",
+              "Launch & handover"
+            ]
+          }
         },
         {
           "slug": "digital-marketing",
           "name": "Digital Marketing",
           "summary": "Brand online: digital marketing that puts your brand in front of the right people.",
-          "status": "planned"
+          "status": "live",
+          "href": "digital-presence/digital-marketing.html",
+          "detail": {
+            "tag": "Brand online",
+            "text": "A website only works when the right people find it. We work out who you want to reach and where they spend their time online, then plan and run the channels that put your brand in front of them, keeping what works and dropping what does not.",
+            "deliverables": [
+              "Audience & channel plan",
+              "Search visibility review",
+              "Social media plan & calendar",
+              "Email & newsletter setup",
+              "Campaign planning & launch",
+              "Reporting on what is working"
+            ]
+          }
         },
         {
           "slug": "community-content",
           "name": "Community & Content",
           "summary": "Brand connect: content and community that connect your brand with its audience.",
-          "status": "planned"
+          "status": "live",
+          "href": "digital-presence/community-content.html",
+          "detail": {
+            "tag": "Brand connect",
+            "text": "Attention is earned by being useful. We help you publish content your audience wants and build a community around it, so people come back, talk back and remember who you are.",
+            "deliverables": [
+              "Content strategy & editorial themes",
+              "Articles, posts & newsletters",
+              "Podcast & video planning",
+              "Community setup & guidelines",
+              "Publishing calendar & rhythm",
+              "Audience feedback & engagement review"
+            ]
+          }
         }
       ]
     }

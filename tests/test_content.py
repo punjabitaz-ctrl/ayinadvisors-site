@@ -21,8 +21,9 @@ def test_cta_variants_are_captured():
     assert pages["About"]["cta"]["href"] == "Contact.html"
 
 
-def test_404_opts_out_of_footer():
-    assert load()["pages"]["404"]["footer"] is False
+def test_404_carries_the_footer():
+    """Sprint 6 reconsidered the 404's missing footer: a lost visitor gets every route, so it now has one."""
+    assert load()["pages"]["404"]["footer"] is True
     assert load()["pages"]["About"]["footer"] is True
 
 

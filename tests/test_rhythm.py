@@ -20,13 +20,21 @@ BAND_MAP = {
     "partnerships/channel-strategy": ["inverse", "page", "alt", "accent", "inverse"],
     "partnerships/partner-introductions": ["inverse", "page", "alt", "accent", "inverse"],
     "partnerships/regional-expansion": ["inverse", "page", "alt", "accent", "inverse"],
+    # the three AI Solutions and three Digital Presence service pages: the same three bands
+    "ai-solutions/custom-applications": ["inverse", "page", "alt", "accent", "inverse"],
+    "ai-solutions/workflow-automation": ["inverse", "page", "alt", "accent", "inverse"],
+    "ai-solutions/operational-efficiency": ["inverse", "page", "alt", "accent", "inverse"],
+    "digital-presence/websites": ["inverse", "page", "alt", "accent", "inverse"],
+    "digital-presence/digital-marketing": ["inverse", "page", "alt", "accent", "inverse"],
+    "digital-presence/community-content": ["inverse", "page", "alt", "accent", "inverse"],
     # AI Solutions and Digital Presence: what we do (page), how we work (alt), who it is for (page), the gold CTA
     "ai-solutions": ["inverse", "page", "alt", "page", "accent", "inverse"],
     "digital-presence": ["inverse", "page", "alt", "page", "accent", "inverse"],
     "Projects": ["inverse", "page", "alt", "accent", "inverse"],
     "BizCheck": ["inverse", "page", "alt", "page", "alt", "inverse"],
     "Contact": ["inverse", "inverse"],
-    "404": ["inverse"],
+    # Sprint 6: the 404 hero, then the footer it now carries
+    "404": ["inverse", "inverse"],
 }
 
 
@@ -72,8 +80,8 @@ def test_no_two_adjacent_bands_share_a_surface(soups):
     for stem, soup in soups.items():
         surfaces = [_surface(b) for b in _bands(soup)]
         for a, b in zip(surfaces, surfaces[1:]):
-            # Contact is a single hero followed by the footer: both deliberately navy.
-            if stem == "Contact":
+            # Contact and the 404 are a single hero followed by the footer: both deliberately navy.
+            if stem in ("Contact", "404"):
                 continue
             assert a != b, f"{stem}: adjacent bands both surface-{a}: {surfaces}"
 
@@ -90,7 +98,7 @@ def test_final_band_is_the_gold_cta(soups):
             assert content_bands[-1] is ctas[-1], f"{stem}: the CTA is not the last band before the footer"
         for el in soup.select(".surface-accent"):
             assert "cta" in el.get("class", []), f"{stem}: surface-accent used outside the CTA band"
-    assert seen == 11, "Home, About, Services, the three pillars, the four service pages and Projects close with a CTA"
+    assert seen == 17, "Home, About, Services, the three pillars, the ten service pages and Projects close with a CTA"
 
 
 def test_cards_use_the_card_surface(soups):
@@ -122,3 +130,7 @@ def test_home_rhythm_still_alternates(soups):
     bands = _bands(soup)
     assert "letters" in bands[1].get("class", []) and _surface(bands[1]) == "alt"
     assert [_surface(b) for b in bands][:4] == ["inverse", "alt", "page", "alt"]
+
+
+def test_band_map_covers_every_page():
+    assert set(BAND_MAP) == set(build.PAGES)

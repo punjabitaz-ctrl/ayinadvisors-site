@@ -9,15 +9,15 @@
 <meta name="description" content="The page you&#39;re looking for can&#39;t be found. Return to AYiN Advisors." />
 
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
-<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="/assets/theme.css">
 <meta name="robots" content="noindex" />
 <meta name="theme-color" content="#061325" />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<link rel="apple-touch-icon" href="favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="/assets/styles.css" />
 <script>document.documentElement.classList.add('js');</script>
 <style>
   .nf {
@@ -34,17 +34,23 @@
   .nf h1 { color: var(--ink); font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 18px 0 18px; }
   .nf p { color: var(--ink-muted); max-width: 44ch; margin: 0 auto 38px; }
   .nf-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .nf-routes { margin-top: clamp(40px, 6vw, 56px); padding-top: 28px; border-top: 1px solid var(--line-gold); }
+  .nf-routes h2 { font-family: var(--sans); font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--ink-muted); margin: 0 0 16px; }
+  .nf-routes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; }
+  .nf-routes a { display: inline-block; padding: 10px 0; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); font-weight: 500; }
+  .nf-routes a:hover { border-bottom-color: currentColor; }
 </style>
-<script defer src="assets/vendor/lenis.min.js"></script>
-<script defer src="assets/vendor/gsap.min.js"></script>
-<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
-<script defer src="assets/motion.js"></script>
+
+<script defer src="/assets/vendor/lenis.min.js"></script>
+<script defer src="/assets/vendor/gsap.min.js"></script>
+<script defer src="/assets/vendor/ScrollTrigger.min.js"></script>
+<script defer src="/assets/motion.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 <nav class="nav surface-inverse" aria-label="Primary">
   <div class="wrap">
-    <a href="index.html" class="logo" aria-label="AYiN Advisors home">
+    <a href="/index.html" class="logo" aria-label="AYiN Advisors home">
       <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
         <circle class="lm-ring" cx="20" cy="20" r="18.5" stroke-width="1"></circle>
         <circle class="lm-ring" cx="20" cy="20" r="11.5" stroke-width="1" opacity="0.45"></circle>
@@ -55,13 +61,13 @@
     </a>
 
     <div class="nav-links">
-      <a href="BizCheck.html" class="nav-link gold">BizCheck</a>
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="About.html" class="nav-link">About</a>
-      <a href="Services.html" class="nav-link">Services</a>
-      <a href="Projects.html" class="nav-link">Projects</a>
-      <a href="Contact.html" class="nav-link">Contact</a>
-      <span class="nav-cta"><a href="Contact.html" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
+      <a href="/BizCheck.html" class="nav-link gold">BizCheck</a>
+      <a href="/index.html" class="nav-link">Home</a>
+      <a href="/About.html" class="nav-link">About</a>
+      <a href="/Services.html" class="nav-link">Services</a>
+      <a href="/Projects.html" class="nav-link">Projects</a>
+      <a href="/Contact.html" class="nav-link">Contact</a>
+      <span class="nav-cta"><a href="/Contact.html" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span></a></span>
     </div>
     <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark mode"><svg class="theme-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path class="ico-moon" d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.2 8.2 0 1 0 20 14.2z"/><g class="ico-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg></button>
     <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
@@ -69,13 +75,13 @@
 </nav>
 
 <nav class="mobile-drawer surface-inverse" id="mobile-menu" aria-label="Mobile menu">
-  <a href="BizCheck.html" class="gold">BizCheck</a>
-  <a href="index.html">Home</a>
-  <a href="About.html">About</a>
-  <a href="Services.html">Services</a>
-  <a href="Projects.html">Projects</a>
-  <a href="Contact.html">Contact</a>
-  <a href="Contact.html" class="md-cta">Book a Consultation</a>
+  <a href="/BizCheck.html" class="gold">BizCheck</a>
+  <a href="/index.html">Home</a>
+  <a href="/About.html">About</a>
+  <a href="/Services.html">Services</a>
+  <a href="/Projects.html">Projects</a>
+  <a href="/Contact.html">Contact</a>
+  <a href="/Contact.html" class="md-cta">Book a Consultation</a>
   <button class="theme-toggle theme-toggle-row" type="button" aria-pressed="false" aria-label="Dark mode"><svg class="theme-ico" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path class="ico-moon" d="M20 14.2A8.2 8.2 0 0 1 9.8 4 8.2 8.2 0 1 0 20 14.2z"/><g class="ico-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></g></svg><span class="theme-toggle-label">Dark mode</span></button>
 </nav>
 
@@ -92,18 +98,66 @@
   <div class="nf-inner">
     <span class="eyebrow on-navy center reveal" style="justify-content:center">Off the map</span>
     <div class="code reveal" data-d="1">404</div>
-    <h1 class="reveal" data-d="2">This page is uncharted territory.</h1>
-    <p class="lead reveal" data-d="2">The page you're looking for has moved, changed name, or never existed. Let's get you back to clear ground.</p>
+    <h1 class="reveal" data-d="2">You've found a page that's not ready for Primetime.</h1>
+    <p class="lead reveal" data-d="2">The page you're looking for has moved, changed name, or isn't ready yet. Let's get you back to clear ground.</p>
     <div class="nf-actions reveal" data-d="3">
-      <a href="index.html" class="btn" data-magnetic><span class="btn-label">Back to Home</span><span class="btn-arrow">→</span></a>
-      <a href="Contact.html" class="btn-ghost btn on-navy" data-magnetic><span class="btn-label">Book a Consultation</span></a>
+      <a href="/index.html" class="btn" data-magnetic><span class="btn-label">Back to Home</span><span class="btn-arrow">→</span></a>
+      <a href="/Contact.html" class="btn-ghost btn on-navy" data-magnetic><span class="btn-label">Book a Consultation</span></a>
     </div>
+    <nav class="nf-routes reveal" data-d="3" aria-label="Practices">
+      <h2>Or go straight to a practice</h2>
+      <ul>
+        <li><a href="/partnerships.html">B2B Partnerships</a></li>
+        <li><a href="/ai-solutions.html">AI Solutions Development</a></li>
+        <li><a href="/digital-presence.html">Digital Presence</a></li>
+      </ul>
+    </nav>
   </div>
 </main>
 
 
+<footer class="footer surface-inverse">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-col">
+        <a href="/index.html" class="logo" style="margin-bottom:0">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle class="lm-ring" cx="20" cy="20" r="18.5" stroke-width="1"></circle>
+            <circle class="lm-ring" cx="20" cy="20" r="11.5" stroke-width="1" opacity="0.45"></circle>
+            <circle class="lm-dot" cx="20" cy="20" r="5.4"></circle>
+            <circle class="lm-pupil" cx="20" cy="20" r="2"></circle>
+          </svg>
+          <span class="logo-text"><span class="logo-ayin">AY<span class="lc">i</span>N</span><span class="logo-adv">Advisors</span></span>
+        </a>
+        <p class="footer-tag">B2B partnerships, AI solutions and digital presence.<br />New York.</p>
+      </div>
+      <div class="footer-col"><h2>Navigate</h2>
+        <a href="/index.html">Home</a>
+        <a href="/Services.html">Services</a>
+        <a href="/About.html">About</a>
+        <a href="/Projects.html">Projects</a>
+        <a href="/BizCheck.html">BizCheck</a>
+        <a href="/Contact.html">Contact</a>
+        </div>
+      <div class="footer-col"><h2>Practice</h2>
+        <a href="/partnerships.html">B2B Partnerships</a>
+        <a href="/ai-solutions.html">AI Solutions Development</a>
+        <a href="/digital-presence.html">Digital Presence</a>
+        </div>
+      <div class="footer-col"><h2>Get in touch</h2>
+        <a href="/Contact.html">Book a consultation</a>
+        <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
+        <a href="/BizCheck.html">Submit a BizCheck</a>
+        </div>
+      </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> AYiN Advisors. All rights reserved.</span>
+      <span>Business solutions for a digital world.</span>
+    </div>
+  </div>
+</footer>
 
-<script src="assets/site.js"></script>
+<script src="/assets/site.js"></script>
 
 </body>
 </html>
