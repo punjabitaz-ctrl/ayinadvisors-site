@@ -34,6 +34,8 @@ BAND_MAP = {
     "Projects": ["inverse", "page", "alt", "accent", "inverse"],
     "BizCheck": ["inverse", "page", "alt", "page", "alt", "inverse"],
     "Contact": ["inverse", "inverse"],
+    # the blog index: the post list (page), the gold CTA. A post adds its own entry: inverse, page, alt, accent, inverse
+    "blog": ["inverse", "page", "accent", "inverse"],
     # Sprint 6: the 404 hero, then the footer it now carries
     "404": ["inverse", "inverse"],
 }
@@ -99,7 +101,7 @@ def test_final_band_is_the_gold_cta(soups):
             assert content_bands[-1] is ctas[-1], f"{stem}: the CTA is not the last band before the footer"
         for el in soup.select(".surface-accent"):
             assert "cta" in el.get("class", []), f"{stem}: surface-accent used outside the CTA band"
-    assert seen == 17, "Home, About, Services, the three pillars, the ten service pages and Projects close with a CTA"
+    assert seen == 18 + len(build.load_blog()["posts"]), "Home, About, Services, the three pillars, the ten service pages, Projects, the blog and its posts close with a CTA"
 
 
 def test_cards_use_the_card_surface(soups):

@@ -1,9 +1,9 @@
-{#- Head for template-rendered pages (hub, pillar, service): the shared meta block, then the page's inline styles. Rules a page does not use are not emitted. -#}
+{#- Head for template-rendered pages (hub, pillar, service, blog, post): the shared meta block, then the page's inline styles. Rules a page does not use are not emitted. -#}
 {%- set partnerships = kind == "pillar" and pillar.slug == "partnerships" -%}
 <meta name="theme-color" content="#061325" />
 <link rel="icon" type="image/svg+xml" href="{{ root }}favicon.svg" />
 <link rel="apple-touch-icon" href="{{ root }}apple-touch-icon.png" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="{{ "article" if kind == "post" else "website" }}" />
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="{{ page.title|e }}" />
@@ -12,6 +12,11 @@
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+{%- if kind == "post" %}
+<meta property="article:published_time" content="{{ post.published|e }}" />
+<meta property="article:modified_time" content="{{ post.updated|e }}" />
+<meta property="article:author" content="{{ blog.author.name|e }}" />
+{%- endif %}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ page.title|e }}" />
 <meta name="twitter:description" content="{{ page.description|e }}" />
@@ -156,6 +161,52 @@
   .back-link { margin-top: clamp(28px, 4vw, 44px); }
   .back-link a { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); padding-bottom: 2px; }
   .back-link a:hover { border-bottom-color: currentColor; }
+{%- elif kind == "blog" %}
+
+  /* ---------- POST LIST ---------- */
+  .post-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .post-item { padding: clamp(26px, 3vw, 40px) 0; border-bottom: 1px solid var(--line); display: grid; gap: 10px; max-width: 72ch; }
+  .post-item h2 { margin: 0; }
+  .post-item h2 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .post-item h2 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+  .post-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); }
+  .post-meta time { color: var(--ink-muted); }
+  .post-summary { color: var(--ink-muted); margin: 0; max-width: 62ch; }
+  .post-empty { color: var(--ink-muted); margin: 0; padding-top: 24px; border-top: 1px solid var(--line); max-width: 62ch; }
+{%- elif kind == "post" %}
+
+  /* ---------- BREADCRUMB EYEBROW ---------- */
+  .pagehead .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .pagehead .eyebrow a:hover { border-bottom-color: currentColor; }
+  .pagehead h1 { max-width: 24ch; }
+
+  /* ---------- ARTICLE ---------- */
+  .post { max-width: 70ch; }
+  .post-byline { margin: 0 0 clamp(28px, 4vw, 44px); padding-bottom: 18px; border-bottom: 1px solid var(--line); font-size: 0.92rem; color: var(--ink-muted); }
+  .post-byline a { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .post-byline a:hover { border-bottom-color: currentColor; }
+  .prose { color: var(--ink); font-size: 1.08rem; line-height: 1.75; }
+  .prose h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); margin: 1.8em 0 0.6em; color: var(--ink); }
+  .prose h2:first-child { margin-top: 0; }
+  .prose p { margin: 0 0 1.1em; }
+  .prose ul, .prose ol { margin: 0 0 1.2em; padding-left: 1.3em; }
+  .prose li { margin-bottom: 0.6em; }
+  .prose li::marker { color: var(--accent-ink); }
+  .prose strong { font-weight: 600; }
+  .prose a { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--line-gold); text-underline-offset: 3px; }
+
+  /* ---------- RELATED SERVICES ---------- */
+  .ps-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
+  .ps-list.ps-2 { grid-template-columns: repeat(2, 1fr); }
+  .ps-list.ps-1 { grid-template-columns: 1fr; }
+  .ps-list li { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .ps-list h3 { margin: 0 0 12px; }
+  .ps-list h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .ps-list h3 a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+  .ps-list p { color: var(--ink-muted); max-width: 42ch; margin: 0; }
+  .back-link { margin-top: clamp(28px, 4vw, 44px); }
+  .back-link a { font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); padding-bottom: 2px; }
+  .back-link a:hover { border-bottom-color: currentColor; }
 {%- endif %}
 
   /* ---------- CTA ---------- */
@@ -198,6 +249,14 @@
     .svc-detail { grid-template-columns: 1fr; gap: 24px; }
     .svc-detail .sd-left { position: static; }
     .deliverables { grid-template-columns: 1fr; }
+  }
+{%- elif kind in ("blog", "post") %}
+
+  @media (max-width: 880px) {
+    {%- if kind == "post" %}
+    .ps-list, .ps-list.ps-2 { grid-template-columns: 1fr; }
+    {%- endif %}
+    .ph-motif { opacity: 0.3; right: -200px; }
   }
 {%- endif %}
 </style>

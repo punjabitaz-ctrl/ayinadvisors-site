@@ -1,0 +1,31 @@
+{#- Blog index: page head, the posts newest first (practice, question, summary, date) or, before the first is approved, a
+    short note, then the gold CTA band. Copy: content/blog.json. -#}
+{%- from "_components.j2" import iris_mark, pagehead, cta_band -%}
+{{ pagehead(blog.index.eyebrow, blog.index.headline, blog.index.lead) }}
+<main id="main" tabindex="-1">
+<!-- POSTS -->
+<section class="section surface-page" id="posts">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal">{{ iris_mark() }}{{ blog.index.list_heading|e }}</span>
+      </div>
+    </div>
+    {%- if not posts %}
+    <p class="post-empty reveal">{{ blog.index.empty|e }}</p>
+    {%- else %}
+    <ul class="post-list">
+      {%- for p in posts %}
+      <li class="post-item reveal">
+        <p class="post-meta"><span>{{ p.practice_name|e }}</span><time datetime="{{ p.published|e }}">{{ p.published_label|e }}</time></p>
+        <h2 class="h3"><a href="{{ p.href|e }}">{{ p.question|e }}</a></h2>
+        <p class="post-summary">{{ p.summary|e }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </div>
+</section>
+
+{{ cta_band(blog.index.cta, root) }}
+</main>

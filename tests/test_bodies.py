@@ -45,7 +45,10 @@ def test_template_pages_are_declared_in_site_json():
     kinds = {s: build.template_kind(s) for s in PAGES}
     assert {s for s, k in kinds.items() if k == "hub"} == {"Services"}
     assert {s for s, k in kinds.items() if k == "pillar"} == {"partnerships", "ai-solutions", "digital-presence"}
-    assert {s for s, k in kinds.items() if k == "service"} == {s for s in PAGES if "/" in s} and len(PAGES) == 20
+    assert {s for s, k in kinds.items() if k == "service"} == {s for s in PAGES if "/" in s and not s.startswith("blog/")}
+    assert {s for s, k in kinds.items() if k == "blog"} == {"blog"}
+    assert {s for s, k in kinds.items() if k == "post"} == {s for s in PAGES if s.startswith("blog/")}
+    assert len(PAGES) == 20 + 1 + len(build.load_blog()["posts"])
     assert {s for s, k in kinds.items() if k == "notfound"} == {"404"}  # Sprint 6: the 404 links each practice from services.json
     assert set(_hand_authored()) == {"index", "About", "Projects", "BizCheck", "Contact"}
 

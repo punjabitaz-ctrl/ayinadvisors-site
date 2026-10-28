@@ -54,6 +54,10 @@
             "href": "Projects.html"
           },
           {
+            "label": "Blog",
+            "href": "blog.html"
+          },
+          {
             "label": "BizCheck",
             "href": "BizCheck.html"
           },
@@ -450,6 +454,23 @@
       "footer": true,
       "sitemap": {
         "priority": "0.9",
+        "lastmod": "2026-10-28"
+      }
+    },
+    "blog": {
+      "title": "Blog: Partnerships, AI and Digital Insights - AYiN Advisors",
+      "description": "Plain answers to what buyers ask about entering the US through partners, putting AI to work in a small team, and being found online.",
+      "canonical": "https://ayinadvisors.com/blog",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "blog",
+      "sitemap": {
+        "priority": "0.6",
         "lastmod": "2026-10-28"
       }
     },

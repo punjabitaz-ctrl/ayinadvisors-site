@@ -27,6 +27,7 @@ EXPECTED = {
     "https://ayinadvisors.com/Projects": "0.7",
     "https://ayinadvisors.com/BizCheck": "0.9",
     "https://ayinadvisors.com/Contact": "0.9",
+    "https://ayinadvisors.com/blog": "0.6",
 }
 
 

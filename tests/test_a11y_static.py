@@ -163,7 +163,11 @@ def test_navigation_landmarks_are_labelled_and_the_toggle_is_wired(stem):
     assert not drawer.get("role"), "the drawer is a real <nav>; role=navigation is redundant"
 
 
-@pytest.mark.parametrize("stem", [s for s in PAGES if s != "404"])
+# The 404 and the blog sit outside the main navigation (the blog is linked from the footer only), so no nav link is current.
+OFF_NAV = [s for s, p in build.load_site()["pages"].items() if not p["active"]]
+
+
+@pytest.mark.parametrize("stem", [s for s in PAGES if s not in OFF_NAV])
 def test_current_page_link_is_exposed_to_assistive_tech(stem):
     """aria-current="page" only on the link to this very page; a page without its own nav entry (a pillar page)
     marks its section link (Services) aria-current="true" instead. Both navigations agree."""
@@ -177,3 +181,10 @@ def test_current_page_link_is_exposed_to_assistive_tech(stem):
     assert len(soup.select("nav.nav a[aria-current='page']")) == (1 if own else 0)
     drawer = soup.select(".mobile-drawer a[aria-current]")
     assert len(drawer) == 1 and drawer[0]["aria-current"] == want and drawer[0]["href"] == active[0]["href"]
+
+
+def test_pages_outside_the_nav_mark_no_nav_link_current():
+    assert "404" in OFF_NAV and "blog" in OFF_NAV and all(s == "404" or s.startswith("blog") for s in OFF_NAV)
+    for stem in OFF_NAV:
+        soup = BeautifulSoup((ROOT / f"{stem}.html").read_text(encoding="utf-8"), "html.parser")
+        assert not soup.select("nav a[aria-current], nav a.active"), stem

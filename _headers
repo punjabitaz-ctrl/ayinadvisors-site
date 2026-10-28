@@ -54,3 +54,9 @@
 
 /Contact
   Cache-Control: public, max-age=0, must-revalidate
+
+/blog
+  Cache-Control: public, max-age=0, must-revalidate
+
+/blog/*
+  Cache-Control: public, max-age=0, must-revalidate

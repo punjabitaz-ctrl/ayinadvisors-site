@@ -1,0 +1,40 @@
+{#- Blog post: page head (breadcrumb eyebrow back to the blog, the question, the summary), the byline, the article body
+    (content/blog/<slug>.frag), the related services of its practice, the gold CTA band. Copy: content/blog.json. -#}
+{%- from "_components.j2" import iris_mark, pagehead, cta_band -%}
+{{ pagehead("Blog", post.question, post.summary, "blog.html", root) }}
+<main id="main" tabindex="-1">
+<!-- ARTICLE -->
+<section class="section surface-page" id="article" style="padding-top:clamp(40px,6vw,80px)">
+  <div class="wrap">
+    <article class="post">
+      <p class="post-byline">By <a href="{{ "About.html"|ru(root) }}">{{ blog.author.name|e }}</a>, {{ blog.author.role|e }}<span aria-hidden="true"> · </span><span>Published <time datetime="{{ post.published|e }}">{{ post.published_label|e }}</time></span>{% if post.updated != post.published %}<span aria-hidden="true"> · </span><span>Updated <time datetime="{{ post.updated|e }}">{{ post.updated_label|e }}</time></span>{% endif %}<span aria-hidden="true"> · </span><a href="{{ (pillar.stem ~ ".html")|ru(root) }}">{{ pillar.name|e }}</a></p>
+      <div class="prose">
+{{ post.body }}
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- RELATED SERVICES -->
+<section class="section surface-alt" id="related">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal">{{ iris_mark() }}How we can help</span>
+        <h2 class="h2 reveal" data-d="1">Related services</h2>
+      </div>
+    </div>
+    <ul class="ps-list ps-{{ related|length }}">
+      {%- for s in related %}
+      <li class="reveal">
+        <h3 class="h3"><a href="{{ s.href|ru(root)|e }}">{{ s.name|e }}</a></h3>
+        <p>{{ s.summary|e }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="back-link"><a href="{{ "blog.html"|ru(root) }}">Back to the blog</a></p>
+  </div>
+</section>
+
+{{ cta_band(pillar.cta, root, pillar.stem) }}
+</main>

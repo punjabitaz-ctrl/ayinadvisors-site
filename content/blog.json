@@ -1,0 +1,19 @@
+{
+  "index": {
+    "eyebrow": "Blog",
+    "headline": "Plain answers to the questions buyers ask.",
+    "lead": "Notes on entering the US through partners, putting AI to work in a small team, and being found online. Each post answers one question, first in a few lines and then in depth.",
+    "list_heading": "Latest posts",
+    "cta": {
+      "eyebrow": "Have a question we have not answered?",
+      "heading": "Ask it on a call.",
+      "text": "Book a consultation and tell us what you are working on. We will answer candidly, and the best questions become posts here."
+    },
+    "empty": "The first posts are in review and will appear here soon. Until then, bring your question to a call."
+  },
+  "author": {
+    "name": "Taz Abbas",
+    "role": "Managing Partner"
+  },
+  "posts": []
+}
