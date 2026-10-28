@@ -86,7 +86,7 @@ def test_each_pillar_lists_its_services_linking_the_live_ones(soups, pillars, st
     # the only links in the body are the CTA and the live services; none lead to a page that does not exist
     live = {s["href"] for s in p["services"] if s["status"] == "live"}
     for a in soup.select("main a[href]"):
-        assert a["href"] == "Contact.html" or a["href"] in live, a["href"]
+        assert a["href"] == f"Contact.html?practice={p['stem']}" or a["href"] in live, a["href"]
 
 
 @pytest.mark.parametrize("stem", PILLAR_STEMS)

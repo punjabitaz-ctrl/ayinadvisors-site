@@ -5,7 +5,7 @@
   <div class="contact-grid">
     <div class="contact-intro">
       <span class="eyebrow on-navy reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Book a Consultation</span>
-      <h1 class="display reveal" data-d="1" style="font-size:clamp(2.6rem,5.4vw,4.6rem)">Let us read the<br />market together.</h1>
+      <h1 class="display reveal" data-d="1" style="font-size:clamp(2.6rem,5.4vw,4.6rem)">Let us see where<br />to begin.</h1>
       <p class="lead reveal" data-d="2">Tell us where you're headed. We'll come back within two business days with a candid first view - and the shape of an engagement if it's a fit.</p>
       <div class="contact-meta reveal" data-d="3">
         <div class="cmeta"><span class="k">Email</span><span class="v"><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a></span></div>
@@ -17,7 +17,7 @@
     <div class="form-card reveal" data-d="2" id="book">
       <form id="consult-form" novalidate>
         <h2>Request a consultation</h2>
-        <p class="sub">No obligation - a focused conversation about your US ambitions.</p>
+        <p class="sub">No obligation - a focused conversation about what you are trying to do.</p>
         <!-- honeypot: hidden from humans, catches bots -->
         <div class="hp" aria-hidden="true"><label for="company_url">Leave this blank</label><input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
         <input type="hidden" id="interests" name="interests" value="" />
@@ -33,13 +33,13 @@
         <div class="field">
           <label>Area of interest</label>
           <div class="chips" id="chips">
-            <button type="button" class="chip" data-v="Market Entry Research">Market Entry</button>
-            <button type="button" class="chip" data-v="Channel Strategy">Channel Strategy</button>
-            <button type="button" class="chip" data-v="Partner Introductions">Partner Intros</button>
-            <button type="button" class="chip" data-v="Regional Expansion">Regional Expansion</button>
+            <button type="button" class="chip" data-v="B2B Partnerships" data-practice="partnerships" aria-pressed="false">B2B Partnerships</button>
+            <button type="button" class="chip" data-v="AI Solutions Development" data-practice="ai-solutions" aria-pressed="false">AI Solutions</button>
+            <button type="button" class="chip" data-v="Digital Presence" data-practice="digital-presence" aria-pressed="false">Digital Presence</button>
+            <button type="button" class="chip" data-v="Not sure yet" aria-pressed="false">Not sure yet</button>
           </div>
         </div>
-        <div class="field"><label for="msg">What are you trying to achieve?</label><textarea id="msg" name="msg" placeholder="A few lines about your product and your US goals…"></textarea></div>
+        <div class="field"><label for="msg">What are you trying to achieve?</label><textarea id="msg" name="msg" placeholder="A few lines about your business and what you want to change…"></textarea></div>
         <div id="ct-turnstile" class="ct-turnstile"></div>
         <p class="form-error" id="form-error" role="alert"></p>
         <button type="submit" class="btn" data-magnetic="0.25"><span class="btn-label">Send Request</span><span class="btn-arrow">→</span></button>

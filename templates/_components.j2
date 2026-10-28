@@ -90,7 +90,8 @@
 {% endmacro -%}
 
 {#- The closing gold band; the copy is per page. -#}
-{%- macro cta_band(cta, root="") %}
+{#- practice: a pillar stem, passed on to the contact form so it opens with that practice picked. -#}
+{%- macro cta_band(cta, root="", practice="") %}
 <!-- CTA -->
 <section class="section cta surface-accent">
   <div class="cta-glow"></div>
@@ -99,7 +100,7 @@
       <span class="eyebrow on-navy center reveal" style="justify-content:center">{{ cta.eyebrow|e }}</span>
       <h2 class="h2 reveal" data-d="1">{{ cta.heading|e }}</h2>
       <p class="lead reveal" data-d="2">{{ cta.text|e }}</p>
-      <div class="reveal" data-d="3" style="margin-top:38px"><a href="{{ "Contact.html"|ru(root) }}" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="{{ "Contact.html"|ru(root) }}{% if practice %}?practice={{ practice|urlencode }}{% endif %}" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>
 </section>
