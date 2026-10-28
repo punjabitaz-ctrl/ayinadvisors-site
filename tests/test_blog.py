@@ -42,7 +42,7 @@ def _render(stem):
 def with_sample_post(sandbox):
     """The sandbox with one approved post added the way docs/blog/content-strategy.md describes."""
     blog = json.loads((sandbox / "content" / "blog.json").read_text(encoding="utf-8"))
-    blog["posts"] = [SAMPLE]
+    blog["posts"] = [SAMPLE] + blog["posts"]
     (sandbox / "content" / "blog.json").write_text(json.dumps(blog), encoding="utf-8")
     (sandbox / "content" / "blog").mkdir(exist_ok=True)
     (sandbox / "content" / "blog" / "sample-question.frag").write_text(SAMPLE_BODY, encoding="utf-8")
@@ -87,7 +87,9 @@ def test_blog_index_is_a_blog():
 
 def test_index_lists_an_approved_post(with_sample_post):
     soup = _soup(_render("blog"))
-    assert [a["href"] for a in soup.select(".post-list h2 a")] == ["blog/sample-question"]
+    hrefs = [a["href"] for a in soup.select(".post-list h2 a")]
+    assert hrefs[0] == "blog/sample-question", "the newest post comes first"
+    assert hrefs[1:] == [f"blog/{p['slug']}" for p in build.load_blog()["posts"] if p["slug"] != SAMPLE["slug"]]
     assert not soup.select(".post-empty")
 
 
