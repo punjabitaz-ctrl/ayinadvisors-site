@@ -8,6 +8,7 @@
 <title>About - AYiN Advisors</title>
 <meta name="description" content="AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence." />
 <link rel="canonical" href="https://ayinadvisors.com/About" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ayinadvisors.com/#organization","name":"AYiN Advisors","url":"https://ayinadvisors.com/","email":"hello@ayinadvisors.com","description":"Business solutions for a digital world. B2B partnerships for international firms entering the US, AI solutions development, and digital presence.","image":"https://ayinadvisors.com/og-image.jpg","address":{"@type":"PostalAddress","addressLocality":"New York","addressCountry":"US"},"founder":{"@id":"https://ayinadvisors.com/#founder"}},{"@type":"Person","@id":"https://ayinadvisors.com/#founder","name":"Taz Abbas","jobTitle":"Managing Partner","image":"https://ayinadvisors.com/assets/taz-abbas.jpg","worksFor":{"@id":"https://ayinadvisors.com/#organization"},"sameAs":["https://linkedin.com/in/tazabbas"]}]}</script>
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="assets/theme.css">
 <meta name="theme-color" content="#061325" />

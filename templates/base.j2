@@ -10,7 +10,8 @@
 <title>{{ page.title|e }}</title>
 <meta name="description" content="{{ page.description|e }}" />
 {% if page.canonical %}<link rel="canonical" href="{{ page.canonical|e }}" />{% endif %}
-<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
+{% if jsonld %}{{ jsonld }}
+{% endif %}<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="{{ root }}assets/theme.css">
 {{ head_extra }}
 <script defer src="{{ root }}assets/vendor/lenis.min.js"></script>
