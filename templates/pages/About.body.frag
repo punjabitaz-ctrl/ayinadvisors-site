@@ -47,9 +47,7 @@
 <section class="surface-alt">
   <div class="wrap"><div class="stat-band">
     <div class="sb reveal"><div class="n"><span data-count="3" data-suffix=""></span></div><div class="l">Practices - B2B Partnerships, AI Solutions Development, Digital Presence</div></div>
-    <div class="sb reveal" data-d="1"><div class="n"><span data-count="40" data-suffix="+"></span></div><div class="l">Channel partners in the Partnerships network</div></div>
-    <div class="sb reveal" data-d="2"><div class="n"><span data-count="90" data-suffix=" days"></span></div><div class="l">To first qualified partner, in Partnerships</div></div>
-    <div class="sb reveal" data-d="3"><div class="n"><span data-count="100" data-suffix="%"></span></div><div class="l">Founder-led work</div></div>
+    <div class="sb reveal" data-d="1"><div class="n"><span data-count="100" data-suffix="%"></span></div><div class="l">Founder-led work</div></div>
   </div></div>
 </section>
 

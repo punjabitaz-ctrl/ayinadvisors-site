@@ -97,17 +97,17 @@ def test_home_hero_is_the_new_positioning(home):
 
 def test_home_hero_stats_keep_only_claims_the_site_already_made(home):
     stats = home.select(".hero-stats .hstat")
-    assert len(stats) == 3
+    assert len(stats) == 2
     n = [s.select_one(".n") for s in stats]
     label = [_text(s.select_one(".l")) for s in stats]
     # 1: the count of practices (spec decision)
     assert n[0].select_one("[data-count]")["data-count"] == "3" and not n[0].select_one("[data-count]").get("data-suffix", "").strip()
     assert "Practices" in label[0] and "Partnerships" in label[0] and "AI" in label[0] and "Digital" in label[0]
-    # 2: the existing 90-day claim, owner chose the unscoped wording 2026-10-21
-    assert label[1].lower() == "to first qualified partner"
-    # 3: no number; the working-style line from About
-    assert not n[2].select("[data-count]") and _text(n[2]) == "Founder-led"
-    assert label[2] == "Operators, not observers"
+    # 2: no number; the working-style line from About
+    assert not n[1].select("[data-count]") and _text(n[1]) == "Founder-led"
+    assert label[1] == "Operators, not observers"
+    # The 90-day figure was pulled 2026-10-28 until the owner confirms it
+    assert "90" not in _text(home.select_one(".hero-stats")) and "qualified partner" not in _text(home.select_one(".hero-stats")).lower()
     assert "100" not in _text(home.select_one(".hero-stats")), "the old 100% channel-led claim is gone"
     assert "Canada" not in _text(home.select_one(".hero-stats"))
 
