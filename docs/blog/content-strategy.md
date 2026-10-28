@@ -29,11 +29,11 @@ The blog is linked from the footer only. Readers will mostly arrive on a post fr
 
 ## Topic clusters and post titles
 
-Titles marked "drafted" are in the first pull request. The rest are proposals.
+Titles marked "draft in review" are written and waiting for Taz's editorial review. The rest are proposals.
 
 ### A. Entering the US through partners (B2B Partnerships)
 
-1. Distributor, reseller or agent: which US route to market fits your product? (drafted)
+1. Distributor, reseller or agent: which US route to market fits your product? (draft in review)
 2. How do you find and vet a US distributor?
 3. What should a US distribution agreement cover before you sign?
 4. What decides how long it takes to get a first US partner selling?
@@ -50,7 +50,7 @@ Titles marked "drafted" are in the first pull request. The rest are proposals.
 
 ### C. Putting AI to work in a small team (AI Solutions Development)
 
-12. Where should a small team start with workflow automation? (drafted)
+12. Where should a small team start with workflow automation? (draft in review)
 13. Build or buy: when does a custom application make sense?
 14. What drives the cost of a custom AI tool?
 15. How do you keep a person in the loop in an automated workflow?
@@ -69,7 +69,7 @@ Proposed cadence: two posts a month, alternating practices, so the blog stays cu
 
 | Month | Posts |
 |---|---|
-| 1 | 1 (drafted), 12 (drafted) |
+| 1 | 1, 12 (drafts in review) |
 | 2 | 8, 17 |
 | 3 | 2, 13 |
 | 4 | 3, 18 |
@@ -90,10 +90,18 @@ After three months, write more on the topics that draw impressions and drop or m
 
 Topics come from what currently ranks for each practice's core questions on Google, and from how AI search tools and buyers phrase these questions in 2026. Search volumes were not measured: no keyword tool was reachable. Once Search Console has a few weeks of data, it will show which questions people actually ask.
 
-## How to add a post
+## How a post gets published
+
+1. Claude drafts the post outside this repository and shares it with Taz for review.
+2. Taz gives editorial feedback; Claude revises until Taz approves that exact draft.
+3. Only then does the post go into the repository, through a pull request, and live on merge.
+
+Drafts never go into this repository. Cloudflare serves the whole repository, so a draft committed here would be reachable on the live site even without a link.
+
+## How to add an approved post
 
 1. Add the post to `content/blog.json` (slug, question, summary, dates, practice, two or three related service pages).
 2. Write the body in `content/blog/<slug>.frag`, starting with an `h2` "The short answer".
 3. Add the page to `content/site.json` as `blog/<slug>` with `"template": "post"`, a title under 60 characters ending " - AYiN Advisors", a 70 to 160 character description, its canonical address and a sitemap entry.
-4. Run `python build.py`, then `python tools/baseline.py snapshot`, and update the post count in `tests/test_sitemap.py`, `tests/test_rhythm.py` and `tests/test_final_review.py`.
+4. Run `python build.py`, then `python tools/baseline.py snapshot`, add the post's address to `tests/test_sitemap.py` and its bands to `BAND_MAP` in `tests/test_rhythm.py`.
 5. Run the tests: `python -m pytest --ignore=tests/a11y_browser`.

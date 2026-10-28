@@ -474,40 +474,6 @@
         "lastmod": "2026-10-28"
       }
     },
-    "blog/distributor-reseller-or-agent": {
-      "title": "Distributor, Reseller or Agent for the US? - AYiN Advisors",
-      "description": "Distributor, reseller or sales agent: what each US route to market does, when each fits, and the questions to answer before you choose.",
-      "canonical": "https://ayinadvisors.com/blog/distributor-reseller-or-agent",
-      "active": "",
-      "cta": {
-        "href": "Contact.html",
-        "label": "Book a Consultation",
-        "class": "btn btn-white"
-      },
-      "footer": true,
-      "template": "post",
-      "sitemap": {
-        "priority": "0.6",
-        "lastmod": "2026-10-28"
-      }
-    },
-    "blog/where-to-start-with-workflow-automation": {
-      "title": "Where to Start With Workflow Automation - AYiN Advisors",
-      "description": "How a small team picks its first workflow to automate, step by step, where AI fits, and what to leave for later.",
-      "canonical": "https://ayinadvisors.com/blog/where-to-start-with-workflow-automation",
-      "active": "",
-      "cta": {
-        "href": "Contact.html",
-        "label": "Book a Consultation",
-        "class": "btn btn-white"
-      },
-      "footer": true,
-      "template": "post",
-      "sitemap": {
-        "priority": "0.6",
-        "lastmod": "2026-10-28"
-      }
-    },
     "404": {
       "title": "Page not found - AYiN Advisors",
       "description": "The page you're looking for can't be found. Return to AYiN Advisors.",

@@ -8,30 +8,12 @@
       "eyebrow": "Have a question we have not answered?",
       "heading": "Ask it on a call.",
       "text": "Book a consultation and tell us what you are working on. We will answer candidly, and the best questions become posts here."
-    }
+    },
+    "empty": "The first posts are in review and will appear here soon. Until then, bring your question to a call."
   },
   "author": {
     "name": "Taz Abbas",
     "role": "Managing Partner"
   },
-  "posts": [
-    {
-      "slug": "distributor-reseller-or-agent",
-      "question": "Distributor, reseller or agent: which US route to market fits your product?",
-      "summary": "Each one carries a different share of the stock, the risk and the customer. The right choice depends on how American buyers expect to buy in your category.",
-      "published": "2026-10-28",
-      "updated": "2026-10-28",
-      "practice": "partnerships",
-      "related": ["partnerships/channel-strategy", "partnerships/market-entry-research", "partnerships/partner-introductions"]
-    },
-    {
-      "slug": "where-to-start-with-workflow-automation",
-      "question": "Where should a small team start with workflow automation?",
-      "summary": "Start with one task your team repeats often, that follows clear rules and that does little harm when it goes wrong. Map it, automate the predictable steps and keep a person on the decisions.",
-      "published": "2026-10-28",
-      "updated": "2026-10-28",
-      "practice": "ai-solutions",
-      "related": ["ai-solutions/workflow-automation", "ai-solutions/operational-efficiency", "ai-solutions/custom-applications"]
-    }
-  ]
+  "posts": []
 }

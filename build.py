@@ -63,7 +63,11 @@ def load_services() -> dict:
 
 
 def load_blog() -> dict:
-    """content/blog.json: the blog index copy, the author and the posts (each post's body is content/blog/<slug>.frag)."""
+    """content/blog.json: the blog index copy, the author and the posts (each post's body is content/blog/<slug>.frag).
+
+    Only approved posts are in the repo. Cloudflare serves the whole repo, so a draft committed here, even unlinked,
+    would be reachable; drafts are reviewed outside the repo and added once Taz approves them.
+    """
     return json.loads((ROOT / "content" / "blog.json").read_text(encoding="utf-8"))
 
 
