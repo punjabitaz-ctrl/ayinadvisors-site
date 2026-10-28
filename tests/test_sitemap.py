@@ -87,3 +87,16 @@ def test_public_urls_are_the_ones_cloudflare_serves_without_a_redirect():
             if el is not None:
                 assert not el[attr].endswith(".html"), f"{stem}: {el[attr]}"
     assert ".html" not in build.render_sitemap()
+
+
+def test_every_sitemap_url_carries_a_valid_lastmod():
+    """Final review (2026-10-28): search engines use lastmod to tell a changed page from an unchanged one."""
+    import datetime
+    import re as _re
+    xml = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    urls = _re.findall(r"<url>(.*?)</url>", xml)
+    assert urls
+    for u in urls:
+        m = _re.search(r"<lastmod>(\d{4}-\d{2}-\d{2})</lastmod>", u)
+        assert m, u
+        assert datetime.date.fromisoformat(m.group(1)) <= datetime.date.today(), u

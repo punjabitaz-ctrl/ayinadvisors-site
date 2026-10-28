@@ -50,8 +50,8 @@ def test_the_script_picks_the_practice_passed_in_the_url(pages):
 @pytest.mark.parametrize("stem", [p["stem"] for p in _pillars()])
 def test_each_pillar_and_its_services_book_with_their_practice(pages, stem):
     pillar = next(p for p in _pillars() if p["stem"] == stem)
-    for page, href in [(stem, f"Contact.html?practice={stem}")] + [
-        (s["href"][:-5], f"../Contact.html?practice={stem}") for s in pillar["services"] if s["status"] == "live"
+    for page, href in [(stem, f"Contact?practice={stem}")] + [
+        (s["href"][:-5], f"../Contact?practice={stem}") for s in pillar["services"] if s["status"] == "live"
     ]:
         cta = BeautifulSoup(pages[page], "html.parser").select_one("section.cta a.btn")
         assert cta["href"] == href, page

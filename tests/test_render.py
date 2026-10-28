@@ -11,11 +11,11 @@ def test_active_link_follows_the_page():
     assert "active" not in nav["Home"]
 
 
-def test_bizcheck_keeps_its_gold_pill_and_own_cta():
+def test_bizcheck_is_a_plain_nav_link_and_keeps_its_own_cta():
     html = build.render_page("BizCheck", "<main>x</main>")
     facts = page_facts(html)
     nav = {t: c for _, t, c in facts["nav"]}
-    assert "gold" in nav["BizCheck"] and "active" in nav["BizCheck"]
+    assert "gold" not in nav["BizCheck"] and "active" in nav["BizCheck"]
     assert facts["nav_cta"] == ("#submit", "Submit Your Idea", "btn")
 
 

@@ -7,6 +7,7 @@ test using the `browser` fixture skips with the install command in the reason.
 import functools
 import http.server
 import threading
+from pathlib import Path
 from typing import NamedTuple
 
 import pytest
@@ -51,6 +52,15 @@ class _QuietHandler(http.server.SimpleHTTPRequestHandler):
 
     def log_message(self, *args):  # silence request logging
         pass
+
+    def send_head(self):
+        # Cloudflare Pages serves /About from About.html, and the pages link those extensionless addresses; serve them
+        # the same way here.
+        path, sep, query = self.path.partition("?")
+        local = Path(self.translate_path(path))
+        if not local.exists() and local.with_name(local.name + ".html").is_file():
+            self.path = path + ".html" + sep + query
+        return super().send_head()
 
 
 def start_server():

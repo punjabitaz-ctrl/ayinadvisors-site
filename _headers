@@ -13,5 +13,44 @@
   # the ETag turns the recheck into a cheap 304.
   Cache-Control: public, max-age=600, must-revalidate
 
+# Pages are served at their extensionless addresses (/About), which /*.html does
+# not match, so each one is listed too: a page always revalidates, so a change
+# shows on the next visit. tests/test_headers.py checks every page is covered.
 /*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/About
+  Cache-Control: public, max-age=0, must-revalidate
+
+/Services
+  Cache-Control: public, max-age=0, must-revalidate
+
+/partnerships
+  Cache-Control: public, max-age=0, must-revalidate
+
+/partnerships/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/ai-solutions
+  Cache-Control: public, max-age=0, must-revalidate
+
+/ai-solutions/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/digital-presence
+  Cache-Control: public, max-age=0, must-revalidate
+
+/digital-presence/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/Projects
+  Cache-Control: public, max-age=0, must-revalidate
+
+/BizCheck
+  Cache-Control: public, max-age=0, must-revalidate
+
+/Contact
   Cache-Control: public, max-age=0, must-revalidate

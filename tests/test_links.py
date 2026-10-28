@@ -51,9 +51,9 @@ def _resolve(from_stem, ref, soups):
         if name == "index.html":
             stem = "index"
             return f"no id #{frag} on index.html" if frag and soups[stem].find(id=frag) is None else None
-        if absolute and name in soups:
-            # Cloudflare Pages serves /About.html at /About (it 308-redirects the .html form), so the canonical, og:url and
-            # sitemap URLs drop the extension; on our own pages links keep it so the files also open straight from disk.
+        if name in soups:
+            # Cloudflare Pages serves /About.html at /About (it 308-redirects the .html form), so the canonical, og:url,
+            # sitemap and page links all use the extensionless address (build.clean_href).
             stem = name
         elif name.endswith(".html"):
             if name[:-5] not in soups:
@@ -87,6 +87,24 @@ def test_the_crawler_catches_a_dead_page_file_and_anchor(soups):
     assert _resolve("index", "mailto:hello@ayinadvisors.com", soups) is None
 
 
+def test_the_crawler_resolves_extensionless_page_addresses(soups):
+    assert _resolve("index", "Services", soups) is None
+    assert _resolve("index", "Projects#ai-projects", soups) is None
+    assert _resolve("index", "Nope", soups)
+    assert _resolve("partnerships/channel-strategy", "../Contact?practice=partnerships", soups) is None
+    assert _resolve("partnerships/channel-strategy", "/", soups) is None
+
+
+def test_page_links_use_the_extensionless_address(soups):
+    """Every internal page link skips the 308 redirect Cloudflare answers a .html address with."""
+    for stem, soup in soups.items():
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            if ":" in href or href.startswith("#"):
+                continue
+            assert ".html" not in href, f"{stem}.html links {href!r}"
+
+
 def test_the_crawler_resolves_links_from_subfolder_pages_against_their_folder(soups):
     sub = "partnerships/channel-strategy"
     assert _resolve(sub, "../Services.html", soups) is None
@@ -111,7 +129,7 @@ def test_live_sub_services_are_linked_from_their_pillar_and_planned_ones_are_not
         hrefs = {a["href"] for a in main.find_all("a", href=True)}
         for s in p["services"]:
             if s["status"] == "live":
-                assert s["href"] in hrefs, f"{p['stem']} does not link live sub-service {s['slug']}"
+                assert build.clean_href(s["href"]) in hrefs, f"{p['stem']} does not link live sub-service {s['slug']}"
                 assert s["href"][:-5] in build.load_site()["pages"], s["slug"]
             else:
                 assert not any(s["slug"] in h for h in hrefs), f"{p['stem']} links to planned sub-service {s['slug']}"

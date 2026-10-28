@@ -82,11 +82,11 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
             continue
         if stem in pillars:
             assert not page_links, f"{stem} {selector}: a pillar page is not itself a navigation entry"
-            assert len(true_links) == 1 and true_links[0]["href"] == build.page_root(stem) + "Services.html", f"{stem} {selector}: {true_links}"
+            assert len(true_links) == 1 and true_links[0]["href"] == build.clean_href(build.page_root(stem) + "Services.html"), f"{stem} {selector}: {true_links}"
         else:
             assert f"{stem}.html" in nav_hrefs
             assert len(page_links) == 1 and not true_links, f"{stem} {selector}: {page_links} {true_links}"
-            assert page_links[0]["href"] == f"{stem}.html"
+            assert page_links[0]["href"] == build.clean_href(f"{stem}.html")
         targets[stem] = (page_links or true_links)[0]["href"]
     # Each page that has its own entry marks a different link.
     rest = {s: t for s, t in targets.items() if s not in pillars}
@@ -101,7 +101,7 @@ def test_the_section_link_keeps_its_active_styling_on_pillar_pages(soups):
     """aria-current="true" changes what is announced, not what is drawn: the Services link stays .active on every pillar page."""
     for stem in ("partnerships", "ai-solutions", "digital-presence", "partnerships/market-entry-research"):
         active = soups[stem].select("nav.nav a.nav-link.active")
-        assert len(active) == 1 and active[0]["href"] == build.page_root(stem) + "Services.html" and active[0]["aria-current"] == "true", stem
+        assert len(active) == 1 and active[0]["href"] == build.clean_href(build.page_root(stem) + "Services.html") and active[0]["aria-current"] == "true", stem
     for stem in ("Services", "index", "About"):
         active = soups[stem].select("nav.nav a.nav-link.active")
         assert len(active) == 1 and active[0]["aria-current"] == "page", stem

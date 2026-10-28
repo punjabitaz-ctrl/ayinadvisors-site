@@ -89,7 +89,10 @@ def test_home_hero_is_the_new_positioning(home):
         assert part in lead, part
     # two CTAs, unchanged
     acts = [(a["href"], _text(a)) for a in hero.select(".hero-actions a")]
-    assert acts == [("Contact.html", "Book a Consultation →"), ("Services.html", "Our Services")]
+    assert acts == [("Contact", "Book a Consultation →"), ("Services", "Our Services")]
+    # the direct booking line under them (final review, 2026-10-28)
+    alt = hero.select_one(".cta-alt a")
+    assert alt["href"].startswith("https://calendar.app.google/") and _text(alt).startswith("Schedule a call")
 
 
 def test_home_hero_stats_keep_only_claims_the_site_already_made(home):
@@ -114,8 +117,8 @@ def test_home_hero_stats_keep_only_claims_the_site_already_made(home):
 def test_home_has_three_pillar_cards_linking_to_pillar_pages(home, pillars):
     sec = home.select_one("section#services")
     cards = sec.select("a.svc")
-    assert [c["href"] for c in cards] == [f"{p['stem']}.html" for p in pillars] == [
-        "partnerships.html", "ai-solutions.html", "digital-presence.html"]
+    assert [c["href"] for c in cards] == [p["stem"] for p in pillars] == [
+        "partnerships", "ai-solutions", "digital-presence"]
     macro = build.env.get_template("_components.j2").module
     for card, p in zip(cards, pillars):
         assert _text(card.h3) == p["name"]
@@ -172,7 +175,7 @@ def test_home_who_we_are_is_practice_neutral(home):
         assert gone not in low, gone
     names = [_text(h) for h in sec.select(".principle h3")]
     assert names == ["Evidence over theory", "Candid counsel", "Sequenced, not open-ended"]
-    assert sec.select_one("a.tlink")["href"] == "About.html"
+    assert sec.select_one("a.tlink")["href"] == "About"
 
 
 def test_home_cta_is_practice_neutral(home):
@@ -181,7 +184,7 @@ def test_home_cta_is_practice_neutral(home):
     assert "us ambitions" not in low and "us market" not in low and "read the market" not in low
     assert _text(cta.select_one("h2")) == "Tell us what you are trying to do."
     assert "goals" in low and "no obligation, just clarity" in low
-    assert cta.select_one("a.btn")["href"] == "Contact.html"
+    assert cta.select_one("a.btn")["href"] == "Contact"
 
 
 # ---------------------------------------------------------------- Home no longer leads with the US
@@ -202,11 +205,11 @@ def test_home_no_longer_leads_with_us_only(home, pages):
 def test_home_section_order_and_ids(home):
     main = home.select_one("main")
     ids = [s.get("id") for s in main.find_all(True, recursive=False)]
-    assert ids == ["letters", "services", "who", "process", "about", None]      # the CTA band has no id
+    assert ids == ["letters", "services", "who", "process", "about", "work", None]      # the CTA band has no id
     assert "cta" in main.find_all(True, recursive=False)[-1]["class"]
     # section numbers are gone: iris markers only
     assert not home.select(".sec-index")
-    for sel in ("#services .sec-head .eyebrow", "#who .eyebrow", "#process .sec-head .eyebrow", "#about .eyebrow"):
+    for sel in ("#services .sec-head .eyebrow", "#who .eyebrow", "#process .sec-head .eyebrow", "#about .eyebrow", "#work .sec-head .eyebrow"):
         eb = home.select_one(sel)
         marks = eb.select("svg.iris-mark")
         assert len(marks) == 1, sel
@@ -279,7 +282,7 @@ def test_footer_practice_column(soups, pillars, site):
         footer = soup.select_one("footer.footer")
         col = next(c for c in footer.select(".footer-col") if c.h2 and _text(c.h2) == "Practice")
         root = build.page_root(stem)
-        assert [(a["href"], _text(a)) for a in col.select("a")] == [(f"{root}{p['stem']}.html", p["name"]) for p in pillars], stem
+        assert [(a["href"], _text(a)) for a in col.select("a")] == [(build.clean_href(f"{root}{p['stem']}.html"), p["name"]) for p in pillars], stem
         assert _text(footer.select_one(".footer-bottom > span:last-child")) == "Business solutions for a digital world."
         assert _text(footer.select_one(".footer-tag")) == "B2B partnerships, AI solutions and digital presence. New York."
         text = _text(footer)
@@ -294,17 +297,18 @@ def test_no_page_links_to_a_services_anchor_that_moved(soups):
     proves every remaining fragment exists)."""
     for stem, soup in soups.items():
         for a in soup.select("a[href]"):
-            assert not a["href"].startswith("Services.html#"), (stem, a["href"])
+            assert not a["href"].startswith(("Services.html#", "Services#")), (stem, a["href"])
 
 
 def test_nav_still_routes(site, soups):
     nav = site["nav"]
     assert [(n["label"], n["href"]) for n in nav] == [
-        ("BizCheck", "BizCheck.html"), ("Home", "index.html"), ("About", "About.html"),
-        ("Services", "Services.html"), ("Projects", "Projects.html"), ("Contact", "Contact.html")]
+        ("Home", "index.html"), ("About", "About.html"), ("Services", "Services.html"),
+        ("Projects", "Projects.html"), ("BizCheck", "BizCheck.html"), ("Contact", "Contact.html")]
     for n in nav:
         assert (ROOT / n["href"]).exists() and n["href"][:-5] in build.PAGES, n
     for stem, soup in soups.items():
         root = build.page_root(stem)
-        assert [a["href"] for a in soup.select("nav.nav a.nav-link")] == [root + n["href"] for n in nav], stem
-        assert [a["href"] for a in soup.select("nav.mobile-drawer a:not(.md-cta)")] == [root + n["href"] for n in nav], stem
+        want = [build.clean_href(root + n["href"]) for n in nav]
+        assert [a["href"] for a in soup.select("nav.nav a.nav-link")] == want, stem
+        assert [a["href"] for a in soup.select("nav.mobile-drawer a:not(.md-cta)")] == want, stem

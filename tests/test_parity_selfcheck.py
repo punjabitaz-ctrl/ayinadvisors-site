@@ -5,7 +5,7 @@ from parity import page_facts
 def test_facts_extract_nav_and_footer():
     facts = page_facts(baseline_html("About"))
     assert facts["title"] == "About Our Founder-Led Advisory - AYiN Advisors"
-    assert ("BizCheck.html", "BizCheck") in [(h, t) for h, t, _ in facts["nav"]]
+    assert ("BizCheck", "BizCheck") in [(h, t) for h, t, _ in facts["nav"]]
     assert facts["has_footer"] is True
 
 
@@ -31,7 +31,7 @@ def test_bizcheck_cta_differs_from_about():
     biz = page_facts(baseline_html("BizCheck"))
     about = page_facts(baseline_html("About"))
     assert biz["nav_cta"] == ("#submit", "Submit Your Idea", "btn")
-    assert about["nav_cta"] == ("Contact.html", "Book a Consultation", "btn btn-white")
+    assert about["nav_cta"] == ("Contact", "Book a Consultation", "btn btn-white")
 
 
 def test_body_rest_nonempty_for_every_page():

@@ -34,10 +34,10 @@ def test_the_page_leads_with_the_primetime_line(soup):
 
 def test_it_routes_home_to_a_consultation_and_to_each_practice(soup):
     actions = [(a["href"], _text(a)) for a in soup.select(".nf-actions a")]
-    assert actions == [("/index.html", "Back to Home →"), ("/Contact.html", "Book a Consultation")]
+    assert actions == [("/", "Back to Home →"), ("/Contact", "Book a Consultation")]
     routes = soup.select_one("nav.nf-routes")
     assert routes["aria-label"] == "Practices"
-    want = [(f"/{p['stem']}.html", p["name"]) for p in build.load_services()["pillars"]]
+    want = [(f"/{p['stem']}", p["name"]) for p in build.load_services()["pillars"]]
     assert [(a["href"], _text(a)) for a in routes.select("a")] == want
 
 

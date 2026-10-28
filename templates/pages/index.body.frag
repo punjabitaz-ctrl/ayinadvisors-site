@@ -11,6 +11,7 @@
         <a href="Contact.html" class="btn btn-white" data-magnetic><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a>
         <a href="Services.html" class="btn-ghost btn on-navy" data-magnetic><span class="btn-label">Our Services</span></a>
       </div>
+      <p class="cta-alt reveal" data-d="3">Prefer to pick a time? <a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Schedule a call<span class="vh"> (opens in a new tab)</span></a></p>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><span class="bar"></span></div>
@@ -135,6 +136,31 @@
   </div>
 </section>
 
+<!-- ===================== SELECTED WORK ===================== -->
+<section class="section surface-page" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <span class="eyebrow reveal"><svg class="iris-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>Our work</span>
+        <h2 class="h2 reveal" data-d="1">Built and shipped.</h2>
+      </div>
+      <p class="muted reveal" data-d="2" style="max-width:34ch">AI products we designed and websites we launched, for our own ventures and for other businesses.</p>
+    </div>
+    <div class="work-grid">
+      <article class="work-card surface-card reveal" data-d="1">
+        <h3 class="h3">AI products</h3>
+        <p>ChanneliQ, Memento, BizCheck and TrustLayer: partner enablement, private AI memory, idea evaluation and checks on AI output.</p>
+        <p class="work-link"><a class="tlink" href="Projects.html#ai-projects">See the AI products <span class="btn-arrow" aria-hidden="true">→</span></a></p>
+      </article>
+      <article class="work-card surface-card reveal" data-d="2">
+        <h3 class="h3">Websites</h3>
+        <p>Pardesi Connections, Thinkers Dilemma, Historical Philly and more: sites for a podcast, a publication, vacation rentals and other businesses, each one live.</p>
+        <p class="work-link"><a class="tlink" href="Projects.html#digital-projects">See the websites <span class="btn-arrow" aria-hidden="true">→</span></a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CTA ===================== -->
 <section class="section cta surface-accent">
   <div class="cta-glow"></div>
@@ -144,6 +170,7 @@
       <h2 class="h2 reveal" data-d="1">Tell us what you are trying to do.</h2>
       <p class="lead reveal" data-d="2">A focused, candid conversation about your goals and the practice that fits them. No obligation, just clarity.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+      <p class="cta-alt reveal" data-d="4">Prefer to pick a time? <a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Schedule a call<span class="vh"> (opens in a new tab)</span></a></p>
     </div>
   </div>
 </section>

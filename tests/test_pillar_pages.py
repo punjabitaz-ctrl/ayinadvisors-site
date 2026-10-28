@@ -36,7 +36,7 @@ def _text(el) -> str:
 
 def test_hub_lists_three_pillars_linking_to_their_pages(soups, pillars):
     cards = soups["Services"].select("main a.svc")
-    assert [c["href"] for c in cards] == [f"{p['stem']}.html" for p in pillars]
+    assert [c["href"] for c in cards] == [p["stem"] for p in pillars]
     for card, p in zip(cards, pillars):
         assert _text(card.h3) == p["name"]
         assert p["hub_line"] in _text(card)
@@ -78,15 +78,16 @@ def test_each_pillar_lists_its_services_linking_the_live_ones(soups, pillars, st
         assert not c.select("button, .svc-arrow, .btn-arrow"), "informative cards: no buttons, no arrows"
         links = c.select("a[href]")
         if s["status"] == "live":
-            assert [(a["href"], _text(a)) for a in links] == [(s["href"], s["name"])] and links[0].parent.name == "h3"
+            assert [(a["href"], _text(a)) for a in links] == [(build.clean_href(s["href"]), s["name"])] and links[0].parent.name == "h3"
         else:
             assert not links, "a planned service is listed, not linked"
         assert "asm-card" in c["class"]
     assert "coming soon" not in soup.get_text(" ").lower()
     # the only links in the body are the CTA and the live services; none lead to a page that does not exist
-    live = {s["href"] for s in p["services"] if s["status"] == "live"}
+    live = {build.clean_href(s["href"]) for s in p["services"] if s["status"] == "live"}
+    booking = "https://calendar.app.google/8iyzRwWpo7FWfYB98"  # the "Schedule a call" line under the CTA button
     for a in soup.select("main a[href]"):
-        assert a["href"] == f"Contact.html?practice={p['stem']}" or a["href"] in live, a["href"]
+        assert a["href"] in (f"Contact?practice={p['stem']}", booking) or a["href"] in live, a["href"]
 
 
 @pytest.mark.parametrize("stem", PILLAR_STEMS)
@@ -123,7 +124,7 @@ def test_pillar_cta_copy_is_per_pillar_and_not_stale_market_entry_copy(soups, pi
     assert _text(cta.select_one(".eyebrow")) == p["cta"]["eyebrow"]
     assert _text(cta.h2) == p["cta"]["heading"]
     assert _text(cta.select_one(".lead")) == p["cta"]["text"]
-    assert "Contact.html" in cta.select_one("a.btn")["href"]
+    assert cta.select_one("a.btn")["href"].startswith("Contact?")
     if stem != "partnerships":
         assert "market read" not in _text(cta).lower() and "market" not in _text(cta).lower()
 
