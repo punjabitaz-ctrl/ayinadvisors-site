@@ -153,12 +153,38 @@ def jsonld_tags(stem: str) -> str:
     )
 
 
+def clean_href(href: str) -> str:
+    """The extensionless form of an internal page link: "Contact.html?practice=x" -> "Contact?practice=x", "../index.html" -> "/".
+
+    Cloudflare Pages serves /About.html at /About and 308-redirects the .html form, so linking the clean address saves
+    a redirect on every click. Absolute URLs, mailto:, in-page #fragments and non-page files pass through unchanged.
+    """
+    if ":" in href or href.startswith("#"):
+        return href
+    rest, hsep, frag = href.partition("#")
+    path, qsep, query = rest.partition("?")
+    if not path.endswith(".html"):
+        return href
+    path = path[: -len(".html")]
+    if path == "index" or path.endswith("/index"):
+        path = "/"  # the home page, from any folder: the site is always served at the domain root
+    return path + qsep + query + hsep + frag
+
+
+_HREF = re.compile(r'(\shref=")([^"]*)(")')
+
+
+def clean_links(html: str) -> str:
+    """Rewrite every internal .html href in a rendered page to its extensionless address (see clean_href)."""
+    return _HREF.sub(lambda m: m.group(1) + clean_href(m.group(2)) + m.group(3), html)
+
+
 def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = "") -> str:
     site = load_site()
     if stem not in site["pages"]:
         raise KeyError(f"unknown page {stem!r}; known pages: {', '.join(site['pages'])}")
     root = page_root(stem)
-    return env.get_template("base.j2").render(
+    return clean_links(env.get_template("base.j2").render(
         site=site,
         page=site["pages"][stem],
         stem=stem,
@@ -169,7 +195,7 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
         logo=env.get_template("_logo.j2").render(root=root),
         footer=env.get_template("_footer.j2").render(site=site, root=root),
         jsonld=jsonld_tags(stem),
-    )
+    ))
 
 
 def template_kind(stem: str) -> str | None:
@@ -239,14 +265,19 @@ def render_all() -> dict[str, str]:
 
 
 def render_sitemap() -> str:
-    """sitemap.xml: every page of site.json that carries a "sitemap" entry, in site.json order."""
+    """sitemap.xml: every page of site.json that carries a "sitemap" entry, in site.json order.
+
+    A page's "lastmod" (YYYY-MM-DD) is set by hand in site.json: bump it when the page's content changes, so search
+    engines can tell a changed page from an unchanged one.
+    """
     rows = []
     for stem, page in load_site()["pages"].items():
         if "sitemap" not in page:
             continue
         loc = page["canonical"]
+        lastmod = f"<lastmod>{escape(page['sitemap']['lastmod'])}</lastmod>" if "lastmod" in page["sitemap"] else ""
         rows.append(
-            f"  <url><loc>{escape(loc)}</loc><changefreq>monthly</changefreq>"
+            f"  <url><loc>{escape(loc)}</loc>{lastmod}<changefreq>monthly</changefreq>"
             f"<priority>{escape(str(page['sitemap']['priority']))}</priority></url>"
         )
     lines = [

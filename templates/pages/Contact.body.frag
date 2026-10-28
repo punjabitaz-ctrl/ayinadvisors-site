@@ -29,7 +29,7 @@
         </div>
         <div class="field-row">
           <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" placeholder="you@company.com" required /></div>
-          <div class="field"><label for="hq">Headquartered in</label><input id="hq" name="hq" type="text" placeholder="Country / region" /></div>
+          <div class="field"><label for="hq">Where are you based?</label><input id="hq" name="hq" type="text" placeholder="Country / region" /></div>
         </div>
         <div class="field">
           <label>Area of interest</label>

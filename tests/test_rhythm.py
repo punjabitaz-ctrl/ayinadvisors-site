@@ -9,7 +9,8 @@ HEROES = ("header.hero", "header.pagehead", "header.bc-hero", "header.contact-he
 
 # Top-level band surfaces in document order (hero first, footer last), from the task BAND_MAP.
 BAND_MAP = {
-    "index": ["inverse", "alt", "page", "alt", "page", "alt", "accent", "inverse"],
+    # home: letters (alt), practices (page), who (alt), how we work (page), who we are (alt), selected work (page)
+    "index": ["inverse", "alt", "page", "alt", "page", "alt", "page", "accent", "inverse"],
     "About": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
     # hub: the three practice cards (page), how they fit together (alt), the gold CTA
     "Services": ["inverse", "page", "alt", "accent", "inverse"],

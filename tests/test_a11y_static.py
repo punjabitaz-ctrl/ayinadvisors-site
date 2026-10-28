@@ -8,6 +8,7 @@ from collections import Counter
 import pytest
 from bs4 import BeautifulSoup
 
+import build
 from conftest import ROOT, PAGES
 
 FOCUSABLE_SELECTOR = (
@@ -169,7 +170,7 @@ def test_current_page_link_is_exposed_to_assistive_tech(stem):
     soup = BeautifulSoup((ROOT / f"{stem}.html").read_text(encoding="utf-8"), "html.parser")
     active = soup.select("nav.nav a.nav-link.active")
     assert len(active) == 1, f"{stem}: expected one active nav link, found {len(active)}"
-    own = active[0]["href"] == f"{stem}.html"
+    own = active[0]["href"] == build.clean_href(f"{stem}.html")
     want = "page" if own else "true"
     assert active[0].get("aria-current") == want
     assert len(soup.select("nav.nav a[aria-current]")) == 1

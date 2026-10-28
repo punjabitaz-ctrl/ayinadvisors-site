@@ -81,7 +81,7 @@ def test_head_meta_and_breadcrumb(pages, soups, stem):
     assert page["sitemap"]["priority"] == "0.7"
     assert len(soup.find_all("h1")) == 1 and _text(soup.h1) == svc["name"]
     crumb = soup.select_one("header.pagehead .eyebrow a")
-    assert crumb["href"] == f"../{pillar['stem']}.html" and _text(crumb) == pillar["name"]
+    assert crumb["href"] == f"../{pillar['stem']}" and _text(crumb) == pillar["name"]
     assert _text(soup.select_one("header.pagehead .lead")) == svc["summary"]
     assert lint_page(stem, pages[stem]) == []
 
@@ -94,11 +94,11 @@ def test_links_to_the_other_three_services_the_pillar_and_the_cta(soups, stem):
     others = [s for s in pillar["services"] if s["slug"] != own]
     more = soup.select_one("section#more")
     assert _text(more.h2) == f"Also in {pillar['name']}"
-    assert [(a["href"], _text(a)) for a in more.select("ul a")] == [("../" + s["href"], s["name"]) for s in others]
+    assert [(a["href"], _text(a)) for a in more.select("ul a")] == [(build.clean_href("../" + s["href"]), s["name"]) for s in others]
     back = more.select_one("p.back-link a")
-    assert back["href"] == f"../{pillar['stem']}.html" and _text(back) == f"Back to {pillar['name']}"
+    assert back["href"] == f"../{pillar['stem']}" and _text(back) == f"Back to {pillar['name']}"
     cta = soup.select_one("section.cta")
-    assert _text(cta.h2) == pillar["cta"]["heading"] and cta.select_one("a.btn")["href"] == f"../Contact.html?practice={pillar['stem']}"
+    assert _text(cta.h2) == pillar["cta"]["heading"] and cta.select_one("a.btn")["href"] == f"../Contact?practice={pillar['stem']}"
     assert [s.get("id") for s in soup.select("main > section")] == ["detail", "more", None]
 
 
@@ -106,13 +106,13 @@ def test_links_to_the_other_three_services_the_pillar_and_the_cta(soups, stem):
 def test_every_asset_and_link_resolves_from_the_subfolder(pages, stem):
     html = pages[stem]
     for needle in ('href="../assets/theme.css"', 'href="../assets/styles.css"', 'src="../assets/site.js"',
-                   'src="../assets/motion.js"', 'href="../favicon.svg"', 'href="../index.html"', 'href="../Services.html"',
-                   'href="../About.html"', 'href="../Contact.html"', 'href="mailto:hello@ayinadvisors.com"'):
+                   'src="../assets/motion.js"', 'href="../favicon.svg"', 'href="/"', 'href="../Services"',
+                   'href="../About"', 'href="../Contact"', 'href="mailto:hello@ayinadvisors.com"'):
         assert needle in html, needle
     soup = BeautifulSoup(html, "html.parser")
     for el, attr in [(e, "href") for e in soup.find_all(["a", "link"], href=True)] + [(e, "src") for e in soup.find_all("script", src=True)]:
         v = el[attr]
-        assert v.startswith(("../", "#", "mailto:", "https://", "http://")), v
+        assert v == "/" or v.startswith(("../", "#", "mailto:", "https://", "http://")), v  # "/" is the home page
 
 
 @pytest.mark.parametrize("stem", STEMS[4:])
@@ -131,7 +131,7 @@ def test_a_new_service_page_shows_its_drafted_detail(soups, stem):
 def test_the_pillar_pages_link_their_services_and_the_root_pages_are_unprefixed(pages):
     for p in build.load_services()["pillars"]:
         for s in p["services"]:
-            assert f'href="{s["href"]}"' in pages[p["stem"]], s["slug"]
+            assert f'href="{build.clean_href(s["href"])}"' in pages[p["stem"]], s["slug"]
         assert 'href="../' not in pages[p["stem"]]
     assert 'href="../' not in pages["index"]
 

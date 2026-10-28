@@ -154,6 +154,7 @@
       <h2 class="h2 reveal" data-d="1" style="margin:24px 0 26px">Have a project or an idea?</h2>
       <p class="lead reveal" data-d="2" style="margin-inline:auto">Tell us what you are working on and we will take it from there.</p>
       <div class="reveal" data-d="3" style="margin-top:38px"><a href="Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Get in touch</span><span class="btn-arrow">→</span></a></div>
+      <p class="cta-alt reveal" data-d="4">Prefer to pick a time? <a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Schedule a call<span class="vh"> (opens in a new tab)</span></a></p>
     </div>
   </div>
 </section>

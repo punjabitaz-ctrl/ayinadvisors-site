@@ -16,7 +16,7 @@ HEADS = {
     "BizCheck": ".bc-head .eyebrow, .intake-intro .eyebrow",
     "Contact": ".contact-intro .eyebrow",
 }
-EXPECTED = {"index": 2, "About": 3, "BizCheck": 4, "Contact": 1}
+EXPECTED = {"index": 3, "About": 3, "BizCheck": 4, "Contact": 1}
 
 
 @pytest.mark.parametrize("stem", sorted(HEADS))

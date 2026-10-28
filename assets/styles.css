@@ -322,41 +322,16 @@ html.js .line-reveal.in > span { transform: none; }
   .footer-top { grid-template-columns: 1fr; }
 }
 
-/* ---------- BizCheck nav accent ----------
-   A filled gold pill so it reads as a product rather than another page.
-   The underline sweep every other nav link gets is suppressed - it collides
-   with the filled background. Navy text on the gold fill (light text on the gold fill is
-   only 2.43:1). */
-.nav-link.gold {
-  color: var(--on-accent);
-  background: var(--accent-fill);
-  font-weight: 600;
-  padding: 7px 16px;
-  border-radius: 100px;
-  transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-.nav-link.gold:hover,
-.nav-link.gold.active {
-  color: var(--on-accent);
-  background: var(--accent-fill-hover);
-  box-shadow: 0 4px 16px var(--line-gold);
-}
-.nav-link.gold::after { display: none; }
-
-.mobile-drawer a.gold {
-  color: var(--on-accent);
-  background: var(--accent-fill);
-  font-weight: 600;
-  align-self: flex-start;
-  padding: 4px 22px;
-  border-radius: 100px;
-  border-bottom: 0;
-  margin: 6px 0;
-}
-.mobile-drawer a.gold:hover { background: var(--accent-fill-hover); color: var(--on-accent); padding-left: 22px; }
+/* ---------- Direct booking line ----------
+   A quiet "Schedule a call" link under a consultation button, for visitors who
+   would rather pick a time than fill in the form. It takes the text colour of
+   the surface it sits on, so it keeps that surface's contrast. */
+.cta-alt { margin-top: 18px; font-size: 0.95rem; color: inherit; }
+.cta-alt a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.cta-alt a:hover, .cta-alt a:focus-visible { text-decoration-thickness: 2px; }
 
 /* ---------- Light consultation CTA ----------
-   Keeps the gold BizCheck pill as the only gold element in the nav. Inherits
+   Keeps the consultation button the one filled element in the nav. Inherits
    the slide-up navy fill on hover from .btn, so the motion stays consistent;
    only the resting colours change. Form submit buttons stay gold so the
    primary action on a form still reads as primary. */

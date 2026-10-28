@@ -30,6 +30,8 @@ def test_404_carries_the_footer():
 def test_nav_order_is_the_owner_chosen_order():
     nav = load()["nav"]
     assert [n["label"] for n in nav] == [
-        "BizCheck", "Home", "About", "Services", "Projects", "Contact"
+        "Home", "About", "Services", "Projects", "BizCheck", "Contact"
     ]
-    assert next(n for n in nav if n["label"] == "BizCheck")["class"] == "gold"
+    # Final review (2026-10-28): BizCheck is a plain link after Projects, so Book a Consultation is the one filled
+    # control in the nav.
+    assert all(not n["class"] for n in nav)
