@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Services - AYiN Advisors</title>
 <meta name="description" content="AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence." />
-<link rel="canonical" href="https://ayinadvisors.com/Services.html" />
+<link rel="canonical" href="https://ayinadvisors.com/Services" />
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="assets/theme.css">
 <meta name="theme-color" content="#061325" />
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Services - AYiN Advisors" />
 <meta property="og:description" content="AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence." />
-<meta property="og:url" content="https://ayinadvisors.com/Services.html" />
+<meta property="og:url" content="https://ayinadvisors.com/Services" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />

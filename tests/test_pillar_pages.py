@@ -241,7 +241,7 @@ def test_services_and_partnerships_meta_match_their_roles():
     assert "b2b partnerships" in p and "international" in p and "market entry" in p
     for stem, page in pages.items():
         if page.get("template") and page["template"] != "notfound":  # the 404 has no canonical URL
-            assert page["title"].endswith("- AYiN Advisors") and page["canonical"] == f"https://ayinadvisors.com/{stem}.html"
+            assert page["title"].endswith("- AYiN Advisors") and page["canonical"] == f"https://ayinadvisors.com/{stem}"
 
 
 def test_og_and_twitter_meta_follow_the_page(pages):

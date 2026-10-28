@@ -35,7 +35,8 @@ def _resolve(from_stem, ref, soups):
         return None
     if ref.startswith(("http://", "https://")) and not ref.startswith(SITE):
         return None  # external; not crawled
-    if ref.startswith(SITE):
+    absolute = ref.startswith(SITE)
+    if absolute:
         ref = ref[len(SITE):] or "/"
     path, frag = urldefrag(ref)
     path = urlsplit(path).path
@@ -49,7 +50,11 @@ def _resolve(from_stem, ref, soups):
         if name == "index.html":
             stem = "index"
             return f"no id #{frag} on index.html" if frag and soups[stem].find(id=frag) is None else None
-        if name.endswith(".html"):
+        if absolute and name in soups:
+            # Cloudflare Pages serves /About.html at /About (it 308-redirects the .html form), so the canonical, og:url and
+            # sitemap URLs drop the extension; on our own pages links keep it so the files also open straight from disk.
+            stem = name
+        elif name.endswith(".html"):
             if name[:-5] not in soups:
                 return f"no such page {name}"
             stem = name[:-5]

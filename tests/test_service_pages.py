@@ -74,7 +74,7 @@ def test_head_meta_and_breadcrumb(pages, soups, stem):
     pillar = _pillar(stem)
     svc = next(s for s in pillar["services"] if f"{pillar['stem']}/{s['slug']}" == stem)
     assert page["title"] == f"{svc['name']} - AYiN Advisors" and soup.title.string == page["title"]
-    assert page["canonical"] == f"https://ayinadvisors.com/{stem}.html"
+    assert page["canonical"] == f"https://ayinadvisors.com/{stem}"
     assert soup.select_one('link[rel="canonical"]')["href"] == page["canonical"]
     assert 120 <= len(page["description"]) <= 160, len(page["description"])
     assert "—" not in pages[stem] and "–" not in pages[stem]

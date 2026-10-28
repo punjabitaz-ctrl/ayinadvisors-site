@@ -9,24 +9,24 @@ NS = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 # Written out by hand on purpose: this is the public contract, independent of the generator.
 EXPECTED = {
     "https://ayinadvisors.com/": "1.0",
-    "https://ayinadvisors.com/Services.html": "0.8",
-    "https://ayinadvisors.com/partnerships.html": "0.8",
-    "https://ayinadvisors.com/partnerships/market-entry-research.html": "0.7",
-    "https://ayinadvisors.com/partnerships/channel-strategy.html": "0.7",
-    "https://ayinadvisors.com/partnerships/partner-introductions.html": "0.7",
-    "https://ayinadvisors.com/partnerships/regional-expansion.html": "0.7",
-    "https://ayinadvisors.com/ai-solutions.html": "0.8",
-    "https://ayinadvisors.com/ai-solutions/custom-applications.html": "0.7",
-    "https://ayinadvisors.com/ai-solutions/workflow-automation.html": "0.7",
-    "https://ayinadvisors.com/ai-solutions/operational-efficiency.html": "0.7",
-    "https://ayinadvisors.com/digital-presence.html": "0.8",
-    "https://ayinadvisors.com/digital-presence/websites.html": "0.7",
-    "https://ayinadvisors.com/digital-presence/digital-marketing.html": "0.7",
-    "https://ayinadvisors.com/digital-presence/community-content.html": "0.7",
-    "https://ayinadvisors.com/About.html": "0.7",
-    "https://ayinadvisors.com/Projects.html": "0.7",
-    "https://ayinadvisors.com/BizCheck.html": "0.9",
-    "https://ayinadvisors.com/Contact.html": "0.9",
+    "https://ayinadvisors.com/Services": "0.8",
+    "https://ayinadvisors.com/partnerships": "0.8",
+    "https://ayinadvisors.com/partnerships/market-entry-research": "0.7",
+    "https://ayinadvisors.com/partnerships/channel-strategy": "0.7",
+    "https://ayinadvisors.com/partnerships/partner-introductions": "0.7",
+    "https://ayinadvisors.com/partnerships/regional-expansion": "0.7",
+    "https://ayinadvisors.com/ai-solutions": "0.8",
+    "https://ayinadvisors.com/ai-solutions/custom-applications": "0.7",
+    "https://ayinadvisors.com/ai-solutions/workflow-automation": "0.7",
+    "https://ayinadvisors.com/ai-solutions/operational-efficiency": "0.7",
+    "https://ayinadvisors.com/digital-presence": "0.8",
+    "https://ayinadvisors.com/digital-presence/websites": "0.7",
+    "https://ayinadvisors.com/digital-presence/digital-marketing": "0.7",
+    "https://ayinadvisors.com/digital-presence/community-content": "0.7",
+    "https://ayinadvisors.com/About": "0.7",
+    "https://ayinadvisors.com/Projects": "0.7",
+    "https://ayinadvisors.com/BizCheck": "0.9",
+    "https://ayinadvisors.com/Contact": "0.9",
 }
 
 
@@ -75,3 +75,15 @@ def test_main_writes_the_sitemap(sandbox):
     (sandbox / "sitemap.xml").write_text("old", encoding="utf-8")
     build.main()
     assert (sandbox / "sitemap.xml").read_text(encoding="utf-8") == build.render_sitemap()
+
+
+def test_public_urls_are_the_ones_cloudflare_serves_without_a_redirect():
+    """Site audit (2026-10-28): Cloudflare Pages 308-redirects /About.html to /About, so a canonical, og:url or sitemap URL
+    ending in .html points search engines at a redirect. Every one now names the address the page is served at."""
+    from bs4 import BeautifulSoup
+    for stem, html in build.render_all().items():
+        soup = BeautifulSoup(html, "html.parser")
+        for el, attr in ((soup.select_one('link[rel="canonical"]'), "href"), (soup.select_one('meta[property="og:url"]'), "content")):
+            if el is not None:
+                assert not el[attr].endswith(".html"), f"{stem}: {el[attr]}"
+    assert ".html" not in build.render_sitemap()

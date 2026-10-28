@@ -130,7 +130,7 @@
     "About": {
       "title": "About - AYiN Advisors",
       "description": "AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence.",
-      "canonical": "https://ayinadvisors.com/About.html",
+      "canonical": "https://ayinadvisors.com/About",
       "active": "About",
       "cta": {
         "href": "Contact.html",
@@ -145,7 +145,7 @@
     "Services": {
       "title": "Services - AYiN Advisors",
       "description": "AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence.",
-      "canonical": "https://ayinadvisors.com/Services.html",
+      "canonical": "https://ayinadvisors.com/Services",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -161,7 +161,7 @@
     "partnerships": {
       "title": "Partnerships - AYiN Advisors",
       "description": "B2B partnerships and market entry for international firms entering the US: research, channel strategy, partner introductions and regional expansion.",
-      "canonical": "https://ayinadvisors.com/partnerships.html",
+      "canonical": "https://ayinadvisors.com/partnerships",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -178,7 +178,7 @@
     "partnerships/market-entry-research": {
       "title": "US Market Entry Research - AYiN Advisors",
       "description": "Market sizing, segmentation and competitive intelligence for international firms deciding whether, where and how to enter the US.",
-      "canonical": "https://ayinadvisors.com/partnerships/market-entry-research.html",
+      "canonical": "https://ayinadvisors.com/partnerships/market-entry-research",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -196,7 +196,7 @@
     "partnerships/channel-strategy": {
       "title": "Channel Strategy & Enablement - AYiN Advisors",
       "description": "Channel architecture for the US market: distributors, resellers or agents, with the commercial terms, materials and training that drive sales.",
-      "canonical": "https://ayinadvisors.com/partnerships/channel-strategy.html",
+      "canonical": "https://ayinadvisors.com/partnerships/channel-strategy",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -214,7 +214,7 @@
     "partnerships/partner-introductions": {
       "title": "B2B Partner Introductions - AYiN Advisors",
       "description": "Warm, qualified introductions to US buyers, channel partners and decision-makers, with support through the first conversations to agreement.",
-      "canonical": "https://ayinadvisors.com/partnerships/partner-introductions.html",
+      "canonical": "https://ayinadvisors.com/partnerships/partner-introductions",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -232,7 +232,7 @@
     "partnerships/regional-expansion": {
       "title": "Regional Expansion · Canada & LATAM - AYiN Advisors",
       "description": "Extending a proven US playbook into Canada and Latin America, adapting channel models, partner profiles and terms to each market.",
-      "canonical": "https://ayinadvisors.com/partnerships/regional-expansion.html",
+      "canonical": "https://ayinadvisors.com/partnerships/regional-expansion",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -250,7 +250,7 @@
     "ai-solutions": {
       "title": "AI Solutions - AYiN Advisors",
       "description": "AI solutions development: custom applications, workflow automation and operational efficiency, built around the problem in front of you.",
-      "canonical": "https://ayinadvisors.com/ai-solutions.html",
+      "canonical": "https://ayinadvisors.com/ai-solutions",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -267,7 +267,7 @@
     "ai-solutions/custom-applications": {
       "title": "Custom Applications - AYiN Advisors",
       "description": "Custom applications built around how your business works, using AI where it helps and simpler software where it does not, from first design to handover.",
-      "canonical": "https://ayinadvisors.com/ai-solutions/custom-applications.html",
+      "canonical": "https://ayinadvisors.com/ai-solutions/custom-applications",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -285,7 +285,7 @@
     "ai-solutions/workflow-automation": {
       "title": "Workflow Automation - AYiN Advisors",
       "description": "Workflow automation that hands repetitive, manual steps to software, with people kept in the loop wherever a decision still needs a person.",
-      "canonical": "https://ayinadvisors.com/ai-solutions/workflow-automation.html",
+      "canonical": "https://ayinadvisors.com/ai-solutions/workflow-automation",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -303,7 +303,7 @@
     "ai-solutions/operational-efficiency": {
       "title": "Operational Efficiency - AYiN Advisors",
       "description": "A close look at where time and effort are lost in your operations, with a prioritized plan to fix the biggest gaps through AI, automation or process.",
-      "canonical": "https://ayinadvisors.com/ai-solutions/operational-efficiency.html",
+      "canonical": "https://ayinadvisors.com/ai-solutions/operational-efficiency",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -321,7 +321,7 @@
     "digital-presence": {
       "title": "Digital Presence - AYiN Advisors",
       "description": "Digital presence for your business: websites for brand presence, digital marketing for brand online, and community and content for brand connect.",
-      "canonical": "https://ayinadvisors.com/digital-presence.html",
+      "canonical": "https://ayinadvisors.com/digital-presence",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -338,7 +338,7 @@
     "digital-presence/websites": {
       "title": "Websites - AYiN Advisors",
       "description": "Websites that give your brand a presence: a clear, accessible site that says who you are, what you do and how to reach you, planned, written and built.",
-      "canonical": "https://ayinadvisors.com/digital-presence/websites.html",
+      "canonical": "https://ayinadvisors.com/digital-presence/websites",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -356,7 +356,7 @@
     "digital-presence/digital-marketing": {
       "title": "Digital Marketing - AYiN Advisors",
       "description": "Digital marketing that takes your brand online: an audience and channel plan, then the search, social and email work that puts you in front of the right people.",
-      "canonical": "https://ayinadvisors.com/digital-presence/digital-marketing.html",
+      "canonical": "https://ayinadvisors.com/digital-presence/digital-marketing",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -374,7 +374,7 @@
     "digital-presence/community-content": {
       "title": "Community & Content - AYiN Advisors",
       "description": "Community and content that connect your brand with its audience: a content strategy, regular publishing and a community people want to come back to.",
-      "canonical": "https://ayinadvisors.com/digital-presence/community-content.html",
+      "canonical": "https://ayinadvisors.com/digital-presence/community-content",
       "active": "Services",
       "cta": {
         "href": "Contact.html",
@@ -392,7 +392,7 @@
     "Projects": {
       "title": "Projects - AYiN Advisors",
       "description": "AI products designed and shipped, and websites built and launched for our own ventures and for other businesses. Each website is live.",
-      "canonical": "https://ayinadvisors.com/Projects.html",
+      "canonical": "https://ayinadvisors.com/Projects",
       "active": "Projects",
       "cta": {
         "href": "Contact.html",
@@ -407,7 +407,7 @@
     "BizCheck": {
       "title": "BizCheck - Business Idea Evaluation · AYiN Advisors",
       "description": "A ten-agent expert panel evaluates your business idea the way a real advisory firm would - and returns a single verdict: GO, CONDITIONAL GO, or NO GO.",
-      "canonical": "https://ayinadvisors.com/BizCheck.html",
+      "canonical": "https://ayinadvisors.com/BizCheck",
       "active": "BizCheck",
       "cta": {
         "href": "#submit",
@@ -422,7 +422,7 @@
     "Contact": {
       "title": "Book a Consultation - AYiN Advisors",
       "description": "Book a consultation with AYiN Advisors to talk through your goals and which practice fits.",
-      "canonical": "https://ayinadvisors.com/Contact.html",
+      "canonical": "https://ayinadvisors.com/Contact",
       "active": "Contact",
       "cta": {
         "href": "#book",
