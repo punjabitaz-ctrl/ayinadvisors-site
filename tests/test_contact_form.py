@@ -61,3 +61,11 @@ def test_pages_outside_a_practice_book_without_one(pages):
     for page in ("index", "About", "Services"):
         for a in BeautifulSoup(pages[page], "html.parser").select('main a[href*="Contact.html"]'):
             assert "practice=" not in a["href"], page
+
+
+def test_bizcheck_promises_the_same_turnaround_as_the_contact_form(pages):
+    """Site review (2026-10-28): BizCheck said "Within 48 hours / Business days" in one place and "48 business hours" in
+    another. Both now match the contact form's "two business days"."""
+    text = re.sub(r"\s+", " ", BeautifulSoup(pages["BizCheck"], "html.parser").select_one("main").get_text(" "))
+    assert "48" not in text
+    assert text.count("two business days") == 2
