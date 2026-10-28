@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About - AYiN Advisors</title>
+<title>About Our Founder-Led Advisory - AYiN Advisors</title>
 <meta name="description" content="AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence." />
 <link rel="canonical" href="https://ayinadvisors.com/About" />
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ayinadvisors.com/#organization","name":"AYiN Advisors","url":"https://ayinadvisors.com/","email":"hello@ayinadvisors.com","description":"Business solutions for a digital world. B2B partnerships for international firms entering the US, AI solutions development, and digital presence.","image":"https://ayinadvisors.com/og-image.jpg","address":{"@type":"PostalAddress","addressLocality":"New York","addressCountry":"US"},"founder":{"@id":"https://ayinadvisors.com/#founder"}},{"@type":"Person","@id":"https://ayinadvisors.com/#founder","name":"Taz Abbas","jobTitle":"Managing Partner","image":"https://ayinadvisors.com/assets/taz-abbas.jpg","worksFor":{"@id":"https://ayinadvisors.com/#organization"},"sameAs":["https://linkedin.com/in/tazabbas"]}]}</script>
@@ -17,14 +17,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="About - AYiN Advisors" />
+<meta property="og:title" content="About Our Founder-Led Advisory - AYiN Advisors" />
 <meta property="og:description" content="AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence." />
 <meta property="og:url" content="https://ayinadvisors.com/About" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="About - AYiN Advisors" />
+<meta name="twitter:title" content="About Our Founder-Led Advisory - AYiN Advisors" />
 <meta name="twitter:description" content="AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence." />
 <meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />

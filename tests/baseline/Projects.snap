@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Projects - AYiN Advisors</title>
+<title>Projects: AI Products and Websites - AYiN Advisors</title>
 <meta name="description" content="AI products designed and shipped, and websites built and launched for our own ventures and for other businesses. Each website is live." />
 <link rel="canonical" href="https://ayinadvisors.com/Projects" />
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
@@ -16,14 +16,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="AYiN Advisors" />
 <meta property="og:locale" content="en_US" />
-<meta property="og:title" content="Projects - AYiN Advisors" />
+<meta property="og:title" content="Projects: AI Products and Websites - AYiN Advisors" />
 <meta property="og:description" content="AI products designed and shipped, and websites built and launched for our own ventures and for other businesses. Each website is live." />
 <meta property="og:url" content="https://ayinadvisors.com/Projects" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Projects - AYiN Advisors" />
+<meta name="twitter:title" content="Projects: AI Products and Websites - AYiN Advisors" />
 <meta name="twitter:description" content="AI products designed and shipped, and websites built and launched for our own ventures and for other businesses. Each website is live." />
 <meta name="twitter:image" content="https://ayinadvisors.com/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />

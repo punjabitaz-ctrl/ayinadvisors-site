@@ -128,7 +128,7 @@
       }
     },
     "About": {
-      "title": "About - AYiN Advisors",
+      "title": "About Our Founder-Led Advisory - AYiN Advisors",
       "description": "AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence.",
       "canonical": "https://ayinadvisors.com/About",
       "active": "About",
@@ -143,7 +143,7 @@
       }
     },
     "Services": {
-      "title": "Services - AYiN Advisors",
+      "title": "Partnerships, AI and Digital Services - AYiN Advisors",
       "description": "AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence.",
       "canonical": "https://ayinadvisors.com/Services",
       "active": "Services",
@@ -159,7 +159,7 @@
       "template": "hub"
     },
     "partnerships": {
-      "title": "Partnerships - AYiN Advisors",
+      "title": "B2B Partnerships & US Market Entry - AYiN Advisors",
       "description": "B2B partnerships and market entry for international firms entering the US: research, channel strategy, partner introductions and regional expansion.",
       "canonical": "https://ayinadvisors.com/partnerships",
       "active": "Services",
@@ -248,7 +248,7 @@
       }
     },
     "ai-solutions": {
-      "title": "AI Solutions - AYiN Advisors",
+      "title": "AI Solutions Development - AYiN Advisors",
       "description": "AI solutions development: custom applications, workflow automation and operational efficiency, built around the problem in front of you.",
       "canonical": "https://ayinadvisors.com/ai-solutions",
       "active": "Services",
@@ -319,7 +319,7 @@
       }
     },
     "digital-presence": {
-      "title": "Digital Presence - AYiN Advisors",
+      "title": "Digital Presence: Websites & Marketing - AYiN Advisors",
       "description": "Digital presence for your business: websites for brand presence, digital marketing for brand online, and community and content for brand connect.",
       "canonical": "https://ayinadvisors.com/digital-presence",
       "active": "Services",
@@ -390,7 +390,7 @@
       }
     },
     "Projects": {
-      "title": "Projects - AYiN Advisors",
+      "title": "Projects: AI Products and Websites - AYiN Advisors",
       "description": "AI products designed and shipped, and websites built and launched for our own ventures and for other businesses. Each website is live.",
       "canonical": "https://ayinadvisors.com/Projects",
       "active": "Projects",
@@ -405,7 +405,7 @@
       }
     },
     "BizCheck": {
-      "title": "BizCheck - Business Idea Evaluation · AYiN Advisors",
+      "title": "BizCheck: Business Idea Evaluation - AYiN Advisors",
       "description": "A ten-agent expert panel evaluates your business idea the way a real advisory firm would - and returns a single verdict: GO, CONDITIONAL GO, or NO GO.",
       "canonical": "https://ayinadvisors.com/BizCheck",
       "active": "BizCheck",
