@@ -236,12 +236,12 @@ def test_services_and_partnerships_meta_match_their_roles():
     hub, part = pages["Services"], pages["partnerships"]
     d = hub["description"].lower()
     assert "ai" in d and "digital" in d and "partnership" in d and "market entry research" not in d
-    assert hub["title"] == "Services - AYiN Advisors"
+    assert hub["title"] == "Partnerships, AI and Digital Services - AYiN Advisors"
     p = part["description"].lower()
     assert "b2b partnerships" in p and "international" in p and "market entry" in p
     for stem, page in pages.items():
         if page.get("template") and page["template"] != "notfound":  # the 404 has no canonical URL
-            assert page["title"].endswith("- AYiN Advisors") and page["canonical"] == f"https://ayinadvisors.com/{stem}.html"
+            assert page["title"].endswith("- AYiN Advisors") and page["canonical"] == f"https://ayinadvisors.com/{stem}"
 
 
 def test_og_and_twitter_meta_follow_the_page(pages):

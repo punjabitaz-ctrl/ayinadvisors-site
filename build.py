@@ -91,6 +91,68 @@ def expand_image_slots(html: str, root: str = "") -> str:
     return _SLOT.sub(one, html)
 
 
+ORG_ID = f"{SITE_URL}/#organization"
+FOUNDER_ID = f"{SITE_URL}/#founder"
+
+
+def _name(title: str) -> str:
+    """A page title without the " - AYiN Advisors" brand suffix."""
+    return title.rsplit(" - AYiN Advisors", 1)[0]
+
+
+def structured_data(stem: str, site: dict | None = None, services: dict | None = None) -> list[dict]:
+    """schema.org JSON-LD for a page, built only from what the site itself states (site.json, services.json, the footer).
+
+    Home: the organization, its founder and the website. About: the organization and founder. Services, pillar and
+    service pages: a breadcrumb trail; pillar and service pages also describe the service. Other pages: nothing.
+    """
+    site = site or load_site()
+    page = site["pages"][stem]
+    org = {
+        "@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors", "url": f"{SITE_URL}/",
+        "email": "hello@ayinadvisors.com", "description": site["pages"]["index"]["description"],
+        "image": f"{SITE_URL}/og-image.jpg",
+        "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressCountry": "US"},
+        "founder": {"@id": FOUNDER_ID},
+    }
+    founder = {
+        "@type": "Person", "@id": FOUNDER_ID, "name": "Taz Abbas", "jobTitle": "Managing Partner",
+        "image": f"{SITE_URL}/assets/taz-abbas.jpg", "worksFor": {"@id": ORG_ID},
+        "sameAs": ["https://linkedin.com/in/tazabbas"],
+    }
+    if stem == "index":
+        website = {"@type": "WebSite", "@id": f"{SITE_URL}/#website", "url": f"{SITE_URL}/", "name": "AYiN Advisors",
+                   "publisher": {"@id": ORG_ID}}
+        return [{"@context": "https://schema.org", "@graph": [org, founder, website]}]
+    if stem == "About":
+        return [{"@context": "https://schema.org", "@graph": [org, founder]}]
+    kind = page.get("template")
+    if kind not in ("hub", "pillar", "service"):
+        return []
+    pages = site["pages"]
+    trail = [("Home", f"{SITE_URL}/"), ("Services", pages["Services"]["canonical"])]
+    pillar = next((p for p in (services or load_services())["pillars"] if p["stem"] == page.get("pillar", stem)), None)
+    if kind in ("pillar", "service"):
+        trail.append((pillar["name"], pages[pillar["stem"]]["canonical"]))
+    if kind == "service":
+        trail.append((_name(page["title"]), page["canonical"]))
+    out = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "item": u} for i, (n, u) in enumerate(trail, 1)]}]
+    if kind in ("pillar", "service"):
+        out.append({"@context": "https://schema.org", "@type": "Service", "name": _name(page["title"]),
+                    "description": page["description"], "url": page["canonical"],
+                    "serviceType": pillar["name"], "provider": {"@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors"}})
+    return out
+
+
+def jsonld_tags(stem: str) -> str:
+    """The page's structured data as <script type="application/ld+json"> tags; "</" is escaped so no value can close the tag."""
+    return "\n".join(
+        '<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
+        for d in structured_data(stem)
+    )
+
+
 def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = "") -> str:
     site = load_site()
     if stem not in site["pages"]:
@@ -106,6 +168,7 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
         body_scripts=body_scripts,
         logo=env.get_template("_logo.j2").render(root=root),
         footer=env.get_template("_footer.j2").render(site=site, root=root),
+        jsonld=jsonld_tags(stem),
     )
 
 

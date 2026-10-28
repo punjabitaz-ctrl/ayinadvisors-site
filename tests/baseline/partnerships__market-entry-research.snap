@@ -7,7 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>US Market Entry Research - AYiN Advisors</title>
 <meta name="description" content="Market sizing, segmentation and competitive intelligence for international firms deciding whether, where and how to enter the US." />
-<link rel="canonical" href="https://ayinadvisors.com/partnerships/market-entry-research.html" />
+<link rel="canonical" href="https://ayinadvisors.com/partnerships/market-entry-research" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ayinadvisors.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ayinadvisors.com/Services"},{"@type":"ListItem","position":3,"name":"B2B Partnerships","item":"https://ayinadvisors.com/partnerships"},{"@type":"ListItem","position":4,"name":"US Market Entry Research","item":"https://ayinadvisors.com/partnerships/market-entry-research"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"US Market Entry Research","description":"Market sizing, segmentation and competitive intelligence for international firms deciding whether, where and how to enter the US.","url":"https://ayinadvisors.com/partnerships/market-entry-research","serviceType":"B2B Partnerships","provider":{"@type":"Organization","@id":"https://ayinadvisors.com/#organization","name":"AYiN Advisors"}}</script>
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="../assets/theme.css">
 <meta name="theme-color" content="#061325" />
@@ -18,7 +20,7 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="US Market Entry Research - AYiN Advisors" />
 <meta property="og:description" content="Market sizing, segmentation and competitive intelligence for international firms deciding whether, where and how to enter the US." />
-<meta property="og:url" content="https://ayinadvisors.com/partnerships/market-entry-research.html" />
+<meta property="og:url" content="https://ayinadvisors.com/partnerships/market-entry-research" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -249,6 +251,7 @@
         </div>
       <div class="footer-col"><h2>Get in touch</h2>
         <a href="../Contact.html">Book a consultation</a>
+        <a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Schedule a call<span class="vh"> (opens in a new tab)</span></a>
         <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
         <a href="../BizCheck.html">Submit a BizCheck</a>
         <a href="https://linkedin.com/in/tazabbas" target="_blank" rel="nofollow noopener noreferrer">LinkedIn<span class="vh"> (opens in a new tab)</span></a>

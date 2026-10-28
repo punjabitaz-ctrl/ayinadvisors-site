@@ -34,7 +34,8 @@ def test_inline_blocks_are_preserved_exactly():
         body, head_extra, body_scripts = build.page_parts(stem)
         # the theme head script (Phase 2c) lives in the shared base template, not in a page file
         shared = (ROOT / "templates" / "base.j2").read_text(encoding="utf-8")
-        haystack = "\n".join([head_extra, body_scripts, body, shared])
+        # the JSON-LD blocks (site audit, 2026-10-28) are generated from site.json by build.structured_data
+        haystack = "\n".join([head_extra, body_scripts, body, shared, build.jsonld_tags(stem)])
         for block in base["inline_styles"] + base["inline_scripts"]:
             if block.strip():
                 assert block.strip() in haystack, f"{stem} lost an inline block"

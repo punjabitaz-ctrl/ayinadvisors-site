@@ -1,4 +1,5 @@
 """No dead internal links: every href/src on every generated page resolves to a page, an asset or an in-page id."""
+import re
 import json
 import posixpath
 from urllib.parse import urldefrag, urlsplit
@@ -35,7 +36,8 @@ def _resolve(from_stem, ref, soups):
         return None
     if ref.startswith(("http://", "https://")) and not ref.startswith(SITE):
         return None  # external; not crawled
-    if ref.startswith(SITE):
+    absolute = ref.startswith(SITE)
+    if absolute:
         ref = ref[len(SITE):] or "/"
     path, frag = urldefrag(ref)
     path = urlsplit(path).path
@@ -49,7 +51,11 @@ def _resolve(from_stem, ref, soups):
         if name == "index.html":
             stem = "index"
             return f"no id #{frag} on index.html" if frag and soups[stem].find(id=frag) is None else None
-        if name.endswith(".html"):
+        if absolute and name in soups:
+            # Cloudflare Pages serves /About.html at /About (it 308-redirects the .html form), so the canonical, og:url and
+            # sitemap URLs drop the extension; on our own pages links keep it so the files also open straight from disk.
+            stem = name
+        elif name.endswith(".html"):
             if name[:-5] not in soups:
                 return f"no such page {name}"
             stem = name[:-5]
@@ -119,7 +125,7 @@ def _is_external(href: str) -> bool:
 
 
 def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
-    """Links leaving the site (project websites, the founder's LinkedIn) never endorse the target: nofollow + noopener + noreferrer on every one, no exemptions."""
+    """Links leaving the site (project websites, the founder's LinkedIn, the booking calendar) never endorse the target: nofollow + noopener + noreferrer on every one, no exemptions."""
     seen = 0
     for stem, soup in soups.items():
         for a in soup.select("a[href^='http'], a[href^='//']"):
@@ -133,21 +139,26 @@ def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
 
 
 LINKEDIN = "https://linkedin.com/in/tazabbas"
+BOOKING = "https://calendar.app.google/8iyzRwWpo7FWfYB98"
 
 
-def test_the_only_outbound_links_are_the_project_sites_and_the_founders_linkedin(soups):
+def test_the_only_outbound_links_are_the_project_sites_linkedin_and_the_booking_calendar(soups):
     """Site review (2026-10-28): the founder had no public profile anywhere on the site. LinkedIn now sits in every
-    footer and in the About founder block; beside it, the seven project websites remain the only outbound links."""
+    footer and in the About founder block; beside it, the seven project websites remain the only outbound links. The booking calendar (2026-10-28)
+    sits in every footer and on the Contact page."""
     for stem, soup in soups.items():
         outbound = [a["href"] for a in soup.select("a[href^='http'], a[href^='//']") if _is_external(a["href"])]
-        others = [h for h in outbound if h != LINKEDIN]
+        others = [h for h in outbound if h not in (LINKEDIN, BOOKING)]
         footer = soup.select_one("footer")
         if footer is not None:
             assert [a["href"] for a in footer.select(f"a[href='{LINKEDIN}']")] == [LINKEDIN], stem
+            assert [a["href"] for a in footer.select(f"a[href='{BOOKING}']")] == [BOOKING], stem
         if stem == "Projects":
             assert len(others) == 7, stem
         else:
             assert others == [], f"{stem}: {others}"
+    call = soups["Contact"].select(f".contact-meta a[href='{BOOKING}']")
+    assert len(call) == 1 and "opens in a new tab" in call[0].select_one(".vh").get_text()
     founder = soups["About"].select_one(".founder-note a")
     assert founder["href"] == LINKEDIN and "opens in a new tab" in founder.select_one(".vh").get_text()
 
@@ -166,3 +177,13 @@ def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
         assert a.select_one(".btn-arrow")["aria-hidden"] == "true"
         img = card.select_one("picture img")
         assert img and img.get("alt", "").strip() and img.get("width") and img.get("height") and img.get("loading") == "lazy"
+
+
+def test_hidden_link_text_is_hidden_on_every_page(soups):
+    """Every page that carries visually hidden text (.vh) loads the shared stylesheet that hides it. Found on the preview
+    (2026-10-28): the rule lived only in the Projects page styles, so "(opens in a new tab)" showed in every footer."""
+    css = (ROOT / "assets" / "styles.css").read_text(encoding="utf-8")
+    assert re.search(r"^\.vh \{[^}]*clip-path: inset\(50%\)", css, re.M)
+    for stem, soup in soups.items():
+        if soup.select(".vh"):
+            assert any(l["href"].endswith("assets/styles.css") for l in soup.select('link[rel="stylesheet"][href]')), stem

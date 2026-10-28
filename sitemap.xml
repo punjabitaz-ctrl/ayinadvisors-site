@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ayinadvisors.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://ayinadvisors.com/About.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/Services.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayinadvisors.com/partnerships.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayinadvisors.com/partnerships/market-entry-research.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/partnerships/channel-strategy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/partnerships/partner-introductions.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/partnerships/regional-expansion.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/ai-solutions.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayinadvisors.com/ai-solutions/custom-applications.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/ai-solutions/workflow-automation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/ai-solutions/operational-efficiency.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/digital-presence.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ayinadvisors.com/digital-presence/websites.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/digital-presence/digital-marketing.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/digital-presence/community-content.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/Projects.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ayinadvisors.com/BizCheck.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ayinadvisors.com/Contact.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ayinadvisors.com/About</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/Services</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ayinadvisors.com/partnerships</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ayinadvisors.com/partnerships/market-entry-research</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/partnerships/channel-strategy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/partnerships/partner-introductions</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/partnerships/regional-expansion</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/ai-solutions</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ayinadvisors.com/ai-solutions/custom-applications</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/ai-solutions/workflow-automation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/ai-solutions/operational-efficiency</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/digital-presence</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ayinadvisors.com/digital-presence/websites</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/digital-presence/digital-marketing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/digital-presence/community-content</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/Projects</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ayinadvisors.com/BizCheck</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ayinadvisors.com/Contact</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>

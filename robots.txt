@@ -15,17 +15,17 @@ Sitemap: https://ayinadvisors.com/sitemap.xml
 # and cut off inbound leads. Google-Extended and Applebot-Extended
 # govern AI training only and do not affect search indexing.
 #
+# AI search and answer crawlers (OAI-SearchBot, ChatGPT-User,
+# PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User) are
+# also NOT listed: they fetch pages to cite them in AI search answers,
+# not to train models, so blocking them hides the site from prospects
+# who search that way. (Site audit, 2026-10-28.)
+#
 # robots.txt is advisory. Crawlers that ignore it must be stopped at
 # the edge - see Cloudflare AI Crawl Control / Bot Fight Mode.
 # ---------------------------------------------------------------
 
 User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: OAI-SearchBot
 Disallow: /
 
 User-agent: ClaudeBot
@@ -35,12 +35,6 @@ User-agent: Claude-Web
 Disallow: /
 
 User-agent: anthropic-ai
-Disallow: /
-
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: Perplexity-User
 Disallow: /
 
 User-agent: CCBot

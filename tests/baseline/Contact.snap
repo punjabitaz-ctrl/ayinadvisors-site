@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Book a Consultation - AYiN Advisors</title>
 <meta name="description" content="Book a consultation with AYiN Advisors to talk through your goals and which practice fits." />
-<link rel="canonical" href="https://ayinadvisors.com/Contact.html" />
+<link rel="canonical" href="https://ayinadvisors.com/Contact" />
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="assets/theme.css">
 <meta name="theme-color" content="#061325" />
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:title" content="Book a Consultation - AYiN Advisors" />
 <meta property="og:description" content="Book a consultation with AYiN Advisors to talk through your goals and which practice fits." />
-<meta property="og:url" content="https://ayinadvisors.com/Contact.html" />
+<meta property="og:url" content="https://ayinadvisors.com/Contact" />
 <meta property="og:image" content="https://ayinadvisors.com/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -155,6 +155,7 @@
       <p class="lead reveal" data-d="2">Tell us where you're headed. We'll come back within two business days with a candid first view - and the shape of an engagement if it's a fit.</p>
       <div class="contact-meta reveal" data-d="3">
         <div class="cmeta"><span class="k">Email</span><span class="v"><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a></span></div>
+        <div class="cmeta"><span class="k">Call</span><span class="v"><a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Pick a time on the calendar<span class="vh"> (opens in a new tab)</span></a><small>Skip the form and book directly</small></span></div>
         <div class="cmeta"><span class="k">Offices</span><span class="v">New York<small>By appointment</small></span></div>
         <div class="cmeta"><span class="k">Response</span><span class="v">Within 2 business days</span></div>
       </div>
@@ -231,6 +232,7 @@
         </div>
       <div class="footer-col"><h2>Get in touch</h2>
         <a href="Contact.html">Book a consultation</a>
+        <a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Schedule a call<span class="vh"> (opens in a new tab)</span></a>
         <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
         <a href="BizCheck.html">Submit a BizCheck</a>
         <a href="https://linkedin.com/in/tazabbas" target="_blank" rel="nofollow noopener noreferrer">LinkedIn<span class="vh"> (opens in a new tab)</span></a>
