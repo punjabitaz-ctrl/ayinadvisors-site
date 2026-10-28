@@ -77,8 +77,9 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
         page_links = s.select(f"{selector} a[aria-current='page']")
         true_links = s.select(f"{selector} a[aria-current='true']")
         assert len(s.select(f"{selector} a[aria-current]")) == len(page_links) + len(true_links), f"{stem}: unknown aria-current value"
-        if stem == "404":
-            assert not page_links and not true_links, "404 has no current page"
+        if stem == "404" or stem == "blog" or stem.startswith("blog/"):
+            # the blog is linked from the footer only, so no navigation entry is current
+            assert not page_links and not true_links, f"{stem} has no current navigation entry"
             continue
         if stem in pillars:
             assert not page_links, f"{stem} {selector}: a pillar page is not itself a navigation entry"
@@ -93,7 +94,7 @@ def test_aria_current_marks_exactly_the_active_page_in_each_navigation(soups, se
     assert len(set(rest.values())) == len(rest), "each page must mark a different link"
     other = "nav.nav" if selector == ".mobile-drawer" else ".mobile-drawer"
     for stem, s in soups.items():
-        if stem != "404":
+        if stem in targets:
             assert s.select_one(f"{other} a[aria-current]")["href"] == targets[stem]
 
 

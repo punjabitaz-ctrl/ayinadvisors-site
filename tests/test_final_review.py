@@ -23,7 +23,7 @@ def test_every_closing_cta_offers_a_direct_booking_link():
         a = cta.select_one(".cta-alt a")
         assert a and a["href"] == BOOKING, stem
         assert a["target"] == "_blank" and "noopener" in a["rel"] and "(opens in a new tab)" in a.get_text(), stem
-    assert seen == 17
+    assert seen == 20  # 17 before the blog, plus the blog index and its two posts
 
 
 def test_home_shows_selected_work_linking_to_projects():

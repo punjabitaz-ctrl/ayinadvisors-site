@@ -62,6 +62,39 @@ def load_services() -> dict:
     return json.loads((ROOT / "content" / "services.json").read_text(encoding="utf-8"))
 
 
+def load_blog() -> dict:
+    """content/blog.json: the blog index copy, the author and the posts (each post's body is content/blog/<slug>.frag)."""
+    return json.loads((ROOT / "content" / "blog.json").read_text(encoding="utf-8"))
+
+
+def date_label(iso: str) -> str:
+    """"2026-10-28" -> "October 28, 2026", the US form the site's readers expect."""
+    from datetime import date
+    d = date.fromisoformat(iso)
+    return f"{d.strftime('%B')} {d.day}, {d.year}"
+
+
+def blog_posts(site: dict | None = None, services: dict | None = None) -> list[dict]:
+    """The posts of content/blog.json, newest first, each with its page stem, href, practice name and date labels.
+
+    A post must have a page in site.json ("blog/<slug>", template "post"), and every site.json post page a post, so a
+    post can never be published without its page or listed without one.
+    """
+    site = site or load_site()
+    pillars = {p["stem"]: p for p in (services or load_services())["pillars"]}
+    posts = []
+    for post in load_blog()["posts"]:
+        stem = f"blog/{post['slug']}"
+        if site["pages"].get(stem, {}).get("template") != "post":
+            raise KeyError(f"post {post['slug']!r} has no site.json page {stem!r} with template \"post\"")
+        posts.append({**post, "stem": stem, "href": f"{stem}.html", "practice_name": pillars[post["practice"]]["name"],
+                      "published_label": date_label(post["published"]), "updated_label": date_label(post["updated"])})
+    declared = {s for s, pg in site["pages"].items() if pg.get("template") == "post"}
+    if declared != {p["stem"] for p in posts}:
+        raise KeyError(f"site.json post pages without a post in content/blog.json: {sorted(declared - {p['stem'] for p in posts})}")
+    return sorted(posts, key=lambda p: p["published"], reverse=True)
+
+
 SITE_URL = "https://ayinadvisors.com"
 
 
@@ -127,6 +160,8 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
     if stem == "About":
         return [{"@context": "https://schema.org", "@graph": [org, founder]}]
     kind = page.get("template")
+    if kind in ("blog", "post"):
+        return _blog_data(stem, site)
     if kind not in ("hub", "pillar", "service"):
         return []
     pages = site["pages"]
@@ -143,6 +178,30 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
                     "description": page["description"], "url": page["canonical"],
                     "serviceType": pillar["name"], "provider": {"@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors"}})
     return out
+
+
+def _blog_data(stem: str, site: dict) -> list[dict]:
+    """The blog index: a Blog and its breadcrumb. A post: a BlogPosting by the founder, published by the organization."""
+    pages = site["pages"]
+    blog_url = pages["blog"]["canonical"]
+    trail = [("Home", f"{SITE_URL}/"), ("Blog", blog_url)]
+    publisher = {"@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors"}
+    if stem == "blog":
+        main = {"@context": "https://schema.org", "@type": "Blog", "@id": f"{blog_url}#blog", "name": "AYiN Advisors Blog",
+                "url": blog_url, "description": pages["blog"]["description"], "publisher": publisher}
+    else:
+        post = next(p for p in blog_posts(site) if p["stem"] == stem)
+        page = pages[stem]
+        trail.append((post["question"], page["canonical"]))
+        main = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": post["question"],
+                "description": page["description"], "url": page["canonical"], "mainEntityOfPage": page["canonical"],
+                "datePublished": post["published"], "dateModified": post["updated"], "image": f"{SITE_URL}/og-image.jpg",
+                "author": {"@type": "Person", "@id": FOUNDER_ID, "name": load_blog()["author"]["name"],
+                           "url": pages["About"]["canonical"]},
+                "publisher": publisher, "isPartOf": {"@id": f"{blog_url}#blog"}}
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "item": u} for i, (n, u) in enumerate(trail, 1)]}
+    return [crumbs, main]
 
 
 def jsonld_tags(stem: str) -> str:
@@ -199,9 +258,10 @@ def render_page(stem: str, body: str, head_extra: str = "", body_scripts: str = 
 
 
 def template_kind(stem: str) -> str | None:
-    """"hub", "pillar", "service" or "notfound" for a template-rendered page, None for a page made of a .frag and a .json."""
+    """"hub", "pillar", "service", "blog", "post" or "notfound" for a template-rendered page, None for a page made of a
+    .frag and a .json."""
     kind = load_site()["pages"][stem].get("template")
-    if kind not in (None, "hub", "pillar", "service", "notfound"):
+    if kind not in (None, "hub", "pillar", "service", "blog", "post", "notfound"):
         raise ValueError(f"{stem}: unknown template {kind!r}")
     return kind
 
@@ -249,6 +309,19 @@ def page_parts(stem: str) -> tuple[str, str, str]:
         ctx["service"] = next((s for s in ctx["pillar"]["services"] if s["slug"] == page.get("service")), None)
         if ctx["service"] is None or "detail" not in ctx["service"]:
             raise KeyError(f"{stem}: no service {page.get('service')!r} with a detail in pillar {page.get('pillar')!r}")
+    if kind in ("blog", "post"):
+        ctx["blog"] = load_blog()
+        ctx["posts"] = blog_posts(site, services)
+    if kind == "post":
+        post = next(p for p in ctx["posts"] if p["stem"] == stem)
+        post["body"] = (ROOT / "content" / "blog" / f"{post['slug']}.frag").read_text(encoding="utf-8")
+        ctx["post"] = post
+        ctx["pillar"] = next(p for p in pillars if p["stem"] == post["practice"])
+        by_href = {s.get("href"): s for p in pillars for s in p["services"]}
+        missing = [r for r in post["related"] if f"{r}.html" not in by_href]
+        if missing:
+            raise KeyError(f"{stem}: related services with no page: {missing}")
+        ctx["related"] = [by_href[f"{r}.html"] for r in post["related"]]
     return (
         env.get_template(f"{kind}.body.j2").render(**ctx),
         env.get_template("_head_notfound.j2" if kind == "notfound" else "_head_template_page.j2").render(**ctx),

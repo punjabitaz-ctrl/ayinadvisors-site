@@ -54,6 +54,10 @@
             "href": "Projects.html"
           },
           {
+            "label": "Blog",
+            "href": "blog.html"
+          },
+          {
             "label": "BizCheck",
             "href": "BizCheck.html"
           },
@@ -450,6 +454,57 @@
       "footer": true,
       "sitemap": {
         "priority": "0.9",
+        "lastmod": "2026-10-28"
+      }
+    },
+    "blog": {
+      "title": "Blog: Partnerships, AI and Digital Insights - AYiN Advisors",
+      "description": "Plain answers to what buyers ask about entering the US through partners, putting AI to work in a small team, and being found online.",
+      "canonical": "https://ayinadvisors.com/blog",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "blog",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-28"
+      }
+    },
+    "blog/distributor-reseller-or-agent": {
+      "title": "Distributor, Reseller or Agent for the US? - AYiN Advisors",
+      "description": "Distributor, reseller or sales agent: what each US route to market does, when each fits, and the questions to answer before you choose.",
+      "canonical": "https://ayinadvisors.com/blog/distributor-reseller-or-agent",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-28"
+      }
+    },
+    "blog/where-to-start-with-workflow-automation": {
+      "title": "Where to Start With Workflow Automation - AYiN Advisors",
+      "description": "How a small team picks its first workflow to automate, step by step, where AI fits, and what to leave for later.",
+      "canonical": "https://ayinadvisors.com/blog/where-to-start-with-workflow-automation",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
         "lastmod": "2026-10-28"
       }
     },
