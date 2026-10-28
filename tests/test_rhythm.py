@@ -36,6 +36,8 @@ BAND_MAP = {
     "Contact": ["inverse", "inverse"],
     # the blog index: the post list (page), the gold CTA. A post adds its own entry: inverse, page, alt, accent, inverse
     "blog": ["inverse", "page", "accent", "inverse"],
+    "blog/distributor-reseller-or-agent": ["inverse", "page", "alt", "accent", "inverse"],
+    "blog/where-to-start-with-workflow-automation": ["inverse", "page", "alt", "accent", "inverse"],
     # Sprint 6: the 404 hero, then the footer it now carries
     "404": ["inverse", "inverse"],
 }

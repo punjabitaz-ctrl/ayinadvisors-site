@@ -29,11 +29,11 @@ The blog is linked from the footer only. Readers will mostly arrive on a post fr
 
 ## Topic clusters and post titles
 
-Titles marked "draft in review" are written and waiting for Taz's editorial review. The rest are proposals.
+Titles marked "published" are live on the blog. The rest are proposals; each is drafted for Taz's review before it is published.
 
 ### A. Entering the US through partners (B2B Partnerships)
 
-1. Distributor, reseller or agent: which US route to market fits your product? (draft in review)
+1. Distributor, reseller or agent: which US route to market fits your product? (published)
 2. How do you find and vet a US distributor?
 3. What should a US distribution agreement cover before you sign?
 4. What decides how long it takes to get a first US partner selling?
@@ -50,7 +50,7 @@ Titles marked "draft in review" are written and waiting for Taz's editorial revi
 
 ### C. Putting AI to work in a small team (AI Solutions Development)
 
-12. Where should a small team start with workflow automation? (draft in review)
+12. Where should a small team start with workflow automation? (published)
 13. Build or buy: when does a custom application make sense?
 14. What drives the cost of a custom AI tool?
 15. How do you keep a person in the loop in an automated workflow?
