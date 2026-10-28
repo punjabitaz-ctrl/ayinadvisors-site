@@ -31,5 +31,5 @@
 {% endif -%}
 {{ process_band(process, "surface-page" if partnerships else "surface-alt") }}
 {{ who_band(pillar.who, "surface-alt" if partnerships else "surface-page") }}
-{{ cta_band(pillar.cta, root) }}
+{{ cta_band(pillar.cta, root, pillar.stem) }}
 </main>

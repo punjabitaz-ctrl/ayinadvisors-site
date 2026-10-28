@@ -86,7 +86,7 @@ def test_each_pillar_lists_its_services_linking_the_live_ones(soups, pillars, st
     # the only links in the body are the CTA and the live services; none lead to a page that does not exist
     live = {s["href"] for s in p["services"] if s["status"] == "live"}
     for a in soup.select("main a[href]"):
-        assert a["href"] == "Contact.html" or a["href"] in live, a["href"]
+        assert a["href"] == f"Contact.html?practice={p['stem']}" or a["href"] in live, a["href"]
 
 
 @pytest.mark.parametrize("stem", PILLAR_STEMS)
@@ -217,10 +217,13 @@ def test_partnerships_has_the_us_proof_band(soups):
     assert photo is not None and "us-night" in photo["src"] and photo.get("alt")
     stats = band.select(".why-stat")
     assert [(s.select_one("[data-count]")["data-count"], s.select_one("[data-count]").get("data-prefix", ""),
-             s.select_one("[data-count]").get("data-suffix", "")) for s in stats] == [("24", "$", "T"), ("50", "", ""), ("70", "", "%"), ("3", "", "x")]
+             s.select_one("[data-count]").get("data-suffix", "")) for s in stats] == [("50", "", ""), ("4", "", "")]
+    # Site review (2026-10-27): the $24T economy, 70% through partners and 3x faster scale figures had no source and
+    # were removed. Both remaining figures are facts about the US and the practice itself.
     assert [_text(s.select_one(".l")) for s in stats] == [
-        "US consumer + B2B economy", "State markets, one entry strategy", "Of B2B revenue flows through partners",
-        "Faster scale with the right channel"]
+        "State markets, one entry strategy", "Disciplines, one objective: a foothold in North America"]
+    partnerships = next(p for p in build.load_services()["pillars"] if p["stem"] == "partnerships")
+    assert stats[1].select_one("[data-count]")["data-count"] == str(len(partnerships["services"])), "the disciplines figure counts the practice's services"
     assert "The largest opportunity" in _text(band.h2)
     eyebrow = band.select_one(".eyebrow")
     assert eyebrow.select_one("svg.iris-mark") and not band.select(".sec-index")

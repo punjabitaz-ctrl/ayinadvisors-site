@@ -98,7 +98,7 @@ def test_links_to_the_other_three_services_the_pillar_and_the_cta(soups, stem):
     back = more.select_one("p.back-link a")
     assert back["href"] == f"../{pillar['stem']}.html" and _text(back) == f"Back to {pillar['name']}"
     cta = soup.select_one("section.cta")
-    assert _text(cta.h2) == pillar["cta"]["heading"] and cta.select_one("a.btn")["href"] == "../Contact.html"
+    assert _text(cta.h2) == pillar["cta"]["heading"] and cta.select_one("a.btn")["href"] == f"../Contact.html?practice={pillar['stem']}"
     assert [s.get("id") for s in soup.select("main > section")] == ["detail", "more", None]
 
 

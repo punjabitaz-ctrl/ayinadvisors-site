@@ -421,7 +421,7 @@
         <h2 class="h2 reveal" data-d="1">Let the panel<br />read your idea.</h2>
         <p class="lead reveal" data-d="2">Give us the brief. We'll return a candid panel evaluation - the kind of review most founders only get after they've already committed to the wrong path.</p>
         <div class="imeta-list reveal" data-d="3">
-          <div class="imeta"><span class="k">Turnaround</span><span class="v">Within 48 hours<small>Business days</small></span></div>
+          <div class="imeta"><span class="k">Turnaround</span><span class="v">Within two business days</span></div>
           <div class="imeta"><span class="k">Format</span><span class="v">Structured report<small>Score and findings per panelist</small></span></div>
           <div class="imeta"><span class="k">Obligation</span><span class="v">None<small>A conversation follows if there's a fit</small></span></div>
         </div>
@@ -475,7 +475,7 @@
         <div class="form-done" id="bc-done">
           <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"></circle><path d="M25 41l11 11 20-22"></path></svg>
           <h2>Submission received.</h2>
-          <p>The panel is reviewing your idea. You'll hear from us within 48 business hours.</p>
+          <p>The panel is reviewing your idea. You'll hear from us within two business days.</p>
         </div>
       </div>
     </div>
@@ -518,6 +518,7 @@
         <a href="Contact.html">Book a consultation</a>
         <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
         <a href="BizCheck.html">Submit a BizCheck</a>
+        <a href="https://linkedin.com/in/tazabbas" target="_blank" rel="nofollow noopener noreferrer">LinkedIn<span class="vh"> (opens in a new tab)</span></a>
         </div>
       </div>
     <div class="footer-bottom">

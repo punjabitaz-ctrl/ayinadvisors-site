@@ -94,6 +94,11 @@
           {
             "label": "Submit a BizCheck",
             "href": "BizCheck.html"
+          },
+          {
+            "label": "LinkedIn",
+            "href": "https://linkedin.com/in/tazabbas",
+            "external": true
           }
         ]
       }

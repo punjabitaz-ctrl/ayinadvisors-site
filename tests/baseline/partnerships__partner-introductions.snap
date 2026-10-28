@@ -211,7 +211,7 @@
       <span class="eyebrow on-navy center reveal" style="justify-content:center">Start with clarity</span>
       <h2 class="h2 reveal" data-d="1">Not sure where to begin?</h2>
       <p class="lead reveal" data-d="2">Most engagements start with a market read. Book a consultation and we will tell you, candidly, where the opening is.</p>
-      <div class="reveal" data-d="3" style="margin-top:38px"><a href="../Contact.html" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
+      <div class="reveal" data-d="3" style="margin-top:38px"><a href="../Contact.html?practice=partnerships" class="btn btn-white" data-magnetic="0.4"><span class="btn-label">Book a Consultation</span><span class="btn-arrow">→</span></a></div>
     </div>
   </div>
 </section>
@@ -251,6 +251,7 @@
         <a href="../Contact.html">Book a consultation</a>
         <a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a>
         <a href="../BizCheck.html">Submit a BizCheck</a>
+        <a href="https://linkedin.com/in/tazabbas" target="_blank" rel="nofollow noopener noreferrer">LinkedIn<span class="vh"> (opens in a new tab)</span></a>
         </div>
       </div>
     <div class="footer-bottom">
