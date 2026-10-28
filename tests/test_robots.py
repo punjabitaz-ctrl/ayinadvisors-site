@@ -25,8 +25,13 @@ def test_catch_all_group_blocks_source_dirs():
 def test_user_agent_group_count_pinned():
     text = (ROOT / "robots.txt").read_text(encoding="utf-8")
     groups = _groups(text)
-    assert len(groups) == 23
+    assert len(groups) == 19
     names = {g[0].split(":", 1)[1].strip().lower() for g in groups}
+    # AI search and answer crawlers cite the site to people searching; only training crawlers are blocked.
+    for answer_bot in ("oai-searchbot", "chatgpt-user", "perplexitybot", "perplexity-user", "claude-searchbot", "claude-user"):
+        assert answer_bot not in names, answer_bot
+    for trainer in ("gptbot", "claudebot", "ccbot", "google-extended", "applebot-extended"):
+        assert trainer in names, trainer
     # Search engines must stay allowed: never given their own (blocking) group.
     assert "googlebot" not in names
     assert "bingbot" not in names
