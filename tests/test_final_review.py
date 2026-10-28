@@ -49,3 +49,15 @@ def test_every_page_has_a_png_touch_icon():
 def test_contact_location_field_suits_every_practice():
     label = _soup("Contact").select_one('label[for="hq"]')
     assert label.get_text(strip=True) == "Where are you based?"
+
+
+def test_unverified_figures_are_pulled():
+    """2026-10-28: the owner chose to pull three figures that no source confirms, until they confirm them."""
+    import re
+    for name in ("index.html", "About.html", "partnerships.html"):
+        html = (ROOT / name).read_text(encoding="utf-8")
+        for bad in ('data-count="90"', 'data-count="40"', 'data-count="50"', "qualified partner",
+                    "Channel partners in the Partnerships network", "State markets"):
+            assert bad not in html, (name, bad)
+    about = (ROOT / "About.html").read_text(encoding="utf-8")
+    assert len(re.findall(r'class="sb reveal', about)) == 2

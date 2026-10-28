@@ -36,7 +36,6 @@
         <h2 class="h2 why-title reveal" data-d="1">The largest opportunity<br />is also the hardest to read.</h2>
         <p class="lead reveal" data-d="2" style="margin-bottom:8px">The United States is a continent of distinct regional markets, regulatory regimes and buying cultures. Winning it is rarely about the product - it's all about the channels.</p>
         <div class="why-stats reveal" data-d="3">
-          <div class="why-stat"><div class="n"><span data-count="50"></span></div><div class="l">State markets, one entry strategy</div></div>
           <div class="why-stat"><div class="n"><span data-count="4"></span></div><div class="l">Disciplines, one objective: a foothold in North America</div></div>
         </div>
       </div>
