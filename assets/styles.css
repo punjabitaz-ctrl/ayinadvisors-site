@@ -423,6 +423,10 @@ html.js .line-reveal.in > span { transform: none; }
 .skip-link:focus, .skip-link:focus-visible { transform: none; }
 main:focus { outline: none; }
 
+/* Visually hidden text for screen readers, such as "(opens in a new tab)" on outbound links. Shared by every page
+   (it used to live only in the Projects page styles, so the footer, About and Contact showed it as visible text). */
+.vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: normal; border: 0; }
+
 /* Focus: a two-tone ring. The outer ring is the context's focus-ring role (navy on light
    surfaces, bright gold on navy), the inner halo is the surface it sits on, so the ring
    reads against both the control and its background. */

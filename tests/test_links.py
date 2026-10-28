@@ -1,4 +1,5 @@
 """No dead internal links: every href/src on every generated page resolves to a page, an asset or an in-page id."""
+import re
 import json
 import posixpath
 from urllib.parse import urldefrag, urlsplit
@@ -176,3 +177,13 @@ def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
         assert a.select_one(".btn-arrow")["aria-hidden"] == "true"
         img = card.select_one("picture img")
         assert img and img.get("alt", "").strip() and img.get("width") and img.get("height") and img.get("loading") == "lazy"
+
+
+def test_hidden_link_text_is_hidden_on_every_page(soups):
+    """Every page that carries visually hidden text (.vh) loads the shared stylesheet that hides it. Found on the preview
+    (2026-10-28): the rule lived only in the Projects page styles, so "(opens in a new tab)" showed in every footer."""
+    css = (ROOT / "assets" / "styles.css").read_text(encoding="utf-8")
+    assert re.search(r"^\.vh \{[^}]*clip-path: inset\(50%\)", css, re.M)
+    for stem, soup in soups.items():
+        if soup.select(".vh"):
+            assert any(l["href"].endswith("assets/styles.css") for l in soup.select('link[rel="stylesheet"][href]')), stem
