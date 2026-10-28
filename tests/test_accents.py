@@ -76,8 +76,8 @@ def test_card_grids_assemble_hooks_present(soups):
         assert "asm-stage" in grid.get("class", [])
         cells = grid.select("li")
         assert len(cells) == 6 and all(_hooks(li) for li in cells)
-    # Projects: each grid is root and stage; the four AI project cards and the seven site cards animate
-    for sel, card, n in ((".projects-grid:not(.sites-grid)", ".project-card", 4), (".sites-grid", ".site-card", 7)):
+    # Projects: each grid is root and stage; the four AI project cards and the eight site cards animate
+    for sel, card, n in ((".projects-grid:not(.sites-grid)", ".project-card", 4), (".sites-grid", ".site-card", 8)):
         grid = soups["Projects"].select_one(sel)
         assert {"assemble", "asm-stage"} <= set(grid.get("class", [])) and grid.has_attr("data-assemble")
         cards = grid.select(card)

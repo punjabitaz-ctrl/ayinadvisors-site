@@ -104,6 +104,9 @@
   .site-thumb { margin: 0; border-bottom: 1px solid var(--line); background-color: var(--field-bg); }
   .site-thumb picture { display: block; }
   .site-thumb img { display: block; width: 100%; height: auto; }
+  /* a site with no screenshot yet: its domain set in the preview frame, at the same 16:10 so the row stays even */
+  .site-thumb-name { aspect-ratio: 16 / 10; display: grid; place-items: center; padding: 16px; }
+  .site-thumb-name span { font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 1.8vw, 1.6rem); color: var(--ink-muted); overflow-wrap: anywhere; text-align: center; }
   .site-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; min-width: 0; }
   .site-body .pc-link { margin-top: 20px; }
   /* one link per site: its hit area stretches over the whole card, preview included */
@@ -305,6 +308,15 @@
           <h3>Qbit Edge Technologies</h3>
           <p class="pc-desc">Mobile device and IT liquidation in Central New Jersey.</p>
           <p class="pc-link"><a class="tlink site-link" href="https://qbitedgetechnologies.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Qbit Edge Technologies (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
+      </article>
+      <article class="site-card surface-card asm-card">
+        <figure class="site-thumb site-thumb-name" aria-hidden="true"><span>orisonigt.com</span></figure>
+        <div class="site-body">
+          <p class="pc-meta">orisonigt.com</p>
+          <h3>Orison IGT</h3>
+          <p class="pc-desc">Mobile phones, laptops, repairs and wholesale supply in Al Satwa, Dubai.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://orisonigt.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Orison IGT (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
         </div>
       </article>
     </div>

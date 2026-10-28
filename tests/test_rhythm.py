@@ -113,7 +113,7 @@ def test_cards_use_the_card_surface(soups):
             checked += 1
             assert "surface-card" in el.get("class", []), f"{stem}: <{el.name} class={el.get('class')}> is not surface-card"
             assert "surface-inverse" not in el.get("class", [])
-    assert checked == 14
+    assert checked == 15
 
 
 def test_bizcheck_intake_has_no_decorative_canvas(soups):
