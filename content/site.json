@@ -88,6 +88,11 @@
             "href": "Contact.html"
           },
           {
+            "label": "Schedule a call",
+            "href": "https://calendar.app.google/8iyzRwWpo7FWfYB98",
+            "external": true
+          },
+          {
             "label": "hello@ayinadvisors.com",
             "href": "mailto:hello@ayinadvisors.com"
           },
