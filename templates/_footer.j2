@@ -16,7 +16,11 @@
       {% for col in site.footer.columns -%}
       <div class="footer-col"><h2>{{ col.heading|e }}</h2>
         {% for l in col.links -%}
+        {% if l.external -%}
+        <a href="{{ l.href|e }}" target="_blank" rel="nofollow noopener noreferrer">{{ l.label|e }}<span class="vh"> (opens in a new tab)</span></a>
+        {% else -%}
         <a href="{{ l.href|ru(root)|e }}">{{ l.label|e }}</a>
+        {% endif -%}
         {% endfor -%}
       </div>
       {% endfor -%}

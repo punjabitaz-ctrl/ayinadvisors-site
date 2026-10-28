@@ -119,7 +119,7 @@ def _is_external(href: str) -> bool:
 
 
 def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
-    """Links leaving the site (project websites) never endorse the target: nofollow + noopener + noreferrer on every one, no exemptions."""
+    """Links leaving the site (project websites, the founder's LinkedIn) never endorse the target: nofollow + noopener + noreferrer on every one, no exemptions."""
     seen = 0
     for stem, soup in soups.items():
         for a in soup.select("a[href^='http'], a[href^='//']"):
@@ -129,7 +129,27 @@ def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
             rel = set(a.get("rel") or [])
             assert {"nofollow", "noopener", "noreferrer"} <= rel, f"{stem}: {a['href']} rel={sorted(rel)}"
             assert a.get("target") == "_blank", f"{stem}: {a['href']} does not open in a new tab"
-    assert seen == 7, "the seven project websites on the Projects page are the only outbound links"
+    assert seen, "the project websites and the founder's LinkedIn are outbound links"
+
+
+LINKEDIN = "https://linkedin.com/in/tazabbas"
+
+
+def test_the_only_outbound_links_are_the_project_sites_and_the_founders_linkedin(soups):
+    """Site review (2026-10-28): the founder had no public profile anywhere on the site. LinkedIn now sits in every
+    footer and in the About founder block; beside it, the seven project websites remain the only outbound links."""
+    for stem, soup in soups.items():
+        outbound = [a["href"] for a in soup.select("a[href^='http'], a[href^='//']") if _is_external(a["href"])]
+        others = [h for h in outbound if h != LINKEDIN]
+        footer = soup.select_one("footer")
+        if footer is not None:
+            assert [a["href"] for a in footer.select(f"a[href='{LINKEDIN}']")] == [LINKEDIN], stem
+        if stem == "Projects":
+            assert len(others) == 7, stem
+        else:
+            assert others == [], f"{stem}: {others}"
+    founder = soups["About"].select_one(".founder-note a")
+    assert founder["href"] == LINKEDIN and "opens in a new tab" in founder.select_one(".vh").get_text()
 
 
 def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
