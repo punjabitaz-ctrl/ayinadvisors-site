@@ -14,7 +14,7 @@ def _tracked_html() -> set[str]:
 
 def test_only_the_pages_in_site_json_are_tracked_html():
     """Cloudflare serves the repo root, so a tracked .html anywhere else would become a public page."""
-    expected = {f"{s}.html" for s in build.load_site()["pages"]}
+    expected = {f"{s}.html" for s in build.live_pages()}  # a scheduled post has no page until its morning
     assert expected == {f"{s}.html" for s in PAGES}
     assert len(expected) >= 10
     got = _tracked_html()

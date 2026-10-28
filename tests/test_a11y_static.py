@@ -164,7 +164,7 @@ def test_navigation_landmarks_are_labelled_and_the_toggle_is_wired(stem):
 
 
 # The 404 and the blog sit outside the main navigation (the blog is linked from the footer only), so no nav link is current.
-OFF_NAV = [s for s, p in build.load_site()["pages"].items() if not p["active"]]
+OFF_NAV = [s for s, p in build.load_site()["pages"].items() if not p["active"] and s in PAGES]
 
 
 @pytest.mark.parametrize("stem", [s for s in PAGES if s not in OFF_NAV])

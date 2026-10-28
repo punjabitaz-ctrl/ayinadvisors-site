@@ -65,18 +65,23 @@ Titles marked "published" are live on the blog. The rest are proposals; each is 
 
 ## Order and cadence
 
-Proposed cadence: two posts a month, alternating practices, so the blog stays current without becoming a second job. Proposed order for the first six months:
+Updated October 28, 2026, on Taz's call: one post a week, live on Tuesdays at 8am Eastern, each at least 750 words. Every post is still reviewed and approved by Taz first; a post that is not approved by its Tuesday waits, and nothing goes out in its place.
 
-| Month | Posts |
-|---|---|
-| 1 | 1, 12 (drafts in review) |
-| 2 | 8, 17 |
-| 3 | 2, 13 |
-| 4 | 3, 18 |
-| 5 | 9, 14 |
-| 6 | 6, 19 |
+| Goes live | Post | Practice |
+|---|---|---|
+| Wed Oct 28 | 1. Distributor, reseller or agent (published) | B2B Partnerships |
+| Wed Oct 28 | 12. Where to start with workflow automation (published) | AI Solutions Development |
+| Tue Nov 3 | 8. What a reseller needs from a new vendor | B2B Partnerships |
+| Tue Nov 10 | 17. Why a new website is not on Google | Digital Presence |
+| Tue Nov 17 | 2. How to find and vet a US distributor | B2B Partnerships |
+| Tue Nov 24 | 13. Build or buy a custom application | AI Solutions Development |
+| Tue Dec 1 | 3. What a US distribution agreement should cover | B2B Partnerships |
+| Tue Dec 8 | 18. How to get mentioned in AI answers | Digital Presence |
+| Tue Dec 15 | 9. Partner onboarding that leads to a first deal | B2B Partnerships |
+| Tue Dec 22 | 14. What drives the cost of a custom AI tool | AI Solutions Development |
+| Tue Dec 29 | 6. What a US market entry study includes | B2B Partnerships |
 
-Partnerships comes first because it is the firm's lead practice and Taz's deepest experience. Post 17 comes early because AYiN's own site is new to Google, so it can be written from first-hand steps.
+Partnerships leads because it is the firm's lead practice and Taz's deepest experience. Post 17 comes early because AYiN's own site is new to Google, so it can be written from first-hand steps. The earlier plan of two posts a month is replaced by this one.
 
 ## How we will know it works
 
@@ -92,16 +97,29 @@ Topics come from what currently ranks for each practice's core questions on Goog
 
 ## How a post gets published
 
-1. Claude drafts the post outside this repository and shares it with Taz for review.
+1. Claude drafts the post outside this repository and shares it with Taz for review, in the Claude Doc "AYiN blog drafts for review".
 2. Taz gives editorial feedback; Claude revises until Taz approves that exact draft.
-3. Only then does the post go into the repository, through a pull request, and live on merge.
+3. Only then does the post go into the repository, through a pull request, with its Tuesday as its "published" date.
+4. At 8am Eastern that Tuesday, the GitHub Action `.github/workflows/publish-scheduled-posts.yml` rebuilds the site, runs the tests and pushes the new page, the updated blog index and the new sitemap to master. Cloudflare Pages deploys the push.
 
-Drafts never go into this repository. Cloudflare serves the whole repository, so a draft committed here would be reachable on the live site even without a link.
+Unapproved drafts never go into this repository. An approved post can wait here before its Tuesday: until then `build.py` gives it no page, no place on the index and no sitemap entry, and `/content/` answers 404 on the live site. The repository itself is public on GitHub, so a queued post can be read there before its date.
 
 ## How to add an approved post
 
-1. Add the post to `content/blog.json` (slug, question, summary, dates, practice, two or three related service pages).
-2. Write the body in `content/blog/<slug>.frag`, starting with an `h2` "The short answer".
-3. Add the page to `content/site.json` as `blog/<slug>` with `"template": "post"`, a title under 60 characters ending " - AYiN Advisors", a 70 to 160 character description, its canonical address and a sitemap entry.
-4. Run `python build.py`, then `python tools/baseline.py snapshot`, add the post's address to `tests/test_sitemap.py` and its bands to `BAND_MAP` in `tests/test_rhythm.py`.
-5. Run the tests: `python -m pytest --ignore=tests/a11y_browser`.
+1. Add the post to `content/blog.json` (slug, question, summary, practice, two or three related service pages). Set "published" and "updated" to its Tuesday.
+2. Write the body in `content/blog/<slug>.frag`, starting with an `h2` "The short answer". At least 750 words.
+3. Add the page to `content/site.json` as `blog/<slug>` with `"template": "post"`, a title under 60 characters ending " - AYiN Advisors", a 70 to 160 character description, its canonical address and a sitemap entry whose lastmod is its Tuesday.
+4. Run the tests: `python -m pytest --ignore=tests/a11y_browser`. To preview the site as it will be that morning, set `AYIN_BUILD_NOW`, for example `AYIN_BUILD_NOW=2026-11-03T08:00 python build.py`, and do not commit the result.
+
+A post dated today or earlier goes live on merge instead: run `python build.py` and `python tools/baseline.py snapshot` before committing.
+
+## Telling Google
+
+Google retired its sitemap "ping" in 2023. The sitemap is listed in `robots.txt`, and Google rereads it on its own schedule, using each page's lastmod. To submit it the moment a post goes live, the workflow can call the Search Console API. That needs, once:
+
+1. Verify ayinadvisors.com in Google Search Console (a Domain property, through a DNS record in Cloudflare) and submit `https://ayinadvisors.com/sitemap.xml` there.
+2. In Google Cloud, create a service account, enable the Search Console API, and make a JSON key.
+3. In Search Console, add the service account's email as an Owner of the property.
+4. In GitHub, add the JSON key as the Actions secret `GSC_SERVICE_ACCOUNT_JSON`. For a URL-prefix property instead of a Domain property, also add the Actions variable `GSC_SITE` set to `https://ayinadvisors.com/`.
+
+Until the secret exists, the workflow skips this step and the posts still go live.

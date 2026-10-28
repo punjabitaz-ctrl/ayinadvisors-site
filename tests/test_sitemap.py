@@ -28,9 +28,9 @@ EXPECTED = {
     "https://ayinadvisors.com/BizCheck": "0.9",
     "https://ayinadvisors.com/Contact": "0.9",
     "https://ayinadvisors.com/blog": "0.6",
-    "https://ayinadvisors.com/blog/distributor-reseller-or-agent": "0.6",
-    "https://ayinadvisors.com/blog/where-to-start-with-workflow-automation": "0.6",
 }
+# Posts join the sitemap the morning they go live (8am Eastern on their "published" day), one entry each at 0.6.
+EXPECTED.update({f"https://ayinadvisors.com/{p['stem']}": "0.6" for p in build.blog_posts()})
 
 
 def _entries(xml: str) -> list[tuple[str, str]]:
@@ -46,7 +46,8 @@ def test_sitemap_matches_site_json():
 
 def test_sitemap_lists_exactly_the_site_json_pages_that_opt_in():
     pages = build.load_site()["pages"]
-    listed = {p["canonical"] for p in pages.values() if "sitemap" in p}
+    live = set(build.live_pages())
+    listed = {p["canonical"] for s, p in pages.items() if "sitemap" in p and s in live}
     assert listed == set(EXPECTED)
     assert "sitemap" not in pages["404"]
     for stem, p in pages.items():
@@ -102,4 +103,4 @@ def test_every_sitemap_url_carries_a_valid_lastmod():
     for u in urls:
         m = _re.search(r"<lastmod>(\d{4}-\d{2}-\d{2})</lastmod>", u)
         assert m, u
-        assert datetime.date.fromisoformat(m.group(1)) <= datetime.date.today(), u
+        assert datetime.date.fromisoformat(m.group(1)) <= build.build_now().date(), u  # never in the future
