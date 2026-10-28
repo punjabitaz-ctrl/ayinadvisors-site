@@ -50,15 +50,16 @@ def test_template_pages_are_declared_in_site_json():
 
 
 def test_why_stats_have_one_numeral_each():
-    """The four-numeral band moved from Home to the Partnerships proof partial (Sprint 2 Task 3)."""
+    """The numeral band moved from Home to the Partnerships proof partial (Sprint 2 Task 3). The site review
+    (2026-10-27) cut it from four to two: the unsourced $24T, 70% and 3x figures were removed."""
     import re
     assert "why-stats" not in (BODIES / "index.body.frag").read_text(encoding="utf-8")
     body = (ROOT / "templates" / "partials" / "partnerships-proof.frag").read_text(encoding="utf-8")
     block = body.split('class="why-stats', 1)[1].split("</section>", 1)[0]
     stats = re.findall(r'<div class="why-stat">(.*?)</div></div>', block, re.S)
-    assert len(stats) == 4
+    assert len(stats) == 2
     for s in stats:
         assert s.count('class="n"') == 1, s
-    assert len(re.findall(r'class="n"', block)) == 4
-    for bad in ("27T", "50 States", "Trillion"):
+    assert len(re.findall(r'class="n"', block)) == 2
+    for bad in ("27T", "50 States", "Trillion", 'data-count="24"', 'data-count="70"', 'data-suffix="x"'):
         assert bad not in block, bad
