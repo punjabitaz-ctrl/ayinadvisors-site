@@ -162,7 +162,7 @@ BOOKING = "https://calendar.app.google/8iyzRwWpo7FWfYB98"
 
 def test_the_only_outbound_links_are_the_project_sites_linkedin_and_the_booking_calendar(soups):
     """Site review (2026-10-28): the founder had no public profile anywhere on the site. LinkedIn now sits in every
-    footer and in the About founder block; beside it, the seven project websites remain the only outbound links. The booking calendar (2026-10-28)
+    footer and in the About founder block; beside it, the project websites (eight since Orison IGT, 2026-10-28) remain the only outbound links. The booking calendar (2026-10-28)
     sits in every footer and on the Contact page."""
     for stem, soup in soups.items():
         outbound = [a["href"] for a in soup.select("a[href^='http'], a[href^='//']") if _is_external(a["href"])]
@@ -172,7 +172,7 @@ def test_the_only_outbound_links_are_the_project_sites_linkedin_and_the_booking_
             assert [a["href"] for a in footer.select(f"a[href='{LINKEDIN}']")] == [LINKEDIN], stem
             assert [a["href"] for a in footer.select(f"a[href='{BOOKING}']")] == [BOOKING], stem
         if stem == "Projects":
-            assert len(others) == 7, stem
+            assert len(others) == 8, stem
         else:
             assert others == [], f"{stem}: {others}"
     call = soups["Contact"].select(f".contact-meta a[href='{BOOKING}']")
@@ -184,7 +184,7 @@ def test_the_only_outbound_links_are_the_project_sites_linkedin_and_the_booking_
 def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
     soup = soups["Projects"]
     cards = soup.select(".site-card")
-    assert len(cards) == 7
+    assert len(cards) == 8
     for card in cards:
         links = card.select("a")
         assert len(links) == 1, "the preview and the text share one link (no adjacent duplicate links)"
@@ -193,6 +193,11 @@ def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
         assert a.get_text(strip=True).startswith("Visit site")
         assert name in a.select_one(".vh").get_text()
         assert a.select_one(".btn-arrow")["aria-hidden"] == "true"
+        name_thumb = card.select_one(".site-thumb-name")
+        if name_thumb is not None:
+            # no screenshot yet (Orison IGT, 2026-10-28): the frame shows the domain, hidden from assistive tech
+            assert name_thumb.get("aria-hidden") == "true" and card.select_one("picture") is None
+            continue
         img = card.select_one("picture img")
         assert img and img.get("alt", "").strip() and img.get("width") and img.get("height") and img.get("loading") == "lazy"
 

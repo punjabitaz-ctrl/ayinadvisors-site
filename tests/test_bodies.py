@@ -61,9 +61,9 @@ def test_why_stats_have_one_numeral_each():
     body = (ROOT / "templates" / "partials" / "partnerships-proof.frag").read_text(encoding="utf-8")
     block = body.split('class="why-stats', 1)[1].split("</section>", 1)[0]
     stats = re.findall(r'<div class="why-stat">(.*?)</div></div>', block, re.S)
-    assert len(stats) == 2
+    assert len(stats) == 1
     for s in stats:
         assert s.count('class="n"') == 1, s
-    assert len(re.findall(r'class="n"', block)) == 2
-    for bad in ("27T", "50 States", "Trillion", 'data-count="24"', 'data-count="70"', 'data-suffix="x"'):
+    assert len(re.findall(r'class="n"', block)) == 1
+    for bad in ("27T", "50 States", 'data-count="50"', "State markets", "Trillion", 'data-count="24"', 'data-count="70"', 'data-suffix="x"'):
         assert bad not in block, bad

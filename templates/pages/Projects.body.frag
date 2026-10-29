@@ -141,6 +141,15 @@
           <p class="pc-link"><a class="tlink site-link" href="https://qbitedgetechnologies.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Qbit Edge Technologies (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
         </div>
       </article>
+      <article class="site-card surface-card asm-card">
+        <figure class="site-thumb site-thumb-name" aria-hidden="true"><span>orisonigt.com</span></figure>
+        <div class="site-body">
+          <p class="pc-meta">orisonigt.com</p>
+          <h3>Orison IGT</h3>
+          <p class="pc-desc">Mobile phones, laptops, repairs and wholesale supply in Al Satwa, Dubai.</p>
+          <p class="pc-link"><a class="tlink site-link" href="https://orisonigt.com" target="_blank" rel="nofollow noopener noreferrer">Visit site<span class="vh">: Orison IGT (opens in a new tab)</span><span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
