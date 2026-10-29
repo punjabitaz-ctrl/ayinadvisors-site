@@ -1,4 +1,4 @@
-{#- Service page (a sub-service of a pillar): page head (breadcrumb eyebrow back to the pillar, the service name, its summary), the service detail (paragraph and deliverables, content/services.json "detail"), the other services of the practice, the gold CTA band. -#}
+{#- Service page (a sub-service of a pillar): page head (breadcrumb eyebrow back to the pillar, the service name, its summary), the service detail (paragraph and deliverables, content/services.json "detail"), its common questions ("faq"), the other services of the practice, the gold CTA band. -#}
 {%- from "_components.j2" import iris_mark, pagehead, cta_band -%}
 {%- set d = service.detail -%}
 {%- set back = pillar.stem ~ ".html" -%}
@@ -24,8 +24,30 @@
   </div>
 </section>
 
+{%- if faq %}
+
+<!-- COMMON QUESTIONS -->
+<section class="section surface-alt clip-x" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <h2 class="h2 reveal" id="faq-title">Common questions</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      {%- for f in faq %}
+      <div class="faq-item">
+        <h3 class="h3">{{ f.q|e }}</h3>
+        <p>{{ f.before|e }}{% if f.post %}<a href="{{ f.post.href|ru(root)|e }}">{{ f.post.question|e }}</a>{{ f.after|e }}{% endif %}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}
+
 <!-- ALSO IN THE PRACTICE -->
-<section class="section surface-alt clip-x assemble" id="more" data-assemble>
+<section class="section surface-page clip-x assemble" id="more" data-assemble>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">

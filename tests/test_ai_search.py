@@ -134,3 +134,44 @@ def test_projects_structured_data_matches_the_cards_on_the_page():
 def test_contact_is_a_contact_page_about_the_organization():
     page = _one("Contact", "ContactPage")
     assert page["url"] == PAGES["Contact"]["canonical"] and page["about"]["@id"] == build.ORG_ID
+
+
+# ---------------------------------------------------------------- service page FAQs (approved 2026-10-29)
+SERVICES = [(p, s) for p in build.load_services()["pillars"] for s in p["services"]]
+
+
+def test_every_service_page_answers_three_common_questions_on_the_page_and_in_its_faq_data():
+    for _, svc in SERVICES:
+        stem = svc["href"][: -len(".html")]
+        soup = _soup(stem)
+        band = soup.select_one("main > section#faq")
+        assert band is not None and band.h2.get_text(strip=True) == "Common questions", stem
+        shown = [(i.h3.get_text(" ", strip=True), i.p.get_text(" ", strip=True)) for i in band.select(".faq-item")]
+        faq = build.service_faq(svc)
+        assert len(shown) == 3 and [q for q, _ in shown] == [f["q"] for f in faq], stem
+        data = _one(stem, "FAQPage")
+        assert data["url"] == PAGES[stem]["canonical"]
+        assert [(e["name"], e["acceptedAnswer"]["text"]) for e in data["mainEntity"]] == [(f["q"], f["text"]) for f in faq]
+        for (_, answer), f in zip(shown, faq):  # the page shows the same answer, with the post's title as a link
+            assert answer == f["text"].replace('"', ""), (stem, answer)
+
+
+def test_two_answers_link_their_live_blog_post():
+    linked = {}
+    for _, svc in SERVICES:
+        stem = svc["href"][: -len(".html")]
+        for a in _soup(stem).select("section#faq a"):
+            linked[stem] = a["href"]
+            target = (ROOT / stem).parent / f"{a['href']}.html"
+            assert target.resolve().is_file(), (stem, a["href"])
+    assert linked == {"partnerships/channel-strategy": "../blog/distributor-reseller-or-agent",
+                      "ai-solutions/workflow-automation": "../blog/where-to-start-with-workflow-automation"}
+
+
+def test_an_answer_cannot_point_at_a_post_that_is_not_live():
+    svc = {"slug": "x", "detail": {"faq": [{"q": "Q?", "a": "See {post}.", "post": "not-a-post"}]}}
+    try:
+        build.service_faq(svc)
+    except KeyError:
+        return
+    raise AssertionError("an answer naming no live post was rendered")

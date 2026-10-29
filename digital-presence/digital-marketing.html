@@ -11,6 +11,7 @@
 <link rel="alternate" type="application/rss+xml" title="AYiN Advisors Blog" href="https://ayinadvisors.com/blog/feed.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ayinadvisors.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ayinadvisors.com/Services"},{"@type":"ListItem","position":3,"name":"Digital Presence","item":"https://ayinadvisors.com/digital-presence"},{"@type":"ListItem","position":4,"name":"Digital Marketing","item":"https://ayinadvisors.com/digital-presence/digital-marketing"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Digital Marketing","description":"Digital marketing that takes your brand online: an audience and channel plan, then the search, social and email work that puts you in front of the right people.","url":"https://ayinadvisors.com/digital-presence/digital-marketing","serviceType":"Digital Presence","audience":{"@type":"BusinessAudience","name":"Businesses building their presence online"},"provider":{"@type":"Organization","@id":"https://ayinadvisors.com/#organization","name":"AYiN Advisors"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","url":"https://ayinadvisors.com/digital-presence/digital-marketing","mainEntity":[{"@type":"Question","name":"Our website is live but nobody finds it. Can you help?","acceptedAnswer":{"@type":"Answer","text":"Yes. A website only works when the right people find it. We work out who you want to reach and where they spend their time online, then plan and run the channels that put your brand in front of them."}},{"@type":"Question","name":"Which channels do you work with?","acceptedAnswer":{"@type":"Answer","text":"Search, social media, and email and newsletters, planned and launched as campaigns."}},{"@type":"Question","name":"How do you know what is working?","acceptedAnswer":{"@type":"Answer","text":"We report on what is working, keep it, and drop what does not."}}]}</script>
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="../assets/theme.css">
 <meta name="theme-color" content="#061325" />
@@ -63,6 +64,14 @@
   .pagehead .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-gold); }
   .pagehead .eyebrow a:hover { border-bottom-color: currentColor; }
 
+  /* ---------- COMMON QUESTIONS ---------- */
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .faq-item { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .faq-item h3 { margin: 0 0 12px; }
+  .faq-item p { color: var(--ink-muted); max-width: 46ch; margin: 0; }
+  .faq-item a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .faq-item a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+
   /* ---------- ALSO IN THE PRACTICE ---------- */
   .ps-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
   .ps-list.ps-2 { grid-template-columns: repeat(2, 1fr); }
@@ -84,6 +93,7 @@
 
   @media (max-width: 880px) {
     .ps-list, .ps-list.ps-2 { grid-template-columns: 1fr; }
+    .faq-list { grid-template-columns: 1fr; }
     .ph-motif { opacity: 0.3; right: -200px; }
   }
   @media (max-width: 820px) {
@@ -179,8 +189,33 @@
   </div>
 </section>
 
+<!-- COMMON QUESTIONS -->
+<section class="section surface-alt clip-x" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <h2 class="h2 reveal" id="faq-title">Common questions</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3 class="h3">Our website is live but nobody finds it. Can you help?</h3>
+        <p>Yes. A website only works when the right people find it. We work out who you want to reach and where they spend their time online, then plan and run the channels that put your brand in front of them.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="h3">Which channels do you work with?</h3>
+        <p>Search, social media, and email and newsletters, planned and launched as campaigns.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="h3">How do you know what is working?</h3>
+        <p>We report on what is working, keep it, and drop what does not.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ALSO IN THE PRACTICE -->
-<section class="section surface-alt clip-x assemble" id="more" data-assemble>
+<section class="section surface-page clip-x assemble" id="more" data-assemble>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">

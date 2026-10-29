@@ -99,6 +99,20 @@
               "Beachhead market recommendation",
               "Demand & buyer-persona mapping",
               "Go / no-go entry thesis"
+            ],
+            "faq": [
+              {
+                "q": "What does US market entry research cover?",
+                "a": "It maps US demand for your category: where it concentrates, who already owns it, and the regulatory and pricing realities you will meet on arrival. It covers market sizing and segmentation, the competitive and pricing landscape, a regulatory and compliance scan, and demand and buyer-persona mapping."
+              },
+              {
+                "q": "What do I get at the end?",
+                "a": "An honest read on whether, where and how to enter the US, with a beachhead market recommendation and a go or no-go entry thesis."
+              },
+              {
+                "q": "When should a company do this?",
+                "a": "Before you spend money on the ground. It suits international firms that want an honest read on whether, where and how to enter before they commit."
+              }
             ]
           }
         },
@@ -118,6 +132,21 @@
               "Onboarding & training program",
               "Pricing & margin structure",
               "Performance & KPI framework"
+            ],
+            "faq": [
+              {
+                "q": "Should I use distributors, resellers or agents in the US?",
+                "a": "It depends on your product and margins. We design the channel architecture that suits them: distributors, resellers, agents or a hybrid. Our post {post} walks through when each one fits.",
+                "post": "distributor-reseller-or-agent"
+              },
+              {
+                "q": "What does channel enablement include?",
+                "a": "The commercial terms, materials and training that turn a partner signature into sales: partner economics and incentives, a sales enablement toolkit, an onboarding and training program, and the pricing and margin structure."
+              },
+              {
+                "q": "How do you measure whether the channel is working?",
+                "a": "We build a performance and KPI framework into the channel design."
+              }
             ]
           }
         },
@@ -137,6 +166,20 @@
               "Deal & term negotiation support",
               "Buyer & distributor outreach",
               "Relationship handover"
+            ],
+            "faq": [
+              {
+                "q": "Who do you introduce us to?",
+                "a": "The buyers, channel partners and decision-makers who move your category in the United States, drawn from a vetted long-list of target partners."
+              },
+              {
+                "q": "Are these cold introductions?",
+                "a": "No. They are warm introductions, made personally, through relationships we already hold."
+              },
+              {
+                "q": "What happens after the introduction?",
+                "a": "We prepare for and support the first meetings, help negotiate deals and terms, and hand the relationship over to your team."
+              }
             ]
           }
         },
@@ -156,6 +199,20 @@
               "Cross-border commercial terms",
               "Regulatory & tax navigation",
               "Multi-market governance"
+            ],
+            "faq": [
+              {
+                "q": "When should we expand into Canada or Latin America?",
+                "a": "Once your US channel is running. We then extend the playbook that worked in the US north and south."
+              },
+              {
+                "q": "What changes from one market to the next?",
+                "a": "Channel models, partner profiles and commercial terms are adapted to each market's language, regulation and buying culture."
+              },
+              {
+                "q": "What does the work include?",
+                "a": "Canada market and channel entry, prioritizing and sequencing Latin American markets, local partner sourcing, cross-border commercial terms, regulatory and tax navigation, and governance across markets."
+              }
             ]
           }
         }
@@ -220,6 +277,20 @@
               "Working application, built in stages",
               "Testing with your team",
               "Handover & documentation"
+            ],
+            "faq": [
+              {
+                "q": "When does a business need a custom application?",
+                "a": "When off-the-shelf software does not fit the way you work."
+              },
+              {
+                "q": "Do you always use AI?",
+                "a": "No. We start with the problem and the people who will use the tool, and use AI where it helps and simpler software where it does not."
+              },
+              {
+                "q": "How is the application built?",
+                "a": "In stages. We define the problem and requirements, map the users and workflow, design and plan the build, build it in stages, test it with your team, then hand it over with documentation."
+              }
             ]
           }
         },
@@ -239,6 +310,21 @@
               "Automated workflows, tested end to end",
               "Human review & exception handling",
               "Team training & runbook"
+            ],
+            "faq": [
+              {
+                "q": "Which tasks should we automate first?",
+                "a": "Steps a machine can do reliably, like re-keying data, chasing approvals and moving files by hand. Our post {post} covers how to pick the first one.",
+                "post": "where-to-start-with-workflow-automation"
+              },
+              {
+                "q": "Will automation replace people's decisions?",
+                "a": "No. We keep a person in the loop wherever a decision needs one, with human review and exception handling built in."
+              },
+              {
+                "q": "What do we get?",
+                "a": "A map of your current workflow, a shortlist of what to automate, the tools and integrations chosen, automated workflows tested end to end, and training and a runbook for your team."
+              }
             ]
           }
         },
@@ -258,6 +344,20 @@
               "Prioritized list of fixes",
               "Implementation roadmap",
               "Measures to track progress"
+            ],
+            "faq": [
+              {
+                "q": "What is an operational efficiency review?",
+                "a": "A close look at how your operation runs: where time goes, where work waits and where effort is repeated."
+              },
+              {
+                "q": "What do we get from it?",
+                "a": "A clear picture of the biggest gaps, a prioritized list of fixes, an implementation roadmap and measures to track progress."
+              },
+              {
+                "q": "Is the fix always AI?",
+                "a": "No. It may be AI, automation or a change in process, whichever closes the gap."
+              }
             ]
           }
         }
@@ -315,6 +415,20 @@
               "Responsive, accessible build",
               "Search essentials: titles, descriptions, sitemap",
               "Launch & handover"
+            ],
+            "faq": [
+              {
+                "q": "What goes into a website you build?",
+                "a": "A site structure and page plan, messaging and page copy, visual design in your brand, a responsive and accessible build, and the search essentials: titles, descriptions and a sitemap."
+              },
+              {
+                "q": "Will we be able to update it ourselves?",
+                "a": "Yes. We build it to be easy for you to keep up to date, and hand it over at launch."
+              },
+              {
+                "q": "Who is it for?",
+                "a": "Businesses that need a website that says who they are and what they do, whether they are starting out or already online."
+              }
             ]
           }
         },
@@ -334,6 +448,20 @@
               "Email & newsletter setup",
               "Campaign planning & launch",
               "Reporting on what is working"
+            ],
+            "faq": [
+              {
+                "q": "Our website is live but nobody finds it. Can you help?",
+                "a": "Yes. A website only works when the right people find it. We work out who you want to reach and where they spend their time online, then plan and run the channels that put your brand in front of them."
+              },
+              {
+                "q": "Which channels do you work with?",
+                "a": "Search, social media, and email and newsletters, planned and launched as campaigns."
+              },
+              {
+                "q": "How do you know what is working?",
+                "a": "We report on what is working, keep it, and drop what does not."
+              }
             ]
           }
         },
@@ -353,6 +481,20 @@
               "Community setup & guidelines",
               "Publishing calendar & rhythm",
               "Audience feedback & engagement review"
+            ],
+            "faq": [
+              {
+                "q": "What kind of content do you produce?",
+                "a": "Articles, posts and newsletters, plus planning for podcasts and video, built on a content strategy and editorial themes."
+              },
+              {
+                "q": "Why build a community around a brand?",
+                "a": "Attention is earned by being useful. Content your audience wants, with a community around it, brings people back, gets them talking back and helps them remember who you are."
+              },
+              {
+                "q": "How often do you publish?",
+                "a": "We set a publishing calendar and rhythm with you, and review audience feedback and engagement along the way."
+              }
             ]
           }
         }
