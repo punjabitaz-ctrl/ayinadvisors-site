@@ -223,8 +223,9 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
     founder = {
         "@type": "Person", "@id": FOUNDER_ID, "name": "Taz Abbas", "jobTitle": "Managing Partner",
         "image": f"{SITE_URL}/assets/taz-abbas.jpg", "worksFor": {"@id": ORG_ID},
+        "url": "https://tazabbas.com/",
         "knowsAbout": [partnerships["name"]] + [s["name"] for s in partnerships["services"]],
-        "sameAs": ["https://linkedin.com/in/tazabbas"],
+        "sameAs": ["https://tazabbas.com/", "https://linkedin.com/in/tazabbas"],
     }
     if stem == "index":
         website = {"@type": "WebSite", "@id": f"{SITE_URL}/#website", "url": f"{SITE_URL}/", "name": "AYiN Advisors",
@@ -514,7 +515,7 @@ def render_llms() -> str:
         return pages[stem]["canonical"]
 
     lines = ["# AYiN Advisors", "", f"> {pages['index']['description']}", "",
-             "AYiN Advisors is a founder-led advisory in New York with three practices. Taz Abbas is the Managing Partner.",
+             "AYiN Advisors is a founder-led advisory in New York with three practices. Taz Abbas is the Managing Partner (https://tazabbas.com).",
              f"Contact: hello@ayinadvisors.com, or the [contact page]({url('Contact')}).", "", "## Practices", ""]
     for pillar in services["pillars"]:
         lines.append(f"- [{pillar['name']}]({url(pillar['stem'])}): {pillar['buyer']}. {pillar['summary']}")

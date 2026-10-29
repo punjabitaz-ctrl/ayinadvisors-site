@@ -89,7 +89,7 @@
         <h3>Taz Abbas</h3>
         <p>Two decades of B2B Partnerships work: guiding international firms from first market read to commercial foothold across the Americas.</p>
         <p>An operator who has built channels, signed distributors and carried foreign brands into North America - the experience behind our B2B Partnerships practice.</p>
-        <p class="founder-note">Full background on <a href="https://linkedin.com/in/tazabbas" class="tlink on-navy" target="_blank" rel="nofollow noopener noreferrer">LinkedIn<span class="vh"> (opens in a new tab)</span> <span class="btn-arrow" aria-hidden="true">→</span></a></p>
+        <p class="founder-note">Full background at <a href="https://tazabbas.com/" class="tlink on-navy" target="_blank" rel="noopener">tazabbas.com<span class="vh"> (opens in a new tab)</span> <span class="btn-arrow" aria-hidden="true">→</span></a> and on <a href="https://linkedin.com/in/tazabbas" class="tlink on-navy" target="_blank" rel="nofollow noopener noreferrer">LinkedIn<span class="vh"> (opens in a new tab)</span> <span class="btn-arrow" aria-hidden="true">→</span></a></p>
       </div>
     </div>
   </div>

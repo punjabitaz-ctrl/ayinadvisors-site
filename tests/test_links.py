@@ -143,7 +143,9 @@ def _is_external(href: str) -> bool:
 
 
 def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
-    """Links leaving the site (project websites, the founder's LinkedIn, the booking calendar) never endorse the target: nofollow + noopener + noreferrer on every one, no exemptions."""
+    """Links leaving the site (project websites, the founder's LinkedIn, the booking calendar) never endorse the target:
+    nofollow + noopener + noreferrer on every one. The one exemption is the founder's own site, tazabbas.com
+    (2026-10-29): a followed link between the founder's two sites tells search engines they belong to the same person."""
     seen = 0
     for stem, soup in soups.items():
         for a in soup.select("a[href^='http'], a[href^='//']"):
@@ -151,12 +153,16 @@ def test_every_external_link_passes_no_seo_value_and_opens_safely(soups):
                 continue
             seen += 1
             rel = set(a.get("rel") or [])
-            assert {"nofollow", "noopener", "noreferrer"} <= rel, f"{stem}: {a['href']} rel={sorted(rel)}"
+            if a["href"] == FOUNDER_SITE:
+                assert "noopener" in rel and "nofollow" not in rel, f"{stem}: {a['href']} rel={sorted(rel)}"
+            else:
+                assert {"nofollow", "noopener", "noreferrer"} <= rel, f"{stem}: {a['href']} rel={sorted(rel)}"
             assert a.get("target") == "_blank", f"{stem}: {a['href']} does not open in a new tab"
     assert seen, "the project websites and the founder's LinkedIn are outbound links"
 
 
 LINKEDIN = "https://linkedin.com/in/tazabbas"
+FOUNDER_SITE = "https://tazabbas.com/"
 BOOKING = "https://calendar.app.google/8iyzRwWpo7FWfYB98"
 
 
@@ -166,7 +172,7 @@ def test_the_only_outbound_links_are_the_project_sites_linkedin_and_the_booking_
     sits in every footer and on the Contact page."""
     for stem, soup in soups.items():
         outbound = [a["href"] for a in soup.select("a[href^='http'], a[href^='//']") if _is_external(a["href"])]
-        others = [h for h in outbound if h not in (LINKEDIN, BOOKING)]
+        others = [h for h in outbound if h not in (LINKEDIN, BOOKING) and not (stem == "About" and h == FOUNDER_SITE)]
         footer = soup.select_one("footer")
         if footer is not None:
             assert [a["href"] for a in footer.select(f"a[href='{LINKEDIN}']")] == [LINKEDIN], stem
@@ -177,8 +183,9 @@ def test_the_only_outbound_links_are_the_project_sites_linkedin_and_the_booking_
             assert others == [], f"{stem}: {others}"
     call = soups["Contact"].select(f".contact-meta a[href='{BOOKING}']")
     assert len(call) == 1 and "opens in a new tab" in call[0].select_one(".vh").get_text()
-    founder = soups["About"].select_one(".founder-note a")
-    assert founder["href"] == LINKEDIN and "opens in a new tab" in founder.select_one(".vh").get_text()
+    founder = soups["About"].select(".founder-note a")
+    assert [a["href"] for a in founder] == [FOUNDER_SITE, LINKEDIN]
+    assert all("opens in a new tab" in a.select_one(".vh").get_text() for a in founder)
 
 
 def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):

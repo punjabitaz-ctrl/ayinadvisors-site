@@ -33,7 +33,8 @@ def test_home_describes_the_organization_founder_and_website(pages):
     org, person, _ = blocks[0]["@graph"]
     assert org["name"] == "AYiN Advisors" and org["url"] == "https://ayinadvisors.com/"
     assert org["email"] == "hello@ayinadvisors.com" and org["address"]["addressLocality"] == "New York"
-    assert person["name"] == "Taz Abbas" and person["sameAs"] == ["https://linkedin.com/in/tazabbas"]
+    assert person["name"] == "Taz Abbas" and person["sameAs"] == ["https://tazabbas.com/", "https://linkedin.com/in/tazabbas"]
+    assert person["url"] == "https://tazabbas.com/"
 
 
 def test_about_describes_the_organization_and_founder(pages):
