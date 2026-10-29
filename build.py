@@ -140,21 +140,29 @@ def _name(title: str) -> str:
 def structured_data(stem: str, site: dict | None = None, services: dict | None = None) -> list[dict]:
     """schema.org JSON-LD for a page, built only from what the site itself states (site.json, services.json, the footer).
 
-    Home: the organization, its founder and the website. About: the organization and founder. Services, pillar and
-    service pages: a breadcrumb trail; pillar and service pages also describe the service. Other pages: nothing.
+    Home: the organization, its founder and the website. About: the organization and founder. Contact: a contact page
+    about the organization. Projects: the products and sites it shows. Services, pillar and service pages: a breadcrumb
+    trail; pillar and service pages also describe the service. Blog pages: see _blog_data. Other pages: nothing.
     """
     site = site or load_site()
+    services = services or load_services()
     page = site["pages"][stem]
+    pillars = services["pillars"]
     org = {
         "@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors", "url": f"{SITE_URL}/",
         "email": "hello@ayinadvisors.com", "description": site["pages"]["index"]["description"],
-        "image": f"{SITE_URL}/og-image.jpg",
+        "image": f"{SITE_URL}/og-image.jpg", "logo": f"{SITE_URL}/apple-touch-icon.png",
         "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressCountry": "US"},
+        "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "hello@ayinadvisors.com",
+                         "url": site["pages"]["Contact"]["canonical"], "availableLanguage": "English"},
+        "knowsAbout": [p["name"] for p in pillars] + [s["name"] for p in pillars for s in p["services"]],
         "founder": {"@id": FOUNDER_ID},
     }
+    partnerships = next(p for p in pillars if p["stem"] == "partnerships")
     founder = {
         "@type": "Person", "@id": FOUNDER_ID, "name": "Taz Abbas", "jobTitle": "Managing Partner",
         "image": f"{SITE_URL}/assets/taz-abbas.jpg", "worksFor": {"@id": ORG_ID},
+        "knowsAbout": [partnerships["name"]] + [s["name"] for s in partnerships["services"]],
         "sameAs": ["https://linkedin.com/in/tazabbas"],
     }
     if stem == "index":
@@ -163,6 +171,11 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
         return [{"@context": "https://schema.org", "@graph": [org, founder, website]}]
     if stem == "About":
         return [{"@context": "https://schema.org", "@graph": [org, founder]}]
+    if stem == "Contact":
+        return [{"@context": "https://schema.org", "@type": "ContactPage", "name": _name(page["title"]),
+                 "url": page["canonical"], "description": page["description"], "about": org}]
+    if stem == "Projects":
+        return [_projects_data(page)]
     kind = page.get("template")
     if kind in ("blog", "post"):
         return _blog_data(stem, site)
@@ -170,7 +183,7 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
         return []
     pages = site["pages"]
     trail = [("Home", f"{SITE_URL}/"), ("Services", pages["Services"]["canonical"])]
-    pillar = next((p for p in (services or load_services())["pillars"] if p["stem"] == page.get("pillar", stem)), None)
+    pillar = next((p for p in pillars if p["stem"] == page.get("pillar", stem)), None)
     if kind in ("pillar", "service"):
         trail.append((pillar["name"], pages[pillar["stem"]]["canonical"]))
     if kind == "service":
@@ -178,10 +191,60 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
     out = [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": i, "name": n, "item": u} for i, (n, u) in enumerate(trail, 1)]}]
     if kind in ("pillar", "service"):
-        out.append({"@context": "https://schema.org", "@type": "Service", "name": _name(page["title"]),
-                    "description": page["description"], "url": page["canonical"],
-                    "serviceType": pillar["name"], "provider": {"@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors"}})
+        service = {"@context": "https://schema.org", "@type": "Service", "name": _name(page["title"]),
+                   "description": page["description"], "url": page["canonical"],
+                   "serviceType": pillar["name"], "audience": {"@type": "BusinessAudience", "name": pillar["buyer"]},
+                   "provider": {"@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors"}}
+        area = AREA_SERVED.get(stem, AREA_SERVED.get(pillar["stem"]))
+        if area:
+            service["areaServed"] = [{"@type": "Place", "name": a} for a in area]
+        if kind == "pillar":
+            service["hasOfferCatalog"] = {"@type": "OfferCatalog", "name": pillar["name"], "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": s["name"],
+                                                   "url": pages[s["href"][: -len(".html")]]["canonical"]}}
+                for s in pillar["services"]]}
+        out.append(service)
     return out
+
+
+# Where the B2B Partnerships practice says it works (its pages and About): the US first, then Canada and Latin America.
+# The other two practices state no area, so they get none.
+AREA_SERVED = {
+    "partnerships": ["United States", "Canada", "Latin America"],
+    "partnerships/market-entry-research": ["United States"],
+    "partnerships/channel-strategy": ["United States"],
+    "partnerships/partner-introductions": ["United States"],
+    "partnerships/regional-expansion": ["Canada", "Latin America"],
+}
+
+_CARD = re.compile(r'<article class="(project|site)-card[^"]*">(.*?)</article>', re.S)
+
+
+def _card_field(html: str, cls: str) -> str:
+    m = re.search(rf'<p class="{cls}">(.*?)</p>', html, re.S)
+    return re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else ""
+
+
+def _projects_data(page: dict) -> dict:
+    """Projects: a collection page listing each card of the page body, so the list can never drift from what it shows.
+    AI products are software applications; websites carry their own address."""
+    body = (ROOT / "templates" / "pages" / "Projects.body.frag").read_text(encoding="utf-8")
+    items = []
+    for kind, card in _CARD.findall(body):
+        name = re.sub(r"<[^>]+>", "", re.search(r"<h3>(.*?)</h3>", card, re.S).group(1)).strip()
+        item = {"@type": "SoftwareApplication" if kind == "project" else "WebSite", "name": name,
+                "description": " ".join(x for x in (_card_field(card, "pc-tagline"), _card_field(card, "pc-desc")) if x),
+                "creator": {"@id": ORG_ID}}
+        if kind == "project":
+            item["applicationCategory"] = "BusinessApplication"
+        link = re.search(r'class="tlink site-link" href="(https://[^"]+)"', card)
+        if link:
+            item["url"] = link.group(1)
+        items.append(item)
+    return {"@context": "https://schema.org", "@type": "CollectionPage", "name": _name(page["title"]),
+            "url": page["canonical"], "description": page["description"],
+            "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": [
+                {"@type": "ListItem", "position": i, "item": it} for i, it in enumerate(items, 1)]}}
 
 
 def _blog_data(stem: str, site: dict) -> list[dict]:
@@ -366,6 +429,80 @@ def render_sitemap() -> str:
     return "\n".join(lines) + "\n"
 
 
+def render_llms() -> str:
+    """llms.txt (llmstxt.org): a plain summary of the firm and a map of its pages, for AI tools that read one.
+    Built only from site.json, services.json and blog.json, so it changes when the pages do."""
+    site, services = load_site(), load_services()
+    pages = site["pages"]
+
+    def url(stem: str) -> str:
+        return pages[stem]["canonical"]
+
+    lines = ["# AYiN Advisors", "", f"> {pages['index']['description']}", "",
+             "AYiN Advisors is a founder-led advisory in New York with three practices. Taz Abbas is the Managing Partner.",
+             f"Contact: hello@ayinadvisors.com, or the [contact page]({url('Contact')}).", "", "## Practices", ""]
+    for pillar in services["pillars"]:
+        lines.append(f"- [{pillar['name']}]({url(pillar['stem'])}): {pillar['buyer']}. {pillar['summary']}")
+        for svc in pillar["services"]:
+            lines.append(f"  - [{svc['name']}]({url(svc['href'][: -len('.html')])}): {svc['summary']}")
+    lines += ["", "## Company", ""]
+    for stem in ("About", "Services", "Projects", "BizCheck", "Contact"):
+        lines.append(f"- [{_name(pages[stem]['title'])}]({url(stem)}): {pages[stem]['description']}")
+    lines += ["", "## Blog", "", f"- [Blog]({url('blog')}): {pages['blog']['description']}"]
+    for post in blog_posts(site, services):
+        lines.append(f"- [{post['question']}]({url(post['stem'])}): {post['summary']}")
+    return "\n".join(lines) + "\n"
+
+
+def render_feed() -> str:
+    """blog/feed.xml: an RSS 2.0 feed of the blog posts, newest first."""
+    from email.utils import format_datetime
+    from datetime import datetime, timezone
+
+    site = load_site()
+    pages = site["pages"]
+    posts = blog_posts(site)
+
+    def rfc822(day: str) -> str:
+        return format_datetime(datetime.strptime(day, "%Y-%m-%d").replace(hour=12, tzinfo=timezone.utc))
+
+    author = load_blog()["author"]["name"]
+    items = [
+        "    <item>"
+        f"<title>{escape(p['question'])}</title>"
+        f"<link>{escape(pages[p['stem']]['canonical'])}</link>"
+        f"<guid isPermaLink=\"true\">{escape(pages[p['stem']]['canonical'])}</guid>"
+        f"<pubDate>{rfc822(p['published'])}</pubDate>"
+        f"<dc:creator>{escape(author)}</dc:creator>"
+        f"<category>{escape(p['practice_name'])}</category>"
+        f"<description>{escape(p['summary'])}</description>"
+        "</item>"
+        for p in posts
+    ]
+    newest = max((p["updated"] for p in posts), default=None)
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">',
+        "  <channel>",
+        "    <title>AYiN Advisors Blog</title>",
+        f"    <link>{escape(pages['blog']['canonical'])}</link>",
+        f"    <description>{escape(pages['blog']['description'])}</description>",
+        "    <language>en-us</language>",
+        f'    <atom:link href="{escape(FEED_URL)}" rel="self" type="application/rss+xml" />',
+        *([f"    <lastBuildDate>{rfc822(newest)}</lastBuildDate>"] if newest else []),
+        *items,
+        "  </channel>",
+        "</rss>",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+FEED_URL = f"{SITE_URL}/blog/feed.xml"
+
+# Generated text files besides the pages: path under ROOT -> renderer.
+EXTRA_FILES = {"llms.txt": render_llms, "blog/feed.xml": render_feed}
+
+
 def render_theme() -> str:
     """assets/theme.css from content/theme.json; refuses to emit a failing contrast pairing."""
     theme = theme_tools.load_theme(ROOT / "content" / "theme.json")
@@ -386,6 +523,9 @@ def main() -> None:
         print(f"  wrote {stem}.html")
     (ROOT / "sitemap.xml").write_text(render_sitemap(), encoding="utf-8", newline="\n")
     print("  wrote sitemap.xml")
+    for name, render in EXTRA_FILES.items():
+        (ROOT / name).write_text(render(), encoding="utf-8", newline="\n")
+        print(f"  wrote {name}")
 
 
 def check() -> list[str]:
@@ -398,6 +538,10 @@ def check() -> list[str]:
     sitemap = ROOT / "sitemap.xml"
     if not sitemap.exists() or sitemap.read_text(encoding="utf-8") != render_sitemap():
         stale.append("sitemap.xml")
+    for name, render in EXTRA_FILES.items():
+        path = ROOT / name
+        if not path.exists() or path.read_text(encoding="utf-8") != render():
+            stale.append(name)
     css = ROOT / "assets" / "theme.css"
     if not css.exists() or css.read_text(encoding="utf-8") != render_theme():
         stale.append("assets/theme.css")

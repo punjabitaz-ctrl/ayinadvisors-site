@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{{ page.title|e }}</title>
 <meta name="description" content="{{ page.description|e }}" />
-{% if page.canonical %}<link rel="canonical" href="{{ page.canonical|e }}" />{% endif %}
+{% if page.canonical %}<link rel="canonical" href="{{ page.canonical|e }}" />
+<link rel="alternate" type="application/rss+xml" title="AYiN Advisors Blog" href="https://ayinadvisors.com/blog/feed.xml" />{% endif %}
 {% if jsonld %}{{ jsonld }}
 {% endif %}<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="{{ root }}assets/theme.css">

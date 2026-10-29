@@ -1,0 +1,36 @@
+# AYiN Advisors
+
+> Business solutions for a digital world. B2B partnerships for international firms entering the US, AI solutions development, and digital presence.
+
+AYiN Advisors is a founder-led advisory in New York with three practices. Taz Abbas is the Managing Partner.
+Contact: hello@ayinadvisors.com, or the [contact page](https://ayinadvisors.com/Contact).
+
+## Practices
+
+- [B2B Partnerships](https://ayinadvisors.com/partnerships): International firms entering the US. Market entry research, channel strategy and enablement, partner introductions and regional expansion for international companies entering the United States.
+  - [US Market Entry Research](https://ayinadvisors.com/partnerships/market-entry-research): Sizing, segmentation and competitive intelligence that tells you where to play - and where not to - before you spend a dollar on the ground.
+  - [Channel Strategy & Enablement](https://ayinadvisors.com/partnerships/channel-strategy): Designing the route to market - distributors, resellers, agents - and equipping them with the tools, terms and training to actually sell.
+  - [B2B Partner Introductions](https://ayinadvisors.com/partnerships/partner-introductions): Warm, qualified introductions to the buyers, channel partners and decision-makers who move your category in the United States.
+  - [Regional Expansion · Canada & LATAM](https://ayinadvisors.com/partnerships/regional-expansion): Extending the playbook north and south - adapting channel models for Canada and Latin America once the US engine is running.
+- [AI Solutions Development](https://ayinadvisors.com/ai-solutions): Teams that need AI built. We solve business problems with AI: custom applications, workflow automation and operational efficiency.
+  - [Custom Applications](https://ayinadvisors.com/ai-solutions/custom-applications): Applications built around how your business works.
+  - [Workflow Automation](https://ayinadvisors.com/ai-solutions/workflow-automation): Repetitive, manual steps handed to automation, so people spend their time on the work that needs judgment.
+  - [Operational Efficiency](https://ayinadvisors.com/ai-solutions/operational-efficiency): A close look at where time and effort are lost in your operations, and practical fixes for the biggest gaps.
+- [Digital Presence](https://ayinadvisors.com/digital-presence): Businesses building their presence online. Websites, digital marketing, and community and content, so your business is seen, understood and connected online.
+  - [Websites](https://ayinadvisors.com/digital-presence/websites): Brand presence: a website that says who you are and what you do.
+  - [Digital Marketing](https://ayinadvisors.com/digital-presence/digital-marketing): Brand online: digital marketing that puts your brand in front of the right people.
+  - [Community & Content](https://ayinadvisors.com/digital-presence/community-content): Brand connect: content and community that connect your brand with its audience.
+
+## Company
+
+- [About Our Founder-Led Advisory](https://ayinadvisors.com/About): AYiN Advisors are operators, not observers. An advisory with three practices: B2B partnerships, AI solutions development and digital presence.
+- [Partnerships, AI and Digital Services](https://ayinadvisors.com/Services): AYiN Advisors has three practices: B2B partnerships for firms entering the US, AI solutions development, and digital presence.
+- [Projects: AI Products and Websites](https://ayinadvisors.com/Projects): AI products designed and shipped, and websites built and launched for our own ventures and for other businesses. Each website is live.
+- [BizCheck: Business Idea Evaluation](https://ayinadvisors.com/BizCheck): A ten-agent expert panel evaluates your business idea the way a real advisory firm would - and returns a single verdict: GO, CONDITIONAL GO, or NO GO.
+- [Book a Consultation](https://ayinadvisors.com/Contact): Book a consultation with AYiN Advisors to talk through your goals and which practice fits.
+
+## Blog
+
+- [Blog](https://ayinadvisors.com/blog): Plain answers to what buyers ask about entering the US through partners, putting AI to work in a small team, and being found online.
+- [Distributor, reseller or agent: which US route to market fits your product?](https://ayinadvisors.com/blog/distributor-reseller-or-agent): Each one carries a different share of the stock, the risk and the customer. The right choice depends on how American buyers expect to buy in your category.
+- [Where should a small team start with workflow automation?](https://ayinadvisors.com/blog/where-to-start-with-workflow-automation): Start with one task your team repeats often, that follows clear rules and that does little harm when it goes wrong. Map it, automate the predictable steps and keep a person on the decisions.
