@@ -193,11 +193,6 @@ def test_each_project_site_has_one_link_with_a_named_accessible_text(soups):
         assert a.get_text(strip=True).startswith("Visit site")
         assert name in a.select_one(".vh").get_text()
         assert a.select_one(".btn-arrow")["aria-hidden"] == "true"
-        name_thumb = card.select_one(".site-thumb-name")
-        if name_thumb is not None:
-            # no screenshot yet (Orison IGT, 2026-10-28): the frame shows the domain, hidden from assistive tech
-            assert name_thumb.get("aria-hidden") == "true" and card.select_one("picture") is None
-            continue
         img = card.select_one("picture img")
         assert img and img.get("alt", "").strip() and img.get("width") and img.get("height") and img.get("loading") == "lazy"
 
