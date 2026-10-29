@@ -11,6 +11,7 @@
 <link rel="alternate" type="application/rss+xml" title="AYiN Advisors Blog" href="https://ayinadvisors.com/blog/feed.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ayinadvisors.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ayinadvisors.com/Services"},{"@type":"ListItem","position":3,"name":"AI Solutions Development","item":"https://ayinadvisors.com/ai-solutions"},{"@type":"ListItem","position":4,"name":"Workflow Automation","item":"https://ayinadvisors.com/ai-solutions/workflow-automation"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Workflow Automation","description":"Workflow automation that hands repetitive, manual steps to software, with people kept in the loop wherever a decision still needs a person.","url":"https://ayinadvisors.com/ai-solutions/workflow-automation","serviceType":"AI Solutions Development","audience":{"@type":"BusinessAudience","name":"Teams that need AI built"},"provider":{"@type":"Organization","@id":"https://ayinadvisors.com/#organization","name":"AYiN Advisors"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","url":"https://ayinadvisors.com/ai-solutions/workflow-automation","mainEntity":[{"@type":"Question","name":"Which tasks should we automate first?","acceptedAnswer":{"@type":"Answer","text":"Steps a machine can do reliably, like re-keying data, chasing approvals and moving files by hand. Our post \"Where should a small team start with workflow automation?\" covers how to pick the first one."}},{"@type":"Question","name":"Will automation replace people's decisions?","acceptedAnswer":{"@type":"Answer","text":"No. We keep a person in the loop wherever a decision needs one, with human review and exception handling built in."}},{"@type":"Question","name":"What do we get?","acceptedAnswer":{"@type":"Answer","text":"A map of your current workflow, a shortlist of what to automate, the tools and integrations chosen, automated workflows tested end to end, and training and a runbook for your team."}}]}</script>
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="../assets/theme.css">
 <meta name="theme-color" content="#061325" />
@@ -63,6 +64,14 @@
   .pagehead .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-gold); }
   .pagehead .eyebrow a:hover { border-bottom-color: currentColor; }
 
+  /* ---------- COMMON QUESTIONS ---------- */
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .faq-item { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .faq-item h3 { margin: 0 0 12px; }
+  .faq-item p { color: var(--ink-muted); max-width: 46ch; margin: 0; }
+  .faq-item a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .faq-item a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+
   /* ---------- ALSO IN THE PRACTICE ---------- */
   .ps-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
   .ps-list.ps-2 { grid-template-columns: repeat(2, 1fr); }
@@ -84,6 +93,7 @@
 
   @media (max-width: 880px) {
     .ps-list, .ps-list.ps-2 { grid-template-columns: 1fr; }
+    .faq-list { grid-template-columns: 1fr; }
     .ph-motif { opacity: 0.3; right: -200px; }
   }
   @media (max-width: 820px) {
@@ -179,8 +189,33 @@
   </div>
 </section>
 
+<!-- COMMON QUESTIONS -->
+<section class="section surface-alt clip-x" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <h2 class="h2 reveal" id="faq-title">Common questions</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3 class="h3">Which tasks should we automate first?</h3>
+        <p>Steps a machine can do reliably, like re-keying data, chasing approvals and moving files by hand. Our post <a href="../blog/where-to-start-with-workflow-automation">Where should a small team start with workflow automation?</a> covers how to pick the first one.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="h3">Will automation replace people&#39;s decisions?</h3>
+        <p>No. We keep a person in the loop wherever a decision needs one, with human review and exception handling built in.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="h3">What do we get?</h3>
+        <p>A map of your current workflow, a shortlist of what to automate, the tools and integrations chosen, automated workflows tested end to end, and training and a runbook for your team.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ALSO IN THE PRACTICE -->
-<section class="section surface-alt clip-x assemble" id="more" data-assemble>
+<section class="section surface-page clip-x assemble" id="more" data-assemble>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">

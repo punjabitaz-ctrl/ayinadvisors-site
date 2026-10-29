@@ -16,18 +16,18 @@ BAND_MAP = {
     "Services": ["inverse", "page", "alt", "accent", "inverse"],
     # Partnerships: what we do (page), the moved US proof band (alt), how we work (page), who it is for (alt), the gold CTA
     "partnerships": ["inverse", "page", "alt", "page", "alt", "accent", "inverse"],
-    # the four B2B Partnerships service pages: the detail (page), the other services (alt), the gold CTA
-    "partnerships/market-entry-research": ["inverse", "page", "alt", "accent", "inverse"],
-    "partnerships/channel-strategy": ["inverse", "page", "alt", "accent", "inverse"],
-    "partnerships/partner-introductions": ["inverse", "page", "alt", "accent", "inverse"],
-    "partnerships/regional-expansion": ["inverse", "page", "alt", "accent", "inverse"],
-    # the three AI Solutions and three Digital Presence service pages: the same three bands
-    "ai-solutions/custom-applications": ["inverse", "page", "alt", "accent", "inverse"],
-    "ai-solutions/workflow-automation": ["inverse", "page", "alt", "accent", "inverse"],
-    "ai-solutions/operational-efficiency": ["inverse", "page", "alt", "accent", "inverse"],
-    "digital-presence/websites": ["inverse", "page", "alt", "accent", "inverse"],
-    "digital-presence/digital-marketing": ["inverse", "page", "alt", "accent", "inverse"],
-    "digital-presence/community-content": ["inverse", "page", "alt", "accent", "inverse"],
+    # the four B2B Partnerships service pages: the detail (page), common questions (alt), the other services (page), the gold CTA
+    "partnerships/market-entry-research": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "partnerships/channel-strategy": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "partnerships/partner-introductions": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "partnerships/regional-expansion": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    # the three AI Solutions and three Digital Presence service pages: the same four bands
+    "ai-solutions/custom-applications": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "ai-solutions/workflow-automation": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "ai-solutions/operational-efficiency": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "digital-presence/websites": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "digital-presence/digital-marketing": ["inverse", "page", "alt", "page", "accent", "inverse"],
+    "digital-presence/community-content": ["inverse", "page", "alt", "page", "accent", "inverse"],
     # AI Solutions and Digital Presence: what we do (page), how we work (alt), who it is for (page), the gold CTA
     "ai-solutions": ["inverse", "page", "alt", "page", "accent", "inverse"],
     "digital-presence": ["inverse", "page", "alt", "page", "accent", "inverse"],

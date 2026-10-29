@@ -143,10 +143,31 @@ def test_no_pricing_words_in_services_json():
 def test_no_pricing_words_on_hub_pillar_and_home_pages():
     pages = build.render_all()
     for stem in ("Services", "partnerships", "ai-solutions", "digital-presence", "index", *SERVICE_STEMS):
-        text = _main_text(pages[stem], drop=VERBATIM)
+        text = _main_text(pages[stem], drop=VERBATIM + ("section#faq",))  # the FAQ has its own check below
         text = text.replace("$24T", "")  # the Partnerships proof stat is a market size, not a price
         m = PRICE_OFFER.search(text)
         assert not m, f"{stem}: pricing word {m.group(0)!r}"
+
+
+def _plain(text: str) -> str:
+    return re.sub(r"\s+", " ", text.replace("&", "and").replace("'ll", " will")).lower()
+
+
+def test_a_faq_answer_says_pricing_only_where_its_service_detail_does():
+    """The common questions restate the service detail. "Pricing" there is the client's pricing (a deliverable such as
+    "Pricing & margin structure"), never a price of ours, so an answer may use the word only inside a phrase its own
+    service detail already carries."""
+    for pillar in load()["pillars"]:
+        for svc in pillar["services"]:
+            d = svc["detail"]
+            phrases = [p for p in re.split(r"[.,:;-]", _plain(" , ".join([d["text"], *d["deliverables"]]))) if "pric" in p]
+            for item in d.get("faq", []):
+                text = _plain(item["a"])
+                for phrase in phrases:
+                    words = [w for w in phrase.split() if w not in ("the", "you", "will")]
+                    text = re.sub(r"\b" + r"\W+(?:\w+\W+){0,2}?".join(map(re.escape, words)) + r"\b", "", text)
+                m = PRICE_OFFER.search(text)
+                assert not m, f"{svc['slug']}: {item['q']!r} says {m.group(0)!r} beyond its service detail"
 
 
 def test_no_invented_digits_in_new_pillar_copy():

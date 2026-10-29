@@ -99,7 +99,7 @@ def test_links_to_the_other_three_services_the_pillar_and_the_cta(soups, stem):
     assert back["href"] == f"../{pillar['stem']}" and _text(back) == f"Back to {pillar['name']}"
     cta = soup.select_one("section.cta")
     assert _text(cta.h2) == pillar["cta"]["heading"] and cta.select_one("a.btn")["href"] == f"../Contact?practice={pillar['stem']}"
-    assert [s.get("id") for s in soup.select("main > section")] == ["detail", "more", None]
+    assert [s.get("id") for s in soup.select("main > section")] == ["detail", "faq", "more", None]
 
 
 @pytest.mark.parametrize("stem", STEMS)

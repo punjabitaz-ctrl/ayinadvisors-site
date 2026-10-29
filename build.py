@@ -178,12 +178,32 @@ def _name(title: str) -> str:
     return title.rsplit(" - AYiN Advisors", 1)[0]
 
 
+def service_faq(service: dict, posts: list[dict] | None = None) -> list[dict]:
+    """A service's questions and answers (content/services.json "detail" "faq"), each with the answer split around the
+    blog post it names. An answer with "{post}" names a live post by "post" slug: the page links its question there,
+    and the plain text (llms.txt, the FAQ structured data) quotes it. A slug with no live post raises KeyError, so an
+    answer can never point at a draft."""
+    posts = {p["slug"]: p for p in (blog_posts() if posts is None else posts)}
+    out = []
+    for item in service["detail"].get("faq", []):
+        before, _, after = item["a"].partition("{post}")
+        post = None
+        if item.get("post"):
+            post = posts.get(item["post"])
+            if post is None or "{post}" not in item["a"]:
+                raise KeyError(f"{service['slug']}: FAQ answer names no live post {item['post']!r}")
+        text = f'{before}"{post["question"]}"{after}' if post else item["a"]
+        out.append({"q": item["q"], "before": before, "after": after, "post": post, "text": text})
+    return out
+
+
 def structured_data(stem: str, site: dict | None = None, services: dict | None = None) -> list[dict]:
     """schema.org JSON-LD for a page, built only from what the site itself states (site.json, services.json, the footer).
 
     Home: the organization, its founder and the website. About: the organization and founder. Contact: a contact page
     about the organization. Projects: the products and sites it shows. Services, pillar and service pages: a breadcrumb
-    trail; pillar and service pages also describe the service. Blog pages: see _blog_data. Other pages: nothing.
+    trail; pillar and service pages also describe the service, and service pages carry their FAQs. Blog pages: see
+    _blog_data. Other pages: nothing.
     """
     site = site or load_site()
     services = services or load_services()
@@ -245,6 +265,13 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
                                                    "url": pages[s["href"][: -len(".html")]]["canonical"]}}
                 for s in pillar["services"]]}
         out.append(service)
+    if kind == "service":
+        svc = next(s for s in pillar["services"] if s["slug"] == page.get("service"))
+        faq = service_faq(svc, blog_posts(site, services))
+        if faq:
+            out.append({"@context": "https://schema.org", "@type": "FAQPage", "url": page["canonical"],
+                        "mainEntity": [{"@type": "Question", "name": f["q"],
+                                        "acceptedAnswer": {"@type": "Answer", "text": f["text"]}} for f in faq]})
     return out
 
 
@@ -417,6 +444,7 @@ def page_parts(stem: str) -> tuple[str, str, str]:
         ctx["service"] = next((s for s in ctx["pillar"]["services"] if s["slug"] == page.get("service")), None)
         if ctx["service"] is None or "detail" not in ctx["service"]:
             raise KeyError(f"{stem}: no service {page.get('service')!r} with a detail in pillar {page.get('pillar')!r}")
+        ctx["faq"] = service_faq(ctx["service"], blog_posts(site, services))
     if kind in ("blog", "post"):
         ctx["blog"] = load_blog()
         ctx["posts"] = blog_posts(site, services)

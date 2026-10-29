@@ -11,6 +11,7 @@
 <link rel="alternate" type="application/rss+xml" title="AYiN Advisors Blog" href="https://ayinadvisors.com/blog/feed.xml" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://ayinadvisors.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://ayinadvisors.com/Services"},{"@type":"ListItem","position":3,"name":"B2B Partnerships","item":"https://ayinadvisors.com/partnerships"},{"@type":"ListItem","position":4,"name":"US Market Entry Research","item":"https://ayinadvisors.com/partnerships/market-entry-research"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"US Market Entry Research","description":"Market sizing, segmentation and competitive intelligence for international firms deciding whether, where and how to enter the US.","url":"https://ayinadvisors.com/partnerships/market-entry-research","serviceType":"B2B Partnerships","audience":{"@type":"BusinessAudience","name":"International firms entering the US"},"provider":{"@type":"Organization","@id":"https://ayinadvisors.com/#organization","name":"AYiN Advisors"},"areaServed":[{"@type":"Place","name":"United States"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","url":"https://ayinadvisors.com/partnerships/market-entry-research","mainEntity":[{"@type":"Question","name":"What does US market entry research cover?","acceptedAnswer":{"@type":"Answer","text":"It maps US demand for your category: where it concentrates, who already owns it, and the regulatory and pricing realities you will meet on arrival. It covers market sizing and segmentation, the competitive and pricing landscape, a regulatory and compliance scan, and demand and buyer-persona mapping."}},{"@type":"Question","name":"What do I get at the end?","acceptedAnswer":{"@type":"Answer","text":"An honest read on whether, where and how to enter the US, with a beachhead market recommendation and a go or no-go entry thesis."}},{"@type":"Question","name":"When should a company do this?","acceptedAnswer":{"@type":"Answer","text":"Before you spend money on the ground. It suits international firms that want an honest read on whether, where and how to enter before they commit."}}]}</script>
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="../assets/theme.css">
 <meta name="theme-color" content="#061325" />
@@ -63,6 +64,14 @@
   .pagehead .eyebrow a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line-gold); }
   .pagehead .eyebrow a:hover { border-bottom-color: currentColor; }
 
+  /* ---------- COMMON QUESTIONS ---------- */
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .faq-item { padding: clamp(26px, 3vw, 40px); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .faq-item h3 { margin: 0 0 12px; }
+  .faq-item p { color: var(--ink-muted); max-width: 46ch; margin: 0; }
+  .faq-item a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  .faq-item a:hover { color: var(--accent-ink); border-bottom-color: currentColor; }
+
   /* ---------- ALSO IN THE PRACTICE ---------- */
   .ps-list { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); list-style: none; padding: 0; margin: 0; }
   .ps-list.ps-2 { grid-template-columns: repeat(2, 1fr); }
@@ -84,6 +93,7 @@
 
   @media (max-width: 880px) {
     .ps-list, .ps-list.ps-2 { grid-template-columns: 1fr; }
+    .faq-list { grid-template-columns: 1fr; }
     .ph-motif { opacity: 0.3; right: -200px; }
   }
   @media (max-width: 820px) {
@@ -179,8 +189,33 @@
   </div>
 </section>
 
+<!-- COMMON QUESTIONS -->
+<section class="section surface-alt clip-x" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="left">
+        <h2 class="h2 reveal" id="faq-title">Common questions</h2>
+      </div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3 class="h3">What does US market entry research cover?</h3>
+        <p>It maps US demand for your category: where it concentrates, who already owns it, and the regulatory and pricing realities you will meet on arrival. It covers market sizing and segmentation, the competitive and pricing landscape, a regulatory and compliance scan, and demand and buyer-persona mapping.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="h3">What do I get at the end?</h3>
+        <p>An honest read on whether, where and how to enter the US, with a beachhead market recommendation and a go or no-go entry thesis.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="h3">When should a company do this?</h3>
+        <p>Before you spend money on the ground. It suits international firms that want an honest read on whether, where and how to enter before they commit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ALSO IN THE PRACTICE -->
-<section class="section surface-alt clip-x assemble" id="more" data-assemble>
+<section class="section surface-page clip-x assemble" id="more" data-assemble>
   <div class="wrap">
     <div class="sec-head">
       <div class="left">

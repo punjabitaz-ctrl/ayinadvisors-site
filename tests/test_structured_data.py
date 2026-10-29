@@ -47,7 +47,8 @@ def test_each_pillar_and_service_page_has_a_breadcrumb_and_a_service(pages, pill
         if page.get("template") not in ("pillar", "service") or page.get("pillar", stem) != pillar:
             continue
         blocks = _ld(pages[stem])
-        assert _types(blocks) == ["BreadcrumbList", "Service"], stem
+        expected = ["BreadcrumbList", "Service"] + (["FAQPage"] if page["template"] == "service" else [])
+        assert _types(blocks) == expected, stem
         trail = blocks[0]["itemListElement"]
         assert [i["position"] for i in trail] == list(range(1, len(trail) + 1))
         assert trail[-1]["item"] == page["canonical"] and len(trail) == (3 if page["template"] == "pillar" else 4)
@@ -58,7 +59,7 @@ def test_no_page_claims_what_the_site_does_not_state(pages):
     for stem, html in pages.items():
         text = json.dumps(_ld(html))
         for invented in ("aggregateRating", "review", "telephone", "streetAddress", "priceRange", "offers"):
-            assert invented not in text, stem
+            assert f'"{invented}"' not in text, stem  # as a property or type name, not a word in an answer
 
 
 def test_a_value_can_never_close_the_script_tag(monkeypatch):
