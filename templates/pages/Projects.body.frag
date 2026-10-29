@@ -142,7 +142,7 @@
         </div>
       </article>
       <article class="site-card surface-card asm-card">
-        <figure class="site-thumb site-thumb-name" aria-hidden="true"><span>orisonigt.com</span></figure>
+        <figure class="site-thumb"><image-slot slug="site-orison-igt" sizes="(min-width: 1100px) 300px, (min-width: 640px) 46vw, 92vw" loading="lazy"></image-slot></figure>
         <div class="site-body">
           <p class="pc-meta">orisonigt.com</p>
           <h3>Orison IGT</h3>

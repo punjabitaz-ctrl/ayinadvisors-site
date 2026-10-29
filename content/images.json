@@ -109,6 +109,17 @@
       ],
       "pillar": "projects",
       "crop": "16:10"
+    },
+    {
+      "slug": "site-orison-igt",
+      "source": "site-orison-igt.png",
+      "alt": "Screenshot of the Orison IGT website home page.",
+      "focal": [
+        0.5,
+        0.0
+      ],
+      "pillar": "projects",
+      "crop": "16:10"
     }
   ]
 }

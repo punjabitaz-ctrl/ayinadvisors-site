@@ -13,7 +13,7 @@ from tools import optimize_images
 
 WIDTHS = (480, 960, 1600)
 SITE_SLUGS = ("site-pardesi-connections", "site-thinkers-dilemma", "site-historical-philly", "site-vehli-janta-media",
-              "site-al-saboot-builders", "site-zohoza", "site-qbit-edge-technologies")
+              "site-al-saboot-builders", "site-zohoza", "site-qbit-edge-technologies", "site-orison-igt")
 BUDGET = 160_000
 
 
@@ -127,9 +127,9 @@ def test_other_pages_have_no_photos(stem):
 
 def test_projects_page_carries_one_preview_per_site():
     frag = build.page_parts("Projects")[0]
-    assert frag.count("<image-slot") == 7
+    assert frag.count("<image-slot") == 8
     html = (ROOT / "Projects.html").read_text(encoding="utf-8")
-    assert html.count("<picture>") == 7 and "image-slot" not in html
+    assert html.count("<picture>") == 8 and "image-slot" not in html
     for slug in SITE_SLUGS:
         assert f'slug="{slug}"' in frag and f"assets/img/{slug}-1600.webp" in html
         assert _registry()[slug]["alt"].startswith("Screenshot of the ") and "website" in _registry()[slug]["alt"]
