@@ -1,0 +1,72 @@
+# Puts approved blog posts live at 8am Eastern on their Tuesday.
+#
+# An approved post waits in content/blog.json with a future "published" date. build.py leaves it out (no page, no
+# index entry, no sitemap entry) until 8am America/New_York that day. This job rebuilds the site on Tuesday mornings
+# and pushes the new pages to master, which Cloudflare Pages deploys. Two crons cover both clock settings: 12:00 UTC
+# is 8am in daylight time, 13:00 UTC is 8am in standard time. The run that is an hour early finds nothing due and
+# stops; a late run (GitHub can delay scheduled jobs) still publishes, since the gate is "8am or later".
+name: Publish scheduled blog posts
+
+on:
+  schedule:
+    - cron: "0 12 * * 2"
+    - cron: "0 13 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-scheduled-posts
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install the build and test dependencies
+        run: pip install "Jinja2>=3.1" "beautifulsoup4>=4.12" "pytest>=8" "Pillow==12.2.0"
+
+      - name: Build the posts that are due
+        id: build
+        run: |
+          python build.py
+          python tools/baseline.py snapshot
+          git add -A -- '*.html' sitemap.xml assets/theme.css tests/baseline
+          if git diff --cached --quiet; then
+            echo "No post is due."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git diff --cached --stat
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Test before publishing
+        if: steps.build.outputs.changed == 'true'
+        run: python -m pytest --ignore=tests/a11y_browser -q
+
+      - name: Publish
+        if: steps.build.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish scheduled blog posts"
+          git push origin HEAD:master
+
+      # Optional: tell Google Search Console about the new sitemap. Runs only once the GSC_SERVICE_ACCOUNT_JSON secret
+      # is set (see docs/blog/content-strategy.md). Without it, Google rereads the sitemap listed in robots.txt and
+      # Search Console on its own schedule.
+      - name: Submit the sitemap to Google Search Console
+        if: steps.build.outputs.changed == 'true' && env.GSC_SERVICE_ACCOUNT_JSON != ''
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE: ${{ vars.GSC_SITE }}
+        run: |
+          pip install "google-auth>=2.30" "requests>=2.32"
+          python tools/submit_sitemap.py

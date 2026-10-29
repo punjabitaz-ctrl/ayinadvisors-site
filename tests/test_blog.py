@@ -4,8 +4,13 @@ Only posts Taz has approved are in the repo: Cloudflare serves the whole repo, s
 Every post answers its question in the first section, carries a byline and dates, links the services of its practice,
 and is described to search engines as a BlogPosting by the founder. The post tests render a sample post in a sandbox,
 so they hold before the first real post is approved.
+
+An approved post can wait in the repo with a future "published" date (2026-10-28: one post a week, Tuesdays at 8am
+Eastern). Until that moment it has no page, no place on the index and no sitemap entry; the scheduling tests pin the
+clock with AYIN_BUILD_NOW.
 """
 import json
+from datetime import datetime
 
 import pytest
 from bs4 import BeautifulSoup
@@ -17,8 +22,8 @@ SAMPLE = {
     "slug": "sample-question",
     "question": "What is a sample question a buyer might ask?",
     "summary": "A sample answer in a sentence or two, used only by the tests.",
-    "published": "2026-11-02",
-    "updated": "2026-11-09",
+    "published": "2027-02-02",
+    "updated": "2027-02-09",
     "practice": "partnerships",
     "related": ["partnerships/channel-strategy", "partnerships/market-entry-research"],
 }
@@ -39,8 +44,9 @@ def _render(stem):
 
 
 @pytest.fixture
-def with_sample_post(sandbox):
-    """The sandbox with one approved post added the way docs/blog/content-strategy.md describes."""
+def with_sample_post(sandbox, monkeypatch):
+    """The sandbox with one approved post added the way docs/blog/content-strategy.md describes, its date passed."""
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-09T09:00")
     blog = json.loads((sandbox / "content" / "blog.json").read_text(encoding="utf-8"))
     blog["posts"] = [SAMPLE] + blog["posts"]
     (sandbox / "content" / "blog.json").write_text(json.dumps(blog), encoding="utf-8")
@@ -51,7 +57,7 @@ def with_sample_post(sandbox):
         "title": "A Sample Question - AYiN Advisors", "description": "A sample description.",
         "canonical": "https://ayinadvisors.com/blog/sample-question", "active": "",
         "cta": site["pages"]["blog"]["cta"], "footer": True, "template": "post",
-        "sitemap": {"priority": "0.6", "lastmod": "2026-11-09"}}
+        "sitemap": {"priority": "0.6", "lastmod": "2027-02-09"}}
     (sandbox / "content" / "site.json").write_text(json.dumps(site), encoding="utf-8")
     return sandbox
 
@@ -89,7 +95,7 @@ def test_index_lists_an_approved_post(with_sample_post):
     soup = _soup(_render("blog"))
     hrefs = [a["href"] for a in soup.select(".post-list h2 a")]
     assert hrefs[0] == "blog/sample-question", "the newest post comes first"
-    assert hrefs[1:] == [f"blog/{p['slug']}" for p in build.load_blog()["posts"] if p["slug"] != SAMPLE["slug"]]
+    assert hrefs[1:] == [p["stem"] for p in build.blog_posts() if p["slug"] != SAMPLE["slug"]]
     assert not soup.select(".post-empty")
 
 
@@ -100,8 +106,8 @@ def test_post_page_answers_its_question(with_sample_post):
     assert first.get_text(strip=True) == "The short answer" and first.find_next_sibling("p").get_text(strip=True)
     byline = soup.select_one(".post-byline")
     assert "Taz Abbas" in byline.get_text()
-    assert byline.select_one("time[datetime='2026-11-02']").get_text() == "November 2, 2026"
-    assert byline.select_one("time[datetime='2026-11-09']")  # updated date shown when it differs
+    assert byline.select_one("time[datetime='2027-02-02']").get_text() == "February 2, 2027"
+    assert byline.select_one("time[datetime='2027-02-09']")  # updated date shown when it differs
 
 
 def test_post_links_its_practice_services_and_contact_with_the_practice(with_sample_post):
@@ -115,7 +121,7 @@ def test_post_is_a_blog_posting_by_the_founder(with_sample_post):
     crumbs, posting = _ld(html)
     url = f"{build.SITE_URL}/blog/sample-question"
     assert posting["@type"] == "BlogPosting" and posting["headline"] == SAMPLE["question"] and posting["url"] == url
-    assert posting["datePublished"] == "2026-11-02" and posting["dateModified"] == "2026-11-09"
+    assert posting["datePublished"] == "2027-02-02" and posting["dateModified"] == "2027-02-09"
     assert posting["author"]["@id"] == build.FOUNDER_ID and posting["publisher"]["@id"] == build.ORG_ID
     assert [i["item"] for i in crumbs["itemListElement"]] == [f"{build.SITE_URL}/", f"{build.SITE_URL}/blog", url]
     assert 'property="og:type" content="article"' in html
@@ -140,3 +146,54 @@ def test_a_related_service_must_have_a_page(with_sample_post):
 def test_date_label_is_the_us_form():
     assert build.date_label("2026-10-28") == "October 28, 2026"
     assert build.date_label("2027-01-05") == "January 5, 2027"
+
+
+def test_a_scheduled_post_stays_off_the_site_until_its_morning(with_sample_post, monkeypatch):
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-01T09:00")
+    assert "blog/sample-question" in build.scheduled_stems()
+    assert "blog/sample-question" not in build.render_all()
+    assert "blog/sample-question" not in _render("blog")
+    assert f"{build.SITE_URL}/blog/sample-question" not in build.render_sitemap()
+
+
+def test_a_post_goes_live_at_8am_eastern_on_its_day():
+    post = {"published": "2027-02-02"}
+    assert not build.is_live(post, datetime(2027, 2, 2, 7, 59, tzinfo=build.EASTERN))
+    assert build.is_live(post, datetime(2027, 2, 2, 8, 0, tzinfo=build.EASTERN))
+
+
+def test_the_clock_override_reads_eastern_and_converts_utc(monkeypatch):
+    post = {"published": "2027-02-02"}
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-02T07:59")
+    assert not build.is_live(post)
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-02T13:00+00:00")  # 8am EST
+    assert build.is_live(post)
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2026-11-03T12:59+00:00")  # 7:59am EST, the Tuesday after the clocks change
+    assert not build.is_live({"published": "2026-11-03"})
+
+
+def test_publishing_writes_the_page_and_lists_it(with_sample_post, monkeypatch):
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-01T09:00")
+    build.main()
+    assert not (with_sample_post / "blog" / "sample-question.html").exists()
+    assert build.check() == []
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-02T08:00")
+    assert "blog/sample-question.html" in build.check(), "the post is due, so the committed site is stale"
+    build.main()
+    assert build.check() == []
+    assert (with_sample_post / "blog" / "sample-question.html").exists()
+    assert f"<loc>{build.SITE_URL}/blog/sample-question</loc>" in (with_sample_post / "sitemap.xml").read_text(encoding="utf-8")
+
+
+def test_a_scheduled_page_that_was_written_early_is_stale(with_sample_post, monkeypatch):
+    (with_sample_post / "blog" / "sample-question.html").write_text("early", encoding="utf-8")
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-01T09:00")
+    assert "blog/sample-question.html (scheduled, must not exist yet)" in build.check()
+
+
+def test_the_blog_index_lastmod_follows_the_newest_live_post(with_sample_post, monkeypatch):
+    blog_row = next(r for r in build.render_sitemap().splitlines() if f"<loc>{build.SITE_URL}/blog</loc>" in r)
+    assert "<lastmod>2027-02-02</lastmod>" in blog_row
+    monkeypatch.setenv("AYIN_BUILD_NOW", "2027-02-01T09:00")
+    blog_row = next(r for r in build.render_sitemap().splitlines() if f"<loc>{build.SITE_URL}/blog</loc>" in r)
+    assert "2027-02-02" not in blog_row

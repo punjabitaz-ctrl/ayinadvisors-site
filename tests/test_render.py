@@ -60,7 +60,9 @@ def test_ampersand_titles_render_as_entities(monkeypatch):
 
 
 def test_pages_derive_from_site_json_in_order():
-    assert build.PAGES == list(build.load_site()["pages"])
+    """Every site.json page in order, less approved posts still waiting for their publish morning."""
+    waiting = build.scheduled_stems()
+    assert build.PAGES == [s for s in build.load_site()["pages"] if s not in waiting]
 
 
 def test_unknown_stem_names_it_and_lists_known_ones():

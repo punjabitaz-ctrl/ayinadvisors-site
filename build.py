@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Render the site from content/site.json + templates/ to .html at the repo root."""
 import json
+import os
 import re
+from datetime import date, datetime, time
 from pathlib import Path
+from zoneinfo import ZoneInfo
 from xml.sax.saxutils import escape
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -10,8 +13,6 @@ from tools import images as image_tools
 from tools import theme as theme_tools
 
 ROOT = Path(__file__).resolve().parent
-# Pages are defined by content/site.json, in the order listed there.
-PAGES = list(json.loads((ROOT / "content" / "site.json").read_text(encoding="utf-8"))["pages"])
 
 # Autoescape is OFF: page bodies are pre-authored HTML, not user input.
 # Plain-text head/nav/footer values are escaped explicitly with |e in the templates.
@@ -71,18 +72,54 @@ def load_blog() -> dict:
     return json.loads((ROOT / "content" / "blog.json").read_text(encoding="utf-8"))
 
 
+# A post goes live at 8am Eastern on its "published" day. Approved posts can wait in the repo with a future date; until
+# then they have no page, no place on the blog index and no sitemap entry. The weekly GitHub Action
+# (.github/workflows/publish-scheduled-posts.yml) rebuilds on Tuesday mornings, which is what puts them live.
+EASTERN = ZoneInfo("America/New_York")
+PUBLISH_TIME = time(8, 0)
+
+
+def build_now() -> datetime:
+    """The moment the build renders for, in Eastern time.
+
+    AYIN_BUILD_NOW (ISO, such as 2026-11-03T08:00, read as Eastern when it has no offset) overrides the clock, for the
+    tests and for previewing a scheduled post.
+    """
+    override = os.environ.get("AYIN_BUILD_NOW")
+    if override:
+        moment = datetime.fromisoformat(override)
+        return moment.replace(tzinfo=EASTERN) if moment.tzinfo is None else moment.astimezone(EASTERN)
+    return datetime.now(EASTERN)
+
+
+def is_live(post: dict, now: datetime | None = None) -> bool:
+    """True from 8am Eastern on the post's "published" day."""
+    return (now or build_now()) >= datetime.combine(date.fromisoformat(post["published"]), PUBLISH_TIME, EASTERN)
+
+
+def scheduled_stems(now: datetime | None = None) -> set[str]:
+    """Page stems of approved posts whose publish moment has not come yet."""
+    return {f"blog/{p['slug']}" for p in load_blog()["posts"] if not is_live(p, now)}
+
+
+def live_pages(now: datetime | None = None) -> list[str]:
+    """The pages that render now: every site.json page, in order, except posts still scheduled."""
+    waiting = scheduled_stems(now)
+    return [stem for stem in load_site()["pages"] if stem not in waiting]
+
+
 def date_label(iso: str) -> str:
     """"2026-10-28" -> "October 28, 2026", the US form the site's readers expect."""
-    from datetime import date
     d = date.fromisoformat(iso)
     return f"{d.strftime('%B')} {d.day}, {d.year}"
 
 
-def blog_posts(site: dict | None = None, services: dict | None = None) -> list[dict]:
-    """The posts of content/blog.json, newest first, each with its page stem, href, practice name and date labels.
+def blog_posts(site: dict | None = None, services: dict | None = None, now: datetime | None = None) -> list[dict]:
+    """The live posts of content/blog.json, newest first, each with its page stem, href, practice name and date labels.
 
     A post must have a page in site.json ("blog/<slug>", template "post"), and every site.json post page a post, so a
-    post can never be published without its page or listed without one.
+    post can never be published without its page or listed without one. Scheduled posts are checked the same way but
+    left out until they go live.
     """
     site = site or load_site()
     pillars = {p["stem"]: p for p in (services or load_services())["pillars"]}
@@ -96,10 +133,14 @@ def blog_posts(site: dict | None = None, services: dict | None = None) -> list[d
     declared = {s for s, pg in site["pages"].items() if pg.get("template") == "post"}
     if declared != {p["stem"] for p in posts}:
         raise KeyError(f"site.json post pages without a post in content/blog.json: {sorted(declared - {p['stem'] for p in posts})}")
-    return sorted(posts, key=lambda p: p["published"], reverse=True)
+    now = now or build_now()
+    return sorted((p for p in posts if is_live(p, now)), key=lambda p: p["published"], reverse=True)
 
 
 SITE_URL = "https://ayinadvisors.com"
+
+# The pages that render at import time: content/site.json's pages, in the order listed there, less scheduled posts.
+PAGES = live_pages()
 
 
 _SLOT = re.compile(r"<image-slot(?=[\s>])([^>]*)></image-slot>")
@@ -335,7 +376,7 @@ def page_parts(stem: str) -> tuple[str, str, str]:
 
 def render_all() -> dict[str, str]:
     out = {}
-    for stem in PAGES:
+    for stem in live_pages():
         body, head_extra, body_scripts = page_parts(stem)
         out[stem] = render_page(stem, expand_image_slots(body, page_root(stem)), head_extra, body_scripts)
     return out
@@ -345,14 +386,20 @@ def render_sitemap() -> str:
     """sitemap.xml: every page of site.json that carries a "sitemap" entry, in site.json order.
 
     A page's "lastmod" (YYYY-MM-DD) is set by hand in site.json: bump it when the page's content changes, so search
-    engines can tell a changed page from an unchanged one.
+    engines can tell a changed page from an unchanged one. The blog index is the exception: it changes whenever a post
+    goes live, so its lastmod is the later of its own and the newest live post's. Scheduled posts are left out.
     """
     rows = []
+    live = set(live_pages())
+    newest = max((p["published"] for p in blog_posts()), default="")
     for stem, page in load_site()["pages"].items():
-        if "sitemap" not in page:
+        if "sitemap" not in page or stem not in live:
             continue
         loc = page["canonical"]
-        lastmod = f"<lastmod>{escape(page['sitemap']['lastmod'])}</lastmod>" if "lastmod" in page["sitemap"] else ""
+        modified = page["sitemap"].get("lastmod", "")
+        if page.get("template") == "blog":
+            modified = max(modified, newest)
+        lastmod = f"<lastmod>{escape(modified)}</lastmod>" if modified else ""
         rows.append(
             f"  <url><loc>{escape(loc)}</loc>{lastmod}<changefreq>monthly</changefreq>"
             f"<priority>{escape(str(page['sitemap']['priority']))}</priority></url>"
@@ -401,6 +448,9 @@ def check() -> list[str]:
     css = ROOT / "assets" / "theme.css"
     if not css.exists() or css.read_text(encoding="utf-8") != render_theme():
         stale.append("assets/theme.css")
+    for stem in sorted(scheduled_stems()):
+        if (ROOT / f"{stem}.html").exists():
+            stale.append(f"{stem}.html (scheduled, must not exist yet)")
     return stale
 
 

@@ -118,7 +118,7 @@ def test_the_crawler_resolves_links_from_subfolder_pages_against_their_folder(so
 
 
 def test_the_crawl_covers_every_site_json_page(soups):
-    assert list(soups) == list(build.load_site()["pages"])
+    assert list(soups) == build.live_pages()
     assert sum(1 for s in soups.values() for _ in _targets(s)) > 100
 
 

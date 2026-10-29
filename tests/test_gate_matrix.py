@@ -18,7 +18,7 @@ def test_every_site_page_is_in_the_gate_matrix():
     from a11y_browser import test_axe, test_behaviour, test_review_contrast
     from a11y_browser.conftest import THEMES, WIDTHS
 
-    site = set(build.load_site()["pages"])
+    site = set(build.live_pages())  # a scheduled post joins the matrix the morning it goes live
     assert set(build.PAGES) == site
     assert _stems(test_axe.CASES) == site, "axe matrix"
     assert _stems(test_review_contrast.CASES) == site, "pixel-contrast matrix"
