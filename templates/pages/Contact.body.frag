@@ -10,7 +10,7 @@
       <div class="contact-meta reveal" data-d="3">
         <div class="cmeta"><span class="k">Email</span><span class="v"><a href="mailto:hello@ayinadvisors.com">hello@ayinadvisors.com</a></span></div>
         <div class="cmeta"><span class="k">Call</span><span class="v"><a href="https://calendar.app.google/8iyzRwWpo7FWfYB98" target="_blank" rel="nofollow noopener noreferrer">Pick a time on the calendar<span class="vh"> (opens in a new tab)</span></a><small>Skip the form and book directly</small></span></div>
-        <div class="cmeta"><span class="k">Offices</span><span class="v">New York<small>By appointment</small></span></div>
+        <div class="cmeta"><span class="k">Offices</span><span class="v">Princeton, NJ<small>By appointment</small></span></div>
         <div class="cmeta"><span class="k">Response</span><span class="v">Within 2 business days</span></div>
       </div>
     </div>

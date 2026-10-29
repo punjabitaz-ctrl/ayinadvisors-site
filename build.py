@@ -213,7 +213,7 @@ def structured_data(stem: str, site: dict | None = None, services: dict | None =
         "@type": "Organization", "@id": ORG_ID, "name": "AYiN Advisors", "url": f"{SITE_URL}/",
         "email": "hello@ayinadvisors.com", "description": site["pages"]["index"]["description"],
         "image": f"{SITE_URL}/og-image.jpg", "logo": f"{SITE_URL}/apple-touch-icon.png",
-        "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressCountry": "US"},
+        "address": {"@type": "PostalAddress", "addressLocality": "Princeton", "addressRegion": "NJ", "addressCountry": "US"},
         "contactPoint": {"@type": "ContactPoint", "contactType": "sales", "email": "hello@ayinadvisors.com",
                          "url": site["pages"]["Contact"]["canonical"], "availableLanguage": "English"},
         "knowsAbout": [p["name"] for p in pillars] + [s["name"] for p in pillars for s in p["services"]],
@@ -515,7 +515,7 @@ def render_llms() -> str:
         return pages[stem]["canonical"]
 
     lines = ["# AYiN Advisors", "", f"> {pages['index']['description']}", "",
-             "AYiN Advisors is a founder-led advisory in New York with three practices. Taz Abbas is the Managing Partner (https://tazabbas.com).",
+             "AYiN Advisors is a founder-led advisory in Princeton, NJ, with three practices. Taz Abbas is the Managing Partner (https://tazabbas.com).",
              f"Contact: hello@ayinadvisors.com, or the [contact page]({url('Contact')}).", "", "## Practices", ""]
     for pillar in services["pillars"]:
         lines.append(f"- [{pillar['name']}]({url(pillar['stem'])}): {pillar['buyer']}. {pillar['summary']}")

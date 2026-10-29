@@ -276,7 +276,7 @@ def test_footer_practice_column(soups, pillars, site):
     assert list(cols) == ["Navigate", "Practice", "Get in touch"]
     assert cols["Practice"] == [{"label": p["name"], "href": f"{p['stem']}.html"} for p in pillars]
     assert foot["strapline"] == "Business solutions for a digital world."
-    assert foot["tagline"].startswith("B2B partnerships, AI solutions and digital presence.") and foot["tagline"].endswith("New York.")
+    assert foot["tagline"].startswith("B2B partnerships, AI solutions and digital presence.") and foot["tagline"].endswith("Princeton, NJ.")
     old = ("Channel-led US market entry", "Entering the US market, clearly")
     for stem, soup in soups.items():
         footer = soup.select_one("footer.footer")
@@ -284,7 +284,7 @@ def test_footer_practice_column(soups, pillars, site):
         root = build.page_root(stem)
         assert [(a["href"], _text(a)) for a in col.select("a")] == [(build.clean_href(f"{root}{p['stem']}.html"), p["name"]) for p in pillars], stem
         assert _text(footer.select_one(".footer-bottom > span:last-child")) == "Business solutions for a digital world."
-        assert _text(footer.select_one(".footer-tag")) == "B2B partnerships, AI solutions and digital presence. New York."
+        assert _text(footer.select_one(".footer-tag")) == "B2B partnerships, AI solutions and digital presence. Princeton, NJ."
         text = _text(footer)
         for o in old:
             assert o not in text, (stem, o)
