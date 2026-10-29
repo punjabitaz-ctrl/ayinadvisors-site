@@ -40,6 +40,9 @@ def sandbox(tmp_path, monkeypatch):
     for j2 in (ROOT / "templates").glob("*.j2"):
         shutil.copy(j2, tmp_path / "templates" / j2.name)
     shutil.copy(ROOT / "sitemap.xml", tmp_path / "sitemap.xml")
+    for name in build.EXTRA_FILES:
+        (tmp_path / name).parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(ROOT / name, tmp_path / name)
     (tmp_path / "assets").mkdir()
     shutil.copy(ROOT / "assets" / "theme.css", tmp_path / "assets" / "theme.css")
     for s in PAGES:

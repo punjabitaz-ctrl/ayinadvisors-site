@@ -46,8 +46,8 @@
 <!-- STAT BAND -->
 <section class="surface-alt">
   <div class="wrap"><div class="stat-band">
-    <div class="sb reveal"><div class="n"><span data-count="3" data-suffix=""></span></div><div class="l">Practices - B2B Partnerships, AI Solutions Development, Digital Presence</div></div>
-    <div class="sb reveal" data-d="1"><div class="n"><span data-count="100" data-suffix="%"></span></div><div class="l">Founder-led work</div></div>
+    <div class="sb reveal"><div class="n"><span data-count="3" data-suffix="">3</span></div><div class="l">Practices - B2B Partnerships, AI Solutions Development, Digital Presence</div></div>
+    <div class="sb reveal" data-d="1"><div class="n"><span data-count="100" data-suffix="%">100%</span></div><div class="l">Founder-led work</div></div>
   </div></div>
 </section>
 

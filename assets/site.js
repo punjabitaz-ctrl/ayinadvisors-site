@@ -111,7 +111,15 @@
   }
 
   /* ---------- Counters ---------- */
+  // Each counter ships its final value in the HTML, so crawlers and readers without JavaScript see the number.
+  // With motion allowed it is set back to zero here and counts up when it scrolls into view.
   const counters = document.querySelectorAll("[data-count]");
+  if (counters.length && !reduce) {
+    counters.forEach((el) => {
+      const dec = (el.dataset.dec ? parseInt(el.dataset.dec) : 0);
+      el.textContent = (el.dataset.prefix || "") + (0).toFixed(dec) + (el.dataset.suffix || "");
+    });
+  }
   if (counters.length) {
     const cio = new IntersectionObserver(
       (entries) => {

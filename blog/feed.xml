@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>AYiN Advisors Blog</title>
+    <link>https://ayinadvisors.com/blog</link>
+    <description>Plain answers to what buyers ask about entering the US through partners, putting AI to work in a small team, and being found online.</description>
+    <language>en-us</language>
+    <atom:link href="https://ayinadvisors.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Oct 2026 12:00:00 +0000</lastBuildDate>
+    <item><title>Distributor, reseller or agent: which US route to market fits your product?</title><link>https://ayinadvisors.com/blog/distributor-reseller-or-agent</link><guid isPermaLink="true">https://ayinadvisors.com/blog/distributor-reseller-or-agent</guid><pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate><dc:creator>Taz Abbas</dc:creator><category>B2B Partnerships</category><description>Each one carries a different share of the stock, the risk and the customer. The right choice depends on how American buyers expect to buy in your category.</description></item>
+    <item><title>Where should a small team start with workflow automation?</title><link>https://ayinadvisors.com/blog/where-to-start-with-workflow-automation</link><guid isPermaLink="true">https://ayinadvisors.com/blog/where-to-start-with-workflow-automation</guid><pubDate>Wed, 28 Oct 2026 12:00:00 +0000</pubDate><dc:creator>Taz Abbas</dc:creator><category>AI Solutions Development</category><description>Start with one task your team repeats often, that follows clear rules and that does little harm when it goes wrong. Map it, automate the predictable steps and keep a person on the decisions.</description></item>
+  </channel>
+</rss>

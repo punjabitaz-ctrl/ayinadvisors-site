@@ -8,6 +8,7 @@
 <title>BizCheck: Business Idea Evaluation - AYiN Advisors</title>
 <meta name="description" content="A ten-agent expert panel evaluates your business idea the way a real advisory firm would - and returns a single verdict: GO, CONDITIONAL GO, or NO GO." />
 <link rel="canonical" href="https://ayinadvisors.com/BizCheck" />
+<link rel="alternate" type="application/rss+xml" title="AYiN Advisors Blog" href="https://ayinadvisors.com/blog/feed.xml" />
 <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('ayin-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}d.dataset.theme=t})();</script>
 <link rel="stylesheet" href="assets/theme.css">
 <meta name="theme-color" content="#061325" />
