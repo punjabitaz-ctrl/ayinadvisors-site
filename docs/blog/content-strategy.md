@@ -20,11 +20,11 @@ The blog is linked from the footer only. Readers will mostly arrive on a post fr
 ## How every post is written
 
 1. **The question is the title.** Use the words a buyer would type, not a clever headline.
-2. **Answer first.** The first section, "The short answer", answers in two to four sentences. This is the part Google and AI tools quote.
-3. **Then go deeper.** Each section heading is a follow-up question a reader would ask next.
+2. **Answer first.** The first section, "The short answer", answers in two to four sentences. This is the part Google and AI tools quote. (published)
+3. **Then go deeper.** Each section heading is a follow-up question a reader would ask next. (published)
 4. **One practice per post.** The post links two or three services of that practice, and its closing button opens the contact form with the practice picked.
 5. **Only what we can stand behind.** No invented numbers, client results or quotes. When a fact needs a source, link a primary one (a government or official page). Where a topic touches law or tax, say it is general guidance and point to a qualified adviser.
-6. **Signed and dated.** Every post carries Taz's byline and a published and updated date, and is marked up as a BlogPosting by the founder.
+6. **Signed and dated.** Every post carries Taz's byline and a published and updated date, and is marked up as a BlogPosting by the founder. (published)
 7. **No em dashes**, plain words, short paragraphs, as on the rest of the site.
 
 ## Topic clusters and post titles
@@ -43,45 +43,45 @@ Titles marked "published" are live on the blog. The rest are proposals; each is 
 
 ### B. Building a partner channel that sells (B2B Partnerships, channel strategy)
 
-8. What does a reseller need from a new vendor before they will sell it?
-9. How do you build a partner onboarding program that leads to a first deal?
+8. What does a reseller need from a new vendor before they will sell it? (published)
+9. How do you build a partner onboarding program that leads to a first deal? (published)
 10. Rebates, MDF and deal registration: which partner incentives work?
 11. Which partner program measures matter in the first year?
 
 ### C. Putting AI to work in a small team (AI Solutions Development)
 
 12. Where should a small team start with workflow automation? (published)
-13. Build or buy: when does a custom application make sense?
-14. What drives the cost of a custom AI tool?
+13. Build or buy: when does a custom application make sense? (published)
+14. What drives the cost of a custom AI tool? (published)
 15. How do you keep a person in the loop in an automated workflow?
 16. How do you stop an AI tool from making things up about your products?
 
 ### D. Being found online (Digital Presence)
 
-17. Why isn't my new website showing up on Google?
-18. How does a business get mentioned in ChatGPT and Google's AI answers?
+17. Why isn't my new website showing up on Google? (published)
+18. How does a business get mentioned in ChatGPT and Google's AI answers? (published)
 19. What should a B2B website have before you start outreach?
 20. Does a small B2B firm need a blog?
 
 ## Order and cadence
 
-Updated October 28, 2026, on Taz's call: one post a week, live on Tuesdays at 8am Eastern, each at least 750 words. Every post is still reviewed and approved by Taz first; a post that is not approved by its Tuesday waits, and nothing goes out in its place.
+Updated October 29, 2026: Taz approved all nine drafts written for the weekly schedule and asked for them to go live at once, so eleven posts are live. New posts keep the 750-word minimum. The Tuesday 8am Eastern publishing (below) stays in place for future approved posts given a future date.
 
-| Goes live | Post | Practice |
+| Published | Post | Practice |
 |---|---|---|
-| Wed Oct 28 | 1. Distributor, reseller or agent (published) | B2B Partnerships |
-| Wed Oct 28 | 12. Where to start with workflow automation (published) | AI Solutions Development |
-| Tue Nov 3 | 8. What a reseller needs from a new vendor | B2B Partnerships |
-| Tue Nov 10 | 17. Why a new website is not on Google | Digital Presence |
-| Tue Nov 17 | 2. How to find and vet a US distributor | B2B Partnerships |
-| Tue Nov 24 | 13. Build or buy a custom application | AI Solutions Development |
-| Tue Dec 1 | 3. What a US distribution agreement should cover | B2B Partnerships |
-| Tue Dec 8 | 18. How to get mentioned in AI answers | Digital Presence |
-| Tue Dec 15 | 9. Partner onboarding that leads to a first deal | B2B Partnerships |
-| Tue Dec 22 | 14. What drives the cost of a custom AI tool | AI Solutions Development |
-| Tue Dec 29 | 6. What a US market entry study includes | B2B Partnerships |
+| Oct 28 | 1. Distributor, reseller or agent | B2B Partnerships |
+| Oct 28 | 12. Where to start with workflow automation | AI Solutions Development |
+| Oct 29 | 8. What a reseller needs from a new vendor | B2B Partnerships |
+| Oct 29 | 17. Why a new website is not on Google | Digital Presence |
+| Oct 29 | 2. How to find and vet a US distributor | B2B Partnerships |
+| Oct 29 | 13. Build or buy a custom application | AI Solutions Development |
+| Oct 29 | 3. What a US distribution agreement should cover | B2B Partnerships |
+| Oct 29 | 18. How to get mentioned in AI answers | Digital Presence |
+| Oct 29 | 9. Partner onboarding that leads to a first deal | B2B Partnerships |
+| Oct 29 | 14. What drives the cost of a custom AI tool | AI Solutions Development |
+| Oct 29 | 6. What a US market entry study includes | B2B Partnerships |
 
-Partnerships leads because it is the firm's lead practice and Taz's deepest experience. Post 17 comes early because AYiN's own site is new to Google, so it can be written from first-hand steps. The earlier plan of two posts a month is replaced by this one.
+Still to draft: 4, 5, 7, 10, 11, 15, 16, 19 and 20.
 
 ## How we will know it works
 
