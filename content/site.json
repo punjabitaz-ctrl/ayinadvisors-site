@@ -508,6 +508,159 @@
         "lastmod": "2026-10-28"
       }
     },
+    "blog/what-resellers-need-from-a-new-vendor": {
+      "title": "What Resellers Need From a New Vendor - AYiN Advisors",
+      "description": "The four things a reseller looks for before selling a new vendor's product, and what to have ready before you start recruiting partners.",
+      "canonical": "https://ayinadvisors.com/blog/what-resellers-need-from-a-new-vendor",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/why-a-new-website-is-not-on-google": {
+      "title": "Why Isn't My New Website on Google? - AYiN Advisors",
+      "description": "Why a newly launched website is missing from Google, how to check, and a launch checklist covering Search Console, sitemaps and settings that block crawlers.",
+      "canonical": "https://ayinadvisors.com/blog/why-a-new-website-is-not-on-google",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/how-to-find-and-vet-a-us-distributor": {
+      "title": "How to Find and Vet a US Distributor - AYiN Advisors",
+      "description": "Where to find US distributors for your product, the questions that reveal how they will really work with you, and the red flags to watch for.",
+      "canonical": "https://ayinadvisors.com/blog/how-to-find-and-vet-a-us-distributor",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/build-or-buy-a-custom-application": {
+      "title": "Build or Buy: When to Go Custom - AYiN Advisors",
+      "description": "When off-the-shelf software is the right call, when a custom application makes sense, the hidden costs of each, and the middle paths between them.",
+      "canonical": "https://ayinadvisors.com/blog/build-or-buy-a-custom-application",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/what-a-us-distribution-agreement-should-cover": {
+      "title": "What a US Distribution Agreement Covers - AYiN Advisors",
+      "description": "The clauses a US distribution agreement should cover, from territory and exclusivity to pricing, commitments and termination. General guidance only.",
+      "canonical": "https://ayinadvisors.com/blog/what-a-us-distribution-agreement-should-cover",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/how-to-get-mentioned-in-ai-answers": {
+      "title": "Getting Mentioned in AI Answers - AYiN Advisors",
+      "description": "How AI search tools such as ChatGPT and Google AI Overviews choose their sources, and the practical steps that make a business more likely to be cited.",
+      "canonical": "https://ayinadvisors.com/blog/how-to-get-mentioned-in-ai-answers",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/partner-onboarding-that-leads-to-a-first-deal": {
+      "title": "Partner Onboarding That Leads to a Deal - AYiN Advisors",
+      "description": "A four-stage partner onboarding plan built around the first deal, with the starter kit, the people and the early measures that show it is working.",
+      "canonical": "https://ayinadvisors.com/blog/partner-onboarding-that-leads-to-a-first-deal",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/what-drives-the-cost-of-a-custom-ai-tool": {
+      "title": "What Drives the Cost of a Custom AI Tool - AYiN Advisors",
+      "description": "The factors that set the build and running cost of a custom AI tool, how to keep them down, and how to compare quotes that assume different scopes.",
+      "canonical": "https://ayinadvisors.com/blog/what-drives-the-cost-of-a-custom-ai-tool",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
+    "blog/what-a-us-market-entry-study-includes": {
+      "title": "What a US Market Entry Study Includes - AYiN Advisors",
+      "description": "What a US market entry study should cover, how the research is done, when it is worth the cost and what to ask a research provider before you commission one.",
+      "canonical": "https://ayinadvisors.com/blog/what-a-us-market-entry-study-includes",
+      "active": "",
+      "cta": {
+        "href": "Contact.html",
+        "label": "Book a Consultation",
+        "class": "btn btn-white"
+      },
+      "footer": true,
+      "template": "post",
+      "sitemap": {
+        "priority": "0.6",
+        "lastmod": "2026-10-29"
+      }
+    },
     "404": {
       "title": "Page not found - AYiN Advisors",
       "description": "The page you're looking for can't be found. Return to AYiN Advisors.",

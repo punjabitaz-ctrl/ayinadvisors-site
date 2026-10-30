@@ -17,6 +17,123 @@
   },
   "posts": [
     {
+      "slug": "what-resellers-need-from-a-new-vendor",
+      "question": "What does a reseller need from a new vendor before they will sell it?",
+      "summary": "A reason their customers will want it, economics that work, protection for the deals they find and a vendor that is easy to work with. A good product alone is not enough.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "partnerships",
+      "related": [
+        "partnerships/channel-strategy",
+        "partnerships/partner-introductions",
+        "partnerships/market-entry-research"
+      ]
+    },
+    {
+      "slug": "why-a-new-website-is-not-on-google",
+      "question": "Why isn't my new website showing up on Google?",
+      "summary": "Usually because Google has not found it, has found it but not crawled it, or has not yet chosen to show it. Here is how to tell which, and what to fix.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "digital-presence",
+      "related": [
+        "digital-presence/websites",
+        "digital-presence/digital-marketing",
+        "digital-presence/community-content"
+      ]
+    },
+    {
+      "slug": "how-to-find-and-vet-a-us-distributor",
+      "question": "How do you find and vet a US distributor?",
+      "summary": "Start from your buyers and the products yours sit next to, then vet on fit, specific commitments and real references rather than size.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "partnerships",
+      "related": [
+        "partnerships/partner-introductions",
+        "partnerships/channel-strategy",
+        "partnerships/market-entry-research"
+      ]
+    },
+    {
+      "slug": "build-or-buy-a-custom-application",
+      "question": "Build or buy: when does a custom application make sense?",
+      "summary": "Buy when your process is standard and a product fits most of it. Build when the way you work sets you apart or the tools force daily workarounds.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "ai-solutions",
+      "related": [
+        "ai-solutions/custom-applications",
+        "ai-solutions/workflow-automation",
+        "ai-solutions/operational-efficiency"
+      ]
+    },
+    {
+      "slug": "what-a-us-distribution-agreement-should-cover",
+      "question": "What should a US distribution agreement cover before you sign?",
+      "summary": "Scope, exclusivity, commitments on both sides, pricing and payment, brand ownership, warranties and, above all, how the arrangement ends.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "partnerships",
+      "related": [
+        "partnerships/channel-strategy",
+        "partnerships/partner-introductions",
+        "partnerships/market-entry-research"
+      ]
+    },
+    {
+      "slug": "how-to-get-mentioned-in-ai-answers",
+      "question": "How does a business get mentioned in ChatGPT and Google's AI answers?",
+      "summary": "Let the right crawlers in, publish clear answers to real questions, keep your details consistent and earn mentions elsewhere. No file or markup guarantees a citation.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "digital-presence",
+      "related": [
+        "digital-presence/digital-marketing",
+        "digital-presence/websites",
+        "digital-presence/community-content"
+      ]
+    },
+    {
+      "slug": "partner-onboarding-that-leads-to-a-first-deal",
+      "question": "How do you build a partner onboarding program that leads to a first deal?",
+      "summary": "Design it backwards from the first sale: teach only what that sale needs, agree on target accounts, hand over ready-to-use materials and sell the first deals together.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "partnerships",
+      "related": [
+        "partnerships/channel-strategy",
+        "partnerships/partner-introductions",
+        "partnerships/regional-expansion"
+      ]
+    },
+    {
+      "slug": "what-drives-the-cost-of-a-custom-ai-tool",
+      "question": "What drives the cost of a custom AI tool?",
+      "summary": "Less the AI itself than everything around it: how clear the problem is, the state of your data, the systems it connects to and how accurate it must be.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "ai-solutions",
+      "related": [
+        "ai-solutions/custom-applications",
+        "ai-solutions/workflow-automation",
+        "ai-solutions/operational-efficiency"
+      ]
+    },
+    {
+      "slug": "what-a-us-market-entry-study-includes",
+      "question": "What does a US market entry study include, and is it worth it?",
+      "summary": "Demand, buyers, competition, regulation, routes to market and a clear recommendation. Worth it when the decision is large and the US market is unfamiliar.",
+      "published": "2026-10-29",
+      "updated": "2026-10-29",
+      "practice": "partnerships",
+      "related": [
+        "partnerships/market-entry-research",
+        "partnerships/channel-strategy",
+        "partnerships/partner-introductions"
+      ]
+    },
+    {
       "slug": "distributor-reseller-or-agent",
       "question": "Distributor, reseller or agent: which US route to market fits your product?",
       "summary": "Each one carries a different share of the stock, the risk and the customer. The right choice depends on how American buyers expect to buy in your category.",
